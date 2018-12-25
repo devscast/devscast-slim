@@ -40,9 +40,9 @@ class CreatePodcastsTable extends AbstractMigration
             ->addColumn('duration', 'string', ['limit' => 20])
             ->addColumn('thumb', 'string', ['limit' => 300])
             ->addColumn('audio', 'string', ['limit' => 350])
-            ->addColumn('categories_id', 'int')
-            ->addColumn('users_id', 'int')
-            ->addForeignKey('category_id', 'categories')
+            ->addColumn('categories_id', 'integer')
+            ->addColumn('users_id', 'integer')
+            ->addForeignKey('categories_id', 'categories')
             ->addForeignKey('users_id', 'users')
             ->addColumn('created_at', 'date')
             ->create();
