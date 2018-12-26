@@ -31,6 +31,7 @@ class PodcastsResource
 
 
     /**
+     * [GET] all podcasts
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -45,6 +46,23 @@ class PodcastsResource
 
 
     /**
+     * [GET] the last podcast
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface|Response $response
+     * @return ResponseInterface|Response
+     */
+    public function last(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        sleep(10);
+        return $response->withJson([
+            'api.action' => 'fetch the last podcast',
+            'podcast' => $this->podcasts->last()
+        ]);
+    }
+
+
+    /**
+     * [GET] a define podcast thanks to its id
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
