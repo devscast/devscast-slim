@@ -31,7 +31,7 @@ class HomeResource
 
 
     /**
-     * the welcome text to the app
+     * [GET] the welcome text to the app
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response

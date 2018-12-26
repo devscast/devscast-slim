@@ -53,7 +53,6 @@ class PodcastsResource
      */
     public function last(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        sleep(10);
         return $response->withJson([
             'api.action' => 'fetch the last podcast',
             'podcast' => $this->podcasts->last()
