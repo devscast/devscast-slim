@@ -27,7 +27,7 @@ class MysqlDatabase implements DatabaseInterface
     public function __construct(string $name, string $host, string $user, string $pass)
     {
         try {
-            $this->pdo = new PDO("mysql:Host={$host};dbname={$name}", $user, $pass);
+            $this->pdo = new PDO("mysql:Host={$host};dbname={$name};charset=utf8", $user, $pass);
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);
