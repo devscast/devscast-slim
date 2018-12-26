@@ -3,7 +3,8 @@ namespace App\Resources;
 
 use App\Repositories\PodcastsRepository;
 use Psr\Container\ContainerInterface;
-use Slim\Container;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 
 /**
@@ -28,17 +29,19 @@ class HomeResource
         $this->podcasts = $container->get(PodcastsRepository::class);
     }
 
+
     /**
      * the welcome text to the app
      *
-     * @return string
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface|Response $response
+     * @return ResponseInterface|string
      */
-    public function index()
+    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $response = new Response();
         return $response->withJson([
-            'message' => 'Welcome to the devcast application',
-            'podcasts' => $this->podcasts->all()
+            'api.action' => 'Listing latest podcasts',
+            'podcasts' => $this->podcasts->latest(6)
         ]);
     }
 }
