@@ -1,14 +1,25 @@
-# Vote-machine-api (Slim Framework 3)
+# Backend-api workflow (Slim Framework 3)
 
-the intelligence behind an election application is not always easy to set up, especially if you have to manage all possible cases, this small project is the implementation of the application that could make the machine turn vote that may be used in my country for the 2018 elections
+## Before all
+hey the devs, here are some rules to respect when you work on this project ...
+as a project manager, I am very meticulous about the code you write :)
 
-## startup the Application
+before doing a **commit** make sure that you have **inter** your code in psr2 and psr12 format. to do that, start the command
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+```
+./vendor/bin/phpcs -s
+./vendor/bin/phpcbf
+```
 
-    php -S localhost:8080 -t public
+fix typos errors if possible, for advanced configuration **phpcs.xml** contains linter configuration
 
-create a database named "vote-machine" after run **migrations** and **seeds
+# Server
+for the development I recommend you to use the internal php server by launching the command
+```
+php -S localhost:8081 -t public
+```
+port 8081 is important in our case because it is used in the frontend application of the same project
 
-    ./vendor/bin/phinx migrate
-    ./vendor/bin/phinx seed:run
+# Questions ?
+for any questions, please read the documentation of the libraries used in the project
+our slim app uses **PHPDI** bridge
