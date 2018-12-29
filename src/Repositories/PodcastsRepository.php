@@ -77,4 +77,23 @@ LIMIT 1
 SQL;
         return $this->query($sql, [], true, false);
     }
+
+
+    /**
+     * @param string $field
+     * @param $value
+     * @return mixed
+     */
+    public function findWith(string $field, $value)
+    {
+        $sql = <<< SQL
+SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
+FROM {$this->getTable()}
+LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
+LEFT JOIN users ON {$this->getTable()}.users_id = users.id
+WHERE {$this->getTable()}.{$field} = ?
+ORDER BY {$this->getTable()}.id DESC
+SQL;
+        return $this->query($sql, [$value]);
+    }
 }

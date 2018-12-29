@@ -158,4 +158,15 @@ class Repository
     {
         return $this->query("SELECT * FROM {$this->getTable()} WHERE id = ?", [$id], true, false);
     }
+
+
+    /**
+     * @param string $field
+     * @param $value
+     * @return mixed
+     */
+    public function findWith(string $field, $value)
+    {
+        return $this->query("SELECT * FROM {$this->getTable()} WHERE {$field} = ?", [$value]);
+    }
 }
