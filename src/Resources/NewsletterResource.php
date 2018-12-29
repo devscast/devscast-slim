@@ -45,11 +45,18 @@ class NewsletterResource
 
         if ($this->validator->isValid()) {
             $email = strval($request->getParsedBody()['email']);
-            $this->newsletter->create(compact('email'));
-            return $response->withJson([
-                'api.message' => 'registration to the newsletter',
-                'api.flash' => 'success'
-            ]);
+            if ($this->isUnique($email)) {
+                $this->newsletter->create(compact('email'));
+                return $response->withJson([
+                    'api.message' => 'registration to the newsletter',
+                    'api.flash' => 'success'
+                ]);
+            } else {
+                return $response->withJson([
+                    'api.message' => 'registration to the newsletter',
+                    'api.error' => 'your email has already been registered'
+                ])->withStatus(409);
+            }
         } else {
             return $response->withJson([
                 'api.validation.errors' => [
@@ -57,5 +64,15 @@ class NewsletterResource
                 ]
             ])->withStatus(422);
         }
+    }
+
+
+    /**
+     * Whether an email has already been registered
+     * @param string $email
+     * @return bool
+     */
+    private function isUnique(string $email): bool {
+        return boolval($this->newsletter->findWith('email', $email));
     }
 }
