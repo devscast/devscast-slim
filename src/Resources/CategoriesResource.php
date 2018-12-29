@@ -1,7 +1,6 @@
 <?php
 namespace App\Resources;
 
-
 use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
 use Psr\Container\ContainerInterface;
@@ -9,6 +8,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 
+/**
+ * Class CategoriesResource
+ * @package App\Resources
+ */
 class CategoriesResource
 {
 
