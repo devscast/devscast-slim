@@ -2,12 +2,19 @@
 
 use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
+use App\Resources\NewsletterResource;
 use App\Resources\PodcastsResource;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 
-$app->get('/home', [HomeResource::class, 'index'])->setName('home');
+/**
+ * GENERAL ROUTES (NON RESOURCE ROUTES)
+ */
+$app->group('', function () {
+    $this->get('/home', [HomeResource::class, 'index'])->setName('home');
+    $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
+});
 
 
 /**
