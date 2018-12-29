@@ -56,7 +56,7 @@ class CategoriesResource
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $id = intval($request->getAttribute('id'));
+        $id = intval($request->getAttribute('route')->getArgument('id'));
         $category = $this->categories->find($id);
 
         if ($category) {

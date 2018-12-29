@@ -68,10 +68,11 @@ class PodcastsResource
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $id = intval($request->getAttribute('id'));
+        $id = intval($request->getAttribute('route')->getArgument('id'));
+        $slug = strval($request->getAttribute('route')->getArgument('slug'));
         $post = $this->podcasts->find($id);
 
-        if ($post) {
+        if ($post && $post->slug == $slug) {
             return $response->withJson([
                 'api.action' => 'show a single podcast',
                 'podcasts' => $post
