@@ -10,7 +10,7 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 if (session_status() === PHP_SESSION_NONE) {
-    session_name('voting-machine-api');
+    session_name('devcast_api');
     session_start();
 }
 
