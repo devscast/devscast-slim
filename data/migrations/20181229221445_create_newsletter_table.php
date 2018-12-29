@@ -32,6 +32,9 @@ class CreateNewsletterTable extends AbstractMigration
      */
     public function change()
     {
-
+        $this->table('newsletter')
+            ->addColumn('email', 'string', ['limit' => 60])
+            ->addColumn('created_at', 'datetime')
+            ->create();
     }
 }
