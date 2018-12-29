@@ -3,11 +3,8 @@
 use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
 use App\Resources\PodcastsResource;
-
-/*$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
-    $handler = $this->notFoundHandler;
-    return $handler($req, $res);
-});*/
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 
 $app->get('/home', [HomeResource::class, 'index'])->setName('home');
@@ -29,4 +26,13 @@ $app->group('/podcasts', function () {
 $app->group('/categories', function () {
     $this->get('', [CategoriesResource::class, 'index'])->setName('categories.index');
     $this->get('/{id:[0-9]+}', [CategoriesResource::class, 'show'])->setName('categories.show');
+});
+
+
+/**
+ * NOT FOUND HANDLER
+ */
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function(Request $req, Response $res) {
+    $handler = $this->notFoundHandler;
+    return $handler($req, $res);
 });
