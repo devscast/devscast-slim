@@ -2,6 +2,7 @@
 
 use App\Database\DatabaseInterface;
 use App\Database\MysqlDatabase;
+use Awurth\SlimValidation\Validator;
 use function DI\create;
 use function DI\get;
 
@@ -12,6 +13,8 @@ return [
         get('database.user'),
         get('database.pass')
     ),
+
+    Validator::class => create(Validator::class)->constructor(false),
 
 
     \Monolog\Logger::class => \DI\factory(function () {
