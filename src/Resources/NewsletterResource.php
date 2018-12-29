@@ -1,7 +1,6 @@
 <?php
 namespace App\Resources;
 
-
 use App\Entities\NewsletterEntity;
 use App\Repositories\NewsletterRepository;
 use Awurth\SlimValidation\Validator;
@@ -35,7 +34,7 @@ class NewsletterResource
 
 
     /**
-     * Check validity of and emaill and save it into the newsletter table
+     * Check validity of and email and save it into the newsletter table
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response

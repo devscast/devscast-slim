@@ -3,7 +3,6 @@ namespace App\Repositories;
 
 use App\Entities\UsersEntity;
 
-
 /**
  * Class UsersRepository
  * @package App\Repositories

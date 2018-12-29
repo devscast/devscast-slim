@@ -1,7 +1,6 @@
 <?php
 namespace App\Resources;
 
-
 use App\Repositories\PodcastsRepository;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;

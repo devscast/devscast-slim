@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories;
+
 use App\Entities\NewsletterEntity;
 
 /**
@@ -21,5 +22,4 @@ class NewsletterRepository extends Repository
      * @var NewsletterEntity
      */
     protected $entity = NewsletterEntity::class;
-
 }

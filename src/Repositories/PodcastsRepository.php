@@ -3,7 +3,6 @@ namespace App\Repositories;
 
 use App\Entities\PodcastsEntity;
 
-
 /**
  * Class PodcastsRepository
  * @package App\Repositories

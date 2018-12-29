@@ -7,7 +7,6 @@ use App\Resources\PodcastsResource;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-
 /**
  * GENERAL ROUTES (NON RESOURCE ROUTES)
  */
@@ -39,7 +38,7 @@ $app->group('/categories', function () {
 /**
  * NOT FOUND HANDLER
  */
-$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function(Request $req, Response $res) {
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function (Request $req, Response $res) {
     $handler = $this->notFoundHandler;
     return $handler($req, $res);
 });
