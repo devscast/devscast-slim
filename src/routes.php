@@ -16,13 +16,17 @@ $app->get('/home', [HomeResource::class, 'index'])->setName('home');
 /**
  * PODCATS RESOURCE ROUTES
  */
-$app->get('/podcasts', [PodcastsResource::class, 'index'])->setName('podcasts.index');
-$app->get('/podcasts/last', [PodcastsResource::class, 'last'])->setName('podcasts.last');
-$app->get('/podcasts/{slug}-{id}', [PodcastsResource::class, 'show'])->setName('podcasts.show');
+$app->group('/podcasts', function () {
+    $this->get('', [PodcastsResource::class, 'index'])->setName('podcasts.index');
+    $this->get('/last', [PodcastsResource::class, 'last'])->setName('podcasts.last');
+    $this->get('/{slug:[\w]+}-{id:[0-9]+}', [PodcastsResource::class, 'show'])->setName('podcasts.show');
+});
 
 
 /**
  * CATEGORIES RESOURCE ROUTES
  */
-$app->get('/categories', [CategoriesResource::class, 'index'])->setName('categories.index');
-$app->get('/categories/{id:[0-9]+}', [CategoriesResource::class, 'show'])->setName('categories.show');
+$app->group('/categories', function () {
+    $this->get('', [CategoriesResource::class, 'index'])->setName('categories.index');
+    $this->get('/{id:[0-9]+}', [CategoriesResource::class, 'show'])->setName('categories.show');
+});
