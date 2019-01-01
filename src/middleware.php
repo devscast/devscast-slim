@@ -13,13 +13,13 @@ $app->options('/{routes:.+}', function (Request $request, Response $response, ar
 /**
  * Whether the request is sent with XHR header
  */
-$app->add(function (Request $request, Response $response, $next) {
+/*$app->add(function (Request $request, Response $response, $next) {
     if ($request->isXhr()) {
         return $next($request, $response);
     } else {
         return $response->withJson(['api.message' => 'Access Forbidden'])->withStatus(403);
     }
-});
+});*/
 
 
 /**

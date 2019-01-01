@@ -22,7 +22,7 @@ $app->group('', function () {
 $app->group('/podcasts', function () {
     $this->get('', [PodcastsResource::class, 'index'])->setName('podcasts.index');
     $this->get('/last', [PodcastsResource::class, 'last'])->setName('podcasts.last');
-    $this->get('/{slug:[\w]+}-{id:[0-9]+}', [PodcastsResource::class, 'show'])->setName('podcasts.show');
+    $this->get('/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}', [PodcastsResource::class, 'show'])->setName('podcasts.show');
 });
 
 
@@ -31,7 +31,7 @@ $app->group('/podcasts', function () {
  */
 $app->group('/categories', function () {
     $this->get('', [CategoriesResource::class, 'index'])->setName('categories.index');
-    $this->get('/{id:[0-9]+}', [CategoriesResource::class, 'show'])->setName('categories.show');
+    $this->get('/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}', [CategoriesResource::class, 'show'])->setName('categories.show');
 });
 
 

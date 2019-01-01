@@ -74,7 +74,7 @@ class PodcastsResource
         if ($post && $post->slug == $slug) {
             return $response->withJson([
                 'api.action' => 'show a single podcast',
-                'podcasts' => $post
+                'podcast' => $post
             ]);
         } else {
             return $response->withStatus(404);
