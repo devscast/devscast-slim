@@ -79,6 +79,26 @@ SQL;
 
 
     /**
+     * get one podcast thanks to an 'id'
+     * @param int $id
+     * @return mixed
+     */
+    public function find(int $id)
+    {
+        $sql = <<< SQL
+SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
+FROM {$this->getTable()}
+LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
+LEFT JOIN users ON {$this->getTable()}.users_id = users.id
+WHERE {$this->getTable()}.id = ?
+ORDER BY {$this->getTable()}.id DESC
+LIMIT 1
+SQL;
+        return $this->query($sql, [$id], true, false);
+    }
+
+
+    /**
      * @param string $field
      * @param $value
      * @return mixed
