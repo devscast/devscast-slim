@@ -74,7 +74,8 @@ class NewsletterResource
      * @param string $email
      * @return bool
      */
-    private function isUnique(string $email): bool {
+    private function isUnique(string $email): bool
+    {
         return !boolval($this->newsletter->findWith('email', $email));
     }
 }
