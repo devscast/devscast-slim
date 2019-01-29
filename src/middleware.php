@@ -11,15 +11,16 @@ $app->options('/{routes:.+}', function (Request $request, Response $response, ar
 
 
 /**
- * Whether the request is sent with XHR header
+ * Check if the request is a json one
  */
-/*$app->add(function (Request $request, Response $response, $next) {
-    if ($request->isXhr()) {
-        return $next($request, $response);
-    } else {
-        return $response->withJson(['api.message' => 'Access Forbidden'])->withStatus(403);
+$app->add(function (Request $request, Response $response, $next) {
+    if ($request->getHeader('CONTENT_TYPE') != 'application/json') {
+        if($request->hasHeader('authorization')) {
+            $request->withAttribute('IsJson', true);
+        }
     }
-});*/
+    return $next($request, $response);
+});
 
 
 /**
