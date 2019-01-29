@@ -11,7 +11,8 @@ use Slim\Http\Response;
  * GENERAL ROUTES (NON RESOURCE ROUTES)
  */
 $app->group('', function () {
-    $this->get('/home', [HomeResource::class, 'index'])->setName('home');
+    $this->get('/', [HomeResource::class, 'index'])->setName('home');
+    $this->get('/home', [HomeResource::class, 'index'])->setName('home.index');
     $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
 });
 
