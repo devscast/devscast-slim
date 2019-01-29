@@ -30,7 +30,9 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "App\\": "src/"
+            "App\\": "src/App/",
+            "Core\\": "src/Core/",
+            "Admin\\": "src/Admin/"
         }
     },
     "config": {
