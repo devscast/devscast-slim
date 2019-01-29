@@ -1,0 +1,20 @@
+// Should be the 7th importation
+
+@import "../base/variables";
+
+.breadcrumb {
+  padding: 0;
+  background: none;
+
+  &>li+li::before {
+    content: "// ";
+  }
+
+  & a {
+    color: #f1f1f1;
+
+    &:hover, &:focus {
+      color: #fff;
+    }
+  }
+}

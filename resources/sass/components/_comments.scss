@@ -1,0 +1,39 @@
+// Should be the 14th importation
+
+@import "../base/variables";
+
+.comment-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.comment-item .comment-image {
+  position: absolute;
+  top: 5px;
+  left: 0;
+}
+
+.comment-item .comment-content {
+  padding-left: 110px;
+}
+
+.comment-item .comment-author {
+  font-size: 20px;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.comment-item .comment-date {
+  margin: 5px 0 10px 0;
+  display: block;
+  font-weight: 700;
+  color: #444;
+}
+
+.comment-item small {
+  margin-left: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #777;
+}

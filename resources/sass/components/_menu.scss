@@ -1,0 +1,100 @@
+// Should be the 12th importation
+
+@import "../base/variables";
+
+.menu {
+  .menuitem {
+    float: left;
+    list-style: none;
+
+    &.dropdown {
+      position: relative;
+
+      &>a:after {
+        content: "\f107";
+        font-family: FontAwesome;
+        margin-left: 7px;
+        font-size: 12px;
+        font-size: 1.2rem;
+        vertical-align: text-top;
+      }
+    }
+
+    &>a {
+      position: relative;
+      display: block;
+      padding: 25px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      transition: all 0.2s ease-out;
+    }
+
+    & .droplist {
+      background: #1d1925;
+
+      & .droplist-item {
+        list-style: none;
+      }
+
+      & a {
+        display: block;
+        padding: 14px 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #f1f1f1;
+        transition: all 0.15s ease-out;
+
+        &:hover, &:focus {
+          background: #282434;
+        }
+      }
+    }
+  }
+}
+
+.logo {
+	float: left;
+	padding: 35px 0;
+	margin: 0;
+	line-height: 0;
+}
+
+.navigation {
+	float: right;
+}
+
+.header {
+	position: relative;
+	width: 100%;
+	background: #110f16;
+  z-index: 100;
+  
+  &.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: none;
+    transition: all 0.2s ease-out;
+
+    &.scrolling {
+      background-color: rgba(17, 15, 22, 0.85);
+      zoom: 1;
+      background-color: transparent\9;
+      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f2110f16, endColorstr=#f2110f16)";
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f2110f16, endColorstr=#f2110f16);
+    }
+  }
+}
+
+.btn-hamburguer-menu {
+	float: right;
+	color: #fff;
+	padding: 19px 20px;
+	font-size: 22px;
+  font-size: 2.2rem;
+  
+  &:hover, &:focus, &.active {
+    color: #2ecc71;
+  }
+}

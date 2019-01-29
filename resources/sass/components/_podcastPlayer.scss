@@ -1,0 +1,122 @@
+// Should be the 5th importation
+
+@import "../base/variables";
+
+.mejs-container {
+  background: transparent;
+
+  & .mejs-controls {
+    background: none;
+  }
+
+  & .mejs-controls .mejs-playpause-button {
+    width: 65px;
+  }
+}
+
+.mejs-controls {
+  & .mejs-button button {
+    font-size: 12px;
+    font-size: 1.2rem;
+
+    &:before {
+      font-family: FontAwesome;
+    }
+  }
+
+
+  & .mejs-playpause-button button {
+    width: 42px;
+    height: 42px;
+    margin-top: -7px;
+    border: 3px solid #fff;
+    text-align: center;
+    line-height: 36px;
+    font-size: 18px;
+    font-size: 1.8rem;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  }
+
+  & .mejs-play button:before {
+    content: "\f04b";
+    padding-left: 5px;
+  }
+
+  & .mejs-pause button:before {
+    content: "\f04c";
+    padding-left: 1px;
+  }
+
+  & .mejs-mute button:before {
+    content: "\f028";
+  }
+
+  & .mejs-unmute button:before {
+    content: "\f026";
+  }
+
+  & div.mejs-time-rail {
+    padding-top: 7.5px;
+  }
+
+  & .mejs-time-rail {
+    & .mejs-time-current {
+      background: #2ecc71;
+    }
+
+    & .mejs-time-loaded {
+      background: #fff;
+    }
+
+    & .mejs-time-total {
+      background: #322c40;
+    }
+  }
+
+  & .mejs-time-rail {
+    & span, & a {
+      height: 5px;
+    } 
+  }
+
+  & .mejs-horizontal-volume-slider {
+    & .mejs-horizontal-volume-total, & .mejs-horizontal-volume-current {
+      top: 13px;
+      height: 6px;
+    }
+  }
+
+  & .mejs-horizontal-volume-slider {
+    & .mejs-horizontal-volume-total {
+      background: #fff;
+    }
+
+    & .mejs-horizontal-volume-current {
+      background: #2ecc71;
+    }
+  }
+}
+
+
+.podcast-player {
+  background: #110f16;
+
+  & .podcast-player-inner {
+    padding: 40px 0;
+  }
+
+  & iframe[src*="soundcloud"] {
+    width: 100%;
+    height: 100px;
+    background: #e5e5e5;
+  }
+
+  & .video-frame {
+    width: 800px;
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+  }
+} 

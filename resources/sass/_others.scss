@@ -1,0 +1,57 @@
+@import "./base/variables";
+
+.block-example-nopadding {
+	padding: 50px 10px;
+	text-align: center;
+	background: #d8d8d8;
+	color: #444;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 20px;
+	font-size: 2rem;
+
+	& .darker {
+		background: #cdcdcd;
+	}
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+	padding: 12px;
+}
+
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+	border-bottom-width: 1px;
+}
+
+
+.tab-content {
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-top: none;
+}
+
+.nav-tabs>li>a {
+	color: #777;
+}
+
+.toggle-panel {
+	background: #fff;
+	border: 1px solid #dddddd;
+	border-top: none;
+
+	& .toggle-panel-inner {
+		padding: 15px;
+	}
+}
+
+
+.container {
+	position: relative;
+}

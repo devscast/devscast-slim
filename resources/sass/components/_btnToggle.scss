@@ -1,0 +1,38 @@
+// should be the 1st importation
+
+@import "../base/variables";
+
+.btn-toggle {
+  position: relative;
+  display: block;
+  padding: 12px 15px;
+  color: #666;
+  background: #e2e2e2;
+  border: 1px solid #dddddd;
+
+  &:after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 22px;
+    height: 24px;
+    display: block;
+    margin-top: -12px;
+    border: 1px solid #cdcdcd;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+
+  &[aria-expanded="true"]:after {
+    content: "-";
+  }
+
+  &:hover,
+  &:focus {
+    color: #666;
+    background: #d8d8d8;
+  }
+}
