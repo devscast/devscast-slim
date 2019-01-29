@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Database;
+namespace Core\Database;
 
 use PDO;
 use PDOException;
 
 /**
  * Class MysqlDatabase
- * @package App\Database
+ * @package Core\Database
  */
 class MysqlDatabase implements DatabaseInterface
 {

@@ -1,9 +1,9 @@
 <?php
-namespace App\Database;
+namespace Core\Database;
 
 /**
  * Interface DatabaseInterface
- * @package App\Database
+ * @package Core\Database
  */
 interface DatabaseInterface
 {
