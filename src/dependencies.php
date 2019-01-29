@@ -1,10 +1,19 @@
 <?php
 
-use App\Database\DatabaseInterface;
-use App\Database\MysqlDatabase;
 use Awurth\SlimValidation\Validator;
-use function DI\create;
-use function DI\get;
+use Core\Database\{
+    DatabaseInterface,
+    MysqlDatabase
+};
+use Core\Renderer\{
+    Renderer,
+    RendererFactory
+};
+use function DI\{
+    create,
+    factory,
+    get
+};
 
 return [
     DatabaseInterface::class => create(MysqlDatabase::class)->constructor(
@@ -15,9 +24,9 @@ return [
     ),
 
     Validator::class => create(Validator::class)->constructor(false),
+    Renderer::class => factory(RendererFactory::class),
 
-
-    \Monolog\Logger::class => \DI\factory(function () {
+    \Monolog\Logger::class => factory(function () {
         $logger = new Monolog\Logger(get('logger.name'));
         $logger->pushProcessor(new Monolog\Processor\UidProcessor());
         $logger->pushHandler(new Monolog\Handler\StreamHandler(
