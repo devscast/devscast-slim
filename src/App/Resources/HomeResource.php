@@ -2,6 +2,7 @@
 namespace App\Resources;
 
 use App\Repositories\PodcastsRepository;
+use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,12 +22,18 @@ class HomeResource
     private $podcasts;
 
     /**
+     * @var Renderer
+     */
+    private $renderer;
+
+    /**
      * HomeResource constructor.
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         $this->podcasts = $container->get(PodcastsRepository::class);
+        $this->renderer = $container->get(Renderer::class);
     }
 
 
@@ -39,9 +46,12 @@ class HomeResource
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $response->withJson([
-            'api.action' => 'Listing latest podcasts',
-            'podcasts' => $this->podcasts->latest(6)
-        ]);
+        $podcasts = $this->podcasts->all();
+
+        if ($request->getAttribute('isJson')) {
+            return $response->withJson(compact($podcasts), 200);
+        } else {
+            return $this->renderer->render($response, 'index.html.twig', compact($podcasts));
+        }
     }
 }
