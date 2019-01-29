@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Entities\CategoriesEntity;
+use Core\Repository;
 
 /**
  * Class CategoriesRepository

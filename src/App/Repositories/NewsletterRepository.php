@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Entities\NewsletterEntity;
+use Core\Repository;
 
 /**
  * Class NewsletterRepository
