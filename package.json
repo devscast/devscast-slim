@@ -1,0 +1,32 @@
+{
+  "name": "devcast-backend",
+  "version": "1.1.0-beta",
+  "description": "podcasts for web developers",
+  "main": "index.js",
+  "repository": "https://github.com/itotafrica/devcast-api",
+  "author": "bernard-ng <ngandubernard@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "autoprefixer": "^9.4.7",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "babel-plugin-syntax-dynamic-import": "^6.18.0"
+  }
+}
