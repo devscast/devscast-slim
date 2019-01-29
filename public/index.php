@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require(dirname(__DIR__) . '/vendor/autoload.php');
 
-
+/** @var $app DI\Bridge\Slim\App */
 $app = new class() extends App {
     public function configureContainer(\DI\ContainerBuilder $builder)
     {
