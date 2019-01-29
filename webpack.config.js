@@ -1,12 +1,20 @@
 const path = require('path')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = (env, argv) => {
     const dev = argv.mode === 'development';
 
     let cssLoaders = [
-        'style-loader',
-        {loader: 'css-loader', options: {importLoaders: 1}},
+        {
+            loader: 'css-loader',
+            options: {
+                importLoaders: 1,
+                url: true,
+                sourceMap: !dev
+            }
+        },
     ];
 
     if (!dev) {
@@ -22,12 +30,20 @@ module.exports = (env, argv) => {
     }
 
     let config = {
-        entry: './resources/js/index.js',
+        entry: {
+            app: './resources/js/index.js'
+        },
         watch: dev,
         output: {
-            path: path.resolve(__dirname, 'public/assets/js'),
+            path: path.resolve(__dirname, 'public/assets/'),
             filename: 'app.js',
-            publicPath: '/assets/js'
+            publicPath: '/assets/'
+        },
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, 'resources/js/'),
+                '@sass': path.resolve(__dirname, 'resources/sass/')
+            }
         },
         devtool: dev ? "cheap-module-eval-source-map" : 'source-map',
         module: {
@@ -39,23 +55,66 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.css$/,
-                    use: cssLoaders
+                    use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: cssLoaders
+                    })
                 },
                 {
                     test: /\.scss$/,
+                    use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: [...cssLoaders, 'sass-loader']
+                    })
+                },
+                {
+                    test: /\.svg$/,
+                    loader: 'svg-loader'
+                },
+                {
+                    test: /\.(woff2?|eot|ttf|otf)/,
+                    loader: 'file-loader'
+                },
+                {
+                    test: /\.(png|jpe?g|gif|svg)$/,
                     use: [
-                        ...cssLoaders,
-                        'sass-loader'
+                        {
+                            loader: 'url-loader',
+                            options: {
+                                limit: 8192,
+                                name: '[name].[ext]'
+                            }
+                        },
+                        {
+                            loader: 'img-loader',
+                            options: {
+                                enabled: !dev
+                            }
+                        }
                     ]
-                }
+                },
             ]
         },
-        plugins: []
+        plugins: [
+            new ExtractTextPlugin({
+                filename: '[name].css',
+                disable: false
+            })
+        ]
     }
 
     if (!dev) {
         config.plugins.push(new UglifyJSPlugin({
             sourceMap: true
+        }))
+
+        config.plugins.push(new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorPluginOptions: {
+                preset: ['default', { discardComments: { removeAll: true } }],
+            },
+            canPrint: true
         }))
     }
 
