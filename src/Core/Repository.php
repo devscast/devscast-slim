@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace Core;
 
-use App\Database\DatabaseInterface;
+use Core\Database\DatabaseInterface;
 
 /**
  * Class Repository
