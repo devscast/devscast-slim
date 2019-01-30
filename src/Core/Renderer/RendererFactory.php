@@ -41,7 +41,7 @@ class RendererFactory
         $router = $this->container->get(Router::class);
         $uri = Uri::createFromEnvironment(new Environment($_SERVER));
         $view->addExtension(new TwigExtension($router, $uri));
-        $view->addExtension(new \Twig_Extensions_Extension_Text());
+        //$view->addExtension(new \Twig_Extensions_Extension_Text());
 
         if ($this->container->get('settings.displayErrorDetails')) {
             $view->addExtension(new \Twig_Extension_Debug());
