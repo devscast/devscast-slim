@@ -37,27 +37,27 @@
                             <div class="col-sm-6 mb-40" id="{{ p.id }}">
                                 <div class="podcast-card boxed">
                                     <figure class="podcast-image">
-                                        <a href="{{ path_for('podcast.show', {id: p.id, slug: p.slug}) }}">
+                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
                                             <img src="{{ p.image }}" alt="Music Show" title="Music Show" />
                                         </a>
                                     </figure>
                                     <div class="podcast-content">
                                         <span class="podcast-date">{{ p.create_at | date('M d, Y') }}</span>
                                         <h2 class="podcast-title">
-                                            <a href="{{ path_for('podcast.show', {id: p.id, slug: p.slug}) }}">
+                                            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
                                                 {{ p.name | truncate(20) }}
                                             </a>
                                         </h2>
                                         <p class="podcast-excerpt">
-                                            <a href="{{ path_for('podcast.show', {id: p.id, slug: p.slug}) }}">
-                                                {{ p.content | truncate(150) }}
+                                            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                                                {{ p.description | truncate(100) }}
                                             </a>
                                         </p>
                                         <ul class="podcast-meta">
                                             <li class="item"><a href="#" class="podcast-tag" rel="tag">{{ p.category }}</a></li>
                                             <li class="item"><i class="fa fa-clock-o"></i> {{ p.duration }} mins.</li>
                                             <li class="item">
-                                                <a href="{{ path_for('podcast.show', {id: p.id, slug: p.slug}) }}" class="podcast-play"><i class="fa fa-play"></i> Play Episode</a>
+                                                <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}" class="podcast-play"><i class="fa fa-play"></i> Play Episode</a>
                                             </li>
                                         </ul>
                                     </div>
