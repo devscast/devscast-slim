@@ -1,0 +1,60 @@
+<footer class="footer">
+    <section class="section-positive">
+        <div class="container">
+            <div class="row mt-70 mb-30">
+                <div class="col-sm-3 mb-40">
+                    <h2 class="title-separator white">Sitemap</h2>
+                    <ul class="footer-list">
+                        <li><router-link :to="{name: 'home'}">Home</router-link></li>
+                        <li><router-link :to="{name: 'podcasts.index'}">Podcasts</router-link></li>
+                        <li><router-link :to="{name: 'about'}">About</router-link></li>
+                        <li><router-link :to="{name: 'contact'}">contact</router-link></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 mb-40">
+                    <h2 class="title-separator white">Lastest Episodes</h2>
+                    <ul class="footer-complement">
+                        <li v-for="p in latestPodcasts" :key="p.id">
+                            <router-link :to="{name: 'podcasts.show', params:{id: p.id, slug: p.slug }}">
+                                {{ podcast.name }}
+                            </router-link>
+                            <span>{{ p.created_at }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 mb-40">
+                    <h2 class="title-separator white">Who is helping?</h2>
+                    <ul class="footer-complement">
+                        <li v-for="d in donates" :key="d.name">
+                            <a :href="d.link">{{ d.name }}</a>
+                            <span>Donation - U$ {{ d.amout }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 mb-40">
+                    <h2 class="title-separator white">We are social</h2>
+                    <ul class="social-list">
+                        <li v-for="social in socials" class="social-item" :key="social.link">
+                            <a :href="social.link" target="_blank">
+                                <i :class="social.icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-credits">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <a href="http://bernard-ng.github.io">bernard-ng</a> - 2018. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
