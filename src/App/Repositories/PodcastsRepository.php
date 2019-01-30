@@ -116,4 +116,41 @@ ORDER BY {$this->getTable()}.id DESC
 SQL;
         return $this->query($sql, [$value]);
     }
+
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function next($id)
+    {
+        $sql = <<< SQL
+SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
+FROM {$this->getTable()}
+LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
+LEFT JOIN users ON {$this->getTable()}.users_id = users.id
+WHERE {$this->getTable()}.id > ?
+LIMIT 1
+SQL;
+        return $this->query($sql, [$id], true, false);
+    }
+
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function previous($id)
+    {
+        $sql = <<< SQL
+SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
+FROM {$this->getTable()}
+LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
+LEFT JOIN users ON {$this->getTable()}.users_id = users.id
+WHERE {$this->getTable()}.id < ?
+ORDER BY {$this->getTable()}.id DESC
+LIMIT 1
+SQL;
+        return $this->query($sql, [$id], true, false);
+    }
 }
