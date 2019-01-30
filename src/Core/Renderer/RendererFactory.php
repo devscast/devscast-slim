@@ -3,6 +3,7 @@
 namespace Core\Renderer;
 
 
+use nochso\HtmlCompressTwig\Extension;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
@@ -42,6 +43,7 @@ class RendererFactory
         $uri = Uri::createFromEnvironment(new Environment($_SERVER));
         $view->addExtension(new TwigExtension($router, $uri));
         $view->addExtension(new \Twig_Extensions_Extension_Text());
+        $view->addExtension(new Extension());
 
         if ($this->container->get('settings.displayErrorDetails')) {
             $view->addExtension(new \Twig_Extension_Debug());
