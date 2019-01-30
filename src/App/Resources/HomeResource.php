@@ -46,12 +46,15 @@ class HomeResource
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        $hero = $this->podcasts->last();
+        $last = $this->podcasts->latest(3);
         $podcasts = $this->podcasts->all();
+
 
         if ($request->getAttribute('isJson')) {
             return $response->withJson(compact($podcasts), 200);
         } else {
-            return $this->renderer->render($response, 'index.html.twig', compact('podcasts'));
+            return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero', 'last'));
         }
     }
 }
