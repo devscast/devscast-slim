@@ -7,8 +7,8 @@ use Psr\Container\ContainerInterface;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Router;
-use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
+use Twig\Extension\DebugExtension;
 
 /**
  * Class RendererFactory
@@ -42,6 +42,10 @@ class RendererFactory
         $router = $this->container->get(Router::class);
         $uri = Uri::createFromEnvironment(new Environment($_SERVER));
         $view->addExtension(new TwigExtension($router, $uri));
+
+        if ($this->container->get('settings.displayErrorDetails')) {
+            $view->addExtension(new DebugExtension());
+        }
         return $view;
     }
 }
