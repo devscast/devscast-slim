@@ -48,13 +48,12 @@ class HomeResource
     {
         $hero = $this->podcasts->last();
         $last = $this->podcasts->latest(3);
-        $podcasts = $this->podcasts->all();
-
+        $data = array_merge(['podcasts' => $last], compact('hero', 'last'));
 
         if ($request->getAttribute('isJson')) {
-            return $response->withJson(compact($podcasts), 200);
+            return $response->withJson(array_merge(['api.message' => 'home page'], $data), 200);
         } else {
-            return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero', 'last'));
+            return $this->renderer->render($response, 'index.html.twig', $data);
         }
     }
 }
