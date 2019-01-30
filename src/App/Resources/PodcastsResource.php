@@ -89,18 +89,27 @@ class PodcastsResource
         $id = intval($request->getAttribute('route')->getArgument('id'));
         $slug = strval($request->getAttribute('route')->getArgument('slug'));
         $last = $this->podcasts->latest(3);
-        $post = $this->podcasts->find($id);
+        $podcast = $this->podcasts->find($id);
 
-        if ($post && $post->slug == $slug) {
-           if ($request->getAttribute('isJson')) {
-               return $response->withJson([
-                   'api.action' => 'show a single podcast',
-                   'podcast' => $post,
-                   'last' => $last
-               ]);
-           } else {
-               return $this->renderer->render($response, 'podcasts/show.html.twig', compact('podcast', 'last'));
-           }
+        if ($podcast && $podcast->slug == $slug) {
+            $next = $this->podcasts->next($podcast->id);
+            $previous = $this->podcasts->previous($podcast->id);
+
+            if ($request->getAttribute('isJson')) {
+                return $response->withJson([
+                    'api.action' => 'show a single podcast',
+                    'podcast' => $podcast,
+                    'next' => $next,
+                    'previous' => $previous,
+                    'last' => $last
+                ]);
+            } else {
+                return $this->renderer->render(
+                    $response,
+                    'podcasts/show.html.twig',
+                    compact('podcast', 'last', 'next', 'previous')
+                );
+            }
         } else {
             return $response->withStatus(404);
         }
