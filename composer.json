@@ -1,49 +1,49 @@
 {
-    "name": "bernard-ng/devcast",
-    "description": "the backend of the devcast app",
-    "homepage": "https://devcast.org",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "bernard-ng",
-            "email": "ngandubernard@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.5.0",
-        "slim/slim": "^3.1",
-        "slim/php-view": "^2.0",
-        "monolog/monolog": "^1.17",
-        "robmorgan/phinx": "^0.10.6",
-        "firebase/php-jwt": "^5.0",
-        "league/fractal": "^0.17.0",
-        "php-di/slim-bridge": "^2.0",
-        "doctrine/collections": "^1.5",
-        "php-di/php-di": "^6.0",
-        "awurth/slim-validation": "^3.1",
-        "slim/twig-view": "^2.4",
-        "dasc3er/slim-whoops": "^0.1.0",
-        "nochso/html-compress-twig": "^2.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": ">=4.8 < 6.0",
-        "fzaninotto/faker": "^1.8",
-        "squizlabs/php_codesniffer": "^3.3"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/",
-            "App\\": "src/App/",
-            "Core\\": "src/Core/",
-            "Admin\\": "src/Admin/"
-        }
-    },
-    "config": {
-        "process-timeout" : 0
-    },
-    "scripts": {
-        "start": "php -S localhost:8080 -t public",
-        "test": "phpunit"
+  "name": "bernard-ng/devcast",
+  "description": "the backend of the devcast app",
+  "homepage": "https://devcast.org",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "bernard-ng",
+      "email": "ngandubernard@gmail.com"
     }
-
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "slim/slim": "^3.1",
+    "slim/php-view": "^2.0",
+    "monolog/monolog": "^1.17",
+    "robmorgan/phinx": "^0.10.6",
+    "firebase/php-jwt": "^5.0",
+    "league/fractal": "^0.17.0",
+    "php-di/slim-bridge": "^2.0",
+    "doctrine/collections": "^1.5",
+    "php-di/php-di": "^6.0",
+    "awurth/slim-validation": "^3.1",
+    "slim/twig-view": "^2.4",
+    "dasc3er/slim-whoops": "^0.1.0",
+    "nochso/html-compress-twig": "^2.0",
+    "twig/extensions": "^1.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=4.8 < 6.0",
+    "fzaninotto/faker": "^1.8",
+    "squizlabs/php_codesniffer": "^3.3"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/",
+      "App\\": "src/App/",
+      "Core\\": "src/Core/",
+      "Admin\\": "src/Admin/"
+    }
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "scripts": {
+    "start": "php -S localhost:8080 -t public",
+    "test": "phpunit"
+  }
 }
