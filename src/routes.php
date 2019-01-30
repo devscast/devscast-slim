@@ -4,6 +4,7 @@ use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
 use App\Resources\NewsletterResource;
 use App\Resources\PodcastsResource;
+use App\Resources\StaticResource;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -14,6 +15,8 @@ $app->group('', function () {
     $this->get('/', [HomeResource::class, 'index'])->setName('home');
     $this->get('/home', [HomeResource::class, 'index'])->setName('home.index');
     $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
+    $this->get('/about', [StaticResource::class, 'about'], 'about')->setName('about');
+    $this->get('/contact', [StaticResource::class, 'contact'], 'contact')->setName('contact');
 });
 
 
