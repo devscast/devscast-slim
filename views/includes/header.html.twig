@@ -1,32 +1,32 @@
 <header class="header scrolling sticky" itemscope itemtype="http://schema.org/Organization">
     <div class="container">
         <h1 class="logo">
-            <router-link :to="{name: 'home'}" exact>
+            <a href="{{ path_for('home') }}">
                 <span itemprop="logo"><strong>Dev</strong>cast</span>
-            </router-link>
+            </a>
         </h1>
 
         <nav class="navigation">
             <ul class="menu">
-                <router-link :to="{name: 'home'}" tag="li" class="menuitem" exact>
-                    <a>Home</a>
-                </router-link>
+                <li class="menuitem {{ is_current_path('home')? 'active' : '' }}">
+                    <a href="{{ path_for('home') }}" >Home</a>
+                </li>
 
-                <router-link :to="{name: 'podcasts.index'}" tag="li" class="menuitem">
-                    <a>Podcasts</a>
-                </router-link>
+                <li class="menuitem {{ is_current_path('podcasts.index') ? 'active' : '' }}">
+                    <a href="{{ path_for('podcasts.index') }}">Podcasts</a>
+                </li>
 
-                <router-link :to="{name: 'categories.index'}" tag="li" class="menuitem">
-                    <a>Categories</a>
-                </router-link>
+                <li class="menuitem {{ is_current_path('categories.index')? 'active' : '' }}">
+                    <a href="{{ path_for('categories.index') }}">Categories</a>
+                </li>
 
-                <router-link :to="{name: 'about'}" tag="li" class="menuitem" exact>
-                    <a>About</a>
-                </router-link>
+                <li class="menuitem {{ is_current_path('about')? 'active' : '' }}">
+                    <a href="{{ path_for('about') }}">About</a>
+                </li>
 
-                <router-link :to="{name: 'contact'}" tag="li" class="menuitem" exact>
-                    <a>Contact</a>
-                </router-link>
+                <li class="menuitem {{ is_current_path('contact')? 'active' : '' }}">
+                    <a href="{{ path_for('contact') }}">Contact</a>
+                </li>
             </ul>
 
             <a href="#" class="btn-hamburguer-menu"><i class="fa fa-bars"></i></a>
