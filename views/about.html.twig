@@ -1,0 +1,26 @@
+{% extends 'layouts/main.html.twig' %}
+
+
+{% block content %}
+    <header class="page-header" style="background-image: url('/assets/background.jpg')">
+        <div class="page-header-inner">
+            <div class="container">
+
+                {# ===== BREADCRUMB ===== #}
+                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
+                    <li itemprop="itemListElement"><a href="{{ path_for('about') }}">About Us</a></li>
+                </ol>
+
+                {# ===== PAGE HEADER CONTENT ===== #}
+                <div class="page-header-content text-center">
+                    <h2>About Us</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% include 'includes/about.html.twig' %}
+    {% include 'includes/newsletter.html.twig' %}
+    {% include 'includes/donate.html.twig' %}
+{% endblock %}
