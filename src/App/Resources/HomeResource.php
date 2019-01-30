@@ -51,7 +51,7 @@ class HomeResource
         if ($request->getAttribute('isJson')) {
             return $response->withJson(compact($podcasts), 200);
         } else {
-            return $this->renderer->render($response, 'index.html.twig', compact($podcasts));
+            return $this->renderer->render($response, 'index.html.twig', compact('podcasts'));
         }
     }
 }
