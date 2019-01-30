@@ -2,6 +2,7 @@
 namespace App\Resources;
 
 use App\Repositories\PodcastsRepository;
+use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,12 +21,18 @@ class PodcastsResource
     private $podcasts;
 
     /**
+     * @var Renderer|mixed
+     */
+    private $renderer;
+
+    /**
      * PodcastsResource constructor.
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         $this->podcasts = $container->get(PodcastsRepository::class);
+        $this->renderer = $container->get(Renderer::class);
     }
 
 
@@ -37,10 +44,20 @@ class PodcastsResource
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $response->withJson([
-            'api.action' => 'listing all podcasts',
-            'podcasts' => $this->podcasts->all()
-        ]);
+        $hero = $this->podcasts->last();
+        $last = $this->podcasts->latest(3);
+        $podcasts = $this->podcasts->all();
+
+        if ($request->getAttribute('isJson')) {
+            return $response->withJson([
+                'api.action' => 'listing all podcasts',
+                'podcasts' => $podcasts,
+                'hero' => $hero,
+                'last' => $last
+            ]);
+        } else {
+            return $this->renderer->render($response, 'podcasts/index.html.twig', compact('hero', 'last', 'podcasts'));
+        }
     }
 
 
@@ -52,10 +69,12 @@ class PodcastsResource
      */
     public function last(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $response->withJson([
-            'api.action' => 'fetch the last podcast',
-            'podcast' => $this->podcasts->last()
-        ]);
+        if ($request->getAttribute('isJson')) {
+            return $response->withJson([
+                'api.action' => 'fetch the last podcast',
+                'podcast' => $this->podcasts->last()
+            ]);
+        }
     }
 
 
@@ -69,13 +88,19 @@ class PodcastsResource
     {
         $id = intval($request->getAttribute('route')->getArgument('id'));
         $slug = strval($request->getAttribute('route')->getArgument('slug'));
+        $last = $this->podcasts->latest(3);
         $post = $this->podcasts->find($id);
 
         if ($post && $post->slug == $slug) {
-            return $response->withJson([
-                'api.action' => 'show a single podcast',
-                'podcast' => $post
-            ]);
+           if ($request->getAttribute('isJson')) {
+               return $response->withJson([
+                   'api.action' => 'show a single podcast',
+                   'podcast' => $post,
+                   'last' => $last
+               ]);
+           } else {
+               return $this->renderer->render($response, 'podcasts/show.html.twig', compact('podcast', 'last'));
+           }
         } else {
             return $response->withStatus(404);
         }
