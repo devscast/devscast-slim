@@ -1,5 +1,6 @@
 <?php
 
+use Admin\Controllers\DashboardController;
 use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
 use App\Resources\NewsletterResource;
@@ -36,6 +37,14 @@ $app->group('/podcasts', function () {
 $app->group('/categories', function () {
     $this->get('', [CategoriesResource::class, 'index'])->setName('categories.index');
     $this->get('/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}', [CategoriesResource::class, 'show'])->setName('categories.show');
+});
+
+
+/**
+ * ADMIN CONTROLLERS ROUTES
+ */
+$app->group('/admin', function () {
+    $this->get('', [DashboardController::class, 'index'])->setName('admin.index');
 });
 
 
