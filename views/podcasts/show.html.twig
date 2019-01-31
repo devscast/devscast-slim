@@ -31,7 +31,7 @@
         <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.created_at | date('M d, Y') }}</span>
         <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
         <a class="podcast-meta-item" href="#"><i class="fa fa-tag"></i> {{ podcast.category }}</a>
-        <a class="podcast-meta-item" href="#"><i class="fa fa-download"></i> Download (MP3)</a>
+        <a class="podcast-meta-item" href="{{ podcast.audio }}"><i class="fa fa-download"></i> Download (MP3)</a>
     </div>
 
 

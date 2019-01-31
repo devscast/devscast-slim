@@ -59,7 +59,7 @@
                                         <li class="item"><a href="#" class="podcast-tag" rel="tag">{{ p.category }}</a></li>
                                         <li class="item"><i class="fa fa-clock-o"></i> 29 mins.</li>
                                         <li class="item">
-                                            <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}" class="podcast-play">
+                                            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}" class="podcast-play">
                                                 <i class="fa fa-play"></i> Play Episode
                                             </a>
                                         </li>
