@@ -4,6 +4,7 @@ use Admin\Controllers\CategoriesController;
 use Admin\Controllers\DashboardController;
 use Admin\Controllers\GalleryController;
 use Admin\Controllers\NewsletterController;
+use Admin\Controllers\PodcastLinksController;
 use Admin\Controllers\PodcastsController;
 use Admin\Controllers\UsersController;
 use App\Resources\CategoriesResource;
@@ -79,12 +80,12 @@ $app->group('/admin', function () {
     });
 
     $this->group('/podcast-links', function () {
-        $this->get('', [])->setName('admin.podcastLinks');
-        $this->get('/create', [])->setName('admin.podcastLinks.create');
-        $this->post('/store', [])->setName('admin.podcastLinks.store');
-        $this->get('/{id:[0-9]}', [])->setName('admin.podcastLinks.edit');
-        $this->put('/{id:[0-9]}', [])->setName('admin.podcastLinks.update');
-        $this->delete('/{id:[0-9]}', [])->setName('admin.podcastsLinks.delete');
+        $this->get('', [PodcastLinksController::class, 'index'])->setName('admin.podcastLinks');
+        $this->get('/create', [PodcastLinksController::class, 'create'])->setName('admin.podcastLinks.create');
+        $this->post('/store', [PodcastLinksController::class, 'store'])->setName('admin.podcastLinks.store');
+        $this->get('/{id:[0-9]}', [PodcastLinksController::class, 'edit'])->setName('admin.podcastLinks.edit');
+        $this->put('/{id:[0-9]}', [PodcastLinksController::class, 'update'])->setName('admin.podcastLinks.update');
+        $this->delete('/{id:[0-9]}', [PodcastLinksController::class, 'delete'])->setName('admin.podcastsLinks.delete');
     });
 
     $this->group('/users', function () {
