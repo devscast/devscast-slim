@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 
+use App\Entities\PodcastLinksEntity;
 use Core\Repository;
 
 /**
@@ -11,7 +12,15 @@ use Core\Repository;
 class PodcastLinksRepository extends Repository
 {
 
+    /**
+     * @inheritDoc
+     * @var string
+     */
     protected $table = 'podcast_links';
 
-    protected $entity;
+    /**
+     * represents one podcast link
+     * @var PodcastLinksEntity
+     */
+    protected $entity = PodcastLinksEntity::class;
 }

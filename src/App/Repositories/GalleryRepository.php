@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 
+use App\Entities\GalleryEntity;
 use Core\Repository;
 
 /**
@@ -11,7 +12,15 @@ use Core\Repository;
 class GalleryRepository extends Repository
 {
 
+    /**
+     * @inheritDoc
+     * @var string
+     */
     protected $table = 'gallery';
 
-    protected $entity;
+    /**
+     * represents one gallery item
+     * @var GalleryEntity
+     */
+    protected $entity = GalleryEntity::class;
 }
