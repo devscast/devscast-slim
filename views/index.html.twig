@@ -33,8 +33,8 @@
     <main id="main" class="main">
         <section id="#episodes" class="section-positive transition">
             <div class="container">
-                <h2 class="title-default">Another Episodes</h2>
                 {% if podcasts is defined %}
+                    <h2 class="title-default">Another Episodes</h2>
                     {% for index, p in podcasts %}
                         <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
                             <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
