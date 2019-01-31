@@ -1,7 +1,6 @@
 <?php
 namespace Admin\Controllers;
 
-
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;

@@ -1,7 +1,6 @@
 <?php
 namespace App\Repositories;
 
-
 use App\Entities\GalleryEntity;
 use Core\Repository;
 

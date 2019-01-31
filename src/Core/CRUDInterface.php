@@ -60,5 +60,4 @@ interface CRUDInterface
      * @return ResponseInterface
      */
     public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
-
 }

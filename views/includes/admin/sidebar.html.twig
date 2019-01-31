@@ -26,7 +26,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ is_current_path('admin.podcasts') or is_current_path('admin.podcasts.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-pie-chart"></i>
                         <p>
@@ -49,8 +49,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                <li class="nav-item has-treeview {{ is_current_path('admin.podcastLinks') or is_current_path('admin.podcastLinks.create') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fa fa-table"></i>
                         <p>
                             Podcast Links
@@ -72,7 +72,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ is_current_path('admin.categories') or is_current_path('admin.categories.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-tree"></i>
                         <p>
@@ -95,7 +95,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ is_current_path('admin.gallery') or is_current_path('admin.gallery.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-edit"></i>
                         <p>
@@ -121,7 +121,7 @@
 
                 <div style="height: 1px; border-top:  1px solid #848484; margin: 20px 0;"></div>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ is_current_path('admin.newsletter') or is_current_path('admin.newsletter.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-envelope-o"></i>
                         <p>
@@ -144,7 +144,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ is_current_path('admin.users') or is_current_path('admin.users.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-book"></i>
                         <p>

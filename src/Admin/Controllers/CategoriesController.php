@@ -1,7 +1,6 @@
 <?php
 namespace Admin\Controllers;
 
-
 use App\Repositories\CategoriesRepository;
 use Core\CRUDInterface;
 use Psr\Container\ContainerInterface;

@@ -1,7 +1,6 @@
 <?php
 namespace Admin\Controllers;
 
-
 use Core\CRUDInterface;
 use App\Repositories\PodcastLinksRepository;
 use Psr\Container\ContainerInterface;
@@ -9,7 +8,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
 
 /**
  * Class PodcastLinksController

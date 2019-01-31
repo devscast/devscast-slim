@@ -1,12 +1,10 @@
 <?php
 namespace Admin\Controllers;
 
-
 use App\Repositories\NewsletterRepository;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
 
 /**
  * Class NewsletterController
@@ -49,7 +47,6 @@ class NewsletterController extends DashboardController
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-
     }
 
 
@@ -60,7 +57,6 @@ class NewsletterController extends DashboardController
      */
     public function send(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-
     }
 
 
@@ -71,6 +67,5 @@ class NewsletterController extends DashboardController
      */
     public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-
     }
 }
