@@ -16,8 +16,8 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-    {% include 'includes/navbar.html.twig' %}
-    {% include 'includes/sidebar.html.twig' %}
+    {% include 'includes/admin/navbar.html.twig' %}
+    {% include 'includes/admin/sidebar.html.twig' %}
 
     <div class="content-wrapper">
         {% block breadcrumb %}{% endblock %}
@@ -27,7 +27,7 @@
         </section>
     </div>
 
-    {% include 'includes/footer.html.twig' %}
+    {% include 'includes/admin/footer.html.twig' %}
 
     <aside class="control-sidebar control-sidebar-dark">
         {% block controlSidebar %}{% endblock %}
