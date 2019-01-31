@@ -22,9 +22,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="podcast-hero-player-content">
-                <div class="container">
-                    <audio src="{{ hero.audio }}"></audio>
+
+            <div class="podcast-player">
+                <div class="podcast-player-inner">
+                    <div class="container">
+                        <audio src="{{ hero.audio }}"></audio>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,19 +42,19 @@
                         <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
                             <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
                                 <figure class="podcast-image">
-                                    <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}">
+                                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
                                         <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}" />
                                     </a>
                                 </figure>
                                 <div class="podcast-content">
                                     <span class="podcast-date">{{ p.created_at | date('M d, Y') }}</span>
                                     <h2 class="podcast-title">
-                                        <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}">
+                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
                                             {{ p.name | truncate(30) }}
                                         </a>
                                     </h2>
                                     <p class="podcast-excerpt">
-                                        <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}">
+                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
                                             {{ p.description | truncate(100) }}
                                         </a>
                                     </p>

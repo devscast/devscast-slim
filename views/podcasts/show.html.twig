@@ -1,7 +1,193 @@
 {% extends 'layouts/main.html.twig' %}
 
 {% block content %}
+    <header class="page-header-podcast" style="background-image: url({{ podcast.thumb }})">
+        <div class="page-header-inner">
+            <div class="container">
+                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
+                    <li itemprop="itemListElement"><a href="{{ path_for('podcasts.index') }}">Podcast</a></li>
+                </ol>
+
+                <div class="page-header-content text-center">
+                    <h2>{{ podcast.name }}</h2>
+                    <p>{{ podcast.description | truncate(100) }}</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="podcast-player">
+        <div class="podcast-player-inner">
+            <div class="container">
+                <audio src="{{ podcast.audio }}"></audio>
+            </div>
+        </div>
+    </div>
 
 
+    {# ===== PODCAST META ===== #}
+    <div class="podcast-meta-element">
+        <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.created_at | date('M d, Y') }}</span>
+        <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
+        <a class="podcast-meta-item" href="#"><i class="fa fa-tag"></i> {{ podcast.category }}</a>
+        <a class="podcast-meta-item" href="#"><i class="fa fa-download"></i> Download (MP3)</a>
+    </div>
 
+
+    {% if links is defined %}
+        <div class="podcast-links">
+            <div class="container">
+                <ul class="podcast-links-list">
+                    {% for l in links %}
+                        <li>
+                            <a href="#" class="btn btn-success btn-sm">{{ l.reference }}</a>
+                            <span class="podcast-link-cite">{{ l.description }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="section-negative">
+        <div class="container">
+            <div class="row mt-70 mb-50">
+                <div class="col-md-8 mb-50">
+                    <div class="page-content">
+                        <p>
+                            {{ podcast.description }}
+                        </p>
+
+                        <hr/>
+                        {% if gallery is defined %}
+                            <div class="page-gallery">
+                                {% for g in gallery %}
+                                    <div class="col-md-4 col-xs-6 nopadding">
+                                        <figure class="gallery-item">
+                                            <a href="{{ g.url }}" class="gallery-zoom">
+                                                <img src="{{ g.url }}" alt="{{ g.name }}" title="{{ g.name }}"/>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <hr/>
+                    </div>
+
+
+                    {# ===== PREV AND NEXT ===== #}
+                    <div class="page-pagination">
+                        {% if previous %}
+                            <a href="{{ path_for('podcasts.show', {id: previous.id, slug: previous.slug}) }}"
+                               class="page-pagination-prev">
+                                <i class="fa fa-long-arrow-left"></i>
+                                <span>{{ previous.created_at | date('M d, Y') }}</span>
+                                <p>{{ previous.name | truncate(40) }}</p>
+                            </a>
+                        {% endif %}
+                        {% if next %}
+                            <a href="{{ path_for('podcasts.show', {id: next.id, slug: next.slug}) }}"
+                               class="page-pagination-next">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <span>{{ next.created_at | date('M d, Y') }}</span>
+                                <p>{{ next.name | truncate(40) }}</p>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <hr/>
+
+                    {# ===== COMMENTS ===== #}
+                    {% if comments is defined %}
+                        <div class="page-comments">
+                            {% for c in comments %}
+                                <div class="comment-item">
+                                    <div class="comment-content">
+                                        <cite class="comment-author">{{ c.author }}</cite>
+                                        <small>says:</small>
+                                        <span class="comment-date">{{ c.created_at | date('M d, Y') }}</span>
+                                        <div class="comment-body">
+                                            <p>{{ c.content }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <hr/>
+
+                    {# ===== FORM COMMENTS ===== #}
+                    <form action="#" class="form-comment form-validate">
+                        <fieldset class="row">
+                            <legend class="col-md-12">Leave a comment</legend>
+                            <div class="col-md-8 mb-20">
+                                <label for="name" class="label-control">Name*:</label>
+                                <input type="text" id="name" name="name" class="form-control" required/>
+                            </div>
+                            <div class="col-md-8 mb-20">
+                                <label for="email" class="label-control">Email*:</label>
+                                <input type="email" id="email" name="email" class="form-control" required/>
+                            </div>
+                            <div class="col-md-8 mb-20">
+                                <label for="website" class="label-control">Website:</label>
+                                <input type="text" id="website" name="website" class="form-control"/>
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label for="comment" class="label-control">Comment*:</label>
+                                <textarea name="comment" id="comment" rows="8" class="form-control" required></textarea>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="submit" class="btn btn-lg btn-block btn-success" value="Send comment"/>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+
+                {# ===== SIDEBAR ===== #}
+                <div class="col-md-4">
+                    <div class="page-sidebar">
+                        <div class="sidebar-widget">
+                            <h2 class="title-separator">Share this podcast</h2>
+                            <ul class="social-list colored">
+                                <li class="social-item facebook">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_url() ~ current_path() }}" target="_blank">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social-item twitter">
+                                    <a href="https://twitter.com/home?status={{ base_url() ~ current_path() }}" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social-item google">
+                                    <a href="https://plus.google.com/share?url={{ base_url() ~ current_path() }}" target="_blank">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="social-item email">
+                                    <a href="mailto:?&subject=devcast" target="_blank">
+                                        <i class="fa fa-envelope"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {# ===== TAGS ===== #}
+                        <div class="sidebar-widget">
+                            <h2 class="title-separator">Tags</h2>
+                            <ul class="tag-list">
+                                <li class="tag-item"><a href="#" rel="tag">Podcast</a></li>
+                                <li class="tag-item"><a href="#" rel="tag">Vacation</a></li>
+                                <li class="tag-item"><a href="#" rel="tag">Photography</a></li>
+                                <li class="tag-item"><a href="#" rel="tag">Gallery</a></li>
+                                <li class="tag-item"><a href="#" rel="tag">Lifestyle</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
