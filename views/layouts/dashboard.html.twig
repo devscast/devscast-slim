@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}{% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    {% block stylesheet %}{% endblock %}
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    {% include 'includes/navbar.html.twig' %}
+    {% include 'includes/sidebar.html.twig' %}
+
+    <div class="content-wrapper">
+        {% block breadcrumb %}{% endblock %}
+
+        <section class="content">
+            {% block content %}{% endblock %}
+        </section>
+    </div>
+
+    {% include 'includes/footer.html.twig' %}
+
+    <aside class="control-sidebar control-sidebar-dark">
+        {% block controlSidebar %}{% endblock %}
+    </aside>
+</div>
+
+{% block jquery %}{% endblock %}
+{% block javascriptPlugins %}{% endblock %}
+
+<script src="dist/js/adminlte.js"></script>
+{% block javascript %}{% endblock %}
+</body>
+</html>
