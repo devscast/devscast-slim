@@ -1,0 +1,201 @@
+{% extends 'layouts/dashboard.html.twig' %}
+
+
+{% block title %}AdminLTE 3 | Dashboard{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/js/plugins/iCheck/flat/blue.css' }}">
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/js/plugins/morris/morris.css' }}">
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.css' }}">
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/js/plugins/datepicker/datepicker3.css' }}">
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/js/plugins/daterangepicker/daterangepicker-bs3.css' }}">
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' }}">
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Dashboard</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Dashboard v2</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>150</h3>
+
+                        <p>New Orders</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>53<sup style="font-size: 20px">%</sup>
+                        </h3>
+
+                        <p>Bounce Rate</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>44</h3>
+
+                        <p>User Registrations</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>65</h3>
+
+                        <p>Unique Visitors</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Statistiques graphiques</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-center">
+                                    <strong>Contenu du site le {{ 'now' | date('d M Y') }}</strong>
+                                </p>
+
+                                <div class="chart">
+                                    <canvas id="salesChart" height="250" style="height: 250px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block jquery %}
+    <script src="/assets/admin/js/plugins/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+{% endblock %}
+
+{% block javascriptPlugins %}
+    <script src="{{ '/assets/admin/js/plugin/sparkline/jquery.sparkline.min.js' }}"></script>
+    <script src="{{ '/assets/admin/js/plugin/jvectormap/jquery-jvectormap-1.2.2.min.js' }}"></script>
+    <script src="{{ '/assets/admin/js/plugin/jvectormap/jquery-jvectormap-world-mill-en.js' }}"></script>
+    <script src="{{ '/assets/admin/js/plugin/slimScroll/jquery.slimscroll.min.js' }}"></script>
+    <script src="{{ '/assets/admin/js/plugin/chartjs/Chart.min.js' }}"></script>
+{% endblock %}
+
+{% block javascript %}
+    <script src="/assets/admin/js/pages/dashboard.js"></script>
+    <script src="/assets/admin/js/demo.js"></script>
+
+    <script>
+        $(function () {
+            'use strict';
+            let salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+            let salesChart = new Chart(salesChartCanvas);
+
+            let salesChartData = {
+                labels: ['Articles', 'Contenus', 'NewsLetter', 'Administrateurs'],
+                datasets: [
+                    {
+                        label: 'En ligne',
+                        fillColor: 'rgba(0, 123, 255, 0.9)',
+                        strokeColor: 'rgba(0, 123, 255, 1)',
+                        pointColor: '#3b8bba',
+                        pointStrokeColor: 'rgba(0, 123, 255, 1)',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: 'rgba(0, 123, 255, 1)',
+                        data: [
+                            {{ posts  | default('0')}},
+                            {{ staticPosts | default('0') }},
+                            {{ newsletter  | default('0') }},
+                            {{ users | default('0')  }}
+                        ]
+                    }
+                ]
+            };
+
+            let salesChartOptions = {
+                showScale: true,
+                scaleShowGridLines: false,
+                scaleGridLineColor: 'rgba(0,0,0,.05)',
+                scaleGridLineWidth: 1,
+                scaleShowHorizontalLines: true,
+                scaleShowVerticalLines: true,
+                bezierCurve: true,
+                bezierCurveTension: 0.3,
+                pointDot: false,
+                pointDotRadius: 4,
+                pointDotStrokeWidth: 1,
+                pointHitDetectionRadius: 20,
+                datasetStroke: true,
+                datasetStrokeWidth: 2,
+                datasetFill: true,
+                legendTemplate: `<ul class="<%=name.toLowerCase()%>-legend" ><% for(let i=0;i < datasets.length;i++)\{\%><li><spanstyle = "background-color:<%=datasets[i].lineColor%>"></span><%= datasets[i].label %></li>< \%\}\%></ul > `,
+                maintainAspectRatio: false,
+                responsive: true
+            };
+
+            salesChart.Line(salesChartData, salesChartOptions)
+        });
+    </script>
+{% endblock %}
