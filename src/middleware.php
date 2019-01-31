@@ -15,7 +15,7 @@ $app->options('/{routes:.+}', function (Request $request, Response $response, ar
  */
 $app->add(function (Request $request, Response $response, $next) {
     if ($request->getHeader('CONTENT_TYPE') != 'application/json') {
-        if($request->hasHeader('authorization')) {
+        if ($request->hasHeader('authorization')) {
             $request->withAttribute('IsJson', true);
         }
     }

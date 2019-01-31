@@ -1,7 +1,6 @@
 <?php
 namespace Core\Renderer;
 
-
 use Slim\Views\Twig;
 
 /**

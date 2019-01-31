@@ -1,19 +1,13 @@
 <?php
 
 use Awurth\SlimValidation\Validator;
-use Core\Database\{
-    DatabaseInterface,
-    MysqlDatabase
-};
-use Core\Renderer\{
-    Renderer,
-    RendererFactory
-};
-use function DI\{
-    create,
-    factory,
-    get
-};
+use Core\Database\DatabaseInterface;
+use Core\Database\MysqlDatabase;
+use Core\Renderer\Renderer;
+use Core\Renderer\RendererFactory;
+use function DI\create;
+use function DI\factory;
+use function DI\get;
 
 return [
     DatabaseInterface::class => create(MysqlDatabase::class)->constructor(

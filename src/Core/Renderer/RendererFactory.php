@@ -2,7 +2,6 @@
 
 namespace Core\Renderer;
 
-
 use nochso\HtmlCompressTwig\Extension;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Environment;
