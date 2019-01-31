@@ -4,6 +4,10 @@ namespace Admin\Controllers;
 
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Class DashboardController
@@ -29,5 +33,16 @@ class DashboardController
     {
         $this->container = $container;
         $this->renderer = $container->get(Renderer::class);
+    }
+
+
+    /**
+     * @param ServerRequestInterface|Request $request
+     * @param ResponseInterface|Response $response
+     * @return ResponseInterface
+     */
+    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        return $this->renderer->render($response, 'admin/index.html.twig');
     }
 }
