@@ -1,6 +1,10 @@
 <?php
 namespace Admin\Controllers;
 
+use App\Repositories\CategoriesRepository;
+use App\Repositories\GalleryRepository;
+use App\Repositories\NewsletterRepository;
+use App\Repositories\PodcastsRepository;
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -42,6 +46,11 @@ class DashboardController
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->renderer->render($response, 'admin/index.html.twig');
+        $podcasts = count($this->container->get(PodcastsRepository::class)->all());
+        $gallery = count($this->container->get(GalleryRepository::class)->all());
+        $categories = count($this->container->get(CategoriesRepository::class)->all());
+        $newsletter = count($this->container->get(NewsletterRepository::class)->all());
+
+        return $this->renderer->render($response, 'admin/index.html.twig', compact('podcasts', 'gallery', 'categories', 'newsletter'));
     }
 }
