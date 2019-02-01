@@ -1,0 +1,34 @@
+{% htmlcompress %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/plugins/font-awesome/css/font-awesome.min.css' }}">
+    <link rel="stylesheet" href="{{  base_url() ~ '/assets/admin/dist/css/adminlte.min.css' }}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+<div class="wrapper">
+    {% block content %}{% endblock %}
+    <style>
+        .content-wrapper, .main-footer, .main-header {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            margin-left: 0;
+            z-index: 3000;
+        }
+    </style>
+</div>
+{% include 'includes/admin/footer.html.twig' %}
+
+
+<script src="{{ base_url() ~ '/assets/admin/plugins/jquery/jquery.min.js' }}"></script>
+<script src="{{ base_url() ~ '/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js' }}"></script>
+<script src="{{ base_url() ~ '/assets/admin/dist/js/adminlte.js' }}"></script>
+</body>
+</html>
+{% endhtmlcompress %}

@@ -8,9 +8,9 @@
      {% block meta %}{% endblock %}
 
      <title>{% block title %}{% endblock %}</title>
-     <link rel="stylesheet" href="/assets/admin/js/plugins/font-awesome/css/font-awesome.min.css">
-     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-     <link rel="stylesheet" href="/assets/admin/css/adminlte.min.css">
+     <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/plugins/font-awesome/css/font-awesome.min.css' }}">
+     <link rel="stylesheet" href="{{  base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.css' }}">
+     <link rel="stylesheet" href="{{  base_url() ~ '/assets/admin/dist/css/adminlte.min.css' }}">
      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
      {% block stylesheet %}{% endblock %}
@@ -35,10 +35,10 @@
      </aside>
  </div>
 
- {% block jquery %}{% endblock %}
+ <script src="{{ base_url() ~ '/assets/admin/plugins/jquery/jquery.min.js' }}"></script>
+ <script src="{{ base_url() ~ '/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js' }}"></script>
+ <script src="{{ base_url() ~ '/assets/admin/dist/js/adminlte.js' }}"></script>
  {% block javascriptPlugins %}{% endblock %}
-
- <script src="/assets/admin/js/adminlte.js"></script>
  {% block javascript %}{% endblock %}
  </body>
  </html>
