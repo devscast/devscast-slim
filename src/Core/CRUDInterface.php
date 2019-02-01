@@ -9,7 +9,7 @@ use Slim\Http\Response;
 /**
  * describe how a crud controller should work
  * Interface CRUDControllerInterface
- * @package Admin
+ * @package Core
  */
 interface CRUDInterface
 {

@@ -49,7 +49,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // TODO: Implement create() method.
+        return $this->renderer->render($response, 'admin/podcasts/create.html.twig');
     }
 
     /**
@@ -69,7 +69,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
      */
     public function edit(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // TODO: Implement edit() method.
+        return $this->renderer->render($response, 'admin/podcasts/edit.html.twig');
     }
 
     /**

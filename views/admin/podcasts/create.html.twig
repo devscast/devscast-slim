@@ -1,0 +1,96 @@
+{% extends 'layouts/dashboard.html.twig' %}
+{% import 'includes/admin/forms.html.twig' as form %}
+
+
+{% block breadcrumb %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>New Podcast</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path_for('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.index') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.podcasts') }}">Podcasts</a></li>
+                        <li class="breadcrumb-item active">New Podcast</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+{% block content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="padding-bottom: 15px;">
+                    <a href="{{ path_for('admin.podcasts') }}" class="btn btn-primary">Show Podcasts</a>
+                </div>
+                <div class="card card-info card-outline">
+                    <div class="card-body">
+                        <form data-thumb="true" action="{{ path_for('admin.podcasts.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                            <fieldset>
+                                <p>Add the podcast cover</p>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <div class="col-sm-12">
+                                            <label class="custom-file-label" for="thumb">...</label>
+                                            <input type="file" name="thumb" class="custom-file-input" id="thumb">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div id="show-thumb" class="container" align="center" data-action="show-uploaded-file"></div>
+                                <hr>
+                            </fieldset>
+                            <fieldset>
+                                <br>
+                                {{ form.input('Name', 'name', errors.get('name'), input.name) }}
+                                {{ form.input('Auteur', 'author', errors.get('author'), input.author ?? user.name) }}
+                                {{ form.select('Category', 'categories_id', categories) }}
+                                <br>
+                                {{ form.checkbox('Online', 'online', errors.get('online')) }}
+                            </fieldset>
+                            <fieldset>
+                                {{ form.wysiwyg('content', errors.get('content'), input.content) }}
+                            </fieldset>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <br>
+                                    <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block javascriptPlugins %}
+    <script src="{{ base_url() ~ '/assets/admin/plugins/ckeditor/ckeditor.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        showImageBeforeUpload("form[data-thumb]");
+        $(function () {
+            ClassicEditor
+                .create(document.querySelector('#content'))
+                .then(function (editor) {
+
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+        })
+    </script>
+{% endblock %}
