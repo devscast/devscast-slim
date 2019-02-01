@@ -22,6 +22,7 @@ $app = new class() extends App {
     {
         $builder->useAutowiring(true);
         $builder->addDefinitions(dirname(__DIR__) . "/src/settings.php");
+        $builder->addDefinitions(dirname(__DIR__) . "/src/settings.local.php");
         $builder->addDefinitions(dirname(__DIR__) . "/src/dependencies.php");
     }
 };

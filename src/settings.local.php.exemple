@@ -1,0 +1,15 @@
+<?php
+return [
+
+    /**
+     * Database configurations
+     */
+    'database.name' => 'devcast',
+    'database.host' => 'localhost',
+    'database.user' => 'root',
+    'database.pass' => '',
+
+
+    'smpt.user' => '',
+    'smpt.password' => '',
+];
