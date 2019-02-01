@@ -6,7 +6,7 @@
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/assets/admin/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+                <img src="/assets/admin/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="{{ user.link }}" class="d-block">{{ user.name ?? 'bernard-ng' }}</a>
@@ -28,7 +28,7 @@
 
                 <li class="nav-item has-treeview {{ is_current_path('admin.podcasts') or is_current_path('admin.podcasts.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-pie-chart"></i>
+                        <i class="nav-icon fa fa-microphone"></i>
                         <p>
                             Podcasts
                             <i class="right fa fa-angle-left"></i>
@@ -74,7 +74,7 @@
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.categories') or is_current_path('admin.categories.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-tree"></i>
+                        <i class="nav-icon fa fa-tags"></i>
                         <p>
                             Categories
                             <i class="fa fa-angle-left right"></i>
@@ -97,7 +97,7 @@
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.gallery') or is_current_path('admin.gallery.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-edit"></i>
+                        <i class="nav-icon fa fa-file-picture-o"></i>
                         <p>
                             Gallery
                             <i class="fa fa-angle-left right"></i>
@@ -146,7 +146,7 @@
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.users') or is_current_path('admin.users.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-book"></i>
+                        <i class="nav-icon fa fa-users"></i>
                         <p>
                             Users
                             <i class="fa fa-angle-left right"></i>
@@ -169,7 +169,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-book"></i>
+                        <i class="nav-icon fa fa-file"></i>
                         <p>
                            Files Browser
                             <i class="fa fa-angle-left right"></i>
