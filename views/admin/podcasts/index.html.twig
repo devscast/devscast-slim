@@ -1,0 +1,103 @@
+{% extends 'layouts/dashboard.html.twig' %}
+
+
+{% block breadcrumb %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Administration - Podcasts</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path_for('home') }}">home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.index') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Podcasts</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div style="padding-bottom: 15px;">
+                        <a href="{{ path_for('admin.podcasts.create') }}" class="btn btn-primary">New Podcast</a>
+                    </div>
+                    <div class="card">
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover" id="table1">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Duration</th>
+                                    <th>Category</th>
+                                    <th>Online</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for p in podcasts %}
+                                    <tr>
+                                        <th>{{ p.id }}</th>
+                                        <th><a href="{{ path_for('podcasts.show', {slug: p.slug, id: p.id}) }}">{{ p.name | truncate(30) }}</a></th>
+                                        <th>{{ p.duration }} mins</th>
+                                        <th>{{ p.category }}</th>
+                                        <th style="color: {{ p.oneline ? 'black' : 'red' }}">{{ p.oneline ? 'Yes' : 'No' }}</th>
+                                        <th>
+                                            <div class="btn-group-justified">
+                                                <a href="{{ path_for('admin.podcasts.edit', {id: p.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <form action="{{ path_for('admin.podcasts.delete', {id: p.id}) }}" method="post" style="display: inline" id="delete">
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Duration</th>
+                                    <th>Category</th>
+                                    <th>Online</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripPlugins %}
+    <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/jquery.dataTables.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        ajaxDelete();
+        showTableImage();
+        $(function () {
+            $('#table1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+{% endblock %}

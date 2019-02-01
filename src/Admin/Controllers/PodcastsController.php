@@ -30,6 +30,18 @@ class PodcastsController extends DashboardController implements CRUDInterface
         $this->podcasts = $container->get(PodcastsRepository::class);
     }
 
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     */
+    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        $podcasts = $this->podcasts->all();
+        return $this->renderer->render($response, 'admin/podcasts/index.html.twig', compact('podcasts'));
+    }
+
     /**
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
