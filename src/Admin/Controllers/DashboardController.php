@@ -51,6 +51,10 @@ class DashboardController
         $categories = count($this->container->get(CategoriesRepository::class)->all());
         $newsletter = count($this->container->get(NewsletterRepository::class)->all());
 
-        return $this->renderer->render($response, 'admin/index.html.twig', compact('podcasts', 'gallery', 'categories', 'newsletter'));
+        return $this->renderer->render(
+            $response,
+            'admin/index.html.twig',
+            compact('podcasts', 'gallery', 'categories', 'newsletter')
+        );
     }
 }
