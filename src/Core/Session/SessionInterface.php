@@ -1,0 +1,39 @@
+<?php
+/**
+ * This file is part of the devcast.
+ *
+ * (c) Bernard Ng <ngandubernard@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Core\Session;
+
+/**
+ * Interface SessionInterface
+ * @package Core\Session
+ */
+interface SessionInterface
+{
+
+    /**
+     * @param string $key
+     * @param null $default
+     * @return mixed
+     */
+    public function get(string $key, $default = null);
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return void
+     */
+    public function set(string $key, $value): void;
+
+    /**
+     * @param string $key
+     * @return void
+     */
+    public function delete(string $key): void;
+}
