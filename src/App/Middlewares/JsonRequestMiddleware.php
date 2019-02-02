@@ -14,6 +14,7 @@ namespace App\Middlewares;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Handlers\AbstractHandler;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -23,7 +24,7 @@ use Slim\Http\Response;
  * Class JsonRequestMiddleware
  * @package App\Middlewares
  */
-class JsonRequestMiddleware
+class JsonRequestMiddleware extends AbstractHandler
 {
 
     /**
@@ -34,7 +35,7 @@ class JsonRequestMiddleware
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
-        if ($request->getHeader('CONTENT_TYPE') != 'application/json') {
+        if ($this->determineContentType($request) === 'application/json') {
             if ($request->hasHeader('authorization')) {
                 $request->withAttribute('IsJson', true);
             }
