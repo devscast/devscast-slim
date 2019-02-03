@@ -29,6 +29,18 @@ class PodcastsEntity
      * @var array
      */
     private static $updateValidationRules = [];
+
+    /**
+     * fields in the entity that can be store
+     * @var array
+     */
+    private static $storeAbleFields = [];
+
+    /**
+     * fields in the entity that can be update
+     * @var array
+     */
+    private static $updateAbleFields = [];
     
     /**
      * retrieve validation rules for an entity
@@ -39,13 +51,11 @@ class PodcastsEntity
         if (empty(self::$validationRules)) {
             self::$validationRules = [
                 'name' => v::notEmpty()->setName('Name'),
-                'slug' => v::optional(v::alnum())->setName('Slug'),
+                'slug' => v::optional(v::slug())->setName('Slug'),
                 'description' => v::notEmpty()->notBlank()->setName('Description'),
                 'duration' => v::notEmpty()->alnum(':')->setName('Durantion'),
-                'thumb' => v::notEmpty()->setName('Thumb Cover'),
-                'audio' => v::notEmpty()->setName('Audio'),
-                'categories_id' => v::numeric()->setName('Categories Id'),
-                'users_id' => v::numeric()->setName('Users Id')
+                'categories_id' => v::notEmpty()->numeric()->setName('Categories Id'),
+                'users_id' => v::notEmpty()->numeric()->setName('Users Id')
             ];
         }
         return self::$validationRules;
@@ -57,14 +67,38 @@ class PodcastsEntity
      */
     public static function getUpdateValidationRules(): array
     {
-        if(empty(self::$updateValidationRules)) {
+        if (empty(self::$updateValidationRules)) {
             self::$updateValidationRules = [
                 'name' => v::notEmpty()->setName('Name'),
-                'slug' => v::optional(v::alnum())->setName('Slug'),
-                'description' => v::optional(v::notEmpty()->notBlank())->setName('Description'),
-                'categories_id' => v::optional(v::numeric())->setName('Categories Id'),
+                'slug' => v::optional(v::slug())->setName('Slug'),
+                'description' => v::notEmpty()->notBlank()->setName('Description'),
+                'categories_id' => v::notEmpty()->numeric()->setName('Categories Id'),
             ];
         }
         return self::$updateValidationRules;
+    }
+
+    /**
+     * retrieve store able fields
+     * @return array
+     */
+    public static function getStoreAbleFields(): array
+    {
+        if (empty(self::$storeAbleFields)) {
+            self::$storeAbleFields = array_keys(self::getValidationRules());
+        }
+         return self::$storeAbleFields;
+    }
+
+    /**
+     * retrieve update able fields
+     * @return array
+     */
+    public static function getUpdateAbleFields(): array
+    {
+        if (empty(self::$updateAbleFields)) {
+            self::$updateAbleFields = array_keys(self::getUpdateValidationRules());
+        }
+        return self::$updateAbleFields;
     }
 }
