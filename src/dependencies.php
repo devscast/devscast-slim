@@ -31,7 +31,9 @@ return [
     Renderer::class => factory(RendererFactory::class),
     SessionInterface::class => create(PHPSession::class),
 
-    \Monolog\Logger::class => factory(function () {
+    \Slim\Csrf\Guard::class => factory(Core\Factories\SlimCSRFGuardFactory::class),
+
+    'logger' => factory(function () {
         $logger = new Monolog\Logger(get('logger.name'));
         $logger->pushProcessor(new Monolog\Processor\UidProcessor());
         $logger->pushHandler(new Monolog\Handler\StreamHandler(
