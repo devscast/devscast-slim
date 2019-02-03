@@ -30,7 +30,6 @@ interface CRUDInterface
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
 
-
     /**
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
@@ -38,30 +37,12 @@ interface CRUDInterface
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
 
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function store(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
-
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function edit(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
-
-
     /**
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
      */
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
-
 
     /**
      * @param ServerRequestInterface|Request $request

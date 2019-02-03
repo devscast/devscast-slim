@@ -30,9 +30,10 @@ class SlimCSRFGuardFactory
         $guard = new Guard();
         $guard->setFailureCallable(
             function (ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface {
-            $request = $request->withAttribute("csrf_status", false);
-            return $next($request, $response);
-        });
+                $request = $request->withAttribute("csrf_status", false);
+                return $next($request, $response);
+            }
+        );
         return $guard;
     }
 }
