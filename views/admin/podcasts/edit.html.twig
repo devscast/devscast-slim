@@ -1,0 +1,96 @@
+{% extends 'layouts/dashboard.html.twig' %}
+{% import 'includes/admin/forms.html.twig' as form %}
+
+
+{% block breadcrumb %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Edit Podcast</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path_for('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.index') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.podcasts') }}">Podcasts</a></li>
+                        <li class="breadcrumb-item active">Edit Podcast</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+{% block content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="padding-bottom: 15px;">
+                    <a href="{{ path_for('admin.podcasts') }}" class="btn btn-primary">Show Podcasts</a>
+                </div>
+                <div class="card card-info card-outline">
+                    <div class="card-body">
+                        <h3>{{ podcast.name | truncate(50) }}</h3>
+                        <code>
+                            <pre>
+                                {{ dump(errors) }}
+                            </pre>
+                        </code>
+                        <hr>
+                        <div id="show-thumb" class="container" align="center">
+                            <img src="{{ podcast.thumb }}" alt="{{ podcast.name }}" class="img-responsive" width="75%" height="auto">
+                        </div>
+                        <hr>
+                        <br>
+                        <form data-thumb="true" action="{{ path_for('admin.podcasts.update', {id: podcast.id}) }}" method="POST" autocomplete="off">
+                            <input type="hidden" name="_method" value="PUT">
+                            <fieldset>
+                                <br>
+                                {{ form.input('Name', 'name', errors.get('name'), input.name ?? podcast.name) }}
+                                {{ form.input('Slug', 'slug', errors.get('slug'), input.slug ?? podcast.slug) }}
+                                {{ form.input('Author', 'users_id', errors.get('author'), input.author ?? user.name ?? 1) }}
+                                {{ form.select('Category', 'categories_id', categories, input.categories_id ?? podcast.categories_id) }}
+                                <br>
+                                {{ form.checkbox('Online', 'online', errors.get('online'), input.online ?? podcast.online) }}
+                            </fieldset>
+                            <fieldset>
+                                {{ form.wysiwyg('content', errors.get('content'), input.content ?? podcast.online) }}
+                            </fieldset>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <br>
+                                    <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block javascriptPlugins %}
+    <script src="{{ base_url() ~ '/assets/admin/plugins/ckeditor/ckeditor.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        showImageBeforeUpload("form[data-thumb]");
+        $(function () {
+            ClassicEditor
+                .create(document.querySelector('#content'))
+                .then(function (editor) {
+
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+        })
+    </script>
+{% endblock %}

@@ -51,8 +51,9 @@
                                         <th style="color: {{ p.oneline ? 'black' : 'red' }}">{{ p.oneline ? 'Yes' : 'No' }}</th>
                                         <th>
                                             <div class="btn-group-justified">
-                                                <a href="{{ path_for('admin.podcasts.edit', {id: p.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ path_for('admin.podcasts.update', {id: p.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                                 <form action="{{ path_for('admin.podcasts.delete', {id: p.id}) }}" method="post" style="display: inline" id="delete">
+                                                    <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>

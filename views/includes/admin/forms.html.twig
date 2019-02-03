@@ -5,7 +5,9 @@
             <input type="text" name="{{ name }}" class="form-control {{ error ? 'has-error' : '' }}" id="{{ name }}"
                    value="{{ value }}">
             <span class="help-block" style="color: red">
-                {{ error }}
+                {% for e in error %}
+                    {{ e ~ ", " }}
+                {% endfor %}
             </span>
         </div>
     </div>
@@ -20,34 +22,47 @@
                        id="{{ name }}" {{ value ? 'checked' : '' }}>
                 <label class="form-check-label" for="{{ name }}">{{ label }}</label>
             </div>
+            <span class="help-block" style="color: red">
+                {% for e in error %}
+                    {{ e ~ ", " }}
+                {% endfor %}
+            </span>
         </div>
     </div>
 {% endmacro %}
 
 
-{% macro select(label, name, data) %}
+{% macro select(label, name, data, error, default) %}
     <div class="form-group">
         <div class="col-sm-12">
             <label for="{{ name }}">{{ label }}</label>
             <select class="form-control" name="{{ name }}" id="{{ name }}">
                 {% for d in data %}
-                    <option value="{{ d.id }}">{{ d.name }}</option>
+                    <option value="{{ d.id }}" {{ d.id == default ? 'selected' : '' }}>{{ d.name }}</option>
                 {% endfor %}
             </select>
+            <span class="help-block" style="color: red">
+                {% for e in error %}
+                    {{ e ~ ", " }}
+                {% endfor %}
+            </span>
         </div>
     </div>
 {% endmacro %}
 
 
 {% macro wysiwyg(name, error, value) %}
+    <textarea id="{{ name }}" name="{{ name }}" style="width: 100%; min-height: 400px !important;">{{ value }}</textarea>
     {% if error %}
         <div class="row">
             <div class="col-sm-12">
                 <br>
-                <div class="alert alert-danger">{{ error }}</div>
+                <div class="alert alert-danger">
+                    {% for e in error %}
+                        {{ e ~ ", " }}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% endif %}
-
-    <textarea id="{{ name }}" name="{{ name }}" style="width: 100%; min-height: 400px !important;">{{ value }}</textarea>
 {% endmacro %}
