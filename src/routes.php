@@ -30,8 +30,8 @@ $app->group('', function () {
     $this->get('/', [HomeResource::class, 'index'])->setName('home');
     $this->get('/home', [HomeResource::class, 'index'])->setName('home.index');
     $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
-    $this->get('/about', [StaticResource::class, 'about'], 'about')->setName('about');
-    $this->get('/contact', [StaticResource::class, 'contact'], 'contact')->setName('contact');
+    $this->get('/about', [StaticResource::class, 'about'])->setName('about');
+    $this->get('/contact', [StaticResource::class, 'contact'])->setName('contact');
 });
 
 
@@ -63,7 +63,7 @@ $app->group('/admin', function () {
     $this->group('/podcasts', function () {
         $this->get('', [PodcastsController::class, 'index'])->setName('admin.podcasts');
         $this->get('/create', [PodcastsController::class, 'create'])->setName('admin.podcasts.create');
-        $this->post('/store', [PodcastsController::class], 'store')->setName('admin.podcasts.store');
+        $this->post('/store', [PodcastsController::class, 'store'])->setName('admin.podcasts.store');
         $this->get('/{id:[0-9]}', [PodcastsController::class, 'edit'])->setName('admin.podcasts.edit');
         $this->put('/{id:[0-9]}', [PodcastsController::class, 'update'])->setName('admin.podcasts.update');
         $this->delete('/{id:[0-9]}', [PodcastsController::class, 'delete'])->setName('admin.podcasts.delete');
