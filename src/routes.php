@@ -20,9 +20,6 @@ use App\Resources\HomeResource;
 use App\Resources\NewsletterResource;
 use App\Resources\PodcastsResource;
 use App\Resources\StaticResource;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 /**
  * GENERAL ROUTES (NON RESOURCE ROUTES)
@@ -63,46 +60,40 @@ $app->group('/admin', function () {
 
     $this->group('/podcasts', function () {
         $this->get('', [PodcastsController::class, 'index'])->setName('admin.podcasts');
-        $this->get('/create', [PodcastsController::class, 'create'])->setName('admin.podcasts.create');
-        $this->post('/store', [PodcastsController::class, 'store'])->setName('admin.podcasts.store');
-        $this->get('/{id:[0-9]+}', [PodcastsController::class, 'edit'])->setName('admin.podcasts.edit');
-        $this->put('/{id:[0-9]+}', [PodcastsController::class, 'update'])->setName('admin.podcasts.update');
+        $this->map(['GET', 'POST'], '/create', [PodcastsController::class, 'create'])->setName('admin.podcasts.create');
+        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [PodcastsController::class, 'update'])->setName('admin.podcasts.update');
         $this->delete('/{id:[0-9]+}', [PodcastsController::class, 'delete'])->setName('admin.podcasts.delete');
     });
 
     $this->group('/categories', function () {
         $this->get('', [CategoriesController::class, 'index'])->setName('admin.categories');
-        $this->get('/create', [CategoriesController::class, 'create'])->setName('admin.categories.create');
-        $this->post('/store', [CategoriesController::class, 'store'])->setName('admin.categories.store');
-        $this->get('/{id:[0-9]+}', [CategoriesController::class, 'edit'])->setName('admin.categories.edit');
-        $this->put('/{id:[0-9]+}', [CategoriesController::class, 'update'])->setName('admin.categories.update');
+        $this->map(['GET', 'POST'], '/create', [CategoriesController::class, 'create'])->setName('admin.categories.create');
+        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [CategoriesController::class, 'update'])->setName('admin.categories.update');
         $this->delete('/{id:[0-9]+}', [CategoriesController::class, 'delete'])->setName('admin.categories.delete');
     });
 
     $this->group('/gallery', function () {
         $this->get('', [GalleryController::class, 'index'])->setName('admin.gallery');
-        $this->get('/create', [GalleryController::class, 'create'])->setName('admin.gallery.create');
-        $this->post('/store', [GalleryController::class, 'store'])->setName('admin.gallery.store');
-        $this->get('/{id:[0-9]+}', [GalleryController::class, 'edit'])->setName('admin.gallery.edit');
-        $this->put('/{id:[0-9]+}', [GalleryController::class, 'update'])->setName('admin.gallery.update');
+        $this->map(['GET', 'POST'], '/create', [GalleryController::class, 'create'])->setName('admin.gallery.create');
+        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [GalleryController::class, 'update'])->setName('admin.gallery.update');
         $this->delete('/{id:[0-9]+}', [GalleryController::class, 'delete'])->setName('admin.gallery.delete');
     });
 
     $this->group('/podcast-links', function () {
         $this->get('', [PodcastLinksController::class, 'index'])->setName('admin.podcastLinks');
-        $this->get('/create', [PodcastLinksController::class, 'create'])->setName('admin.podcastLinks.create');
-        $this->post('/store', [PodcastLinksController::class, 'store'])->setName('admin.podcastLinks.store');
-        $this->get('/{id:[0-9]+}', [PodcastLinksController::class, 'edit'])->setName('admin.podcastLinks.edit');
-        $this->put('/{id:[0-9]+}', [PodcastLinksController::class, 'update'])->setName('admin.podcastLinks.update');
+        $this->map(['GET', 'POST'], '/create', [PodcastLinksController::class, 'create'])->setName('admin.podcastLinks.create');
+        $this->map(
+            ['GET', 'PUT'],
+            '/{id:[0-9]+}',
+            [PodcastLinksController::class, 'update']
+        )->setName('admin.podcastLinks.update');
         $this->delete('/{id:[0-9]+}', [PodcastLinksController::class, 'delete'])->setName('admin.podcastsLinks.delete');
     });
 
     $this->group('/users', function () {
         $this->get('', [UsersController::class, 'index'])->setName('admin.users');
-        $this->get('/create', [UsersController::class, 'create'])->setName('admin.users.create');
-        $this->post('/store', [UsersController::class, 'store'])->setName('admin.users.store');
-        $this->get('/{id:[0-9]+}', [UsersController::class, 'edit'])->setName('admin.users.edit');
-        $this->put('/{id:[0-9]+}', [UsersController::class, 'update'])->setName('admin.users.update');
+        $this->map(['GET', 'POST'], '/create', [UsersController::class, 'create'])->setName('admin.users.create');
+        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [UsersController::class, 'update'])->setName('admin.users.update');
         $this->delete('/{id:[0-9]+}', [UsersController::class, 'delete'])->setName('admin.users.delete');
     });
 
@@ -117,8 +108,8 @@ $app->group('/admin', function () {
 
 /**
  * NOT FOUND HANDLER
+ * @TODO set up a strong not found handler with a twig view
  */
-$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function (Request $req, Response $res) {
-    $handler = $this->notFoundHandler;
-    return $handler($req, $res);
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function () {
+    echo "Not Found";
 });
