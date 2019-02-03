@@ -43,7 +43,8 @@ class RendererFactory
     public function __invoke(): Renderer
     {
         $view = new Renderer($this->container->get('views.path'), [
-            'cache' => $this->container->get('views.cache')
+            'cache' => $this->container->get('views.cache'),
+            'debug' => $this->container->get('settings.displayErrorDetails')
         ]);
 
         $router = $this->container->get(Router::class);
