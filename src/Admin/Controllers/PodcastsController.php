@@ -44,6 +44,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
 
 
     /**
+     * @TODO paginate podcasts query
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface
@@ -55,77 +56,67 @@ class PodcastsController extends DashboardController implements CRUDInterface
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function store(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        $validator = $this->container->get(Validator::class);
-        $validator->validate($request, PodcastsEntity::getValidationRules());
-        $errors = $validator->getErrors() ?? [];
-
-        if ($validator->isValid()) {
-            $this->podcasts->create($request->getParams());
-            return $response->withStatus(200);
-        } else {
-            return ($request->getAttribute('isJson')) ?
-                $response->withJson($errors)->withStatus(422) :
-                $this->create($request->withAttributes(compact('errors')), $response->withStatus(422));
-        }
-    }
-
-    /**
+     * creates and stores a podcast
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        if ($request->isPost()) {
+            $validator = $this->container->get(Validator::class);
+            $validator->validate($request, PodcastsEntity::getValidationRules());
+            $input = $request->getParams();
+            $errors = $validator->getErrors();
+            $params = $this->filter($input, PodcastsEntity::getStoreAbleFields());
+
+            if ($validator->isValid()) {
+                $this->podcasts->create($params);
+                $this->flash->success('podcast.create');
+                return $this->redirect('admin.podcasts');
+            } else {
+                $this->flash->error('podcast.create');
+                $this->status = 422;
+            }
+        }
+
+        $data = compact('errors', 'input');
         $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
-        if ($request->getAttribute('validationErrors')) {
-            $data['errors'] = $request->getAttribute('validationErrors');
-        }
-        return $this->renderer->render($response, 'admin/podcasts/create.html.twig', $data);
+        return $this->renderer->render($response->withStatus($this->status), 'admin/podcasts/create.html.twig', $data);
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function edit(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        $id = $request->getAttribute('route')->getArgument('id');
-
-        if ($this->podcasts->find($id)) {
-            return $this->renderer->render($response, 'admin/podcasts/edit.html.twig');
-        }
-        return $response->withStatus(404);
-    }
-
-    /**
+     * updates a podcast
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
      */
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $validator = $this->container->get(Validator::class);
-        $validator->validate($request, PodcastsEntity::getUpdateValidationRules());
-        $errors = $validator->getErrors() ?? [];
         $id = $request->getAttribute('route')->getArgument('id');
+        $podcast = $this->podcasts->find($id);
 
-        if ($this->podcasts->find($id)) {
-            if ($validator->isValid()) {
-                $this->podcasts->update($id, $request->getParams());
+        if ($podcast) {
+            if ($request->isPut()) {
+                $validator = $this->container->get(Validator::class);
+                $validator->validate($request, PodcastsEntity::getUpdateValidationRules());
+                $errors = $validator->getErrors();
+                $input = $request->getParams();
+                $params = $this->filter($input, PodcastsEntity::getUpdateAbleFields());
 
-                return $response->withStatus(200);
-            } else {
-                return ($request->getAttribute('isJson')) ?
-                    $response->withJson($errors)->withStatus(422) :
-                    $this->create($request->withAttributes(compact('errors')), $response->withStatus(422));
+                if ($validator->isValid()) {
+                    $this->podcasts->update($id, $params);
+                    $this->flash->success('podcast.update');
+                    return $this->redirect('admin.podcasts');
+                } else {
+                    $this->flash->error('podcast.update');
+                    $this->status = 422;
+                }
             }
+
+            $data = compact('errors', 'input', 'podcast', 'categories');
+            $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
+            return $this->renderer->render($response->withStatus($this->status), 'admin/podcasts/edit.html.twig', $data);
         }
         return $response->withStatus(404);
     }
@@ -141,7 +132,8 @@ class PodcastsController extends DashboardController implements CRUDInterface
 
         if ($this->podcasts->find($id)) {
             $this->podcasts->destroy($id);
-            return $response->withStatus(200);
+            $this->flash->success('podcast.delete');
+            return $this->redirect('admin.podcasts');
         }
         return $response->withStatus(404);
     }

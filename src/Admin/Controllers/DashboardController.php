@@ -14,10 +14,9 @@ use App\Repositories\CategoriesRepository;
 use App\Repositories\GalleryRepository;
 use App\Repositories\NewsletterRepository;
 use App\Repositories\PodcastsRepository;
+use Core\Helpers\RouterAwareHelper;
 use Core\Renderer\Renderer;
-use Core\RouterAwareAction;
-use Core\Session\SessionInterface;
-use DI\Bridge\Slim\App;
+use Core\Session\FlashService;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,7 +31,13 @@ use Slim\Router;
 class DashboardController
 {
 
-    use RouterAwareAction;
+    use RouterAwareHelper;
+
+    /**
+     * response status of an action
+     * @var int
+     */
+    protected $status = 200;
 
     /**
      * @var Renderer|mixed
@@ -45,14 +50,14 @@ class DashboardController
     protected $container;
 
     /**
-     * @var mixed|Router
+     * @var Router|mixed
      */
     protected $router;
 
     /**
-     * @var SessionInterface|mixed
+     * @var FlashService|mixed
      */
-    protected $session;
+    protected $flash;
 
 
     /**
@@ -64,7 +69,7 @@ class DashboardController
         $this->container = $container;
         $this->renderer = $container->get(Renderer::class);
         $this->router = $container->get(Router::class);
-        $this->session = $container->get(SessionInterface::class);
+        $this->flash = $container->get(FlashService::class);
     }
 
 
@@ -85,5 +90,19 @@ class DashboardController
             'admin/index.html.twig',
             compact('podcasts', 'gallery', 'categories', 'newsletter')
         );
+    }
+
+    /**
+     * filters data sent by the user and retrieves only
+     * that are valid
+     * @param array $params
+     * @param array $fields
+     * @return array
+     */
+    protected function filter(array $params, array $fields): array
+    {
+        return array_filter($params, function ($key) use ($fields) {
+            return in_array($key, $fields);
+        }, ARRAY_FILTER_USE_KEY);
     }
 }
