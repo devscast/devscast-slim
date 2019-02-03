@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <div class="col-sm-12">
-                                            <label class="custom-file-label" for="thumb">...</label>
+                                            <label class="custom-file-label" for="thumb">Choose an image</label>
                                             <input type="file" name="thumb" class="custom-file-input" id="thumb">
                                         </div>
                                     </div>
@@ -49,9 +49,23 @@
                                 <hr>
                             </fieldset>
                             <fieldset>
+                                <p>Add the podcast audio file</p>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <div class="col-sm-12">
+                                            <label class="custom-file-label" for="audio">choose an audio</label>
+                                            <input type="file" name="audio" class="custom-file-input" id="audio">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form.input('Duration', 'duration', errors.get('duration'), input.duration) }}
+                                <hr>
+                            </fieldset>
+                            <fieldset>
                                 <br>
                                 {{ form.input('Name', 'name', errors.get('name'), input.name) }}
-                                {{ form.input('Auteur', 'author', errors.get('author'), input.author ?? user.name) }}
+                                {{ form.input('Slug', 'slug', errors.get('slug'), input.slug) }}
+                                {{ form.input('Author', 'users_id', errors.get('author'), input.author ?? user.name ?? 1) }}
                                 {{ form.select('Category', 'categories_id', categories) }}
                                 <br>
                                 {{ form.checkbox('Online', 'online', errors.get('online')) }}
