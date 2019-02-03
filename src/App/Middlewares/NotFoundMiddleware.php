@@ -11,7 +11,6 @@
 
 namespace App\Middlewares;
 
-
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;

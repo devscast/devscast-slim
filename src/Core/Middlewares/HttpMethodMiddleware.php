@@ -36,7 +36,7 @@ class HttpMethodMiddleware
     {
         if ($request->isPost()) {
             $method = $request->getParam('_method');
-            if (in_array($method, ['POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS', 'HEAD', 'GET'])) {
+            if (in_array(strtoupper($method), ['POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS', 'HEAD', 'GET'])) {
                 $request = $request->withMethod($method);
                 return $next($request, $response);
             }

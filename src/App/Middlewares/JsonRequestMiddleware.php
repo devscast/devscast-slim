@@ -11,7 +11,6 @@
 
 namespace App\Middlewares;
 
-
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\AbstractHandler;
@@ -37,7 +36,8 @@ class JsonRequestMiddleware extends AbstractHandler
     {
         if ($this->determineContentType($request) === 'application/json') {
             if ($request->hasHeader('authorization')) {
-                $request->withAttribute('IsJson', true);
+                $request = $request->withAttribute('IsJson', true);
+                return $next($request, $response);
             }
         }
         return $next($request, $response);
