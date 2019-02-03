@@ -13,6 +13,8 @@ use Core\Database\DatabaseInterface;
 use Core\Database\MysqlDatabase;
 use Core\Renderer\Renderer;
 use Core\Renderer\RendererFactory;
+use Core\Session\PHPSession;
+use Core\Session\SessionInterface;
 use function DI\create;
 use function DI\factory;
 use function DI\get;
@@ -27,6 +29,7 @@ return [
 
     Validator::class => create(Validator::class)->constructor(false),
     Renderer::class => factory(RendererFactory::class),
+    SessionInterface::class => create(PHPSession::class),
 
     \Monolog\Logger::class => factory(function () {
         $logger = new Monolog\Logger(get('logger.name'));
