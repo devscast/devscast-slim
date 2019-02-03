@@ -10,8 +10,11 @@
 
 namespace Admin\Controllers;
 
-use Core\CRUDInterface;
+use App\Entities\PodcastsEntity;
+use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
+use Awurth\SlimValidation\Validator;
+use Core\CRUDInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -56,9 +59,20 @@ class PodcastsController extends DashboardController implements CRUDInterface
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
      */
-    public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function store(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->renderer->render($response, 'admin/podcasts/create.html.twig');
+        $validator = $this->container->get(Validator::class);
+        $validator->validate($request, PodcastsEntity::getValidationRules());
+        $errors = $validator->getErrors() ?? [];
+
+        if ($validator->isValid()) {
+            $this->podcasts->create($request->getParams());
+            return $response->withStatus(200);
+        } else {
+            return ($request->getAttribute('isJson')) ?
+                $response->withJson($errors)->withStatus(422) :
+                $this->create($request->withAttributes(compact('errors')), $response->withStatus(422));
+        }
     }
 
     /**
@@ -66,9 +80,13 @@ class PodcastsController extends DashboardController implements CRUDInterface
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
      */
-    public function store(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // TODO: Implement store() method.
+        $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
+        if ($request->getAttribute('validationErrors')) {
+            $data['errors'] = $request->getAttribute('validationErrors');
+        }
+        return $this->renderer->render($response, 'admin/podcasts/create.html.twig', $data);
     }
 
     /**
@@ -78,7 +96,12 @@ class PodcastsController extends DashboardController implements CRUDInterface
      */
     public function edit(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->renderer->render($response, 'admin/podcasts/edit.html.twig');
+        $id = $request->getAttribute('route')->getArgument('id');
+
+        if ($this->podcasts->find($id)) {
+            return $this->renderer->render($response, 'admin/podcasts/edit.html.twig');
+        }
+        return $response->withStatus(404);
     }
 
     /**
@@ -88,7 +111,23 @@ class PodcastsController extends DashboardController implements CRUDInterface
      */
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // TODO: Implement update() method.
+        $validator = $this->container->get(Validator::class);
+        $validator->validate($request, PodcastsEntity::getUpdateValidationRules());
+        $errors = $validator->getErrors() ?? [];
+        $id = $request->getAttribute('route')->getArgument('id');
+
+        if ($this->podcasts->find($id)) {
+            if ($validator->isValid()) {
+                $this->podcasts->update($id, $request->getParams());
+
+                return $response->withStatus(200);
+            } else {
+                return ($request->getAttribute('isJson')) ?
+                    $response->withJson($errors)->withStatus(422) :
+                    $this->create($request->withAttributes(compact('errors')), $response->withStatus(422));
+            }
+        }
+        return $response->withStatus(404);
     }
 
     /**
@@ -98,6 +137,12 @@ class PodcastsController extends DashboardController implements CRUDInterface
      */
     public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // TODO: Implement delete() method.
+        $id = $request->getAttribute('route')->getArgument('id');
+
+        if ($this->podcasts->find($id)) {
+            $this->podcasts->destroy($id);
+            return $response->withStatus(200);
+        }
+        return $response->withStatus(404);
     }
 }

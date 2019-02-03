@@ -15,11 +15,15 @@ use App\Repositories\GalleryRepository;
 use App\Repositories\NewsletterRepository;
 use App\Repositories\PodcastsRepository;
 use Core\Renderer\Renderer;
+use Core\RouterAwareAction;
+use Core\Session\SessionInterface;
+use DI\Bridge\Slim\App;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Router;
 
 /**
  * Class DashboardController
@@ -27,6 +31,9 @@ use Slim\Http\Response;
  */
 class DashboardController
 {
+
+    use RouterAwareAction;
+
     /**
      * @var Renderer|mixed
      */
@@ -38,6 +45,17 @@ class DashboardController
     protected $container;
 
     /**
+     * @var mixed|Router
+     */
+    protected $router;
+
+    /**
+     * @var SessionInterface|mixed
+     */
+    protected $session;
+
+
+    /**
      * DashboardController constructor.
      * @param ContainerInterface $container
      */
@@ -45,6 +63,8 @@ class DashboardController
     {
         $this->container = $container;
         $this->renderer = $container->get(Renderer::class);
+        $this->router = $container->get(Router::class);
+        $this->session = $container->get(SessionInterface::class);
     }
 
 
