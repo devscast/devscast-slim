@@ -32,6 +32,9 @@
                     <a href="{{ path_for('admin.podcasts') }}" class="btn btn-primary">Show Podcasts</a>
                 </div>
                 <div class="card card-info card-outline">
+
+                    <code>{{ dump(errors) }}</code>
+
                     <div class="card-body">
                         <form data-thumb="true" action="{{ path_for('admin.podcasts.create') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                             <fieldset>
@@ -41,6 +44,11 @@
                                         <div class="col-sm-12">
                                             <label class="custom-file-label" for="thumb">Choose an image</label>
                                             <input type="file" name="thumb" class="custom-file-input" id="thumb">
+                                            <span class="help-block" style="color: red">
+                                                {% for e in errors.thumb %}
+                                                    {{ e ~ ", " }}
+                                                {% endfor %}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -55,6 +63,11 @@
                                         <div class="col-sm-12">
                                             <label class="custom-file-label" for="audio">choose an audio</label>
                                             <input type="file" name="audio" class="custom-file-input" id="audio">
+                                             <span class="help-block" style="color: red">
+                                                {% for e in errors.audio %}
+                                                    {{ e ~ ", " }}
+                                                {% endfor %}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +79,7 @@
                                 {{ form.input('Name', 'name', errors.name, input.name) }}
                                 {{ form.input('Slug', 'slug', errors.slug, input.slug) }}
                                 {{ form.input('Users_id', 'users_id', errors.users_id, input.author ?? user.name ?? 1) }}
-                                {{ form.select('Category_id', 'categoriess_id', categories, erros.categories_id) }}
+                                {{ form.select('Category_id', 'categories_id', categories, errors.categories_id) }}
                                 <br>
                                 {{ form.checkbox('Online', 'online', errors.online) }}
                             </fieldset>

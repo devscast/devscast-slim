@@ -15,6 +15,11 @@ use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
 use Awurth\SlimValidation\Validator;
 use Core\CRUDInterface;
+use Core\Uploaders\AudioUploader;
+use Core\Uploaders\ImageUploader;
+use Core\Uploaders\Upload;
+use Core\Uploaders\Uploader;
+use Faker\Provider\Image;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -71,9 +76,25 @@ class PodcastsController extends DashboardController implements CRUDInterface
             $params = $this->filter($input, PodcastsEntity::getStoreAbleFields());
 
             if ($validator->isValid()) {
-                $this->podcasts->create($params);
-                $this->flash->success('podcast.create');
-                return $this->redirect('admin.podcasts');
+                if ($request->getUploadedFiles()) {
+                    $audio = (new AudioUploader($request->getUploadedFiles()['audio']))->prepare()->upload();
+                    $thumb = (new ImageUploader($request->getUploadedFiles()['thumb']))->prepare()->upload();
+
+                    if ($audio->isUploaded() && $thumb->isUploaded()) {
+                        $params['audio'] = $audio->getUploadedFilename();
+                        $params['thumb'] = $thumb->getUploadedFilename();
+
+                        if (empty($errors)) {
+                            $this->podcasts->create($params);
+                            $this->flash->success('podcast.create');
+                            return $this->redirect('admin.podcasts');
+                        }
+                    } else {
+                        $errors['audio'] = $audio->getErrors();
+                        $errors['thumb'] = $thumb->getErrors();
+                        $this->status = 422;
+                    }
+                }
             } else {
                 $this->flash->error('podcast.create');
                 $this->status = 422;
