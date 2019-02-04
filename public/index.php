@@ -16,6 +16,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require(dirname(__DIR__) . '/vendor/autoload.php');
 
+
+define('WEBROOT', __DIR__);
+define('ROOT', dirname(__DIR__));
+
 /** @var $app DI\Bridge\Slim\App */
 $app = new class() extends App {
     public function configureContainer(\DI\ContainerBuilder $builder)
