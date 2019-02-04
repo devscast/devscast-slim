@@ -1,4 +1,4 @@
-public/assets/* linguist-vendored
+public/* linguist-vendored
 
 # Enforce Unix newlines
 *.css   text eol=lf
