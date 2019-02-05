@@ -10,16 +10,13 @@
 
 namespace Admin\Controllers;
 
-use App\Entities\PodcastsEntity;
 use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
+use App\Repositories\Validators\PodcastsValidator;
 use Awurth\SlimValidation\Validator;
 use Core\CRUDInterface;
 use Core\Uploaders\AudioUploader;
 use Core\Uploaders\ImageUploader;
-use Core\Uploaders\Upload;
-use Core\Uploaders\Uploader;
-use Faker\Provider\Image;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -70,10 +67,10 @@ class PodcastsController extends DashboardController implements CRUDInterface
     {
         if ($request->isPost()) {
             $validator = $this->container->get(Validator::class);
-            $validator->validate($request, PodcastsEntity::getValidationRules());
+            $validator->validate($request, PodcastsValidator::getValidationRules());
             $input = $request->getParams();
             $errors = $validator->getErrors();
-            $params = $this->filter($input, PodcastsEntity::getStoreAbleFields());
+            $params = $this->filter($input, PodcastsValidator::getStoreAbleFields());
 
             if ($validator->isValid()) {
                 if ($request->getUploadedFiles()) {
@@ -120,10 +117,10 @@ class PodcastsController extends DashboardController implements CRUDInterface
         if ($podcast) {
             if ($request->isPut()) {
                 $validator = $this->container->get(Validator::class);
-                $validator->validate($request, PodcastsEntity::getUpdateValidationRules());
+                $validator->validate($request, PodcastsValidator::getUpdateValidationRules());
                 $errors = $validator->getErrors();
                 $input = $request->getParams();
-                $params = $this->filter($input, PodcastsEntity::getUpdateAbleFields());
+                $params = $this->filter($input, PodcastsValidator::getUpdateAbleFields());
 
                 if ($validator->isValid()) {
                     $this->podcasts->update($id, $params);

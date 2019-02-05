@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Core;
+namespace Core\Repositories;
 
 use Core\Database\DatabaseInterface;
 

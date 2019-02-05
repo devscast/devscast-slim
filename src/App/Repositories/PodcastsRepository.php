@@ -11,7 +11,7 @@
 namespace App\Repositories;
 
 use App\Entities\PodcastsEntity;
-use Core\Repository;
+use Core\Repositories\Repository;
 
 /**
  * Class PodcastsRepository
