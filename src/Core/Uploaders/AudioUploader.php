@@ -22,7 +22,7 @@ class AudioUploader extends Uploader
      * @inheritDoc
      * @var string
      */
-    protected $relativePath = "uploads/podcasts";
+    protected $relativePath = "/uploads/podcasts";
 
     /**
      * @inheritDoc
@@ -42,7 +42,7 @@ class AudioUploader extends Uploader
     /**
      * @inheritDoc
      */
-    protected const MAX_SIZE = 100000000000000;
+    protected const MAX_SIZE = 104857600;
 
     /**
      * @return string

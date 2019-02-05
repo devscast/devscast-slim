@@ -22,7 +22,7 @@ class ImageUploader extends Uploader
      * @inheritDoc
      * @var string
      */
-    protected $relativePath = "uploads/thumbs";
+    protected $relativePath = "/uploads/thumbs";
 
     /**
      * @inheritDoc
@@ -42,7 +42,7 @@ class ImageUploader extends Uploader
     /**
      * @inheritDoc
      */
-    protected const MAX_SIZE = 100000000000000;
+    protected const MAX_SIZE = 15728640;
 
     /**
      * @return string
