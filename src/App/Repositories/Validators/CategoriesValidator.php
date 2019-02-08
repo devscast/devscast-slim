@@ -19,7 +19,7 @@ use Respect\Validation\Validator as v;
  * Class CategoriesValidator
  * @package App\Repositories\Validators
  */
-class CategoriesValidator implements ValidatorInterface
+abstract class CategoriesValidator implements ValidatorInterface
 {
     /**
      * validation rules

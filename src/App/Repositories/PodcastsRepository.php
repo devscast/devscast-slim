@@ -11,6 +11,7 @@
 namespace App\Repositories;
 
 use App\Entities\PodcastsEntity;
+use Core\Database\Builder\Queries\Select;
 use Core\Repositories\Repository;
 
 /**
@@ -34,132 +35,94 @@ class PodcastsRepository extends Repository
 
 
     /**
+     * get with category and user
+     * @return Select
+     */
+    private function withCategoryaAndUser(): Select
+    {
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.*")
+            ->select("categories.name AS category")
+            ->select("users.name AS username")
+            ->leftJoin("categories ON {$this->table}.categories_id = categories.id")
+            ->leftJoin("users ON {$this->table}.users_id = users.id")
+            ->orderBy("{$this->table}.id DESC");
+    }
+
+    /**
      * @inheritdoc
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function all()
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-ORDER BY {$this->getTable()}.id DESC
-SQL;
-
-        return $this->query($sql);
+        return $this->withCategoryaAndUser()->all()->get();
     }
 
-
     /**
-     * Get the latest podcast
+     * Get the latest podcasts
      * @param int $limit
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function latest(int $limit)
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-ORDER BY {$this->getTable()}.id DESC
-LIMIT {$limit} OFFSET 0
-SQL;
-        return $this->query($sql);
+        return $this->withCategoryaAndUser()->limit($limit)->all()->get();
     }
-
 
     /**
      * GET the last podcast
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function last()
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-ORDER BY {$this->getTable()}.id DESC
-LIMIT 1
-SQL;
-        return $this->query($sql, [], true, false);
+        return $this->withCategoryaAndUser()->limit(1)->all()->get(0);
     }
-
 
     /**
      * get one podcast thanks to an 'id'
      * @param int $id
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function find(int $id)
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-WHERE {$this->getTable()}.id = ?
-ORDER BY {$this->getTable()}.id DESC
-LIMIT 1
-SQL;
-        return $this->query($sql, [$id], true, false);
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.id", compact('id'))
+            ->all()->get(0);
     }
-
 
     /**
      * @param string $field
      * @param $value
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function findWith(string $field, $value)
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-WHERE {$this->getTable()}.{$field} = ?
-ORDER BY {$this->getTable()}.id DESC
-SQL;
-        return $this->query($sql, [$value]);
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.{$field} = ?", [$field => $value])
+            ->all()->get();
     }
-
 
     /**
      * @param $id
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function next($id)
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-WHERE {$this->getTable()}.id > ?
-LIMIT 1
-SQL;
-        return $this->query($sql, [$id], true, false);
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.id > ?", compact('id'))
+            ->all()->get(0);
     }
-
 
     /**
      * @param $id
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function previous($id)
     {
-        $sql = <<< SQL
-SELECT {$this->getTable()}.* , categories.name AS category, users.name AS username
-FROM {$this->getTable()}
-LEFT JOIN categories ON {$this->getTable()}.categories_id = categories.id
-LEFT JOIN users ON {$this->getTable()}.users_id = users.id
-WHERE {$this->getTable()}.id < ?
-ORDER BY {$this->getTable()}.id DESC
-LIMIT 1
-SQL;
-        return $this->query($sql, [$id], true, false);
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table} < ?", compact('id'))
+            ->limit(1)
+            ->all()->get(0);
     }
 }
