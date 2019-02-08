@@ -14,6 +14,7 @@ use Core\Database\DatabaseInterface;
 
 /**
  * Class Repository
+ * @TODO : replace with a query builder
  * @package App
  */
 class Repository
@@ -117,7 +118,7 @@ class Repository
         if ($updated_at) {
             return $this->query("UPDATE {$this->getTable()} SET {$fields}, updated_at = NOW() WHERE id = ?", $values);
         }
-        return $this->query("UPDATE {$this->getTable()} SET {$fields} WHERE id = ?", $values);
+        return $this->query("UPDATE {$this->getTable()} SET {$fields} WHERE {$this->getTable()}.id = ?", $values);
     }
 
 
@@ -155,7 +156,7 @@ class Repository
      */
     public function all()
     {
-        return $this->query("SELECT * FROM {$this->getTable()}");
+        return $this->query("SELECT * FROM {$this->getTable()} ORDER BY {$this->getTable()}.id DESC");
     }
 
 
