@@ -11,6 +11,8 @@
 
 namespace Core\Twig;
 
+use Slim\Csrf\Guard;
+
 /**
  * Class FormTwigExtension
  * @package Core\Twig
@@ -19,14 +21,15 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
 {
 
     /**
-     * @var \Slim\Csrf\Guard
+     * @var Guard
      */
     protected $csrf;
 
     /**
      * FormTwigExtension constructor.
+     * @param Guard $guard
      */
-    public function __construct(\Slim\Csrf\Guard $guard)
+    public function __construct(Guard $guard)
     {
         $this->csrf = $guard;
     }
@@ -64,7 +67,7 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
     {
         return [
             new \Twig_SimpleFunction('_method', [$this, 'method'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('_csrf', [$this, 'csrf'], ['is_safe' => ['hmtl']])
+            new \Twig_SimpleFunction('_csrf', [$this, 'csrf'], ['is_safe' => ['html']])
         ];
     }
 
