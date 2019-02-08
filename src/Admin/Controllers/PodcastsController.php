@@ -146,12 +146,13 @@ class PodcastsController extends DashboardController implements CRUDInterface
      */
     public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $id = $request->getAttribute('route')->getArgument('id');
-
-        if ($this->podcasts->find($id)) {
-            $this->podcasts->destroy($id);
-            $this->flash->success('podcast.delete');
-            return $this->redirect('admin.podcasts');
+        if ($request->isDelete()) {
+            $id = $request->getAttribute('route')->getArgument('id');
+            if ($this->podcasts->find($id)) {
+                $this->podcasts->destroy($id);
+                $this->flash->success('podcast.delete');
+                return $this->redirect('admin.podcasts');
+            }
         }
         return $response->withStatus(404);
     }
