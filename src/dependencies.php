@@ -9,8 +9,6 @@
  */
 
 use Awurth\SlimValidation\Validator;
-use Core\Database\DatabaseInterface;
-use Core\Database\MysqlDatabase;
 use Core\Renderer\Renderer;
 use Core\Renderer\RendererFactory;
 use Core\Session\PHPSession;
@@ -20,12 +18,7 @@ use function DI\factory;
 use function DI\get;
 
 return [
-    DatabaseInterface::class => create(MysqlDatabase::class)->constructor(
-        get('database.name'),
-        get('database.host'),
-        get('database.user'),
-        get('database.pass')
-    ),
+    \PDO::class => factory(\Core\Database\PDOFactory::class),
 
     Validator::class => create(Validator::class)->constructor(false),
     Renderer::class => factory(RendererFactory::class),
