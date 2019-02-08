@@ -10,117 +10,73 @@
 
 namespace Core\Repositories;
 
-use Core\Database\DatabaseInterface;
+use Core\Database\Builder\Queries\Insert;
+use Core\Database\Builder\Queries\Update;
+use Core\Database\Builder\Query;
 
 /**
  * Class Repository
- * @TODO : replace with a query builder
  * @package App
  */
 class Repository
 {
+
     /**
-     * the repository table name in database
+     * the entity of a repository
+     * represents one record
      * @var string
-     */
-    protected $table;
-
-
-    /**
-     * the entity class
-     * @var mixed
      */
     protected $entity;
 
     /**
-     * the prefix of tables
+     * the name of the table in the database
      * @var string
      */
-    protected $prefix;
-
+    protected $table;
 
     /**
-     * database connexion
-     * @var DatabaseInterface
+     * @var \PDO
      */
-    private $db;
-
+    private $pdo;
 
     /**
      * Repository constructor.
-     * @param DatabaseInterface $database
-     * @param string $prefix
+     * @param \PDO $pdo
      */
-    public function __construct(DatabaseInterface $database, string $prefix = '')
+    public function __construct(\PDO $pdo)
     {
-        $this->prefix = $prefix;
-        $this->db = $database;
+        $this->pdo = $pdo;
     }
-
 
     /**
-     * @param string $statement
-     * @param array $data
-     * @param bool $entity
-     * @param bool $fetchAll
-     * @return mixed
+     * simplify instanciation of the queryBuilder
+     * @return Query
      */
-    final protected function query(string $statement, array $data = [], bool $entity = true, bool $fetchAll = true)
+    protected function makeQuery()
     {
-        $entity = ($entity) ? $this->entity ?? null : null;
-        return (empty($data)) ?
-            $this->db->query($statement, $entity, $fetchAll) :
-            $this->db->prepare($statement, $data, $entity, $fetchAll);
+        return new Query($this->pdo);
     }
-
 
     /**
      * save data in the database
      * @param array $data
-     * @param bool $created_at
-     * @return mixed
+     * @return Insert
      */
-    public function create(array $data, $created_at = false)
+    public function create(array $data)
     {
-        $fields = [];
-        $values = [];
-        foreach ($data as $key => $value) {
-            $fields[] = "{$this->getTable()}.{$key} = ?";
-            $values[] = "{$value}";
-        }
-        $fields = implode(', ', $fields);
-
-        if ($created_at) {
-            return $this->query("INSERT INTO {$this->getTable()} SET {$fields}, created_at = NOW()", $values);
-        }
-        return $this->query("INSERT INTO {$this->getTable()} SET {$fields}", $values);
+        return $this->makeQuery()->insertInto($this->table, $data);
     }
-
 
     /**
      * update data
      * @param int $id
      * @param array $data
-     * @param bool $updated_at
-     * @return mixed
+     * @return Update
      */
-    public function update(int $id, array $data, $updated_at = false)
+    public function update(int $id, array $data)
     {
-        $fields = [];
-        $values = [];
-        foreach ($data as $key => $value) {
-            $fields[] = "{$key} = ?";
-            $values[] = "{$value}";
-        }
-        $fields = implode(', ', $fields);
-        $values[] = $id;
-
-        if ($updated_at) {
-            return $this->query("UPDATE {$this->getTable()} SET {$fields}, updated_at = NOW() WHERE id = ?", $values);
-        }
-        return $this->query("UPDATE {$this->getTable()} SET {$fields} WHERE {$this->getTable()}.id = ?", $values);
+        return $this->makeQuery()->update($this->table, $data, $id);
     }
-
 
     /**
      * delete a data in the storage
@@ -129,46 +85,45 @@ class Repository
      */
     public function destroy(int $id)
     {
-        return $this->query("DELETE FROM {$this->getTable()} WHERE {$this->getTable()}.id = ?", [$id]);
+        return $this->makeQuery()->delete($this->table, $id);
     }
 
-
     /**
+     * return the last inserted id
      * @return mixed
      */
     public function lastInsertId()
     {
-        return $this->db->lastInsertId();
+        return $this->pdo->lastInsertId();
     }
-
-    /**
-     * @return string
-     */
-    public function getTable(): string
-    {
-        return $this->prefix . $this->table;
-    }
-
 
     /**
      * get all data of a database table
-     * @return mixed
+     * @return Object|array|mixed
      */
     public function all()
     {
-        return $this->query("SELECT * FROM {$this->getTable()} ORDER BY {$this->getTable()}.id DESC");
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.*")
+            ->all()->get();
     }
 
-
     /**
+     * get one record thanks to its 'id'
      * @param int $id
      * @return mixed
      */
     public function find(int $id)
     {
-        return $this->query("SELECT * FROM {$this->getTable()} WHERE id = ?", [$id], true, false);
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.*")
+            ->where("{$this->table}.id = ?", compact('id'))
+            ->all()->get(0);
     }
-
 
     /**
      * @param string $field
@@ -177,6 +132,11 @@ class Repository
      */
     public function findWith(string $field, $value)
     {
-        return $this->query("SELECT * FROM {$this->getTable()} WHERE {$field} = ?", [$value]);
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.*")
+            ->where("{$this->table}.{$field} = ?", [$field => $value])
+            ->all()->get();
     }
 }
