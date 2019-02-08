@@ -10,8 +10,6 @@
 
 namespace Core\Repositories;
 
-use Core\Database\Builder\Queries\Insert;
-use Core\Database\Builder\Queries\Update;
 use Core\Database\Builder\Query;
 
 /**
@@ -60,22 +58,22 @@ class Repository
     /**
      * save data in the database
      * @param array $data
-     * @return Insert
+     * @return bool|int
      */
     public function create(array $data)
     {
-        return $this->makeQuery()->insertInto($this->table, $data);
+        return $this->makeQuery()->insertInto($this->table, $data)->execute();
     }
 
     /**
      * update data
      * @param int $id
      * @param array $data
-     * @return Update
+     * @return bool|int|\PDOStatement
      */
     public function update(int $id, array $data)
     {
-        return $this->makeQuery()->update($this->table, $data, $id);
+        return $this->makeQuery()->update($this->table, $data, $id)->execute();
     }
 
     /**
@@ -85,7 +83,7 @@ class Repository
      */
     public function destroy(int $id)
     {
-        return $this->makeQuery()->delete($this->table, $id);
+        return $this->makeQuery()->delete($this->table, $id)->execute();
     }
 
     /**
@@ -107,6 +105,7 @@ class Repository
             ->into($this->entity)
             ->from($this->table)
             ->select("{$this->table}.*")
+            ->orderBy("{$this->table}.id DESC")
             ->all()->get();
     }
 
