@@ -10,8 +10,10 @@
 
 namespace Core\Renderer;
 
+use Core\Twig\FormTwigExtension;
 use nochso\HtmlCompressTwig\Extension;
 use Psr\Container\ContainerInterface;
+use Slim\Csrf\Guard;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Router;
@@ -52,6 +54,7 @@ class RendererFactory
         $view->addExtension(new TwigExtension($router, $uri));
         $view->addExtension(new \Twig_Extensions_Extension_Text());
         $view->addExtension(new Extension());
+        $view->addExtension(new FormTwigExtension($this->container->get(Guard::class)));
 
         if ($this->container->get('settings.displayErrorDetails')) {
             $view->addExtension(new \Twig_Extension_Debug());
