@@ -52,7 +52,6 @@
 
 
 {% macro wysiwyg(name, error, value) %}
-    <textarea id="{{ name }}" name="{{ name }}" style="width: 100%; min-height: 400px !important;">{{ value }}</textarea>
     {% if error %}
         <div class="row">
             <div class="col-sm-12">
@@ -65,4 +64,5 @@
             </div>
         </div>
     {% endif %}
+    <textarea id="{{ name }}" name="{{ name }}" style="width: 100%; min-height: 400px !important;">{{ value }}</textarea>
 {% endmacro %}

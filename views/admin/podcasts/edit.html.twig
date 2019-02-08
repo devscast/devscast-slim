@@ -1,7 +1,6 @@
 {% extends 'layouts/dashboard.html.twig' %}
 {% import 'includes/admin/forms.html.twig' as form %}
 
-
 {% block breadcrumb %}
     <section class="content-header">
         <div class="container-fluid">
@@ -22,8 +21,6 @@
     </section>
 {% endblock %}
 
-
-
 {% block content %}
     <section class="content">
         <div class="row">
@@ -34,11 +31,6 @@
                 <div class="card card-info card-outline">
                     <div class="card-body">
                         <h3>{{ podcast.name | truncate(50) }}</h3>
-                        <code>
-                            <pre>
-                                {{ dump(errors) }}
-                            </pre>
-                        </code>
                         <hr>
                         <div id="show-thumb" class="container" align="center">
                             <img src="{{ podcast.thumb }}" alt="{{ podcast.name }}" class="img-responsive" width="75%" height="auto">
@@ -46,18 +38,20 @@
                         <hr>
                         <br>
                         <form data-thumb="true" action="{{ path_for('admin.podcasts.update', {id: podcast.id}) }}" method="POST" autocomplete="off">
-                            <input type="hidden" name="_method" value="PUT">
+                            {{ _csrf() }}
+                            {{ _method('PUT') }}
                             <fieldset>
                                 <br>
-                                {{ form.input('Name', 'name', errors.get('name'), input.name ?? podcast.name) }}
-                                {{ form.input('Slug', 'slug', errors.get('slug'), input.slug ?? podcast.slug) }}
-                                {{ form.input('Author', 'users_id', errors.get('author'), input.author ?? user.name ?? 1) }}
-                                {{ form.select('Category', 'categories_id', categories, input.categories_id ?? podcast.categories_id) }}
+                                {{ form.input('Name', 'name', errors.name, input.name ?? podcast.name) }}
+                                {{ form.input('Slug', 'slug', errors.slug, input.slug ?? podcast.slug) }}
+                                {{ form.input('Users_id', 'users_id', errors.users_id, input.author ?? user.name ?? 1) }}
+                                {{ form.select('Category', 'categories_id', categories, errors.categories_id, input.categories_id ?? podcast.categories_id) }}
                                 <br>
                                 {{ form.checkbox('Online', 'online', errors.get('online'), input.online ?? podcast.online) }}
                             </fieldset>
+                            <br>
                             <fieldset>
-                                {{ form.wysiwyg('content', errors.get('content'), input.content ?? podcast.online) }}
+                                {{ form.wysiwyg('description', errors.description, input.description ?? podcast.description) }}
                             </fieldset>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -73,7 +67,6 @@
     </section>
 {% endblock %}
 
-
 {% block javascriptPlugins %}
     <script src="{{ base_url() ~ '/assets/admin/plugins/ckeditor/ckeditor.js' }}"></script>
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
@@ -81,16 +74,8 @@
 
 {% block javascript %}
     <script>
-        showImageBeforeUpload("form[data-thumb]");
         $(function () {
-            ClassicEditor
-                .create(document.querySelector('#content'))
-                .then(function (editor) {
-
-                })
-                .catch(function (error) {
-                    console.error(error)
-                });
+            ClassicEditor.create(document.querySelector('#description'));
         })
     </script>
 {% endblock %}

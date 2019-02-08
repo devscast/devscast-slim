@@ -1,7 +1,6 @@
 {% extends 'layouts/dashboard.html.twig' %}
 {% import 'includes/admin/forms.html.twig' as form %}
 
-
 {% block breadcrumb %}
     <section class="content-header">
         <div class="container-fluid">
@@ -22,8 +21,6 @@
     </section>
 {% endblock %}
 
-
-
 {% block content %}
     <section class="content">
         <div class="row">
@@ -32,11 +29,9 @@
                     <a href="{{ path_for('admin.podcasts') }}" class="btn btn-primary">Show Podcasts</a>
                 </div>
                 <div class="card card-info card-outline">
-
-                    <code>{{ dump(errors) }}</code>
-
                     <div class="card-body">
                         <form data-thumb="true" action="{{ path_for('admin.podcasts.create') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                            {{ _csrf() }}
                             <fieldset>
                                 <p>Add the podcast cover</p>
                                 <div class="form-group">
@@ -84,7 +79,7 @@
                                 {{ form.checkbox('Online', 'online', errors.online) }}
                             </fieldset>
                             <fieldset>
-                                {{ form.wysiwyg('description', errors.description, input.content) }}
+                                {{ form.wysiwyg('description', errors.description, input.description) }}
                             </fieldset>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -100,7 +95,6 @@
     </section>
 {% endblock %}
 
-
 {% block javascriptPlugins %}
     <script src="{{ base_url() ~ '/assets/admin/plugins/ckeditor/ckeditor.js' }}"></script>
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
@@ -110,14 +104,7 @@
     <script>
         showImageBeforeUpload("form[data-thumb]");
         $(function () {
-            ClassicEditor
-                .create(document.querySelector('#description'))
-                .then(function (editor) {
-
-                })
-                .catch(function (error) {
-                    console.error(error)
-                });
+            ClassicEditor.create(document.querySelector('#description'))
         })
     </script>
 {% endblock %}

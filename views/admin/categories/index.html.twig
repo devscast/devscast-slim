@@ -1,0 +1,98 @@
+{% extends 'layouts/dashboard.html.twig' %}
+
+{% block breadcrumb %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Administration - categories</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path_for('home') }}">home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.index') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">categories</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div style="padding-bottom: 15px;">
+                        <a href="{{ path_for('admin.categories.create') }}" class="btn btn-primary">New category</a>
+                    </div>
+                    <div class="card">
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover" id="table1">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for c in categories %}
+                                    <tr>
+                                        <th>{{ c.id }}</th>
+                                        <th><a href="{{ path_for('categories.show', {slug: c.slug, id: c.id}) }}">{{ c.name | truncate(30) }}</a></th>
+                                        <th>{{ c.description | striptags | truncate(100) }}</th>
+                                        <th>
+                                            <div class="btn-group-justified">
+                                                <a href="{{ path_for('admin.categories.update', {id: c.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <form action="{{ path_for('admin.categories.delete', {id: c.id}) }}" method="post" style="display: inline" id="delete">
+                                                    {{ _csrf() }}
+                                                    {{ _method('DELETE') }}
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripPlugins %}
+    <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/jquery.dataTables.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        ajaxDelete();
+        showTableImage();
+        $(function () {
+            $('#table1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+{% endblock %}

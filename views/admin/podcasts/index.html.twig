@@ -1,6 +1,5 @@
 {% extends 'layouts/dashboard.html.twig' %}
 
-
 {% block breadcrumb %}
     <section class="content-header">
         <div class="container-fluid">
@@ -53,7 +52,8 @@
                                             <div class="btn-group-justified">
                                                 <a href="{{ path_for('admin.podcasts.update', {id: p.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                                 <form action="{{ path_for('admin.podcasts.delete', {id: p.id}) }}" method="post" style="display: inline" id="delete">
-                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    {{ _csrf() }}
+                                                    {{ _method('DELETE') }}
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
