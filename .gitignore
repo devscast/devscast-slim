@@ -4,4 +4,5 @@ composer.lock
 !/logs/README.md
 /.idea/
 node_modules/
+/docs/__cache__/*
 yarn.lock
