@@ -87,7 +87,8 @@
     
 
             <div class="description">
-            <p>Class FormTwigExtension</p>                                </div>
+            <p>Class FormTwigExtension
+Add _token and _method function to Twig</p>                                </div>
     
     
     
@@ -125,7 +126,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getGlobals">getGlobals</a>()
         
-                                            <p>Returns a list of global variables to add to the existing list.</p>                </div>
+                                            <p>Return a list of global variables to add to the existing list.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -146,18 +147,17 @@
                 <div class="col-md-8 type">
                     <a href="#method_method">method</a>(string $method)
         
-                                            <p>set request method that cannot be sent
-via a web browser</p>                </div>
+                                            <p>Set request method that cannot be sent via a web browser</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_csrf">csrf</a>()
         
-                                            <p>generate csrf token inputs</p>                </div>
+                                            <p>Generate csrf token inputs</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -168,7 +168,7 @@ via a web browser</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 32</div>
+        <div class="location">at         line 34</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Slim\Csrf\Guard">Guard</abbr> $guard)
         </code>
@@ -199,7 +199,7 @@ via a web browser</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getGlobals">
-        <div class="location">at         line 42</div>
+        <div class="location">at         line 43</div>
         <code>                    array
     <strong>getGlobals</strong>()
         </code>
@@ -209,7 +209,7 @@ via a web browser</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Returns a list of global variables to add to the existing list.</p>                                                </div>
+                                    <p>Return a list of global variables to add to the existing list.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -229,7 +229,7 @@ via a web browser</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFunctions">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 67</div>
         <code>                    array
     <strong>getFunctions</strong>()
         </code>
@@ -267,8 +267,7 @@ via a web browser</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>set request method that cannot be sent
-via a web browser</p>                                                </div>
+                                    <p>Set request method that cannot be sent via a web browser</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -298,8 +297,8 @@ via a web browser</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_csrf">
-        <div class="location">at         line 89</div>
-        <code>                    
+        <div class="location">at         line 90</div>
+        <code>                    string
     <strong>csrf</strong>()
         </code>
     </h3>
@@ -308,9 +307,18 @@ via a web browser</p>                                                </div>
     
 
                     <div class="method-description">
-                                    <p>generate csrf token inputs</p>                                                </div>
+                                    <p>Generate csrf token inputs</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>

@@ -86,6 +86,7 @@
                 </div>
                 <div class="col-md-6">
                     Class DashboardController
+Super class for Controllers
                 </div>
             </div>
                     <div class="row">
@@ -95,6 +96,7 @@
                 </div>
                 <div class="col-md-6">
                     Class GalleryController
+administration of the gallery modules
                 </div>
             </div>
                     <div class="row">
@@ -104,6 +106,8 @@
                 </div>
                 <div class="col-md-6">
                     Class NewsletterController
+manage the newsletter module, create and send messages
+Crud the newsletter subscribers
                 </div>
             </div>
                     <div class="row">
@@ -140,6 +144,7 @@
                 </div>
                 <div class="col-md-6">
                     Class CategoriesEntity
+Represent a category
                 </div>
             </div>
                     <div class="row">
@@ -149,6 +154,7 @@
                 </div>
                 <div class="col-md-6">
                     Class GalleryEntity
+Represent a picture
                 </div>
             </div>
                     <div class="row">
@@ -158,6 +164,7 @@
                 </div>
                 <div class="col-md-6">
                     Class NewsletterEntity
+Represent a newsletter subscriber
                 </div>
             </div>
                     <div class="row">
@@ -167,6 +174,7 @@
                 </div>
                 <div class="col-md-6">
                     Class PodcastLinksEntity
+Represent a PodcastLink
                 </div>
             </div>
                     <div class="row">
@@ -176,6 +184,7 @@
                 </div>
                 <div class="col-md-6">
                     Class PodcastsEntity
+Represent a podcast
                 </div>
             </div>
                     <div class="row">
@@ -185,6 +194,7 @@
                 </div>
                 <div class="col-md-6">
                     Class UsersEntity
+Represent a user
                 </div>
             </div>
                     <div class="row">
@@ -193,9 +203,9 @@
                                             
                 </div>
                 <div class="col-md-6">
-                    enable the cors for the frontend application
+                    Class EnableCORSMiddleware
+enable the cors for the frontend application
 so that we can make ajax request to the backend application
-Class EnableCORSMiddleware
                 </div>
             </div>
                     <div class="row">
@@ -204,9 +214,8 @@ Class EnableCORSMiddleware
                                             
                 </div>
                 <div class="col-md-6">
-                    check if the request is a json one and than return json
-instead of views
-Class JsonRequestMiddleware
+                    Class JsonRequestMiddleware
+check if the request is a json one and than return json instead of rendering views
                 </div>
             </div>
                     <div class="row">
@@ -216,6 +225,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class NotFoundMiddleware
+Return an error page if any route is matched
                 </div>
             </div>
                     <div class="row">
@@ -225,6 +235,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class CategoriesRepository
+Abstraction for the categories table
                 </div>
             </div>
                     <div class="row">
@@ -234,6 +245,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class GalleryRepository
+Abstraction for the gallery table
                 </div>
             </div>
                     <div class="row">
@@ -243,6 +255,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class NewsletterRepository
+Abstraction of the newsletter table
                 </div>
             </div>
                     <div class="row">
@@ -279,6 +292,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class CategoriesValidator
+Implementation for categories
                 </div>
             </div>
                     <div class="row">
@@ -288,6 +302,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class PodcastsValidator
+Implementation for podcasts
                 </div>
             </div>
                     <div class="row">
@@ -297,6 +312,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class CategoriesResource
+Data Provider for API and renderer for WebApp
                 </div>
             </div>
                     <div class="row">
@@ -306,6 +322,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class HomeResources
+Data Provider for API and renderer for WebApp
                 </div>
             </div>
                     <div class="row">
@@ -315,6 +332,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class NewsletterResource
+Data Provider for API and renderer for WebApp
                 </div>
             </div>
                     <div class="row">
@@ -324,6 +342,7 @@ Class JsonRequestMiddleware
                 </div>
                 <div class="col-md-6">
                     Class PodcastsResource
+Data Provider for API and renderer for WebApp
                 </div>
             </div>
                     <div class="row">
@@ -332,8 +351,8 @@ Class JsonRequestMiddleware
                                             
                 </div>
                 <div class="col-md-6">
-                    Static pages provider
-Class StaticResource
+                    Class StaticResource
+Static pages provider this is only for the WebApp
                 </div>
             </div>
                     <div class="row">
@@ -342,8 +361,9 @@ Class StaticResource
                                             
                 </div>
                 <div class="col-md-6">
-                    describe how a crud controller should work
-Interface CRUDControllerInterface
+                    Interface CRUDControllerInterface
+describe how a crud controller should work
+and communicate with the database
                 </div>
             </div>
                     <div class="row">
@@ -361,7 +381,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    SQL literal value
+                    Class Literal
+SQl Literal Value
                 </div>
             </div>
                     <div class="row">
@@ -370,7 +391,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    Base query builder
+                    Class Base
+Base query Builder
                 </div>
             </div>
                     <div class="row">
@@ -379,7 +401,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    CommonQuery add JOIN and WHERE clauses for (SELECT, UPDATE, DELETE)
+                    class Common
+CommonQuery add JOIN and WHERE clauses for (SELECT, UPDATE, DELETE)
                 </div>
             </div>
                     <div class="row">
@@ -388,7 +411,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    DELETE query builder
+                    Class Delete
+DELETE query builder
                 </div>
             </div>
                     <div class="row">
@@ -397,7 +421,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    INSERT query builder
+                    Class Insert
+INSERT query builder
                 </div>
             </div>
                     <div class="row">
@@ -415,7 +440,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    SELECT query builder
+                    Class Select
+SELECT Query builder
                 </div>
             </div>
                     <div class="row">
@@ -424,7 +450,8 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    UPDATE query builder
+                    Class Update
+UPDATE query builder
                 </div>
             </div>
                     <div class="row">
@@ -442,7 +469,7 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    Regex class
+                    Class Regex
                 </div>
             </div>
                     <div class="row">
@@ -470,6 +497,7 @@ Interface CRUDControllerInterface
                 </div>
                 <div class="col-md-6">
                     Class Hydrator
+Hydrate an object with data coming from an array
                 </div>
             </div>
                     <div class="row">
@@ -479,6 +507,7 @@ Interface CRUDControllerInterface
                 </div>
                 <div class="col-md-6">
                     Class PDOFactory
+\PDO::class factory
                 </div>
             </div>
                     <div class="row">
@@ -488,6 +517,7 @@ Interface CRUDControllerInterface
                 </div>
                 <div class="col-md-6">
                     Class QueryResult
+Abstraction for Raw Database query results
                 </div>
             </div>
                     <div class="row">
@@ -506,6 +536,7 @@ Interface CRUDControllerInterface
                 </div>
                 <div class="col-md-6">
                     Class RouterAwareHelper
+Add Redirect Method for Classes that have the Router
                 </div>
             </div>
                     <div class="row">
@@ -514,10 +545,10 @@ Interface CRUDControllerInterface
                                             
                 </div>
                 <div class="col-md-6">
-                    check if there's _method field in $_POST
+                    Class CheckMethodMiddleware
+Check if there's _method field in $_POST
 and then change the request method value to the
 _method value
-Class CheckMethodMiddleware
                 </div>
             </div>
                     <div class="row">
@@ -527,6 +558,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class Renderer
+Decorator of the Slim\Views\Twig
                 </div>
             </div>
                     <div class="row">
@@ -545,6 +577,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class Repository
+Abstraction for a database table
                 </div>
             </div>
                     <div class="row">
@@ -554,6 +587,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Interface RepositoryValidatorInterface
+Describe how Repository Validators should work
                 </div>
             </div>
                     <div class="row">
@@ -563,6 +597,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class FlashService
+Flash Messages using Session
                 </div>
             </div>
                     <div class="row">
@@ -572,6 +607,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class PHPSession
+Implementation for PHP native Session
                 </div>
             </div>
                     <div class="row">
@@ -590,6 +626,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class FormTwigExtension
+Add _token and _method function to Twig
                 </div>
             </div>
                     <div class="row">
@@ -599,6 +636,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class AudioUploader
+Abstraction for Audio Uploads
                 </div>
             </div>
                     <div class="row">
@@ -608,6 +646,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class ImageUploader
+Abstraction for Image Uploads
                 </div>
             </div>
                     <div class="row">
@@ -617,6 +656,7 @@ Class CheckMethodMiddleware
                 </div>
                 <div class="col-md-6">
                     Class Upload
+Super Class for uploading
                 </div>
             </div>
             </div>

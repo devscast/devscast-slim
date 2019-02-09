@@ -86,7 +86,8 @@
     
 
             <div class="description">
-            <p>Class AudioUploader</p>                                </div>
+            <p>Class AudioUploader
+Abstraction for Audio Uploads</p>                                </div>
     
     
             <h2>Constants</h2>
@@ -124,7 +125,7 @@
                                         protected                                        null|string
                 </td>
                 <td>$path</td>
-                <td class="last">the target path</td>
+                <td class="last">The upload target path</td>
                 <td><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#property_path"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></td>
             </tr>
                     <tr>
@@ -132,7 +133,7 @@
                                         protected                                        array
                 </td>
                 <td>$errors</td>
-                <td class="last">upload errors</td>
+                <td class="last">Upload errors</td>
                 <td><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#property_errors"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></td>
             </tr>
                     <tr>
@@ -140,7 +141,7 @@
                                         protected                                        string
                 </td>
                 <td>$uploadedFilename</td>
-                <td class="last">the uploaded filename</td>
+                <td class="last">The uploaded filename after upload</td>
                 <td><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#property_uploadedFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></td>
             </tr>
                     <tr>
@@ -148,7 +149,7 @@
                                         protected                                        null|string
                 </td>
                 <td>$filename</td>
-                <td class="last"></td>
+                <td class="last">The uploaded filename before upload</td>
                 <td><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#property_filename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></td>
             </tr>
                     <tr>
@@ -156,12 +157,12 @@
                                         protected                                        <abbr title="Psr\Http\Message\UploadedFileInterface">UploadedFileInterface</abbr>
                 </td>
                 <td>$file</td>
-                <td class="last"></td>
+                <td class="last">The upload file</td>
                 <td><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#property_file"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_relativePath">
-                                        protected                                        string
+                                        protected                                        
                 </td>
                 <td>$relativePath</td>
                 <td class="last"></td>
@@ -190,18 +191,17 @@
                 <div class="col-md-8 type">
                     <a href="#method_prepare">prepare</a>(string|null $oldVersion = null, bool $override = false)
         
-                                            <p>delete old files and override existing</p>                </div>
+                                            <p>Delete old files and override existing</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_prepare"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_upload">upload</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Move the uploaded file to the target path</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_upload"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -211,7 +211,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isUploaded">isUploaded</a>()
         
-                                            <p>whether the file is uploaded</p>                </div>
+                                            <p>Whether the file is uploaded</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_isUploaded"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -221,8 +221,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getErrors">getErrors</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Retrieve upload errors</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_getErrors"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -232,30 +231,27 @@
                 <div class="col-md-8 type">
                     <a href="#method_getUploadedFilename">getUploadedFilename</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Retrieve the uploaded filename</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_getUploadedFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    $this
+                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setPath">setPath</a>(string $path)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Set the target path</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_setPath"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    $this
+                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setFilename">setFilename</a>(null|string $filename)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Set a new filename for the uploaded file</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_setFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -277,7 +273,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method___construct"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 80</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method___construct"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 83</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Psr\Http\Message\UploadedFileInterface">UploadedFileInterface</abbr> $file)
         </code>
@@ -308,7 +304,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_prepare">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_prepare"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 92</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_prepare"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 95</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>prepare</strong>(string|null $oldVersion = null, bool $override = false)
         </code>
@@ -318,7 +314,7 @@
     
 
                     <div class="method-description">
-                                    <p>delete old files and override existing</p>                                                </div>
+                                    <p>Delete old files and override existing</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -353,8 +349,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_upload">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_upload"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 103</div>
-        <code>                    
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_upload"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 110</div>
+        <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>upload</strong>()
         </code>
     </h3>
@@ -362,8 +358,19 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Move the uploaded file to the target path</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -372,7 +379,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isUploaded">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_isUploaded"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 119</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_isUploaded"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 126</div>
         <code>                    bool
     <strong>isUploaded</strong>()
         </code>
@@ -382,7 +389,7 @@
     
 
                     <div class="method-description">
-                                    <p>whether the file is uploaded</p>                                                </div>
+                                    <p>Whether the file is uploaded</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -402,7 +409,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrors">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getErrors"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 184</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getErrors"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 192</div>
         <code>                    array
     <strong>getErrors</strong>()
         </code>
@@ -411,6 +418,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Retrieve upload errors</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -430,7 +439,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUploadedFilename">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getUploadedFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 192</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getUploadedFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 201</div>
         <code>                    string
     <strong>getUploadedFilename</strong>()
         </code>
@@ -439,6 +448,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Retrieve the uploaded filename</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -458,8 +469,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setPath">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setPath"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 204</div>
-        <code>                    $this
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setPath"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 214</div>
+        <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>setPath</strong>(string $path)
         </code>
     </h3>
@@ -467,6 +478,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Set the target path</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -483,7 +496,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>$this</td>
+            <td><a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -496,8 +509,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setFilename">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 214</div>
-        <code>                    $this
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 225</div>
+        <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>setFilename</strong>(null|string $filename)
         </code>
     </h3>
@@ -505,6 +518,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Set a new filename for the uploaded file</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -521,7 +536,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>$this</td>
+            <td><a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -534,7 +549,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getPath">
-        <div class="location">at         line 50</div>
+        <div class="location">at         line 51</div>
         <code>            protected        string
     <strong>getPath</strong>()
         </code>
