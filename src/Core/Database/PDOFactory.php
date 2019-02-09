@@ -14,7 +14,10 @@ use Psr\Container\ContainerInterface;
 
 /**
  * Class PDOFactory
+ * \PDO::class factory
+ * @see \PDO
  * @package Core\Database
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PDOFactory
 {

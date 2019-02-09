@@ -17,11 +17,12 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * check if there's _method field in $_POST
+ * Class CheckMethodMiddleware
+ * Check if there's _method field in $_POST
  * and then change the request method value to the
  * _method value
- * Class CheckMethodMiddleware
  * @package Core\Middlewares
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class HttpMethodMiddleware
 {

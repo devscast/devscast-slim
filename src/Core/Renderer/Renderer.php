@@ -14,7 +14,10 @@ use Slim\Views\Twig;
 
 /**
  * Class Renderer
+ * Decorator of the Slim\Views\Twig
+ * @see Twig
  * @package Core\Renderer
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class Renderer extends Twig
 {

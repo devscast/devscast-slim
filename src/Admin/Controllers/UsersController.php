@@ -21,6 +21,7 @@ use Slim\Http\Response;
 /**
  * Class UsersController
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class UsersController extends DashboardController implements CRUDInterface
 {

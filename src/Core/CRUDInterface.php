@@ -16,14 +16,17 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * describe how a crud controller should work
  * Interface CRUDControllerInterface
+ * describe how a crud controller should work
+ * and communicate with the database
  * @package Core
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 interface CRUDInterface
 {
 
     /**
+     * [READ] implementation should list all data for a particular module
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -31,6 +34,7 @@ interface CRUDInterface
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
 
     /**
+     * [CREATE] implementation should store new data for a particular module
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -38,6 +42,7 @@ interface CRUDInterface
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
 
     /**
+     * [UPDATE] implementation should update data for a particular module
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -45,6 +50,7 @@ interface CRUDInterface
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface;
 
     /**
+     * [DELETE] implementation should destroy data for a particular module
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface

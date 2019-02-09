@@ -14,31 +14,33 @@ namespace Core\Repositories;
 
 /**
  * Interface RepositoryValidatorInterface
+ * Describe how Repository Validators should work
  * @package App\Repositories\Validators
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 interface ValidatorInterface
 {
 
     /**
-     * retrieve validation rules for an entity
+     * Retrieve validation rules
      * @return array
      */
     public static function getValidationRules(): array;
 
     /**
-     * retrieve update validation rules for an entity
+     * Retrieve update validation rules
      * @return array
      */
     public static function getUpdateValidationRules(): array;
 
     /**
-     * retrieve store able fields
+     * Retrieve the list of storeable fields
      * @return array
      */
     public static function getStoreAbleFields(): array;
 
     /**
-     * retrieve update able fields
+     * Retrieve the list of updateable fields
      * @return array
      */
     public static function getUpdateAbleFields(): array;

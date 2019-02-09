@@ -17,36 +17,38 @@ use Respect\Validation\Validator as v;
 
 /**
  * Class CategoriesValidator
+ * Implementation for categories
  * @package App\Repositories\Validators
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class CategoriesValidator implements ValidatorInterface
 {
     /**
-     * validation rules
+     * Validation rules
      * @var array
      */
     private static $validationRules = [];
 
     /**
-     * validation rules when there is an update
+     * Validation rules when there is an update
      * @var array
      */
     private static $updateValidationRules = [];
 
     /**
-     * fields in the entity that can be store
+     * List of fields that can be stored in the Repository
      * @var array
      */
     private static $storeAbleFields = [];
 
     /**
-     * fields in the entity that can be update
+     * List of fields that can be updated in the Repository
      * @var array
      */
     private static $updateAbleFields = [];
 
     /**
-     * retrieve validation rules for an entity
+     * Retrieve validation rules
      * @return array
      */
     public static function getValidationRules(): array
@@ -62,7 +64,7 @@ abstract class CategoriesValidator implements ValidatorInterface
     }
 
     /**
-     * retrieve update validation rules for an entity
+     * Retrieve update validation rules
      * @return array
      */
     public static function getUpdateValidationRules(): array
@@ -78,7 +80,7 @@ abstract class CategoriesValidator implements ValidatorInterface
     }
 
     /**
-     * retrieve store able fields
+     * rRetrieve the list of storeable fields
      * @return array
      */
     public static function getStoreAbleFields(): array
@@ -90,7 +92,7 @@ abstract class CategoriesValidator implements ValidatorInterface
     }
 
     /**
-     * retrieve update able fields
+     * Retrieve the list of updateable fields
      * @return array
      */
     public static function getUpdateAbleFields(): array

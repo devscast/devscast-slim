@@ -17,18 +17,19 @@ use Core\Repositories\Repository;
 /**
  * Class PodcastsRepository
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastsRepository extends Repository
 {
 
     /**
-     * the name of the table in the database
+     * The table name in the database
      * @var string
      */
     protected $table = 'podcasts';
 
     /**
-     * the class that represents one podcast
+     * Entity class
      * @var PodcastsEntity
      */
     protected $entity = PodcastsEntity::class;

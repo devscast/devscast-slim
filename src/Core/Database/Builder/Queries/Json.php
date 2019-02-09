@@ -10,13 +10,15 @@
 
 namespace Core\Database\Builder\Queries;
 
-use Core\Database\Query;
-use Core\Database\Utilities;
+use Core\Database\Builder\Query;
 
 /**
  * Class Json
- *
- * @package Envms\FluentPDO\Queries
+ * @package Core\Database\Builder\Queries
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 class Json extends Common
 {
@@ -31,7 +33,7 @@ class Json extends Common
     /**
      * Json constructor
      *
-     * @param Query  $fluent
+     * @param Query $fluent
      * @param string $table
      */
     public function __construct(Query $fluent, string $table)

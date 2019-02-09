@@ -12,7 +12,9 @@ namespace App\Entities;
 
 /**
  * Class CategoriesEntity
+ * Represent a category
  * @package App\Entities
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class CategoriesEntity
 {

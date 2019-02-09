@@ -15,14 +15,19 @@ use Core\Database\Builder\Literal;
 use Core\Database\Builder\Query;
 
 /**
+ * Class Update
  * UPDATE query builder
- *
+ * @package Core\Database\Builder\Queries
  * @method Update  leftJoin(string $statement) add LEFT JOIN to query
  *                        ($statement can be 'table' name only or 'table:' means back reference)
  * @method Update  innerJoin(string $statement) add INNER JOIN to query
  *                        ($statement can be 'table' name only or 'table:' means back reference)
  * @method Update  orderBy(string $column) add ORDER BY to query
  * @method Update  limit(int $limit) add LIMIT to query
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 class Update extends Common
 {

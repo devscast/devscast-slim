@@ -22,7 +22,9 @@ use Slim\Http\Response;
 
 /**
  * Class NewsletterResource
+ * Data Provider for API and renderer for WebApp
  * @package App\Resources
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class NewsletterResource
 {

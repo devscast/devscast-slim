@@ -19,12 +19,13 @@ use Slim\Http\Response;
 
 /**
  * Class PodcastsResource
+ * Data Provider for API and renderer for WebApp
  * @package App\Resources
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastsResource
 {
     /**
-     * podcasts table
      * @var PodcastsRepository|mixed
      */
     private $podcasts;
@@ -46,7 +47,7 @@ class PodcastsResource
 
 
     /**
-     * [GET] all podcasts
+     * List podcasts
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -71,7 +72,7 @@ class PodcastsResource
 
 
     /**
-     * [GET] the last podcast
+     * Retrieve the last podcast
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -88,7 +89,7 @@ class PodcastsResource
 
 
     /**
-     * [GET] a define podcast thanks to its id
+     * Show a podcast thanks to its id
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response

@@ -14,7 +14,9 @@ use Respect\Validation\Validator as v;
 
 /**
  * Class NewsletterEntity
+ * Represent a newsletter subscriber
  * @package App\Entities
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class NewsletterEntity
 {

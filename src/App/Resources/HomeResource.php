@@ -19,7 +19,9 @@ use Slim\Http\Response;
 
 /**
  * Class HomeResources
+ * Data Provider for API and renderer for WebApp
  * @package App\Resources
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class HomeResource
 {
@@ -47,8 +49,7 @@ class HomeResource
 
 
     /**
-     * [GET] the welcome text to the app
-     *
+     * Homepage
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string

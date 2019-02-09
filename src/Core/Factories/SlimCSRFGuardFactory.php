@@ -17,7 +17,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class SlimCSRFGuardFactory
- * @package Core
+ * @package Core\Factories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class SlimCSRFGuardFactory
 {

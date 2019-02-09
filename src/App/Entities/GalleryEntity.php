@@ -12,7 +12,9 @@ namespace App\Entities;
 
 /**
  * Class GalleryEntity
+ * Represent a picture
  * @package App\Entities
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class GalleryEntity
 {

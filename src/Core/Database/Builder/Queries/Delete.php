@@ -14,8 +14,9 @@ use Core\Database\Builder\Exception;
 use Core\Database\Builder\Query;
 
 /**
+ * Class Delete
  * DELETE query builder
- *
+ * @package Core\Database\Builder\Queries
  * @method Delete  leftJoin(string $statement) add LEFT JOIN to query
  *                        ($statement can be 'table' name only or 'table:' means back reference)
  * @method Delete  innerJoin(string $statement) add INNER JOIN to query
@@ -23,6 +24,10 @@ use Core\Database\Builder\Query;
  * @method Delete  from(string $table) add LIMIT to query
  * @method Delete  orderBy(string $column) add ORDER BY to query
  * @method Delete  limit(int $limit) add LIMIT to query
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 class Delete extends Common
 {

@@ -20,7 +20,13 @@ use Core\Database\Builder\Utilities;
 use Core\Database\QueryResult;
 
 /**
- * Base query builder
+ * Class Base
+ * Base query Builder
+ * @package Core\Database\Builder\Queries
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 abstract class Base implements \IteratorAggregate
 {

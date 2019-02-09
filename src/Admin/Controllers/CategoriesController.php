@@ -23,6 +23,7 @@ use Slim\Http\Response;
 /**
  * Class CategoriesController
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class CategoriesController extends DashboardController implements CRUDInterface
 {

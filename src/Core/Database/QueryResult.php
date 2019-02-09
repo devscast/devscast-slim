@@ -12,28 +12,32 @@ namespace Core\Database;
 
 /**
  * Class QueryResult
+ * Abstraction for Raw Database query results
  * @package Core\Database
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class QueryResult implements \ArrayAccess, \Iterator
 {
     /**
+     * Raw results
      * @var array
      */
     private $records;
 
     /**
+     * Index for iterating
      * @var int
      */
     private $index = 0;
 
     /**
+     * Entity
      * @var null|string
      */
     private $entity;
 
     /**
-     * saves the hydrated records to avoid
-     * multiple hydration
+     * Save the hydrated records to avoid multiple hydrations
      * @var array
      */
     private $hydratedRecords = [];
@@ -51,7 +55,8 @@ class QueryResult implements \ArrayAccess, \Iterator
 
 
     /**
-     * retrieves a result thanks to its index
+     * Retrieve a result thanks to its index, Hydrate all result
+     * if id is null
      * @param int $index
      * @return mixed
      */

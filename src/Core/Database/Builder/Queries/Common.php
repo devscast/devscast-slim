@@ -15,8 +15,9 @@ use Core\Database\Builder\Literal;
 use Core\Database\Builder\Utilities;
 
 /**
+ * class Common
  * CommonQuery add JOIN and WHERE clauses for (SELECT, UPDATE, DELETE)
- *
+ * @package Core\Database\Builder\Queries
  * @method $this from(string $table) - add FROM to DELETE query
  * @method $this leftJoin(string $statement) - add LEFT JOIN to query
  *         $statement can be the 'table' name only or 'table:' to back reference the join
@@ -32,6 +33,10 @@ use Core\Database\Builder\Utilities;
  * @method $this limit(int $limit) - add LIMIT to query
  * @method $this offset(int $offset) - add OFFSET to query
  * @method $this comment(string $comment) - add COMMENT (--) to query
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 abstract class Common extends Base
 {

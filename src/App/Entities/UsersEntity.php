@@ -12,7 +12,9 @@ namespace App\Entities;
 
 /**
  * Class UsersEntity
+ * Represent a user
  * @package App\Entities
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class UsersEntity
 {

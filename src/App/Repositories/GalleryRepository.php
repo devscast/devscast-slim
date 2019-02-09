@@ -15,19 +15,21 @@ use Core\Repositories\Repository;
 
 /**
  * Class GalleryRepository
+ * Abstraction for the gallery table
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class GalleryRepository extends Repository
 {
 
     /**
-     * @inheritDoc
+     * The table name in the database
      * @var string
      */
     protected $table = 'gallery';
 
     /**
-     * represents one gallery item
+     * Entity class
      * @var GalleryEntity
      */
     protected $entity = GalleryEntity::class;

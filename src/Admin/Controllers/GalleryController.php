@@ -19,7 +19,9 @@ use Slim\Http\Response;
 
 /**
  * Class GalleryController
+ * administration of the gallery modules
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class GalleryController extends DashboardController implements CRUDInterface
 {

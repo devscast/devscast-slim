@@ -15,20 +15,22 @@ use Core\Repositories\Repository;
 
 /**
  * Class NewsletterRepository
+ * Abstraction of the newsletter table
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class NewsletterRepository extends Repository
 {
 
     /**
-     * the name of the table in the database
+     * The table name in the database
      * @var string
      */
     protected $table = 'newsletter';
 
 
     /**
-     * the class that represent one newsLetter instance
+     * Entity class
      * @var NewsletterEntity
      */
     protected $entity = NewsletterEntity::class;

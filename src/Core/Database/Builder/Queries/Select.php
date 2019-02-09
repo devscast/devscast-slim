@@ -15,7 +15,13 @@ use Core\Database\Builder\Query;
 use Core\Database\Builder\Utilities;
 
 /**
- * SELECT query builder
+ * Class Select
+ * SELECT Query builder
+ * @package Core\Database\Builder\Queries
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 class Select extends Common implements \Countable
 {

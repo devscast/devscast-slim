@@ -12,13 +12,15 @@ namespace Core\Database;
 
 /**
  * Class Hydrator
+ * Hydrate an object with data coming from an array
  * @package Core\Database
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class Hydrator
 {
 
     /**
-     * hydrates an object with array data
+     * Hydrate an object with data coming from an array
      * @param array $data
      * @param $object
      * @return mixed
@@ -41,8 +43,7 @@ abstract class Hydrator
 
 
     /**
-     * retrieves the setter for a database table field
-     *
+     * Generate setter for all property
      * create_at => setCreateAt
      * @param string $field
      * @return string
@@ -53,8 +54,7 @@ abstract class Hydrator
     }
 
     /**
-     * transforms a snake case to PascalCase
-     *
+     * Transforms a snake case to PascalCase
      * create_at => CreateAt
      * @param string $field
      * @return string

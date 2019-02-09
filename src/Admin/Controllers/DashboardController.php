@@ -26,11 +26,16 @@ use Slim\Router;
 
 /**
  * Class DashboardController
+ * Super class for Controllers
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class DashboardController
 {
 
+    /**
+     * Add redirect method
+     */
     use RouterAwareHelper;
 
     /**

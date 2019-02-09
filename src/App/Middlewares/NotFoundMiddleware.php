@@ -20,7 +20,10 @@ use Slim\Http\Response;
 
 /**
  * Class NotFoundMiddleware
+ * Return an error page if any route is matched
+ * @todo impove this
  * @package App\Middlewares
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class NotFoundMiddleware extends NotFound
 {

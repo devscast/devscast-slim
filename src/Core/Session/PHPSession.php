@@ -12,23 +12,28 @@ namespace Core\Session;
 
 /**
  * Class PHPSession
+ * Implementation for PHP native Session
  * @package Core\Session
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PHPSession implements SessionInterface
 {
 
     /**
-     * whether the session is active
+     * Whether the session is active
+     * @return void
      */
     private function ensureStarted(): void
     {
         if (session_status() === PHP_SESSION_NONE) {
-            session_name("ngpictures_ssid");
+            session_name("devscast_ssid");
             session_start();
         }
     }
 
     /**
+     * Retrieve the value of the given $key or return
+     * $default value
      * @param string $key
      * @param mixed $default
      * @return mixed
@@ -43,6 +48,7 @@ class PHPSession implements SessionInterface
     }
 
     /**
+     * Set a $value for the given $key
      * @param string $key
      * @param $value
      * @return void
@@ -54,6 +60,7 @@ class PHPSession implements SessionInterface
     }
 
     /**
+     * unset the given $key
      * @param string $key
      * @return void
      */

@@ -14,20 +14,21 @@ use Core\Database\Builder\Query;
 
 /**
  * Class Repository
- * @package App
+ * Abstraction for a database table
+ * @package Core/Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class Repository
 {
 
     /**
-     * the entity of a repository
-     * represents one record
+     * The entity of a repository, represent one record
      * @var string
      */
     protected $entity;
 
     /**
-     * the name of the table in the database
+     * The name of the table in the database
      * @var string
      */
     protected $table;
@@ -47,7 +48,7 @@ class Repository
     }
 
     /**
-     * simplify instanciation of the queryBuilder
+     * Simplify instantiation of the queryBuilder
      * @return Query
      */
     protected function makeQuery()
@@ -56,7 +57,7 @@ class Repository
     }
 
     /**
-     * save data in the database
+     * Store data
      * @param array $data
      * @return bool|int
      */
@@ -66,7 +67,7 @@ class Repository
     }
 
     /**
-     * update data
+     * Update data
      * @param int $id
      * @param array $data
      * @return bool|int|\PDOStatement
@@ -77,7 +78,7 @@ class Repository
     }
 
     /**
-     * delete a data in the storage
+     * Delete data
      * @param int $id
      * @return mixed
      */
@@ -87,8 +88,8 @@ class Repository
     }
 
     /**
-     * return the last inserted id
-     * @return mixed
+     * Retrieve the last inserted id
+     * @return string|int|mixed
      */
     public function lastInsertId()
     {
@@ -96,7 +97,7 @@ class Repository
     }
 
     /**
-     * get all data of a database table
+     * Retrieve all data
      * @return Object|array|mixed
      */
     public function all()
@@ -110,7 +111,7 @@ class Repository
     }
 
     /**
-     * get one record thanks to its 'id'
+     * Retrieve one record thanks to its 'id'
      * @param int $id
      * @return mixed
      */
@@ -125,6 +126,7 @@ class Repository
     }
 
     /**
+     * Retrieve a record with a specific condition
      * @param string $field
      * @param $value
      * @return mixed

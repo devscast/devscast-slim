@@ -16,19 +16,14 @@ use Core\Database\Builder\Queries\Select;
 use Core\Database\Builder\Queries\Update;
 use Core\Database\QueryResult;
 
+
 /**
- * FluentPDO is a quick and light PHP library for rapid query building. It features a smart join builder, which automatically creates table joins.
- *
- * For more information see readme.md
- *
+ * Class Query
+ * @package Core\Database\Builder
  * @link      https://github.com/envms/fluentpdo
  * @author    envms, start@env.ms
  * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
- */
-
-/**
- * Class Query
  */
 class Query
 {

@@ -15,20 +15,22 @@ use Core\Repositories\Repository;
 
 /**
  * Class CategoriesRepository
+ * Abstraction for the categories table
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class CategoriesRepository extends Repository
 {
 
     /**
-     * the name of the table in the database
+     * The table name in the database
      * @var string
      */
     protected $table = 'categories';
 
 
     /**
-     * the class that represents one category
+     * Entity class
      * @var CategoriesEntity
      */
     protected $entity = CategoriesEntity::class;

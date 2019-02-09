@@ -18,9 +18,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * Static pages provider
  * Class StaticResource
+ * Static pages provider this is only for the WebApp
  * @package App\Resources
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class StaticResource
 {
@@ -36,6 +37,7 @@ class StaticResource
 
 
     /**
+     * Render about page
      * @param RequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
@@ -47,6 +49,7 @@ class StaticResource
 
 
     /**
+     * Render contact page
      * @param RequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string

@@ -17,57 +17,60 @@ use Psr\Http\Message\UploadedFileInterface;
 
 /**
  * Class Upload
+ * Super Class for uploading
  * @package Core\Uploaders
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class Uploader
 {
 
     /**
-     * the target path
+     * The upload target path
      * @var null|string
      */
     protected $path;
 
     /**
-     * accepted file mime_types
+     * Accepted file mime_types
      */
     protected const MIME_TYPES = [];
 
     /**
-     * accepted file extensions
+     * Accepted file extensions
      */
     protected const EXTENSIONS = [];
 
     /**
-     * accepted max file size
+     * Accepted max file size
      */
     protected const MAX_SIZE = 1;
 
     /**
-     * upload errors
+     * Upload errors
      * @var array
      */
     protected $errors = [];
 
     /**
-     * the uploaded filename
+     * The uploaded filename after upload
      * @var string
      */
     protected $uploadedFilename;
 
     /**
+     * The uploaded filename before upload
      * @var null|string
      */
     protected $filename;
 
     /**
+     * The upload file
      * @var UploadedFileInterface
      */
     protected $file;
 
     /**
-     * relative path to the public
-     * directory of the server
+     * Relative path to the public directory of the server
      * @var string
      */
     protected $relativePath = "uploads";
@@ -84,12 +87,12 @@ class Uploader
     }
 
     /**
-     * delete old files and override existing
+     * Delete old files and override existing
      * @param null|string $oldVersion
      * @param bool $override will add '_copy' suffix if set to false
      * @return self
      */
-    public function prepare(?string $oldVersion = null, bool $override = false)
+    public function prepare(?string $oldVersion = null, bool $override = false): self
     {
         if ($this->isValid($this->file)) {
             $this->delete($oldVersion);
@@ -100,7 +103,11 @@ class Uploader
     }
 
 
-    public function upload()
+    /**
+     * Move the uploaded file to the target path
+     * @return $this|self
+     */
+    public function upload(): self
     {
         try {
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
@@ -113,7 +120,7 @@ class Uploader
     }
 
     /**
-     * whether the file is uploaded
+     * Whether the file is uploaded
      * @return bool
      */
     public function isUploaded(): bool
@@ -122,7 +129,7 @@ class Uploader
     }
 
     /**
-     * adds a suffix if a file with the same name already exist
+     * Add a suffix if a file with the same name already exist
      * @param string $targetPath
      * @param string $suffix
      * @return string
@@ -138,7 +145,7 @@ class Uploader
     }
 
     /**
-     * delete a file
+     * Delete a file
      * @param string|null $file
      */
     private function delete(?string $file): void
@@ -152,7 +159,7 @@ class Uploader
     }
 
     /**
-     * check if the file is really the file type expected
+     * Check if the file is really the file type expected
      * @param UploadedFileInterface $file
      * @return bool
      */
@@ -179,6 +186,7 @@ class Uploader
     }
 
     /**
+     * Retrieve upload errors
      * @return array
      */
     public function getErrors(): array
@@ -187,6 +195,7 @@ class Uploader
     }
 
     /**
+     * Retrieve the uploaded filename
      * @return string
      */
     public function getUploadedFilename(): string
@@ -198,20 +207,22 @@ class Uploader
     }
 
     /**
+     * Set the target path
      * @param string $path
-     * @return $this
+     * @return self
      */
-    public function setPath(string $path)
+    public function setPath(string $path): self
     {
         $this->path = $path;
         return clone $this;
     }
 
     /**
+     * Set a new filename for the uploaded file
      * @param null|string $filename
-     * @return $this
+     * @return self
      */
-    public function setFilename($filename)
+    public function setFilename($filename): self
     {
         $this->filename = $filename;
         return clone $this;
@@ -219,6 +230,7 @@ class Uploader
 
 
     /**
+     * Retrieve the target path
      * @return string
      */
     protected function getPath(): string

@@ -13,14 +13,15 @@ namespace Core\Uploaders;
 
 /**
  * Class ImageUploader
+ * Abstraction for Image Uploads
  * @package Core\Uploaders
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class ImageUploader extends Uploader
 {
 
     /**
      * @inheritDoc
-     * @var string
      */
     protected $relativePath = "/uploads/thumbs";
 
@@ -45,6 +46,7 @@ class ImageUploader extends Uploader
     protected const MAX_SIZE = 15728640;
 
     /**
+     * @inheritdoc
      * @return string
      */
     protected function getPath(): string

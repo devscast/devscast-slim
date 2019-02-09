@@ -19,7 +19,9 @@ use Slim\Http\Response;
 
 /**
  * Class CategoriesResource
+ * Data Provider for API and renderer for WebApp
  * @package App\Resources
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class CategoriesResource
 {

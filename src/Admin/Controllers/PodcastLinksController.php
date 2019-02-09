@@ -21,6 +21,7 @@ use Slim\Http\Response;
 /**
  * Class PodcastLinksController
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastLinksController extends DashboardController implements CRUDInterface
 {

@@ -14,7 +14,14 @@ use Core\Database\Builder\Exception;
 use Core\Database\Builder\Literal;
 use Core\Database\Builder\Query;
 
-/** INSERT query builder
+/**
+ * Class Insert
+ * INSERT query builder
+ * @package Core\Database\Builder\Queries
+ * @link      https://github.com/envms/fluentpdo
+ * @author    envms, start@env.ms
+ * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
 class Insert extends Base
 {
@@ -27,6 +34,7 @@ class Insert extends Base
 
     /** @var bool */
     private $ignore = false;
+
     /** @var bool */
     private $delayed = false;
 

@@ -15,7 +15,9 @@ use Slim\Csrf\Guard;
 
 /**
  * Class FormTwigExtension
+ * Add _token and _method function to Twig
  * @package Core\Twig
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
@@ -35,11 +37,10 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
     }
 
     /**
-     * Returns a list of global variables to add to the existing list.
-     *
+     * Return a list of global variables to add to the existing list.
      * @return array An array of global variables
      */
-    public function getGlobals()
+    public function getGlobals(): array
     {
         $csrfNameKey = $this->csrf->getTokenNameKey();
         $csrfValueKey = $this->csrf->getTokenValueKey();
@@ -63,7 +64,7 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
      * @inheritdoc
      * @return array
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new \Twig_SimpleFunction('_method', [$this, 'method'], ['is_safe' => ['html']]),
@@ -72,21 +73,21 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
     }
 
     /**
-     * set request method that cannot be sent
-     * via a web browser
+     * Set request method that cannot be sent via a web browser
      * @param string $method
      * @return string
      */
-    public function method(string $method)
+    public function method(string $method): string
     {
         $method = strtoupper($method);
         return "<input type='hidden' name='_method' value='{$method}'/>";
     }
 
     /**
-     * generate csrf token inputs
+     * Generate csrf token inputs
+     * @return string
      */
-    public function csrf()
+    public function csrf(): string
     {
         $csrf = "<input type='hidden' name='{$this->csrf->getTokenNameKey()}' value='{$this->csrf->getTokenName()}'/>";
         $csrf .= "<input type='hidden' name='{$this->csrf->getTokenValueKey()}' value='{$this->csrf->getTokenValue()}'/>";

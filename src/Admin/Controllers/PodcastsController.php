@@ -26,6 +26,7 @@ use Slim\Http\Response;
 /**
  * Class PodcastsController
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastsController extends DashboardController implements CRUDInterface
 {
@@ -58,7 +59,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
     }
 
     /**
-     * creates and stores a podcast
+     * create and store podcast
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -104,7 +105,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
     }
 
     /**
-     * updates a podcast
+     * update a single podcast
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface

@@ -17,7 +17,10 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class NewsletterController
+ * manage the newsletter module, create and send messages
+ * Crud the newsletter subscribers
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class NewsletterController extends DashboardController
 {
@@ -60,6 +63,7 @@ class NewsletterController extends DashboardController
 
 
     /**
+     * Send a message to all subscribers
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface
@@ -70,6 +74,7 @@ class NewsletterController extends DashboardController
 
 
     /**
+     * remove a subscriber from the newsletter
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface

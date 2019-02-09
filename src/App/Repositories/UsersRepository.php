@@ -16,18 +16,19 @@ use Core\Repositories\Repository;
 /**
  * Class UsersRepository
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class UsersRepository extends Repository
 {
 
     /**
-     * the table name in database
+     * The table name in the database
      * @var string
      */
     protected $table = 'users';
 
     /**
-     * the class that represents one user
+     * Entity class
      * @var UsersEntity
      */
     protected $entity = UsersEntity::class;

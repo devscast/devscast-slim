@@ -22,6 +22,7 @@ use Slim\Views\TwigExtension;
 /**
  * Class RendererFactory
  * @package Core\Renderer
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class RendererFactory
 {

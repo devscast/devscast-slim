@@ -16,13 +16,15 @@ use Slim\Http\Response;
 
 /**
  * Class RouterAwareHelper
+ * Add Redirect Method for Classes that have the Router
  * @package Core\Helpers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 trait RouterAwareHelper
 {
 
     /**
-     * redirect to a route
+     * Redirect to a specific route
      * @param int $status
      * @param string $path
      * @param array $params

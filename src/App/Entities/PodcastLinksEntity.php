@@ -12,7 +12,9 @@ namespace App\Entities;
 
 /**
  * Class PodcastLinksEntity
+ * Represent a PodcastLink
  * @package App\Entities
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastLinksEntity
 {

@@ -18,10 +18,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * check if the request is a json one and than return json
- * instead of views
  * Class JsonRequestMiddleware
+ * check if the request is a json one and than return json instead of rendering views
  * @package App\Middlewares
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class JsonRequestMiddleware extends AbstractHandler
 {

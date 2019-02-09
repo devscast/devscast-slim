@@ -12,13 +12,15 @@ namespace Core\Session;
 
 /**
  * Class FlashService
+ * Flash Messages using Session
  * @package Core\Session
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class FlashService
 {
 
     /**
-     * to avoid conflict with defined key in session
+     * To avoid conflict with defined key in session
      */
     private const FLASH_SESSION_KEY = 'flash';
 
@@ -37,10 +39,8 @@ class FlashService
     }
 
     /**
-     * sets a success flash message
-     *
-     * avoid to go too deep with array, so that we can use redis
-     * in the future
+     * Set a success flash message
+     * avoid to go too deep with array, so that we can use redis in the future
      * @param string $message
      * @return void
      */
@@ -52,7 +52,7 @@ class FlashService
     }
 
     /**
-     * sets a danger flash message
+     * Set a danger flash message
      * @param string $message
      * @return void
      */
@@ -64,7 +64,7 @@ class FlashService
     }
 
     /**
-     * sets a warning flash message
+     * Set a warning flash message
      * @param string $message
      * @return void
      */
@@ -76,7 +76,7 @@ class FlashService
     }
 
     /**
-     * retrieves flash message thanks to its type
+     * Retrieve flash message thanks to its type
      * @param string $type
      * @return null|string
      */

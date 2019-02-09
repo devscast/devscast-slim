@@ -16,18 +16,19 @@ use Core\Repositories\Repository;
 /**
  * Class PodcastLinksRepository
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastLinksRepository extends Repository
 {
 
     /**
-     * @inheritDoc
+     * The table name in the database
      * @var string
      */
     protected $table = 'podcast_links';
 
     /**
-     * represents one podcast link
+     * Entity class
      * @var PodcastLinksEntity
      */
     protected $entity = PodcastLinksEntity::class;

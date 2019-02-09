@@ -13,14 +13,15 @@ namespace Core\Uploaders;
 
 /**
  * Class AudioUploader
+ * Abstraction for Audio Uploads
  * @package Core\Uploaders
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class AudioUploader extends Uploader
 {
 
     /**
      * @inheritDoc
-     * @var string
      */
     protected $relativePath = "/uploads/podcasts";
 
@@ -45,7 +46,7 @@ class AudioUploader extends Uploader
     protected const MAX_SIZE = 104857600;
 
     /**
-     * @return string
+     * @inheritdoc
      */
     protected function getPath(): string
     {
