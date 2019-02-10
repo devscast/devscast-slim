@@ -23,19 +23,8 @@ use Slim\Http\Response;
  * @package App\Resources
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class StaticResource
+class StaticResource extends Resource
 {
-    /**
-     * StaticResource constructor.
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-        $this->renderer = $container->get(Renderer::class);
-    }
-
-
     /**
      * Render about page
      * @param RequestInterface|Request $request
@@ -50,6 +39,7 @@ class StaticResource
 
     /**
      * Render contact page
+     * @TODO handle the post request
      * @param RequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string

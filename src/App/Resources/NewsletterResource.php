@@ -26,12 +26,17 @@ use Slim\Http\Response;
  * @package App\Resources
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class NewsletterResource
+class NewsletterResource extends Resource
 {
     /**
      * @var NewsletterRepository|mixed
      */
     private $newsletter;
+
+    /**
+     * @var Validator|mixed
+     */
+    private $validator;
 
 
     /**
@@ -40,6 +45,7 @@ class NewsletterResource
      */
     public function __construct(ContainerInterface $container)
     {
+        parent::__construct($container);
         $this->newsletter = $container->get(NewsletterRepository::class);
         $this->validator = $container->get(Validator::class);
     }
@@ -59,7 +65,7 @@ class NewsletterResource
             $email = $request->getParam('email');
 
             if ($this->isUnique($email)) {
-                $this->newsletter->create(compact('email'), true);
+                $this->newsletter->create(compact('email'));
                 return $response->withJson([
                     'api.message' => 'registration to the newsletter',
                     'api.flash' => 'success'

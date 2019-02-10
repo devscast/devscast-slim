@@ -23,7 +23,7 @@ use Slim\Http\Response;
  * @package App\Resources
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class CategoriesResource
+class CategoriesResource extends Resource
 {
 
     /**
@@ -42,6 +42,7 @@ class CategoriesResource
      */
     public function __construct(ContainerInterface $container)
     {
+        parent::__construct($container);
         $this->categories = $container->get(CategoriesRepository::class);
         $this->podcasts = $container->get(PodcastsRepository::class);
     }
@@ -55,31 +56,36 @@ class CategoriesResource
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $response->withJson([
-            'api.message' => 'listing all categories',
-            'categoires' => $this->categories->all()
-        ]);
+        $categories = $this->categories->all();
+        return ($request->getAttribute('isJson')) ?
+            $response->withJson($categories) :
+            $this->renderer->render($response, 'categories/index.html.twig', compact('categories'));
     }
 
 
     /**
-     * show a particular categories, thanks to an id
+     * Show a particular categories, thanks to an id
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $id = intval($request->getAttribute('route')->getArgument('id'));
+        $id = $request->getAttribute('route')->getArgument('id');
+        $slug = $request->getAttribute('route')->getArgument('slug');
         $category = $this->categories->find($id);
 
         if ($category) {
-            return $response->withJson([
-                'api.message' => 'showing a category',
-                'category' => $category,
-                'podcasts' => $this->podcasts->findWith('categories_id', $id)
-            ]);
+            $podcasts = $this->podcasts->findWith('categories_id', $id);
+            $data = compact('category', 'podcasts');
+
+            if ($category->slug == $slug) {
+                return ($request->getAttribute('isJson')) ?
+                    $response->withJson($data) :
+                    $this->renderer->render($response, 'categories/show.html.twig', $data);
+            }
+            return $this->redirect('categories.show', ['id' => $category->id, 'slug' => $category->slug]);
         }
-        return $response->withJson(['api.error' => "Page Not found"])->withStatus(404);
+        return $response->withStatus(404);
     }
 }

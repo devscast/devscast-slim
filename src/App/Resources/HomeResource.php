@@ -23,7 +23,7 @@ use Slim\Http\Response;
  * @package App\Resources
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class HomeResource
+class HomeResource extends Resource
 {
 
     /**
@@ -33,18 +33,13 @@ class HomeResource
     private $podcasts;
 
     /**
-     * @var Renderer
-     */
-    private $renderer;
-
-    /**
      * HomeResource constructor.
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
+        parent::__construct($container);
         $this->podcasts = $container->get(PodcastsRepository::class);
-        $this->renderer = $container->get(Renderer::class);
     }
 
 
