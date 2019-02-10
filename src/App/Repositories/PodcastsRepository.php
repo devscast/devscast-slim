@@ -12,6 +12,7 @@ namespace App\Repositories;
 
 use App\Entities\PodcastsEntity;
 use Core\Database\Builder\Queries\Select;
+use Core\Database\Builder\Query;
 use Core\Repositories\Repository;
 
 /**
@@ -36,7 +37,7 @@ class PodcastsRepository extends Repository
 
 
     /**
-     * get with category and user
+     * Base query for fetching with category and user
      * @return Select
      */
     private function withCategoryaAndUser(): Select
@@ -62,7 +63,7 @@ class PodcastsRepository extends Repository
     }
 
     /**
-     * Get the latest podcasts
+     * Retrieve the latest podcasts
      * @param int $limit
      * @return Object|array|mixed
      */
@@ -72,7 +73,7 @@ class PodcastsRepository extends Repository
     }
 
     /**
-     * GET the last podcast
+     * Retrieve the last podcast
      * @return Object|array|mixed
      */
     public function last()
@@ -81,7 +82,7 @@ class PodcastsRepository extends Repository
     }
 
     /**
-     * get one podcast thanks to an 'id'
+     * Retrieve one podcast thanks to an 'id'
      * @param int $id
      * @return Object|array|mixed
      */
@@ -93,6 +94,7 @@ class PodcastsRepository extends Repository
     }
 
     /**
+     * Retrieve a podcast with specific conditions
      * @param string $field
      * @param $value
      * @return Object|array|mixed
@@ -104,26 +106,43 @@ class PodcastsRepository extends Repository
             ->all()->get();
     }
 
+
     /**
+     * Base Query for singlePagination
+     * @return Select
+     */
+    private function singlePagination()
+    {
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select(["{$this->table}.name", "{$this->table}.slug", "{$this->table}.id"])
+            ->limit(1);
+    }
+
+    /**
+     * Retrieve the next record
      * @param $id
      * @return Object|array|mixed
      */
     public function next($id)
     {
-        return $this->withCategoryaAndUser()
+        return $this->singlePagination()
             ->where("{$this->table}.id > ?", compact('id'))
+            ->orderBy("{$this->table}.id ASC")
             ->all()->get(0);
     }
 
     /**
+     * Retrieve the previous record
      * @param $id
      * @return Object|array|mixed
      */
     public function previous($id)
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table} < ?", compact('id'))
-            ->limit(1)
+        return $this->singlePagination()
+            ->where("{$this->table}.id < ?", compact('id'))
+            ->orderBy("{$this->table}.id DESC")
             ->all()->get(0);
     }
 }
