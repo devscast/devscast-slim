@@ -63,16 +63,20 @@ class QueryResult implements \ArrayAccess, \Iterator
     public function get(?int $index = null)
     {
         if (!is_null($this->entity)) {
-            if (is_null($index)) {
-                foreach ($this->records as $i => $record) {
-                    if (!isset($this->hydratedRecords[$i])) {
-                        $this->hydratedRecords[$i] = Hydrator::hydrate($record, $this->entity);
+            if (empty($this->records)) {
+                return null;
+            } else {
+                if (is_null($index)) {
+                    foreach ($this->records as $i => $record) {
+                        if (!isset($this->hydratedRecords[$i])) {
+                            $this->hydratedRecords[$i] = Hydrator::hydrate($record, $this->entity);
+                        }
                     }
+                    return $this->hydratedRecords;
+                } elseif (!isset($this->hydratedRecords[$index])) {
+                    $this->hydratedRecords[$index] = Hydrator::hydrate($this->records[$index], $this->entity);
+                    return $this->hydratedRecords[$index];
                 }
-                return $this->hydratedRecords;
-            } elseif (!isset($this->hydratedRecords[$index])) {
-                $this->hydratedRecords[$index] = Hydrator::hydrate($this->records[$index], $this->entity);
-                return $this->hydratedRecords[$index];
             }
         }
         return $this->entity;
