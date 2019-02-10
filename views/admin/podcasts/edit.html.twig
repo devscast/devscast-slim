@@ -30,28 +30,28 @@
                 </div>
                 <div class="card card-info card-outline">
                     <div class="card-body">
-                        <h3>{{ podcast.name | truncate(50) }}</h3>
+                        <h3>{{ item.name | truncate(50) }}</h3>
                         <hr>
                         <div id="show-thumb" class="container" align="center">
-                            <img src="{{ podcast.thumb }}" alt="{{ podcast.name }}" class="img-responsive" width="75%" height="auto">
+                            <img src="{{ item.thumb }}" alt="{{ item.name }}" class="img-responsive" width="75%" height="auto">
                         </div>
                         <hr>
                         <br>
-                        <form data-thumb="true" action="{{ path_for('admin.podcasts.update', {id: podcast.id}) }}" method="POST" autocomplete="off">
+                        <form data-thumb="true" action="{{ path_for('admin.podcasts.update', {id: item.id}) }}" method="POST" autocomplete="off">
                             {{ _csrf() }}
                             {{ _method('PUT') }}
                             <fieldset>
                                 <br>
-                                {{ form.input('Name', 'name', errors.name, input.name ?? podcast.name) }}
-                                {{ form.input('Slug', 'slug', errors.slug, input.slug ?? podcast.slug) }}
+                                {{ form.input('Name', 'name', errors.name, input.name ?? item.name) }}
+                                {{ form.input('Slug', 'slug', errors.slug, input.slug ?? item.slug) }}
                                 {{ form.input('Users_id', 'users_id', errors.users_id, input.author ?? user.name ?? 1) }}
-                                {{ form.select('Category', 'categories_id', categories, errors.categories_id, input.categories_id ?? podcast.categories_id) }}
+                                {{ form.select('Category', 'categories_id', categories, errors.categories_id, input.categories_id ?? item.categories_id) }}
                                 <br>
-                                {{ form.checkbox('Online', 'online', errors.get('online'), input.online ?? podcast.online) }}
+                                {{ form.checkbox('Online', 'online', errors.get('online'), input.online ?? item.online) }}
                             </fieldset>
                             <br>
                             <fieldset>
-                                {{ form.wysiwyg('description', errors.description, input.description ?? podcast.description) }}
+                                {{ form.wysiwyg('description', errors.description, input.description ?? item.description) }}
                             </fieldset>
                             <div class="row">
                                 <div class="col-lg-12">

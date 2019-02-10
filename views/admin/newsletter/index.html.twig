@@ -1,0 +1,92 @@
+{% extends 'layouts/dashboard.html.twig' %}
+
+{% block breadcrumb %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Administration - newsletter</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path_for('home') }}">home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path_for('admin.index') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">newsletter</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover" id="table1">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Email</th>
+                                    <th>Created_at</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in items %}
+                                    <tr>
+                                        <th>{{ i.id }}</th>
+                                        <th>{{ i.email | truncate(50) }}</th>
+                                        <th>{{ i.createdAt }}</th>
+                                        <th>
+                                            <div class="btn-group-justified">
+                                                <form action="{{ path_for('admin.newsletter.delete', {id: i.id}) }}" method="post" style="display: inline" id="delete">
+                                                    {{ _csrf() }}
+                                                    {{ _method('DELETE') }}
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Email</th>
+                                    <th>Created_at</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripPlugins %}
+    <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/jquery.dataTables.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.js' }}"></script>
+    <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $('#table1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+{% endblock %}

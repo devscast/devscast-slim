@@ -30,14 +30,14 @@
                 </div>
                 <div class="card card-info card-outline">
                     <div class="card-body">
-                        <h3>{{ category.name | truncate(50) }}</h3>
+                        <h3>{{ item.name | truncate(50) }}</h3>
                         <hr>
-                        <form data-thumb="true" action="{{ path_for('admin.categories.update', {id: category.id}) }}" method="POST" autocomplete="off">
+                        <form data-thumb="true" action="{{ path_for('admin.categories.update', {id: item.id}) }}" method="POST" autocomplete="off">
                             {{ _csrf() }}
                             {{ _method('PUT') }}
                             <fieldset>
-                                {{ form.input('Name', 'name', errors.get('name'), input.name ?? category.name) }}
-                                {{ form.input('Slug', 'slug', errors.get('slug'), input.slug ?? category.slug) }}
+                                {{ form.input('Name', 'name', errors.get('name'), input.name ?? item.name) }}
+                                {{ form.input('Slug', 'slug', errors.get('slug'), input.slug ?? item.slug) }}
                             </fieldset>
                             <fieldset>
                                 {{ form.wysiwyg('description', errors.description, input.description) }}
