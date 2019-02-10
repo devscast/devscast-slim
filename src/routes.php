@@ -87,7 +87,7 @@ $app->group('/admin', function () {
             '/{id:[0-9]+}',
             [PodcastLinksController::class, 'update']
         )->setName('admin.podcastLinks.update');
-        $this->delete('/{id:[0-9]+}', [PodcastLinksController::class, 'delete'])->setName('admin.podcastsLinks.delete');
+        $this->delete('/{id:[0-9]+}', [PodcastLinksController::class, 'delete'])->setName('admin.podcastLinks.delete');
     });
 
     $this->group('/users', function () {
