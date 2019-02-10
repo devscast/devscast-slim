@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>App\Resources\CategoriesResource | Devcast API</title>
+    <title>App\Resources\Resource | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:App_Resources_CategoriesResource" data-root-path="../../">
+    <body id="class" data-name="class:App_Resources_Resource" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,28 +66,28 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Resources.html">Resources</a></li><li class="backslash">\</li><li>CategoriesResource</li>
+                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Resources.html">Resources</a></li><li class="backslash">\</li><li>Resource</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            CategoriesResource
+            Resource
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>CategoriesResource</strong>        extends <a href="../../App/Resources/Resource.html"><abbr title="App\Resources\Resource">Resource</abbr></a>
+    <strong>Resource</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Class CategoriesResource
-Data Provider for API and renderer for WebApp</p>                                </div>
+            <p>Class Resource
+Super class for Resource classes</p>                                </div>
     
             <h2>Traits</h2>
 
@@ -115,7 +115,7 @@ Add Redirect Method for Classes that have the Router
                 </td>
                 <td>$container</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../App/Resources/Resource.html#property_container"><abbr title="App\Resources\Resource">Resource</abbr></a></small></td>
+                <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_renderer">
@@ -123,7 +123,7 @@ Add Redirect Method for Classes that have the Router
                 </td>
                 <td>$renderer</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../App/Resources/Resource.html#property_renderer"><abbr title="App\Resources\Resource">Resource</abbr></a></small></td>
+                <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_router">
@@ -131,7 +131,7 @@ Add Redirect Method for Classes that have the Router
                 </td>
                 <td>$router</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../App/Resources/Resource.html#property_router"><abbr title="App\Resources\Resource">Resource</abbr></a></small></td>
+                <td></td>
             </tr>
             </table>
 
@@ -156,27 +156,7 @@ Add Redirect Method for Classes that have the Router
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
         
-                                            <p>CategoriesResource constructor.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_index">index</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
-        
-                                            <p>listing all categories</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_show">show</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
-        
-                                            <p>Show a particular categories, thanks to an id</p>                </div>
+                                            <p>Resource constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -237,7 +217,7 @@ Add Redirect Method for Classes that have the Router
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 43</div>
+        <div class="location">at         line 48</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
         </code>
@@ -247,7 +227,7 @@ Add Redirect Method for Classes that have the Router
     
 
                     <div class="method-description">
-                                    <p>CategoriesResource constructor.</p>                                                </div>
+                                    <p>Resource constructor.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -260,96 +240,6 @@ Add Redirect Method for Classes that have the Router
             </table>
 
             
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_index">
-        <div class="location">at         line 57</div>
-        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
-    <strong>index</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>listing all categories</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
-                <td>$request</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
-                <td>$response</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_show">
-        <div class="location">at         line 72</div>
-        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
-    <strong>show</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Show a particular categories, thanks to an id</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
-                <td>$request</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
-                <td>$response</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>

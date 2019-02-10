@@ -79,8 +79,7 @@
     </div>
 
     <p>    class
-    <strong>CategoriesController</strong>        extends <a href="../../Admin/Controllers/DashboardController.html"><abbr title="Admin\Controllers\DashboardController">DashboardController</abbr></a>        implements
-        <a href="../../Core/CRUDInterface.html"><abbr title="Core\CRUDInterface">CRUDInterface</abbr></a>
+    <strong>CategoriesController</strong>        extends <a href="../../Admin/Controllers/CRUDController.html"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a>
 </p>
 
         
@@ -131,7 +130,7 @@ Add Redirect Method for Classes that have the Router
                 </td>
                 <td>$container</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../Admin/Controllers/DashboardController.html#property_container"><abbr title="Admin\Controllers\DashboardController">DashboardController</abbr></a></small></td>
+                <td><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#property_container"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_router">
@@ -148,6 +147,30 @@ Add Redirect Method for Classes that have the Router
                 <td>$flash</td>
                 <td class="last"></td>
                 <td><small>from&nbsp;<a href="../../Admin/Controllers/DashboardController.html#property_flash"><abbr title="Admin\Controllers\DashboardController">DashboardController</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_repository">
+                                        protected                                        Object
+                </td>
+                <td>$repository</td>
+                <td class="last">Module repository Class</td>
+                <td><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#property_repository"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_module">
+                                        protected                                        string
+                </td>
+                <td>$module</td>
+                <td class="last">Module full name</td>
+                <td><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#property_module"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_validator">
+                                        protected                                        string
+                </td>
+                <td>$validator</td>
+                <td class="last">Module data validation class</td>
+                <td><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#property_validator"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></td>
             </tr>
             </table>
 
@@ -182,9 +205,8 @@ Add Redirect Method for Classes that have the Router
                 <div class="col-md-8 type">
                     <a href="#method_index">index</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
+                                            <p>[READ] implementation should list all data for a particular module</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#method_index"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -204,9 +226,8 @@ that are valid</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method_create">create</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
+                                            <p>[CREATE] implementation should store new data for a particular module</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#method_create"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -215,9 +236,8 @@ that are valid</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method_update">update</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
+                                            <p>[UPDATE] implementation should update data for a particular module</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#method_update"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -226,9 +246,8 @@ that are valid</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method_delete">delete</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
+                                            <p>[DELETE] implementation should destroy data for a particular module</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Admin/Controllers/CRUDController.html#method_delete"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a></small></div>
             </div>
             </div>
 
@@ -288,7 +307,7 @@ that are valid</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 39</div>
+        <div class="location">at         line 35</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
         </code>
@@ -319,7 +338,7 @@ that are valid</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_index">
-        <div class="location">at         line 50</div>
+        <div class="location">in <a href="../../Admin/Controllers/CRUDController.html#method_index"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a> at         line 70</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>index</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
@@ -328,6 +347,8 @@ that are valid</p>                </div>
             
     
 
+                    <div class="method-description">
+                                    <p>[READ] implementation should list all data for a particular module</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -408,7 +429,7 @@ that are valid</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         line 61</div>
+        <div class="location">in <a href="../../Admin/Controllers/CRUDController.html#method_create"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a> at         line 82</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>create</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
@@ -417,6 +438,8 @@ that are valid</p>                                                </div>
             
     
 
+                    <div class="method-description">
+                                    <p>[CREATE] implementation should store new data for a particular module</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -451,7 +474,7 @@ that are valid</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">at         line 90</div>
+        <div class="location">in <a href="../../Admin/Controllers/CRUDController.html#method_update"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a> at         line 111</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>update</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
@@ -460,6 +483,8 @@ that are valid</p>                                                </div>
             
     
 
+                    <div class="method-description">
+                                    <p>[UPDATE] implementation should update data for a particular module</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -494,7 +519,7 @@ that are valid</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at         line 124</div>
+        <div class="location">in <a href="../../Admin/Controllers/CRUDController.html#method_delete"><abbr title="Admin\Controllers\CRUDController">CRUDController</abbr></a> at         line 146</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>delete</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
@@ -503,6 +528,8 @@ that are valid</p>                                                </div>
             
     
 
+                    <div class="method-description">
+                                    <p>[DELETE] implementation should destroy data for a particular module</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
