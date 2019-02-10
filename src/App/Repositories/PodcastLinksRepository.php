@@ -32,4 +32,20 @@ class PodcastLinksRepository extends Repository
      * @var PodcastLinksEntity
      */
     protected $entity = PodcastLinksEntity::class;
+
+    /**
+     * Retrieve all podcastLinks for a specific podcast
+     * @param int $id
+     * @return Object|array|mixed
+     */
+    public function get(int $id)
+    {
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.*")
+            ->where("podcasts_id = ?", compact('id'))
+            ->orderBy("{$this->table}.reference ASC")
+            ->all()->get();
+    }
 }
