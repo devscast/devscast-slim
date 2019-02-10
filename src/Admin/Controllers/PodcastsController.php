@@ -28,12 +28,8 @@ use Slim\Http\Response;
  * @package Admin\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class PodcastsController extends DashboardController implements CRUDInterface
+class PodcastsController extends CRUDController
 {
-    /**
-     * @var PodcastsRepository|mixed
-     */
-    private $podcasts;
 
     /**
      * PodcastsController constructor.
@@ -42,20 +38,9 @@ class PodcastsController extends DashboardController implements CRUDInterface
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->podcasts = $container->get(PodcastsRepository::class);
-    }
-
-
-    /**
-     * @TODO paginate podcasts query
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
-     * @return ResponseInterface
-     */
-    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        $podcasts = $this->podcasts->all();
-        return $this->renderer->render($response, 'admin/podcasts/index.html.twig', compact('podcasts'));
+        $this->repository = $container->get(PodcastsRepository::class);
+        $this->validator = PodcastsValidator::class;
+        $this->module = 'podcasts';
     }
 
     /**
@@ -83,7 +68,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
                         $params['thumb'] = $thumb->getUploadedFilename();
 
                         if (empty($errors)) {
-                            $this->podcasts->create($params);
+                            $this->repository->create($params);
                             $this->flash->success('podcast.create');
                             return $this->redirect('admin.podcasts');
                         }
@@ -113,9 +98,9 @@ class PodcastsController extends DashboardController implements CRUDInterface
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $id = $request->getAttribute('route')->getArgument('id');
-        $podcast = $this->podcasts->find($id);
+        $item = $this->repository->find($id);
 
-        if ($podcast) {
+        if ($item) {
             if ($request->isPut()) {
                 $validator = $this->container->get(Validator::class);
                 $validator->validate($request, PodcastsValidator::getUpdateValidationRules());
@@ -124,7 +109,7 @@ class PodcastsController extends DashboardController implements CRUDInterface
                 $params = $this->filter($input, PodcastsValidator::getUpdateAbleFields());
 
                 if ($validator->isValid()) {
-                    $this->podcasts->update($id, $params);
+                    $this->repository->update($id, $params);
                     $this->flash->success('podcast.update');
                     return $this->redirect('admin.podcasts');
                 } else {
@@ -133,27 +118,9 @@ class PodcastsController extends DashboardController implements CRUDInterface
                 }
             }
 
-            $data = compact('errors', 'input', 'podcast', 'categories');
+            $data = compact('errors', 'input', 'item', 'categories');
             $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
             return $this->renderer->render($response->withStatus($this->status), 'admin/podcasts/edit.html.twig', $data);
-        }
-        return $response->withStatus(404);
-    }
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        if ($request->isDelete()) {
-            $id = $request->getAttribute('route')->getArgument('id');
-            if ($this->podcasts->find($id)) {
-                $this->podcasts->destroy($id);
-                $this->flash->success('podcast.delete');
-                return $this->redirect('admin.podcasts');
-            }
         }
         return $response->withStatus(404);
     }

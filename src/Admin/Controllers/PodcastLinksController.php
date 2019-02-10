@@ -23,13 +23,8 @@ use Slim\Http\Response;
  * @package Admin\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class PodcastLinksController extends DashboardController implements CRUDInterface
+class PodcastLinksController extends CRUDController
 {
-
-    /**
-     * @var PodcastLinksRepository|mixed
-     */
-    private $podcastLinks;
 
     /**
      * PodcastLinksController constructor.
@@ -38,56 +33,8 @@ class PodcastLinksController extends DashboardController implements CRUDInterfac
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->podcastLinks = $container->get(PodcastLinksRepository::class);
-    }
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        // TODO: Implement create() method.
-    }
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function store(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        // TODO: Implement store() method.
-    }
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function edit(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        // TODO: Implement edit() method.
-    }
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        // TODO: Implement update() method.
-    }
-
-    /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
-     */
-    public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        // TODO: Implement delete() method.
+        $this->repository = $container->get(PodcastLinksRepository::class);
+        $this->validator = null;
+        $this->module = 'podcastlinks';
     }
 }
