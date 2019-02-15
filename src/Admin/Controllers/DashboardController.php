@@ -85,10 +85,10 @@ class DashboardController
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $podcasts = count($this->container->get(PodcastsRepository::class)->all());
-        $gallery = count($this->container->get(GalleryRepository::class)->all());
-        $categories = count($this->container->get(CategoriesRepository::class)->all());
-        $newsletter = count($this->container->get(NewsletterRepository::class)->all());
+        $podcasts = $this->container->get(PodcastsRepository::class)->count();
+        $gallery = $this->container->get(GalleryRepository::class)->count();
+        $categories = $this->container->get(CategoriesRepository::class)->count();
+        $newsletter = $this->container->get(NewsletterRepository::class)->count();
 
         return $this->renderer->render(
             $response,

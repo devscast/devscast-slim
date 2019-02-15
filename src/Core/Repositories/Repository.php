@@ -140,4 +140,16 @@ class Repository
             ->where("{$this->table}.{$field} = ?", [$field => $value])
             ->all()->get();
     }
+
+    /**
+     * @return int
+     */
+    public function count()
+    {
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.id")
+            ->count();
+    }
 }
