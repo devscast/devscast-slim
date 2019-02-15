@@ -1,0 +1,78 @@
+{% extends 'layouts/main.html.twig' %}
+
+
+{% block content %}
+    <header class="page-header" style="background-image: url('/assets/background.jpg')">
+        <div class="page-header-inner">
+            <div class="container">
+
+                {# ===== BREADCRUMB ===== #}
+                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
+                    <li itemprop="itemListElement"><a href="{{ path_for('categories.index') }}">Categories</a></li>
+                </ol>
+
+                {# ===== PAGE HEADER CONTENT ===== #}
+                <div class="page-header-content text-center">
+                    <h2>{{ category.name }}</h2>
+                    <p>{{ category.description }}</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main" id="main">
+        <section id="#episodes" class="section-positive">
+            <div class="container">
+                <div class="row">
+                    {% for index, p in podcasts %}
+                        <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
+                            <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
+                                <figure class="podcast-image">
+                                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                                        <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}" />
+                                    </a>
+                                </figure>
+                                <div class="podcast-content">
+                                    <span class="podcast-date">{{ p.created_at | date('M d, Y') }}</span>
+                                    <h2 class="podcast-title">
+                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                                            {{ p.name | truncate(30) }}
+                                        </a>
+                                    </h2>
+                                    <p class="podcast-excerpt">
+                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                                            {{ p.description | truncate(100) }}
+                                        </a>
+                                    </p>
+                                    <ul class="podcast-meta">
+                                        <li class="item"><a href="#" class="podcast-tag" rel="tag">{{ p.category }}</a></li>
+                                        <li class="item"><i class="fa fa-clock-o"></i> 29 mins.</li>
+                                        <li class="item">
+                                            <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}" class="podcast-play">
+                                                <i class="fa fa-play"></i> Play Episode
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    {# ===== PAGINATION ===== #}
+                    <div class="col-sm-12 text-center mb-50">
+                        <ol class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include 'includes/about.html.twig' %}
+    </main>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'layouts/main.html.twig' %}
+
+
+{% block content %}
+    <header class="page-header" style="background-image: url('/assets/background.jpg')">
+        <div class="page-header-inner">
+            <div class="container">
+
+                {# ===== BREADCRUMB ===== #}
+                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
+                    <li itemprop="itemListElement"><a href="{{ path_for('categories.index') }}">Categories</a></li>
+                </ol>
+
+                {# ===== PAGE HEADER CONTENT ===== #}
+                <div class="page-header-content text-center">
+                    <h2>Categories</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main" id="main">
+        <section id="#episodes" class="section-positive">
+            <div class="container">
+                <div class="row">
+                    {% for c in categories %}
+                        <div class="col-sm-6 mb-40">
+                            <div class="podcast-card boxed">
+                                <figure class="podcast-image categories">
+                                    <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
+                                        <img src="http://localhost/photofills" alt="{{ c.name }}" title="{{ c.name }}" />
+                                    </a>
+                                </figure>
+                                <div class="podcast-content">
+                                    <span class="podcast-date">{{ c.createdAt | date('M d, Y') }}</span>
+                                    <h2 class="podcast-title">
+                                        <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
+                                            {{ c.name | truncate(30) }}
+                                        </a>
+                                    </h2>
+                                    <p class="podcast-excerpt">
+                                        <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
+                                            {{ c.description | truncate(200) }}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    {# ===== PAGINATION ===== #}
+                    <div class="col-sm-12 text-center mb-50">
+                        <ol class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include 'includes/about.html.twig' %}
+{% endblock %}
