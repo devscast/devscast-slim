@@ -10,6 +10,7 @@
 
 namespace Admin\Controllers;
 
+use App\Repositories\GalleryRepository;
 use Core\CRUDInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -27,14 +28,14 @@ class GalleryController extends DashboardController implements CRUDInterface
 {
 
     /**
-     * @var null
+     * @var GalleryRepository|mixed
      */
     private $gallery;
 
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->gallery = null;
+        $this->gallery = $container->get(GalleryRepository::class);
     }
 
     /**

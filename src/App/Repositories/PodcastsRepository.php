@@ -46,7 +46,7 @@ class PodcastsRepository extends Repository
             ->into($this->entity)
             ->from($this->table)
             ->select("{$this->table}.*")
-            ->select("categories.name AS category")
+            ->select("categories.name AS category_name, categories.slug AS category_slug")
             ->select("users.name AS username")
             ->leftJoin("categories ON {$this->table}.categories_id = categories.id")
             ->leftJoin("users ON {$this->table}.users_id = users.id")

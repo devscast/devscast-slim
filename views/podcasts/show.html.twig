@@ -28,7 +28,7 @@
 
     {# ===== PODCAST META ===== #}
     <div class="podcast-meta-element">
-        <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.created_at | date('M d, Y') }}</span>
+        <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.createdAt | date('M d, Y') }}</span>
         <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
         <a class="podcast-meta-item" href="#"><i class="fa fa-tag"></i> {{ podcast.category }}</a>
         <a class="podcast-meta-item" href="{{ podcast.audio }}"><i class="fa fa-download"></i> Download (MP3)</a>
@@ -41,7 +41,7 @@
                 <ul class="podcast-links-list">
                     {% for l in links %}
                         <li>
-                            <a href="#" class="btn btn-success btn-sm">{{ l.reference }}</a>
+                            <a href="#{{ l.reference }}" class="btn btn-success btn-sm">{{ l.reference }}</a>
                             <span class="podcast-link-cite">{{ l.description }}</span>
                         </li>
                     {% endfor %}
@@ -83,7 +83,7 @@
                             <a href="{{ path_for('podcasts.show', {id: previous.id, slug: previous.slug}) }}"
                                class="page-pagination-prev">
                                 <i class="fa fa-long-arrow-left"></i>
-                                <span>{{ previous.created_at | date('M d, Y') }}</span>
+                                <span>{{ previous.createdAt | date('M d, Y') }}</span>
                                 <p>{{ previous.name | truncate(40) }}</p>
                             </a>
                         {% endif %}
@@ -91,7 +91,7 @@
                             <a href="{{ path_for('podcasts.show', {id: next.id, slug: next.slug}) }}"
                                class="page-pagination-next">
                                 <i class="fa fa-long-arrow-right"></i>
-                                <span>{{ next.created_at | date('M d, Y') }}</span>
+                                <span>{{ next.createdAt | date('M d, Y') }}</span>
                                 <p>{{ next.name | truncate(40) }}</p>
                             </a>
                         {% endif %}
@@ -106,7 +106,7 @@
                                     <div class="comment-content">
                                         <cite class="comment-author">{{ c.author }}</cite>
                                         <small>says:</small>
-                                        <span class="comment-date">{{ c.created_at | date('M d, Y') }}</span>
+                                        <span class="comment-date">{{ c.createdAt | date('M d, Y') }}</span>
                                         <div class="comment-body">
                                             <p>{{ c.content }}</p>
                                         </div>
