@@ -23,10 +23,10 @@ class FillPodcastsTable extends AbstractSeed
                 'name' => $faker->paragraphs(4, true),
                 'description' => $faker->text(300),
                 'duration' => mt_rand(5, 50),
-                'thumb' => 'http://localhost/photofills',
-                'audio' => 'http://localhost/audio/test.mp3',
+                'thumb' => 'https://picsum.photos/200/300',
+                'audio' => 'https://lushitrap.com/assets/artists/bernard-ng/audio/Calm_lushitrapMUSIC.mp3',
                 'slug' => $faker->slug,
-                'users_id' => mt_rand(1, 5),
+                'users_id' => 1,
                 'categories_id' => mt_rand(1, 5),
                 'created_at' => date('Y:M:d H:i:s', $faker->unixTime('now')),
             ]);

@@ -30,6 +30,6 @@ return [
      * Views configuration
      */
     'views.path' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views",
-    'views.cache' => false, //dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
+    'views.cache' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
 
 ];

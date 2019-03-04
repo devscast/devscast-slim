@@ -1,0 +1,11 @@
+RewriteEngine on
+RewriteOptions inherit
+
+# redirect all requests to app's public directory
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
+
+# serves the files directly if exists else process the request to the app's router
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /public/index.php?url=$1 [QSA,L]
