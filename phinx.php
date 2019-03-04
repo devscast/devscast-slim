@@ -23,10 +23,10 @@ return [
 
         "production" => [
             "adapter" => 'mysql',
-            "host" => "localhost",
-            "name" => "production_db",
-            "user" => "root",
-            "pass" => '',
+            "host" => $app->getContainer()->get('database.host'),
+            "name" => $app->getContainer()->get('database.name'),
+            "user" => $app->getContainer()->get('database.username'),
+            "pass" => $app->getContainer()->get('database.password'),
             "port" => 3306,
             "charset" =>  "utf8",
         ]

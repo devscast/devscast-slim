@@ -1,0 +1,1 @@
+[04-Mar-2019 07:59:59 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/devscast/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Table/Column.php on line 662
