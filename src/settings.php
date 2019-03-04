@@ -8,6 +8,8 @@
  * file that was distributed with this source code.
  */
 
+use function DI\get;
+
 return [
 
     /**
@@ -16,12 +18,12 @@ return [
     'settings.responseChunkSize' => 4096,
     'settings.outputBuffering' => 'append',
     'settings.determineRouteBeforeAppMiddleware' => false,
-    'settings.displayErrorDetails' => true,
+    'settings.displayErrorDetails' => get('app.environment') === 'development',
 
     /**
      * Logger configurations
      */
-    'logger.name' => 'devcast',
+    'logger.name' => 'devscast',
     'logger.path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
     'logger.level' => \Monolog\Logger::DEBUG,
 
@@ -30,6 +32,7 @@ return [
      * Views configuration
      */
     'views.path' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views",
-    'views.cache' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
+    'views.cache' =>
+        get('app.environment') == 'development' ? false : dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
 
 ];

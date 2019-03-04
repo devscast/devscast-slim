@@ -1,6 +1,8 @@
 <?php
 return [
 
+    'environment' => 'development',
+
     /**
      * Database configurations
      */
