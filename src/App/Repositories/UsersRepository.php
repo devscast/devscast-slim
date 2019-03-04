@@ -32,4 +32,20 @@ class UsersRepository extends Repository
      * @var UsersEntity
      */
     protected $entity = UsersEntity::class;
+
+    /**
+     * Retrieve a record with a specific condition
+     * @param string $field
+     * @param $value
+     * @return mixed
+     */
+    public function findWith(string $field, $value)
+    {
+        return $this->makeQuery()
+            ->into($this->entity)
+            ->from($this->table)
+            ->select("{$this->table}.*")
+            ->where("{$this->table}.{$field} = ?", [$field => $value])
+            ->all()->get(0);
+    }
 }
