@@ -8,6 +8,7 @@
  * file that was distributed with this source code.
  */
 
+use Admin\Controllers\AuthController;
 use Admin\Controllers\CategoriesController;
 use Admin\Controllers\DashboardController;
 use Admin\Controllers\GalleryController;
@@ -20,6 +21,7 @@ use App\Resources\HomeResource;
 use App\Resources\NewsletterResource;
 use App\Resources\PodcastsResource;
 use App\Resources\StaticResource;
+use Core\Middlewares\LoggedInMiddleware;
 
 /**
  * GENERAL ROUTES (NON RESOURCE ROUTES)
@@ -30,6 +32,8 @@ $app->group('', function () {
     $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
     $this->get('/about', [StaticResource::class, 'about'])->setName('about');
     $this->get('/contact', [StaticResource::class, 'contact'])->setName('contact');
+
+    $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
 });
 
 
@@ -133,7 +137,7 @@ $app->group('/admin', function () {
         $this->post('/send', [NewsletterController::class, 'send'])->setName('admin.newsletter.send');
         $this->delete('/{id:[0-9]+}', [NewsletterController::class, 'delete'])->setName('admin.newsletter.delete');
     });
-});
+})->add(LoggedInMiddleware::class);
 
 
 /**

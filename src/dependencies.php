@@ -25,6 +25,7 @@ return [
     SessionInterface::class => create(PHPSession::class),
 
     \Slim\Csrf\Guard::class => factory(Core\Factories\SlimCSRFGuardFactory::class),
+    \Core\Auth\AuthInterface::class => get(\App\Auth\DatabaseAuth::class),
 
     'logger' => factory(function () {
         $logger = new Monolog\Logger(get('logger.name'));
