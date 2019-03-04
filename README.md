@@ -25,5 +25,19 @@ read the documentation of the project
 php -S localhost:8082 -t docs
 ```
 
+assets compilation using sass
+
+```
+sass --watch resources/sass/main.scss:public/assets/app.css --style=compressed
+```
+
+assets compilation using webpack
+
+```
+yarn install
+yarn build / yarn dev
+```
+
+
 # Questions ?
 for any questions, please read the documentation or submit an issue
