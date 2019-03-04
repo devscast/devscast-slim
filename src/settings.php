@@ -18,7 +18,7 @@ return [
     'settings.responseChunkSize' => 4096,
     'settings.outputBuffering' => 'append',
     'settings.determineRouteBeforeAppMiddleware' => false,
-    'settings.displayErrorDetails' => get('app.environment') === 'development',
+    'settings.displayErrorDetails' => get('app.debug'),
 
     /**
      * Logger configurations
@@ -32,9 +32,7 @@ return [
      * Views configuration
      */
     'views.path' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views",
-    'views.cache' =>
-        get('app.environment') == 'development' ?
-            false :
-            dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
-
+    'views.cache' => !get('app.debug') ?
+        dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__" :
+        false,
 ];
