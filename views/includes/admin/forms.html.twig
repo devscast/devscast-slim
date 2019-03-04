@@ -1,8 +1,38 @@
-{% macro input(label, name, error, value) %}
+{% macro input(label, name, error, value, attr) %}
     <div class="form-group">
         <label for="{{ name }}" class="col-sm-2 control-label">{{ label }}</label>
         <div class="col-sm-12">
-            <input type="text" name="{{ name }}" class="form-control {{ error ? 'has-error' : '' }}" id="{{ name }}"
+            <input type="{{ attr.type ?: 'text' }}" name="{{ name }}" class="form-control {{ error ? 'has-error' : '' }}" id="{{ name }}"
+                   value="{{ value }}">
+            <span class="help-block" style="color: red">
+                {% for e in error %}
+                    {{ e ~ ", " }}
+                {% endfor %}
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro password(label, name, error, value, attr) %}
+    <div class="form-group">
+        <label for="{{ name }}" class="control-label">{{ label }}</label>
+        <div class="col-sm-12">
+            <input type="password" name="{{ name }}" class="form-control {{ error ? 'has-error' : '' }}" id="{{ name }}" value="{{ value }}">
+            <span class="help-block" style="color: red">
+                {% for e in error %}
+                    {{ e ~ ", " }}
+                {% endfor %}
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro email(label, name, error, value, attr) %}
+    <div class="form-group">
+        <label for="{{ name }}" class="control-label">{{ label }}</label>
+        <div class="col-sm-12">
+            <input type="email" name="{{ name }}" class="form-control {{ error ? 'has-error' : '' }}" id="{{ name }}"
                    value="{{ value }}">
             <span class="help-block" style="color: red">
                 {% for e in error %}
