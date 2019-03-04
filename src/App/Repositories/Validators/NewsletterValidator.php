@@ -51,7 +51,7 @@ abstract class NewsletterValidator implements ValidatorInterface
      */
     public static function getValidationRules(): array
     {
-        if(empty(self::$validationRules)) {
+        if (empty(self::$validationRules)) {
             self::$validationRules = [
                 'email' => v::notEmpty()->email()->setName('Email'),
             ];
@@ -65,11 +65,11 @@ abstract class NewsletterValidator implements ValidatorInterface
      */
     public static function getUpdateValidationRules(): array
     {
-        if(empty(self::$updateValidationRules)) {
-        self::$updateValidationRules = [
+        if (empty(self::$updateValidationRules)) {
+            self::$updateValidationRules = [
             'email' => v::notEmpty()->email()->setName('Email'),
-        ];
-    }
+            ];
+        }
         return self::$updateValidationRules;
     }
 

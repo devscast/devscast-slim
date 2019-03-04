@@ -10,7 +10,6 @@
 
 namespace App\Repositories\Validators;
 
-
 use Core\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;
 

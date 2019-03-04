@@ -11,7 +11,6 @@
 
 namespace Admin\Controllers;
 
-
 use Awurth\SlimValidation\Validator;
 use Core\CRUDInterface;
 use Psr\Container\ContainerInterface;

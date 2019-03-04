@@ -33,7 +33,7 @@ class HttpMethodMiddleware
      * @param callable $next
      * @return ResponseInterface
      */
-    function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
     {
         if ($request->isPost()) {
             $method = $request->getParam('_method');

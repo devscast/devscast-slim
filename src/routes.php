@@ -60,33 +60,63 @@ $app->group('/admin', function () {
 
     $this->group('/podcasts', function () {
         $this->get('', [PodcastsController::class, 'index'])->setName('admin.podcasts');
+
         $this->map(['GET', 'POST'], '/create', [PodcastsController::class, 'create'])->setName('admin.podcasts.create');
-        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [PodcastsController::class, 'update'])->setName('admin.podcasts.update');
+
+        $this->map(
+            ['GET', 'PUT'],
+            '/{id:[0-9]+}',
+            [PodcastsController::class, 'update']
+        )->setName('admin.podcasts.update');
+
         $this->delete('/{id:[0-9]+}', [PodcastsController::class, 'delete'])->setName('admin.podcasts.delete');
     });
 
     $this->group('/categories', function () {
         $this->get('', [CategoriesController::class, 'index'])->setName('admin.categories');
-        $this->map(['GET', 'POST'], '/create', [CategoriesController::class, 'create'])->setName('admin.categories.create');
-        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [CategoriesController::class, 'update'])->setName('admin.categories.update');
+
+        $this->map(
+            ['GET', 'POST'],
+            '/create',
+            [CategoriesController::class, 'create']
+        )->setName('admin.categories.create');
+
+        $this->map(
+            ['GET', 'PUT'],
+            '/{id:[0-9]+}',
+            [CategoriesController::class, 'update']
+        )->setName('admin.categories.update');
+
         $this->delete('/{id:[0-9]+}', [CategoriesController::class, 'delete'])->setName('admin.categories.delete');
     });
 
     $this->group('/gallery', function () {
         $this->get('', [GalleryController::class, 'index'])->setName('admin.gallery');
         $this->map(['GET', 'POST'], '/create', [GalleryController::class, 'create'])->setName('admin.gallery.create');
-        $this->map(['GET', 'PUT'], '/{id:[0-9]+}', [GalleryController::class, 'update'])->setName('admin.gallery.update');
+
+        $this->map(
+            ['GET', 'PUT'],
+            '/{id:[0-9]+}',
+            [GalleryController::class, 'update']
+        )->setName('admin.gallery.update');
+
         $this->delete('/{id:[0-9]+}', [GalleryController::class, 'delete'])->setName('admin.gallery.delete');
     });
 
     $this->group('/podcast-links', function () {
         $this->get('', [PodcastLinksController::class, 'index'])->setName('admin.podcastLinks');
-        $this->map(['GET', 'POST'], '/create', [PodcastLinksController::class, 'create'])->setName('admin.podcastLinks.create');
+        $this->map(
+            ['GET', 'POST'],
+            '/create',
+            [PodcastLinksController::class, 'create']
+        )->setName('admin.podcastLinks.create');
+
         $this->map(
             ['GET', 'PUT'],
             '/{id:[0-9]+}',
             [PodcastLinksController::class, 'update']
         )->setName('admin.podcastLinks.update');
+
         $this->delete('/{id:[0-9]+}', [PodcastLinksController::class, 'delete'])->setName('admin.podcastLinks.delete');
     });
 

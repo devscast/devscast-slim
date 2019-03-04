@@ -14,7 +14,6 @@ namespace Core\Uploaders;
 use Cake\Core\Exception\Exception;
 use Psr\Http\Message\UploadedFileInterface;
 
-
 /**
  * Class Upload
  * Super Class for uploading
@@ -138,7 +137,8 @@ class Uploader
     {
         if (file_exists($targetPath)) {
             $info = pathinfo($targetPath);
-            $targetPath = "{$info['dirname']}" . DIRECTORY_SEPARATOR . "{$info['filename']}{$suffix}.{$info['extension']}";
+            $targetPath =
+                "{$info['dirname']}" . DIRECTORY_SEPARATOR . "{$info['filename']}{$suffix}.{$info['extension']}";
             return $this->addSuffix($targetPath);
         }
         return $targetPath;
@@ -178,7 +178,7 @@ class Uploader
                 $this->errors[] = sprintf("Your file is to big, limit is %d", static::MAX_SIZE);
                 return false;
             }
-            $this->errors[] = sprintf(".%s files are not valid use (%s)", $extension, implode(', ', static::EXTENSIONS));
+            $this->errors[] = sprintf("%s files are not valid use (%s)", $extension, implode(', ', static::EXTENSIONS));
             return false;
         }
         $this->errors[] = "You have to upload a file";

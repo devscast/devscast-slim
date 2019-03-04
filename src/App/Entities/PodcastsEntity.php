@@ -10,7 +10,6 @@
 
 namespace App\Entities;
 
-
 /**
  * Class PodcastsEntity
  * Represent a podcast

@@ -33,6 +33,8 @@ return [
      */
     'views.path' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views",
     'views.cache' =>
-        get('app.environment') == 'development' ? false : dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
+        get('app.environment') == 'development' ?
+            false :
+            dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__",
 
 ];

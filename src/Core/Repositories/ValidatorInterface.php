@@ -11,7 +11,6 @@
 
 namespace Core\Repositories;
 
-
 /**
  * Interface RepositoryValidatorInterface
  * Describe how Repository Validators should work

@@ -16,7 +16,6 @@ use Core\Database\Builder\Queries\Select;
 use Core\Database\Builder\Queries\Update;
 use Core\Database\QueryResult;
 
-
 /**
  * Class Query
  * @package Core\Database\Builder
