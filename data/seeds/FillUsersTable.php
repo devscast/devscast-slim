@@ -15,16 +15,13 @@ class FillUsersTable extends AbstractSeed
      */
     public function run()
     {
-        $faker = \Faker\Factory::create('fr_FR');
         $table = $this->table('users');
 
-        for ($i = 0 ; $i < 5; $i++) {
-            $table->insert([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => password_hash($faker->password, PASSWORD_BCRYPT)
-            ]);
-        }
+        $table->insert([
+            'name' => 'admin',
+            'email' => 'admin@devscast.com',
+            'password' => password_hash('admin', PASSWORD_BCRYPT)
+        ]);
         $table->save();
     }
 }
