@@ -1,43 +1,76 @@
-# Backend (Slim Framework 3)
+# Devs-cast.com
 
-## Before all
-hey the devs, here are some rules to respect when you work on this project ...
-as a project manager, I am very meticulous about the code you write :)
+the goal of the project is to create a new way to learn and stay informed about the evolution of technology ...
+and this thanks to the audio support, which starts to take the air because listen is less work than read then devscast will be an application or in other words an online radio where will speak only development and technology
 
-before doing a **commit** make sure that you have **linted** your code in psr2 and psr12 format. to do that, start the command
+the challenge we have is to give this radio intelligence to a website
 
+## Get Started
+devscast is opensource and is programmed in PHP 
+we decided to implement the PSR-7 (https://www.php-fig.org/psr/psr-7) 
+based on the mini-framework Slim (http: //www.slimframework.com/)
+
+## 1 installation
+#### 1.1 fork or clone the project
 ```
-./vendor/bin/phpcs -s
-./vendor/bin/phpcbf
-```
-
-fix typos errors if possible, for advanced configuration **phpcs.xml** contains linter configuration
-
-# Get started
-for the development I recommend you to use the internal php server by launching the command
-```
-php -S localhost:8081 -t public
+$ git clone https://github.com/itofafrica/devscast-backend devscast
 ```
 
-# Documentation
-read the documentation of the project
+#### 1.2 install dependencies
 ```
-php -S localhost:8082 -t docs
-```
-
-assets compilation using sass
-
-```
-sass --watch resources/sass/main.scss:public/assets/app.css --style=compressed
+$ cd devscast
+$ composer install
 ```
 
-assets compilation using webpack
-
+#### 1.3 Create a database configuration and run migrations and seeding
+create your own database configuration by creating a ``settings.local.php`` in the ``src/``
+your configuration should match the ``settings.local.php.exemple`` then run migrations and seeding
 ```
-yarn install
-yarn build / yarn dev
+$ ./vendor/bin/phinx migrate -e development
+$ ./vendor/bin/phinx seed:run -e development
 ```
 
+#### 1.4 Assets compilation
+you can use the webpack devserver to compile assets resources or directly use the sass compliator
+```
+$ yarn install
+$ yarn dev
+```
+or
+```
+$ sass resources/sass/style.scss:public/assets/app.css --watch --style=compressed
+```
 
-# Questions ?
-for any questions, please read the documentation or submit an issue
+#### 1.5 Run the project
+you can use the php internal server or an ``apache`` server. the devs-cast.com host is an apache server
+```
+$ php -S localhost:8080 -t public
+```
+
+## 2 Contributing
+
+fork the project and send us pull requests, or request to join the devscast internal team to : coderngandu@gmail.com
+
+#### 2.1 contributing process
+actually you don't write **unit tests**, 
+* you should test your code manually before pulling a request
+* you should lint your code with ``$ ./vendor/bin/phpcs`` and fix error before a commit
+* you should generate a docs for all change you've dans in a separate commit
+
+#### 2.2 development tools
+lint your code and fix errors the linter configuration is ``phpcs.xml``
+```
+$ ./vendor/bin/phpcs -s
+$ ./vendor/bin/phpcbf
+```
+
+generate API documentation with sami (https://github.com/FriendsOfPHP/Sami)
+```
+$ php sami.phar update docs.config.php
+```
+
+## 3 Requirements
+* PHP >= 7.2.*
+* Nodejs >= 8.*
+* Webpack >= 4.*
+* sass 1.14.3 (dart2js 2.0.0)
