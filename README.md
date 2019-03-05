@@ -55,7 +55,7 @@ fork the project and send us pull requests, or request to join the devscast inte
 actually you don't write **unit tests**, 
 * you should test your code manually before pulling a request
 * you should lint your code with ``$ ./vendor/bin/phpcs`` and fix error before a commit
-* you should generate a docs for all change you've dans in a separate commit
+* you should generate a docs for all change you've done in a separate commit
 
 #### 2.2 development tools
 lint your code and fix errors the linter configuration is ``phpcs.xml``
