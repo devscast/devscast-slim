@@ -13,7 +13,7 @@ based on the mini-framework Slim (http: //www.slimframework.com/)
 ## 1 installation
 #### 1.1 fork or clone the project
 ```
-$ git clone https://github.com/itofafrica/devscast-backend devscast
+$ git clone https://github.com/itotafrica/devscast-backend devscast
 ```
 
 #### 1.2 install dependencies
