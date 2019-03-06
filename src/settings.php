@@ -35,4 +35,13 @@ return [
     'views.cache' => !get('app.debug') ?
         dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__" :
         false,
+
+
+    /**
+     * Twig extensions list
+     */
+    "twig.extensions" => [
+        \Core\Twig\FormTwigExtension::class,
+        \Core\Twig\AuthTwigExtension::class
+    ]
 ];
