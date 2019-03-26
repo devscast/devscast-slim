@@ -42,7 +42,6 @@ class HomeResource extends Resource
         $this->podcasts = $container->get(PodcastsRepository::class);
     }
 
-
     /**
      * Homepage
      * @param ServerRequestInterface $request
@@ -54,11 +53,6 @@ class HomeResource extends Resource
         $hero = $this->podcasts->last();
         $last = $this->podcasts->latest(3);
         $data = array_merge(['podcasts' => $last], compact('hero', 'last'));
-
-        if ($request->getAttribute('isJson')) {
-            return $response->withJson(array_merge(['api.message' => 'home page'], $data), 200);
-        } else {
-            return $this->renderer->render($response, 'index.html.twig', $data);
-        }
+        return $this->renderer->render($response, 'index.html.twig', $data);
     }
 }

@@ -53,10 +53,7 @@ class PodcastsResource extends Resource
         $last = $this->podcasts->latest(3);
         $podcasts = $this->podcasts->all();
         $data = compact('hero', 'last', 'podcasts');
-
-        return ($request->getAttribute('isJson')) ?
-            $response->withJson($data) :
-            $this->renderer->render($response, 'podcasts/index.html.twig', $data);
+        return $this->renderer->render($response, 'podcasts/index.html.twig', $data);
     }
 
 

@@ -47,7 +47,6 @@ class CategoriesResource extends Resource
         $this->podcasts = $container->get(PodcastsRepository::class);
     }
 
-
     /**
      * listing all categories
      * @param ServerRequestInterface $request
@@ -57,9 +56,7 @@ class CategoriesResource extends Resource
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $categories = $this->categories->all();
-        return ($request->getAttribute('isJson')) ?
-            $response->withJson($categories) :
-            $this->renderer->render($response, 'categories/index.html.twig', compact('categories'));
+        return $this->renderer->render($response, 'categories/index.html.twig', compact('categories'));
     }
 
 
@@ -80,9 +77,7 @@ class CategoriesResource extends Resource
             $data = compact('category', 'podcasts');
 
             if ($category->slug == $slug) {
-                return ($request->getAttribute('isJson')) ?
-                    $response->withJson($data) :
-                    $this->renderer->render($response, 'categories/show.html.twig', $data);
+                return $this->renderer->render($response, 'categories/show.html.twig', $data);
             }
             return $this->redirect('categories.show', ['id' => $category->id, 'slug' => $category->slug]);
         }
