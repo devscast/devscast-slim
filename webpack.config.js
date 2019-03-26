@@ -45,7 +45,7 @@ module.exports = (env, argv) => {
                 '@sass': path.resolve(__dirname, 'resources/sass/')
             }
         },
-        devtool: dev ? "cheap-module-eval-source-map" : 'source-map',
+        devtool: 'source-map',
         module: {
             rules: [
                 {
