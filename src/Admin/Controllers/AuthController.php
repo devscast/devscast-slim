@@ -15,6 +15,7 @@ use App\Auth\DatabaseAuth;
 use App\Validators\UsersValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
@@ -71,5 +72,16 @@ class AuthController extends DashboardController
         }
 
         return $this->renderer->render($response, "admin/login.html.twig", compact('input', 'errors'));
+    }
+
+    /**
+     * @param ServerRequestInterface|Request $request
+     * @param ResponseInterface|Response $response
+     * @return ResponseInterface|Response
+     */
+    public function logout(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        $this->databaseAuth->logout();
+        return $this->redirect('home');
     }
 }

@@ -85,7 +85,7 @@ class CRUDController extends DashboardController implements CRUDInterface
             $validator->validate($request, call_user_func([$this->validator, 'getValidationRules']));
             $input = $request->getParams();
             $errors = $validator->getErrors();
-            $params = $this->filter($input, call_user_func([$this->validator, 'getValidationRules']));
+            $params = $this->filter($input, call_user_func([$this->validator, 'getStoreAbleFields']));
 
             if ($validator->isValid()) {
                 $this->repository->create($params);

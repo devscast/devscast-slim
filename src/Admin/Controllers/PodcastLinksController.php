@@ -12,6 +12,7 @@ namespace Admin\Controllers;
 
 
 use App\Repositories\PodcastLinksRepository;
+use App\Validators\PodcastLinksValidator;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -30,7 +31,7 @@ class PodcastLinksController extends CRUDController
     {
         parent::__construct($container);
         $this->repository = $container->get(PodcastLinksRepository::class);
-        $this->validator = null;
-        $this->module = 'podcastlinks';
+        $this->validator = PodcastLinksValidator::class;
+        $this->module = 'podcastLinks';
     }
 }
