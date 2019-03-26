@@ -8,6 +8,12 @@
 
         <nav class="navigation">
             <ul class="menu">
+                {% if currentUser and currentUser.role == 'admin' %}
+                    <li class="menuitem">
+                        <a href="{{ path_for('admin.index') }}" >Admin</a>
+                    </li>
+                {% endif %}
+
                 <li class="menuitem {{ is_current_path('home')? 'active' : '' }}">
                     <a href="{{ path_for('home') }}" >Home</a>
                 </li>
