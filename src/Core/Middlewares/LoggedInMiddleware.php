@@ -14,10 +14,13 @@ namespace Core\Middlewares;
 
 use Core\Auth\AuthInterface;
 use Core\Auth\ForbiddenException;
+use Core\Helpers\RouterAwareHelper;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Interfaces\RouterInterface;
+use Slim\Router;
 
 /**
  * Class LoggedInMiddleware
@@ -26,18 +29,26 @@ use Slim\Http\Response;
 class LoggedInMiddleware
 {
 
+    use RouterAwareHelper;
+
     /**
      * @var AuthInterface
      */
     private $auth;
+    /**
+     * @var RouterInterface
+     */
+    private $router;
 
     /**
      * LoggedInMiddleware constructor.
      * @param AuthInterface $auth
+     * @param RouterInterface|Router $router
      */
-    public function __construct(AuthInterface $auth)
+    public function __construct(AuthInterface $auth, Router $router)
     {
         $this->auth = $auth;
+        $this->router = $router;
     }
 
     /**
@@ -51,7 +62,7 @@ class LoggedInMiddleware
     {
         $user = $this->auth->getUser();
         if (is_null($user)) {
-            throw new ForbiddenException();
+            return $this->redirect('auth.login');
         }
         return $next($request->withAttribute('user', $user), $response);
     }

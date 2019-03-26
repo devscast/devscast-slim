@@ -12,7 +12,6 @@
 
 namespace App\Auth;
 
-
 use App\Repositories\UsersRepository;
 use Core\Auth\AuthInterface;
 use Core\Auth\User;
@@ -76,13 +75,13 @@ class DatabaseAuth implements AuthInterface
      */
     public function getUser(): ?User
     {
-       if (!$this->user) {
-           $userId = $this->session->get('auth.user');
-           if ($userId) {
-               return $this->users->find($userId);
-           }
-           return null;
-       }
-       return $this->user;
+        if (!$this->user) {
+            $userId = $this->session->get('auth.user');
+            if ($userId) {
+                return $this->users->find($userId);
+            }
+            return null;
+        }
+        return $this->user;
     }
 }

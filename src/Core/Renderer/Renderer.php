@@ -22,4 +22,13 @@ use Slim\Views\Twig;
 class Renderer extends Twig
 {
 
+    /**
+     * Renderer constructor.
+     * @param array|string $path
+     * @param array $settings
+     */
+    public function __construct($path, array $settings = [])
+    {
+        parent::__construct($path, $settings);
+    }
 }

@@ -13,7 +13,6 @@ namespace Core\Twig;
 
 use Core\Auth\AuthInterface;
 
-
 /**
  * Class AuthTwigExtension
  * @package Core\Twig

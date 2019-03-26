@@ -17,7 +17,6 @@
 
 namespace App\Repositories\Validators;
 
-
 use Core\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;
 
@@ -76,7 +75,7 @@ abstract class UsersValidator implements ValidatorInterface
      */
     public static function getLoginValidationRules(): array
     {
-        if(is_null(self::$loginValidationRules)) {
+        if (is_null(self::$loginValidationRules)) {
             self::$loginValidationRules = [
                 'email' => v::notEmpty()->email()->setName('Email'),
                 'password' => v::notEmpty()->setName('Password')
