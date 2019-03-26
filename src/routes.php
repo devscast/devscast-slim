@@ -16,12 +16,15 @@ use Admin\Controllers\NewsletterController;
 use Admin\Controllers\PodcastLinksController;
 use Admin\Controllers\PodcastsController;
 use Admin\Controllers\UsersController;
+use App\Middlewares\NotFoundMiddleware;
 use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
 use App\Resources\NewsletterResource;
 use App\Resources\PodcastsResource;
 use App\Resources\StaticResource;
 use Core\Middlewares\LoggedInMiddleware;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * GENERAL ROUTES (NON RESOURCE ROUTES)
@@ -142,8 +145,5 @@ $app->group('/admin', function () {
 
 /**
  * NOT FOUND HANDLER
- * @TODO set up a strong not found handler with a twig view
  */
-$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function () {
-    echo "Not Found";
-});
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', [])->add(NotFoundMiddleware::class);
