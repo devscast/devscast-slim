@@ -12,7 +12,7 @@
 namespace Admin\Controllers;
 
 use App\Auth\DatabaseAuth;
-use App\Repositories\Validators\UsersValidator;
+use App\Validators\UsersValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;

@@ -12,9 +12,8 @@ namespace Admin\Controllers;
 
 use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
-use App\Repositories\Validators\PodcastsValidator;
+use App\Validators\PodcastsValidator;
 use Awurth\SlimValidation\Validator;
-use Core\CRUDInterface;
 use Core\Uploaders\AudioUploader;
 use Core\Uploaders\ImageUploader;
 use Psr\Container\ContainerInterface;
@@ -107,6 +106,7 @@ class PodcastsController extends CRUDController
                 $errors = $validator->getErrors();
                 $input = $request->getParams();
                 $params = $this->filter($input, PodcastsValidator::getUpdateAbleFields());
+                $params['online'] = $params['online'] ?? '0';
 
                 if ($validator->isValid()) {
                     $this->repository->update($id, $params);

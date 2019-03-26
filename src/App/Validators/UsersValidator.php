@@ -8,14 +8,7 @@
  * file that was distributed with this source code.
  */
 
-/**
- * Created by PhpStorm.
- * User: Bernard-ng
- * Date: 3/4/2019
- * Time: 6:00 PM
- */
-
-namespace App\Repositories\Validators;
+namespace App\Validators;
 
 use Core\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;

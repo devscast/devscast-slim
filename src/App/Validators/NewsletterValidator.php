@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Repositories\Validators;
+namespace App\Validators;
 
 use Core\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;

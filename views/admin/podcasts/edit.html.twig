@@ -47,7 +47,7 @@
                                 {{ form.input('Users_id', 'users_id', errors.users_id, input.author ?? user.name ?? 1) }}
                                 {{ form.select('Category', 'categories_id', categories, errors.categories_id, input.categories_id ?? item.categories_id) }}
                                 <br>
-                                {{ form.checkbox('Online', 'online', errors.get('online'), input.online ?? item.online) }}
+                                {{ form.checkbox('Online', 'online', errors.online, input.online ?? item.online) }}
                             </fieldset>
                             <br>
                             <fieldset>

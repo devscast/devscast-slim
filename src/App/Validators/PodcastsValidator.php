@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Repositories\Validators;
+namespace App\Validators;
 
 use Core\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;
@@ -76,6 +76,7 @@ abstract class PodcastsValidator implements ValidatorInterface
                 'slug' => v::optional(v::slug())->setName('Slug'),
                 'description' => v::notEmpty()->notBlank()->setName('Description'),
                 'categories_id' => v::notEmpty()->numeric()->setName('Categories Id'),
+                'online' => v::optional(v::notBlank())->setName('online'),
             ];
         }
         return self::$updateValidationRules;

@@ -11,13 +11,8 @@
 namespace Admin\Controllers;
 
 use App\Repositories\NewsletterRepository;
-use App\Repositories\Validators\NewsletterValidator;
-use Awurth\SlimValidation\Validator;
+use App\Validators\NewsletterValidator;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 /**
  * Class NewsletterController

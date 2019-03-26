@@ -11,14 +11,8 @@
 namespace Admin\Controllers;
 
 use App\Repositories\CategoriesRepository;
-use App\Repositories\Validators\CategoriesValidator;
-use Awurth\SlimValidation\Validator;
-use Core\CRUDInterface;
+use App\Validators\CategoriesValidator;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 /**
  * Class CategoriesController
