@@ -1,5 +1,6 @@
 !admin/
 app.css
+app.css.map
 app.js
 app.js.map
 background.jpg
