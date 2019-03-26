@@ -39,7 +39,7 @@
                             </fieldset>
                             <br>
                             <fieldset>
-                                {{ form.wysiwyg('description', errors.description, input.description) }}
+                                {{ form.textarea('description', 'description', errors.description, input.description) }}
                             </fieldset>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -58,12 +58,4 @@
 {% block javascriptPlugins %}
     <script src="{{ base_url() ~ '/assets/admin/plugins/ckeditor/ckeditor.js' }}"></script>
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
-{% endblock %}
-
-{% block javascript %}
-    <script>
-        $(function () {
-            ClassicEditor.create(document.querySelector('#description'))
-        })
-    </script>
 {% endblock %}

@@ -81,6 +81,21 @@
 {% endmacro %}
 
 
+{% macro textarea(label, name, error, value, attr) %}
+    <div class="form-group">
+        <label for="{{ name }}" class="control-label">{{ label }}</label>
+        <div class="col-sm-12">
+            <textarea name="{{ name }}" class="form-control {{ error ? 'has-error' : '' }}" id="{{ name }}">{{ value }}</textarea>
+            <span class="help-block" style="color: red">
+                {% for e in error %}
+                    {{ e ~ ", " }}
+                {% endfor %}
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
 {% macro wysiwyg(name, error, value) %}
     {% if error %}
         <div class="row">

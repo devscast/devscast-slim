@@ -192,5 +192,10 @@
                 </li>
             </ul>
         </nav>
+        <div style="height: 1px; border-top:  1px solid #848484; margin: 20px 0;"></div>
+        <form action="{{ path_for('auth.logout') }}" method="post" style="display: block">
+            {{ _csrf() }}
+            <button class="btn btn-block btn-danger">Log out</button>
+        </form>
     </div>
 </aside>

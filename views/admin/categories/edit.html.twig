@@ -36,11 +36,11 @@
                             {{ _csrf() }}
                             {{ _method('PUT') }}
                             <fieldset>
-                                {{ form.input('Name', 'name', errors.get('name'), input.name ?? item.name) }}
-                                {{ form.input('Slug', 'slug', errors.get('slug'), input.slug ?? item.slug) }}
+                                {{ form.input('Name', 'name', errors.name, input.name ?? item.name) }}
+                                {{ form.input('Slug', 'slug', errors.slug, input.slug ?? item.slug) }}
                             </fieldset>
                             <fieldset>
-                                {{ form.wysiwyg('description', errors.description, input.description) }}
+                                {{ form.textarea('Description', 'description', errors.description, input.description ?? item.description) }}
                             </fieldset>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -59,12 +59,4 @@
 {% block javascriptPlugins %}
     <script src="{{ base_url() ~ '/assets/admin/plugins/ckeditor/ckeditor.js' }}"></script>
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
-{% endblock %}
-
-{% block javascript %}
-    <script>
-        $(function () {
-            ClassicEditor.create(document.querySelector('#description'))
-        })
-    </script>
 {% endblock %}
