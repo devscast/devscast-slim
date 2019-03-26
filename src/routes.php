@@ -37,6 +37,7 @@ $app->group('', function () {
     $this->get('/contact', [StaticResource::class, 'contact'])->setName('contact');
 
     $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
+    $this->post('/logout', [AuthController::class, 'logout'])->setName('auth.logout');
 });
 
 
