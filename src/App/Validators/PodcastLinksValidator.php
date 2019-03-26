@@ -11,40 +11,36 @@
 
 namespace App\Validators;
 
+
 use Core\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;
 
 /**
- * Class CategoriesValidator
- * Implementation for categories
- * @package App\Repositories\Validators
- * @author bernard-ng, https://bernard-ng.github.io
+ * Class PodcastLinksValidator
+ * @package App\Validators
  */
-abstract class CategoriesValidator implements ValidatorInterface
+abstract class PodcastLinksValidator implements ValidatorInterface
 {
-    /**
-     * Validation rules
-     * @var array
-     */
-    private static $validationRules = [];
 
     /**
-     * Validation rules when there is an update
      * @var array
      */
-    private static $updateValidationRules = [];
+    private static $updateAbleFields = ['reference', 'description'];
 
     /**
-     * List of fields that can be stored in the Repository
      * @var array
      */
-    private static $storeAbleFields = [];
+    private static $storeAbleFields = ['reference', 'podcasts_id', 'description'];
 
     /**
-     * List of fields that can be updated in the Repository
      * @var array
      */
-    private static $updateAbleFields = ['name', 'slug', 'description'];
+    private static $validationRules;
+
+    /**
+     * @var array
+     */
+    private static $updateValidationRules;
 
     /**
      * Retrieve validation rules
@@ -54,9 +50,8 @@ abstract class CategoriesValidator implements ValidatorInterface
     {
         if (empty(self::$validationRules)) {
             self::$validationRules = [
-                'name' => v::notEmpty()->setName('Name'),
-                'slug' => v::optional(v::slug())->setName('Slug'),
-                'description' => v::notEmpty()->notBlank()->setName('Description'),
+                'reference' => v::notEmpty()->setName('Reference'),
+                'description' => v::notEmpty()->setName('Description')
             ];
         }
         return self::$validationRules;
@@ -69,23 +64,22 @@ abstract class CategoriesValidator implements ValidatorInterface
     public static function getUpdateValidationRules(): array
     {
         if (empty(self::$updateValidationRules)) {
-            self::$validationRules = [
-                'name' => v::notEmpty()->setName('Name'),
-                'slug' => v::optional(v::slug())->setName('Slug'),
-                'description' => v::notEmpty()->notBlank()->setName('Description'),
+            self::$updateValidationRules = [
+                'reference' => v::notEmpty()->setName('Reference'),
+                'description' => v::notEmpty()->setName('Description')
             ];
         }
         return self::$updateValidationRules;
     }
 
     /**
-     * rRetrieve the list of storeable fields
+     * Retrieve the list of storeable fields
      * @return array
      */
     public static function getStoreAbleFields(): array
     {
         if (empty(self::$storeAbleFields)) {
-            self::$storeAbleFields = array_keys(self::getValidationRules());
+            self::$storeAbleFields = array_keys(self::getUpdateAbleFields());
         }
         return self::$storeAbleFields;
     }
@@ -97,7 +91,7 @@ abstract class CategoriesValidator implements ValidatorInterface
     public static function getUpdateAbleFields(): array
     {
         if (empty(self::$updateAbleFields)) {
-            self::$updateAbleFields = array_keys(self::getUpdateValidationRules());
+            self::$updateAbleFields = array_keys(self::getUpdateAbleFields());
         }
         return self::$updateAbleFields;
     }
