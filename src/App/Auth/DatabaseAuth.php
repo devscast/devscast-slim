@@ -70,6 +70,14 @@ class DatabaseAuth implements AuthInterface
     }
 
     /**
+     * Logout a user
+     */
+    public function logout()
+    {
+        $this->session->delete('auth.user');
+    }
+
+    /**
      * Retrieve a logged user or null
      * @return User|null
      */
