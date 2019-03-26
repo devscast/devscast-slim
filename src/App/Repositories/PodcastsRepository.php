@@ -63,13 +63,37 @@ class PodcastsRepository extends Repository
     }
 
     /**
+     * Retrieve online podcasts
+     * @return mixed
+     */
+    public function allOnline()
+    {
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.online = 1")
+            ->all()->get();
+    }
+
+    /**
+     * Retrieve offline podcasts
+     * @return mixed
+     */
+    public function allOffline()
+    {
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.online = 0")
+            ->all()->get();
+    }
+
+    /**
      * Retrieve the latest podcasts
      * @param int $limit
      * @return Object|array|mixed
      */
     public function latest(int $limit)
     {
-        return $this->withCategoryaAndUser()->limit($limit)->all()->get();
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.online = 1")
+            ->limit($limit)->all()->get();
     }
 
     /**
@@ -78,7 +102,9 @@ class PodcastsRepository extends Repository
      */
     public function last()
     {
-        return $this->withCategoryaAndUser()->limit(1)->all()->get(0);
+        return $this->withCategoryaAndUser()
+            ->where("{$this->table}.online = 1")
+            ->limit(1)->all()->get(0);
     }
 
     /**
@@ -106,7 +132,6 @@ class PodcastsRepository extends Repository
             ->all()->get();
     }
 
-
     /**
      * Base Query for singlePagination
      * @return Select
@@ -129,6 +154,7 @@ class PodcastsRepository extends Repository
     {
         return $this->singlePagination()
             ->where("{$this->table}.id > ?", compact('id'))
+            ->where("{$this->table}.online = 1")
             ->orderBy("{$this->table}.id ASC")
             ->all()->get(0);
     }
@@ -142,6 +168,7 @@ class PodcastsRepository extends Repository
     {
         return $this->singlePagination()
             ->where("{$this->table}.id < ?", compact('id'))
+            ->where("{$this->table}.online = 1")
             ->orderBy("{$this->table}.id DESC")
             ->all()->get(0);
     }
