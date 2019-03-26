@@ -73,7 +73,7 @@
                                 <br>
                                 {{ form.input('Name', 'name', errors.name, input.name) }}
                                 {{ form.input('Slug', 'slug', errors.slug, input.slug) }}
-                                {{ form.input('Users_id', 'users_id', errors.users_id, input.author ?? user.name ?? 1) }}
+                                {{ form.input('Users_id', 'users_id', errors.users_id, input.users_id ?? user.id ?? 1) }}
                                 {{ form.select('Category_id', 'categories_id', categories, errors.categories_id) }}
                                 <br>
                                 {{ form.checkbox('Online', 'online', errors.online) }}

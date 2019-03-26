@@ -1,1 +1,17 @@
-<h1>Not Found twig</h1>
+{% extends 'layouts/main.html.twig' %}
+
+{% block content %}
+    <main id="main" class="main">
+        <section class="page-error" style="background-image: url('http://localhost/photofills')">
+            <div class="page-error-inner">
+                <div class="container">
+                    <div class="page-error-content text-center">
+                        <h2>Page not Found</h2>
+                        <p class="mb-40">The page you are looking for doesn't exist. <br /> Don't worry... It happens to the best of us.</p>
+                        <a href="{{ path_for('home') }}" class="btn btn-info">Back to home</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

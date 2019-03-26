@@ -1,15 +1,15 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ path_for('admin.index') }}" class="brand-link">
-        <span class="brand-text font-weight-light">Devcast <strong>Admin</strong></span>
+        <span class="brand-text font-weight-light">Devscast <strong>Admin</strong></span>
     </a>
 
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/assets/admin/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ base_url() ~ '/assets/admin/dist/img/avatar.png' }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ user.link }}" class="d-block">{{ user.name ?? 'bernard-ng' }}</a>
+                <a href="{{ path_for('admin.index') }}" class="d-block">{{ currentUser.name }}</a>
             </div>
         </div>
 
