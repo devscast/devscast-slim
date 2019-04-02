@@ -1,28 +1,15 @@
-<section id="donate" class="section-highlight text-center">
-    <div class="container">
-
-        <!-- ===== SECTION TITLE ===== -->
-        <h2 class="title-default">We need your help</h2>
-        <p class="section-description">Help us support the show! Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br />  Vel modi rem laudantium, alias minus temporibus nihil reiciendis vero.</p>
-
-        <!-- ===== DONATE VALUES ===== -->
-        <div class="row mb-50">
-
-            <div class="col-lg-3 col-sm-6 mb-20">
-                <a href="#" class="btn btn-default btn-round btn-lg btn-block">U$ 5</a>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mb-20">
-                <a href="#" class="btn btn-default btn-round btn-lg btn-block">U$ 10</a>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mb-20">
-                <a href="#" class="btn btn-default btn-round btn-lg btn-block">U$ 25</a>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mb-20">
-                <a href="#" class="btn btn-default btn-round btn-lg btn-block">U$ 50</a>
-            </div>
+{% if quote %}
+    <section id="donate" class="section-highlight text-center">
+        <div class="container">
+            <blockquote>
+                <p>{{ quote.en ?: quote.sr }}</p>
+                <p>
+                    {% if quote.source %}
+                       <small>source : {{ quote.source }}</small>
+                    {% endif %}
+                </p>
+                <cite>{{ quote.author }}</cite>
+            </blockquote>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
