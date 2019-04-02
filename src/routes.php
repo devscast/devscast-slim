@@ -35,6 +35,7 @@ $app->group('', function () {
     $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
     $this->get('/about', [StaticResource::class, 'about'])->setName('about');
     $this->get('/contact', [StaticResource::class, 'contact'])->setName('contact');
+    $this->get('/search', [])->setName('search');
 
     $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
     $this->post('/logout', [AuthController::class, 'logout'])->setName('auth.logout');
