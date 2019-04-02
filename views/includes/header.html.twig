@@ -8,30 +8,30 @@
 
         <nav class="navigation">
             <ul class="menu">
+                <li class="menuitem">
+                    <a href="{{ path_for('search') }}">search &nbsp;<span><i class="fa fa-search"></i></span></a>
+                </li>
+
                 {% if currentUser and currentUser.role == 'admin' %}
                     <li class="menuitem">
                         <a href="{{ path_for('admin.index') }}" >Admin</a>
                     </li>
                 {% endif %}
 
-                <li class="menuitem {{ is_current_path('home')? 'active' : '' }}">
-                    <a href="{{ path_for('home') }}" >Home</a>
-                </li>
-
                 <li class="menuitem {{ is_current_path('podcasts.index') ? 'active' : '' }}">
-                    <a href="{{ path_for('podcasts.index') }}">Podcasts</a>
+                    <a href="{{ path_for('podcasts.index') }}">Podcasts &nbsp;<span><i class="fa fa-microphone"></i></span></a>
                 </li>
 
                 <li class="menuitem {{ is_current_path('categories.index')? 'active' : '' }}">
-                    <a href="{{ path_for('categories.index') }}">Categories</a>
+                    <a href="{{ path_for('categories.index') }}">Categories &nbsp;<span><i class="fa fa-tags"></i></span></a>
                 </li>
 
                 <li class="menuitem {{ is_current_path('about')? 'active' : '' }}">
-                    <a href="{{ path_for('about') }}">About</a>
+                    <a href="{{ path_for('about') }}">About &nbsp;<span><i class="fa fa-question-circle"></i></span></a>
                 </li>
 
                 <li class="menuitem {{ is_current_path('contact')? 'active' : '' }}">
-                    <a href="{{ path_for('contact') }}">Contact</a>
+                    <a href="{{ path_for('contact') }}">Contact &nbsp;<span><i class="fa fa-envelope"></i></span></a>
                 </li>
             </ul>
 
