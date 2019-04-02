@@ -11,6 +11,7 @@
 namespace App\Resources;
 
 use App\Repositories\PodcastsRepository;
+use App\Repositories\QuotesRepository;
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -51,8 +52,8 @@ class HomeResource extends Resource
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $hero = $this->podcasts->last();
-        $last = $this->podcasts->latest(3);
-        $data = array_merge(['podcasts' => $last], compact('hero', 'last'));
-        return $this->renderer->render($response, 'index.html.twig', $data);
+        $podcasts = $this->podcasts->latest(3);
+        $quote = $this->container->get(QuotesRepository::class)->random();
+        return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero', 'last', 'quote'));
     }
 }
