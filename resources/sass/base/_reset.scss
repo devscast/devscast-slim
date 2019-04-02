@@ -151,12 +151,25 @@ hr {
 }
 
 blockquote {
-  padding: 30px;
-  background: #e7e7e7;
-  border-left: 5px solid #dddddd;
+  padding: 40px;
+  border: none !important;
+  font-size: 2rem;
+}
+
+blockquote small {
+  &:before {
+    content: "";
+  }
+  color: rgba(207, 207, 207, 0.7)
 }
 
 blockquote cite {
+
+  &:before {
+    content : "\2014 \00A0 "
+  }
+  font-weight: bold;
+  font-style: normal;
   display: block;
 }
 
