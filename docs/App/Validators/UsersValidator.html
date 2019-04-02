@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Core\Repositories\ValidatorInterface | Devcast API</title>
+    <title>App\Validators\UsersValidator | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Core_Repositories_ValidatorInterface" data-root-path="../../">
+    <body id="class" data-name="class:App_Validators_UsersValidator" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,29 +65,29 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Repositories.html">Repositories</a></li><li class="backslash">\</li><li>ValidatorInterface</li>
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Validators.html">Validators</a></li><li class="backslash">\</li><li>UsersValidator</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ValidatorInterface
+            UsersValidator
                 
         </h1>
     </div>
 
-    <p>    interface
-    <strong>ValidatorInterface</strong>
+    <p>abstract     class
+    <strong>UsersValidator</strong>        implements
+        <a href="../../Core/Repositories/ValidatorInterface.html"><abbr title="Core\Repositories\ValidatorInterface">ValidatorInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Interface RepositoryValidatorInterface
-Describe how Repository Validators should work</p>                                </div>
+            <p>Class UsersValidator</p>                                </div>
     
     
     
@@ -135,6 +135,16 @@ Describe how Repository Validators should work</p>                              
                                             <p>Retrieve the list of updateable fields</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLoginValidationRules">getLoginValidationRules</a>()
+        
+                                            <p>Retrieve validations rules for login action</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -143,7 +153,7 @@ Describe how Repository Validators should work</p>                              
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getValidationRules">
-        <div class="location">at         line 27</div>
+        <div class="location">at         line 32</div>
         <code>        static            array
     <strong>getValidationRules</strong>()
         </code>
@@ -173,7 +183,7 @@ Describe how Repository Validators should work</p>                              
             </div>
                     <div class="method-item">
                     <h3 id="method_getUpdateValidationRules">
-        <div class="location">at         line 33</div>
+        <div class="location">at         line 41</div>
         <code>        static            array
     <strong>getUpdateValidationRules</strong>()
         </code>
@@ -203,7 +213,7 @@ Describe how Repository Validators should work</p>                              
             </div>
                     <div class="method-item">
                     <h3 id="method_getStoreAbleFields">
-        <div class="location">at         line 39</div>
+        <div class="location">at         line 50</div>
         <code>        static            array
     <strong>getStoreAbleFields</strong>()
         </code>
@@ -233,7 +243,7 @@ Describe how Repository Validators should work</p>                              
             </div>
                     <div class="method-item">
                     <h3 id="method_getUpdateAbleFields">
-        <div class="location">at         line 45</div>
+        <div class="location">at         line 59</div>
         <code>        static            array
     <strong>getUpdateAbleFields</strong>()
         </code>
@@ -244,6 +254,36 @@ Describe how Repository Validators should work</p>                              
 
                     <div class="method-description">
                                     <p>Retrieve the list of updateable fields</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLoginValidationRules">
+        <div class="location">at         line 69</div>
+        <code>        static            array
+    <strong>getLoginValidationRules</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieve validations rules for login action</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>

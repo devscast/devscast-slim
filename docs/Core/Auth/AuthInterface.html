@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>App\Entities\UsersEntity | Devcast API</title>
+    <title>Core\Auth\AuthInterface | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:App_Entities_UsersEntity" data-root-path="../../">
+    <body id="class" data-name="class:Core_Auth_AuthInterface" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,84 +65,43 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Entities.html">Entities</a></li><li class="backslash">\</li><li>UsersEntity</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Auth.html">Auth</a></li><li class="backslash">\</li><li>AuthInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            UsersEntity
+            AuthInterface
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>UsersEntity</strong>        implements
-        <a href="../../Core/Auth/User.html"><abbr title="Core\Auth\User">User</abbr></a>
+    <p>    interface
+    <strong>AuthInterface</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Class UsersEntity
-Represent a user</p>                                </div>
+            <p>Interface AuthInterface</p>                                </div>
     
     
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_name">
-                                                                                string
-                </td>
-                <td>$name</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_email">
-                                                                                string
-                </td>
-                <td>$email</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_password">
-                                                                                string
-                </td>
-                <td>$password</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="Core\Auth\Core\Auth\User">User</abbr>|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUsername">getUsername</a>()
+                    <a href="#method_getUser">getUser</a>()
         
-                                            <p>Retrieve the username</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getRoles">getRoles</a>()
-        
-                                            <p>Retrieve the roles of a user</p>                </div>
+                                            <p>Retrieve a logged user or null</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -152,10 +111,10 @@ Represent a user</p>                                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getUsername">
-        <div class="location">at         line 45</div>
-        <code>                    string
-    <strong>getUsername</strong>()
+                    <h3 id="method_getUser">
+        <div class="location">at         line 24</div>
+        <code>                    <abbr title="Core\Auth\Core\Auth\User">User</abbr>|null
+    <strong>getUser</strong>()
         </code>
     </h3>
     <div class="details">
@@ -163,44 +122,14 @@ Represent a user</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Retrieve the username</p>                                                </div>
+                                    <p>Retrieve a logged user or null</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getRoles">
-        <div class="location">at         line 54</div>
-        <code>                    array
-    <strong>getRoles</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Retrieve the roles of a user</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
+            <td><abbr title="Core\Auth\Core\Auth\User">User</abbr>|null</td>
             <td></td>
         </tr>
     </table>

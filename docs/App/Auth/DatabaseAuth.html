@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Core\Repositories\ValidatorInterface | Devcast API</title>
+    <title>App\Auth\DatabaseAuth | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Core_Repositories_ValidatorInterface" data-root-path="../../">
+    <body id="class" data-name="class:App_Auth_DatabaseAuth" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,29 +65,29 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Repositories.html">Repositories</a></li><li class="backslash">\</li><li>ValidatorInterface</li>
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Auth.html">Auth</a></li><li class="backslash">\</li><li>DatabaseAuth</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ValidatorInterface
+            DatabaseAuth
                 
         </h1>
     </div>
 
-    <p>    interface
-    <strong>ValidatorInterface</strong>
+    <p>    class
+    <strong>DatabaseAuth</strong>        implements
+        <a href="../../Core/Auth/AuthInterface.html"><abbr title="Core\Auth\AuthInterface">AuthInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Interface RepositoryValidatorInterface
-Describe how Repository Validators should work</p>                                </div>
+            <p>Class DatabaseAuth</p>                                </div>
     
     
     
@@ -97,42 +97,42 @@ Describe how Repository Validators should work</p>                              
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getValidationRules">getValidationRules</a>()
+                    <a href="#method___construct">__construct</a>(<a href="../../App/Repositories/UsersRepository.html"><abbr title="App\Repositories\UsersRepository">UsersRepository</abbr></a> $users, <a href="../../Core/Session/SessionInterface.html"><abbr title="Core\Session\SessionInterface">SessionInterface</abbr></a> $session)
         
-                                            <p>Retrieve validation rules</p>                </div>
+                                            <p>DatabaseAuth constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    <abbr title="App\Auth\Core\Auth\User">User</abbr>|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUpdateValidationRules">getUpdateValidationRules</a>()
+                    <a href="#method_login">login</a>(string $email, string $password)
         
-                                            <p>Retrieve update validation rules</p>                </div>
+                                            <p>Return a user if credentials are correct</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getStoreAbleFields">getStoreAbleFields</a>()
+                    <a href="#method_logout">logout</a>()
         
-                                            <p>Retrieve the list of storeable fields</p>                </div>
+                                            <p>Logout a user</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    <abbr title="Core\Auth\Core\Auth\User">User</abbr>|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUpdateAbleFields">getUpdateAbleFields</a>()
+                    <a href="#method_getUser">getUser</a>()
         
-                                            <p>Retrieve the list of updateable fields</p>                </div>
+                                            <p>Retrieve a logged user or null</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -142,10 +142,10 @@ Describe how Repository Validators should work</p>                              
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getValidationRules">
-        <div class="location">at         line 27</div>
-        <code>        static            array
-    <strong>getValidationRules</strong>()
+                    <h3 id="method___construct">
+        <div class="location">at         line 47</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../App/Repositories/UsersRepository.html"><abbr title="App\Repositories\UsersRepository">UsersRepository</abbr></a> $users, <a href="../../Core/Session/SessionInterface.html"><abbr title="Core\Session\SessionInterface">SessionInterface</abbr></a> $session)
         </code>
     </h3>
     <div class="details">
@@ -153,14 +153,65 @@ Describe how Repository Validators should work</p>                              
     
 
                     <div class="method-description">
-                                    <p>Retrieve validation rules</p>                                                </div>
+                                    <p>DatabaseAuth constructor.</p>                                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../App/Repositories/UsersRepository.html"><abbr title="App\Repositories\UsersRepository">UsersRepository</abbr></a></td>
+                <td>$users</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Core/Session/SessionInterface.html"><abbr title="Core\Session\SessionInterface">SessionInterface</abbr></a></td>
+                <td>$session</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_login">
+        <div class="location">at         line 59</div>
+        <code>                    <abbr title="App\Auth\Core\Auth\User">User</abbr>|null
+    <strong>login</strong>(string $email, string $password)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a user if credentials are correct</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$email</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td><abbr title="App\Auth\Core\Auth\User">User</abbr>|null</td>
             <td></td>
         </tr>
     </table>
@@ -172,10 +223,10 @@ Describe how Repository Validators should work</p>                              
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getUpdateValidationRules">
-        <div class="location">at         line 33</div>
-        <code>        static            array
-    <strong>getUpdateValidationRules</strong>()
+                    <h3 id="method_logout">
+        <div class="location">at         line 75</div>
+        <code>                    
+    <strong>logout</strong>()
         </code>
     </h3>
     <div class="details">
@@ -183,18 +234,9 @@ Describe how Repository Validators should work</p>                              
     
 
                     <div class="method-description">
-                                    <p>Retrieve update validation rules</p>                                                </div>
+                                    <p>Logout a user</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -202,10 +244,10 @@ Describe how Repository Validators should work</p>                              
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getStoreAbleFields">
-        <div class="location">at         line 39</div>
-        <code>        static            array
-    <strong>getStoreAbleFields</strong>()
+                    <h3 id="method_getUser">
+        <div class="location">at         line 84</div>
+        <code>                    <abbr title="Core\Auth\Core\Auth\User">User</abbr>|null
+    <strong>getUser</strong>()
         </code>
     </h3>
     <div class="details">
@@ -213,44 +255,14 @@ Describe how Repository Validators should work</p>                              
     
 
                     <div class="method-description">
-                                    <p>Retrieve the list of storeable fields</p>                                                </div>
+                                    <p>Retrieve a logged user or null</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getUpdateAbleFields">
-        <div class="location">at         line 45</div>
-        <code>        static            array
-    <strong>getUpdateAbleFields</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Retrieve the list of updateable fields</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
+            <td><abbr title="Core\Auth\Core\Auth\User">User</abbr>|null</td>
             <td></td>
         </tr>
     </table>
