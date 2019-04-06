@@ -1,25 +1,27 @@
-<meta name="theme-color" content="#fff" />
+<meta charset="{{ page.charset ?: 'utf-8' }}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="{{ page.themeColor }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
-<meta name="author" content="bernard-ng" />
-<meta name="reply-to" content="contact@devs-cast.com" />
-<meta name="keywords" content="soundcast, html5 template, creative template, themeforest, podcast template, podcast theme" />
-<meta name="description" content="A clean, lightweight and responsive podcast theme." />
-<meta name="GOOGLEBOT" content="INDEX, FOLLOW" />
-<meta name="robots" content="index, follow">
-<meta name="msnbot" content="NOODP" />
+<meta name="author" content="{{ page.author }}" />
+<meta name="reply-to" content="{{ page.reply-to }}" />
+<meta name="keywords" content="{{ page.keywords }}" />
+<meta name="description" content="{{ page.description }}" />
+<meta name="googlebot" content="{{ page.bots.googlebot }}" />
+<meta name="robots" content="{{ page.bots.robots }}">
+<meta name="msnbot" content="{{ page.bots.msnbot }}" />
 
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Devscast" />
-<meta property="og:description" content="Podcast Responsive Theme" />
-<meta property="og:url" content="http://www.reidark.com.br/soundcast" />
-<meta property="og:site_name" content="Soundcast" />
-<meta property="og:image" content="http://www.reidark.com.br/soundcast/assets/img/facebook-og.jpg" />
+<meta property="og:locale" content="{{ page.lang }}" />
+<meta property="og:type" content="{{ page.type }}" />
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="og:description" content="{{ page.description }}" />
+<meta property="og:url" content="{{ page.url }}" />
+<meta property="og:site_name" content="{{ page.siteName }}" />
+<meta property="og:image" content="{{ page.image }}" />
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="http://www.reidark.com.br/soundcast" />
-<meta name="twitter:creator" content="@reidarking" />
-<meta name="twitter:title" content="Soundcast" />
-<meta name="twitter:description" content="Podcast Responsive Theme" />
-<meta name="twitter:domain" content="reidark" />
-<meta name="twitter:image" content="http://www.reidark.com.br/soundcast/assets/img/twitter-og.jpg" />
+<meta name="twitter:site" content="{{ page.siteUrl }}" />
+<meta name="twitter:creator" content="{{ page.author }}" />
+<meta name="twitter:title" content="{{ page.title }}" />
+<meta name="twitter:description" content="{{ page.descirption }}" />
+<meta name="twitter:domain" content="{{ page.domain }}" />
+<meta name="twitter:image" content="{{ page.image }}" />
