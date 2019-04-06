@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>App\Validators\PodcastLinksValidator | Devcast API</title>
+    <title>App\Repositories\MetaDataRepository | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:App_Validators_PodcastLinksValidator" data-root-path="../../">
+    <body id="class" data-name="class:App_Repositories_MetaDataRepository" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,73 +66,73 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Validators.html">Validators</a></li><li class="backslash">\</li><li>PodcastLinksValidator</li>
+                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Repositories.html">Repositories</a></li><li class="backslash">\</li><li>MetaDataRepository</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            PodcastLinksValidator
+            MetaDataRepository
                 
         </h1>
     </div>
 
-    <p>abstract     class
-    <strong>PodcastLinksValidator</strong>        implements
-        <a href="../../Core/Repositories/ValidatorInterface.html"><abbr title="Core\Repositories\ValidatorInterface">ValidatorInterface</abbr></a>
+    <p>    class
+    <strong>MetaDataRepository</strong>        extends <a href="../../App/Repositories/JsonFileRepository.html"><abbr title="App\Repositories\JsonFileRepository">JsonFileRepository</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Class PodcastLinksValidator</p>                                </div>
+            <p>Class MetaDataRepository</p>                                </div>
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_file">
+                                        protected                                        string
+                </td>
+                <td>$file</td>
+                <td class="last">database</td>
+                <td><small>from&nbsp;<a href="../../App/Repositories/JsonFileRepository.html#property_file"><abbr title="App\Repositories\JsonFileRepository">JsonFileRepository</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_data">
+                                        protected                                        <a target="_blank" href="http://php.net/stdClass">stdClass</a>[]|array
+                </td>
+                <td>$data</td>
+                <td class="last">quotes fetched form file</td>
+                <td><small>from&nbsp;<a href="../../App/Repositories/JsonFileRepository.html#property_data"><abbr title="App\Repositories\JsonFileRepository">JsonFileRepository</abbr></a></small></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    mixed|<a target="_blank" href="http://php.net/stdClass">stdClass</a>[]|string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getValidationRules">getValidationRules</a>()
+                    <a href="#method_getData">getData</a>()
         
-                                            <p>Retrieve validation rules</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Parse the json file</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../App/Repositories/JsonFileRepository.html#method_getData"><abbr title="App\Repositories\JsonFileRepository">JsonFileRepository</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUpdateValidationRules">getUpdateValidationRules</a>()
+                    <a href="#method___construct">__construct</a>(string $file = ROOT . &quot;/data/meta.json&quot;)
         
-                                            <p>Retrieve update validation rules</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getStoreAbleFields">getStoreAbleFields</a>()
-        
-                                            <p>Retrieve the list of storeable fields</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getUpdateAbleFields">getUpdateAbleFields</a>()
-        
-                                            <p>Retrieve the list of updateable fields</p>                </div>
+                                            <p>MetaDataRepository constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -142,10 +142,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getValidationRules">
-        <div class="location">at         line 48</div>
-        <code>        static            array
-    <strong>getValidationRules</strong>()
+                    <h3 id="method_getData">
+        <div class="location">in <a href="../../App/Repositories/JsonFileRepository.html#method_getData"><abbr title="App\Repositories\JsonFileRepository">JsonFileRepository</abbr></a> at         line 37</div>
+        <code>                    mixed|<a target="_blank" href="http://php.net/stdClass">stdClass</a>[]|string
+    <strong>getData</strong>()
         </code>
     </h3>
     <div class="details">
@@ -153,14 +153,14 @@
     
 
                     <div class="method-description">
-                                    <p>Retrieve validation rules</p>                                                </div>
+                                    <p>Parse the json file</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td>mixed|<a target="_blank" href="http://php.net/stdClass">stdClass</a>[]|string</td>
             <td></td>
         </tr>
     </table>
@@ -172,10 +172,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getUpdateValidationRules">
-        <div class="location">at         line 63</div>
-        <code>        static            array
-    <strong>getUpdateValidationRules</strong>()
+                    <h3 id="method___construct">
+        <div class="location">at         line 23</div>
+        <code>                    
+    <strong>__construct</strong>(string $file = ROOT . &quot;/data/meta.json&quot;)
         </code>
     </h3>
     <div class="details">
@@ -183,78 +183,19 @@
     
 
                     <div class="method-description">
-                                    <p>Retrieve update validation rules</p>                                                </div>
+                                    <p>MetaDataRepository constructor.</p>                                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td>string</td>
+                <td>$file</td>
+                <td></td>
+            </tr>
+            </table>
 
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getStoreAbleFields">
-        <div class="location">at         line 78</div>
-        <code>        static            array
-    <strong>getStoreAbleFields</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Retrieve the list of storeable fields</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getUpdateAbleFields">
-        <div class="location">at         line 90</div>
-        <code>        static            array
-    <strong>getUpdateAbleFields</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Retrieve the list of updateable fields</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
