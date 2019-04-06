@@ -8,38 +8,38 @@
  * file that was distributed with this source code.
  */
 
-use DI\Bridge\Slim\App;
-
-if (PHP_SAPI == 'cli-server') {
-    $url  = parse_url($_SERVER['REQUEST_URI']);
-    $file = __DIR__ . $url['path'];
-    if (is_file($file)) {
-        return false;
-    }
-}
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_name('devcast_api');
-    session_start();
-}
 
 require(dirname(__DIR__) . '/vendor/autoload.php');
+require(dirname(__DIR__) . '/config/constants.php');
 
+$app = new class() extends DI\Bridge\Slim\App {
+    public function configure()
+    {
+        if (PHP_SAPI == 'cli-server') {
+            $url  = parse_url($_SERVER['REQUEST_URI']);
+            $file = __DIR__ . $url['path'];
+            if (is_file($file)) {
+                return false;
+            }
+        }
 
-define('WEBROOT', __DIR__);
-define('ROOT', dirname(__DIR__));
+        if (session_status() === PHP_SESSION_NONE) {
+            session_name('devcast_ssid');
+            session_start();
+        }
 
-/** @var $app DI\Bridge\Slim\App */
-$app = new class() extends App {
+        (require(ROOT . '/config/middleware.php'))($this);
+        (require(ROOT . '/config/routes.php'))($this);
+    }
+
     public function configureContainer(\DI\ContainerBuilder $builder)
     {
         $builder->useAutowiring(true);
-        $builder->addDefinitions(dirname(__DIR__) . "/src/settings.php");
-        $builder->addDefinitions(dirname(__DIR__) . "/src/settings.local.php");
-        $builder->addDefinitions(dirname(__DIR__) . "/src/dependencies.php");
+        $builder->addDefinitions(ROOT . "/config/settings.php");
+        $builder->addDefinitions(ROOT . "/config/settings.local.php");
+        $builder->addDefinitions(ROOT . "/config/dependencies.php");
     }
 };
 
-require(dirname(__DIR__) . '/src/middleware.php');
-require(dirname(__DIR__) . '/src/routes.php');
+$app->configure();
 $app->run();
