@@ -22,26 +22,24 @@ return [
 
     /**
      * Logger configurations
+     * @TODO fix this and make the logger active
      */
     'logger.name' => 'devscast',
     'logger.path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
     'logger.level' => \Monolog\Logger::DEBUG,
 
-
     /**
      * Views configuration
      */
-    'views.path' => dirname(__DIR__) . DIRECTORY_SEPARATOR . "views",
-    'views.cache' => !get('app.debug') ?
-        dirname(__DIR__) . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "__cache__" :
-        false,
-
+    'views.path' => ROOT . DIRECTORY_SEPARATOR . "views",
+    'views.cache' => !get('app.debug') ? get('views.path') . DIRECTORY_SEPARATOR . "__cache__" : false,
 
     /**
      * Twig extensions list
      */
     "twig.extensions" => [
         \Core\Twig\FormTwigExtension::class,
-        \Core\Twig\AuthTwigExtension::class
+        \Core\Twig\AuthTwigExtension::class,
+        \Core\Twig\AssetsTwigExtension::class
     ]
 ];

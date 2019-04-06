@@ -1,15 +1,16 @@
 <?php
 return [
 
-    'environment' => 'development',
+    'app.debug' => true,
+    'app.cacheBusting' => false,
 
     /**
      * Database configurations
      */
     'database.name' => 'devcast',
     'database.host' => 'localhost',
-    'database.user' => 'root',
-    'database.pass' => '',
+    'database.username' => 'root',
+    'database.password' => '',
 
 
     'smpt.user' => '',

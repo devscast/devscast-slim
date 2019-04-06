@@ -13,6 +13,7 @@ use Core\Renderer\Renderer;
 use Core\Renderer\RendererFactory;
 use Core\Session\PHPSession;
 use Core\Session\SessionInterface;
+use Core\Twig\AssetsTwigExtension;
 use function DI\create;
 use function DI\factory;
 use function DI\get;
@@ -26,6 +27,7 @@ return [
 
     \Slim\Csrf\Guard::class => factory(Core\Factories\SlimCSRFGuardFactory::class),
     \Core\Auth\AuthInterface::class => get(\App\Auth\DatabaseAuth::class),
+    AssetsTwigExtension::class => create(AssetsTwigExtension::class)->constructor(get('app.cacheBusting')),
 
     'logger' => factory(function () {
         $logger = new Monolog\Logger(get('logger.name'));
