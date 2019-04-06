@@ -13,9 +13,9 @@
         <![endif]-->
 
         {% include 'includes/meta.html.twig' %}
-        <link rel="icon" href="{{ base_url() ~ 'assets/favicon.ico' }}"/>
-        <link rel="shortcut icon" href="{{ base_url() ~ '/assets/favicon.ico' }}"/>
-        <link rel="stylesheet" href="{{ base_url() ~ '/assets/app.css' }}">
+        <link rel="icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico')}}"/>
+        <link rel="stylesheet" href="{{ asset('app.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -40,13 +40,13 @@
 
     {% include 'includes/footer.html.twig' %}
 
-    <script src="{{ base_url() ~ '/assets/js/jquery-1.11.min.js' }}"></script>
-    <script src="{{ base_url() ~ '/assets/js/bootstrap.min.js' }}"></script>
-    <script src="{{ base_url() ~ '/assets/js/magnific-popup.min.js' }}"></script>
-    <script src="{{ base_url() ~ '/assets/js/placeholder.min.js' }}"></script>
-    <script src="{{ base_url() ~ '/assets/js/validate.min.js' }}"></script>
-    <script src="{{ base_url() ~ '/assets/js/mediaelement-and-player.min.js' }}"></script>
-    <script src="{{ base_url() ~ '/assets/js/main.js' }}"></script>
+    <script src="{{ asset('js/jquery-1.11.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/mediaelement-and-player.min.js') }}"></script>
+    <script src="{{ asset('js/validate.min.js') }}"></script>
+    <script src="{{ asset('js/placeholder.min.js') }}"></script>
+    <script src="{{ asset('app.js') }}"></script>
     {% block javascript %}{% endblock %}
     </body>
 </html>
