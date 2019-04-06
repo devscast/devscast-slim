@@ -7866,7 +7866,7 @@ label.error {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url(/assets/background.jpg);
+  background: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-color: #110f16;
