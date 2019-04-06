@@ -10,7 +10,6 @@
 
 namespace App\Repositories;
 
-
 /**
  * Class MetaDataRepository
  * @package App\Repositories

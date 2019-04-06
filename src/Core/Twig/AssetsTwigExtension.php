@@ -10,9 +10,9 @@
 
 
 namespace Core\Twig;
+
 use Slim\Http\Environment;
 use Slim\Http\Uri;
-
 
 /**
  * Class AssetsTwigExtension

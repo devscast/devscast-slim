@@ -11,7 +11,6 @@
 
 namespace App\Repositories;
 
-
 /**
  * Class JsonFileRepository
  * @package App\Repositories
