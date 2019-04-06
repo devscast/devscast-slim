@@ -16,20 +16,8 @@ use stdClass;
  * Class QuotesRepository
  * @package App\Repositories
  */
-class QuotesRepository
+class QuotesRepository extends JsonFileRepository
 {
-    /**
-     * database
-     * @var string
-     */
-    private $file;
-
-    /**
-     * quotes fetched form file
-     * @var stdClass[]|array
-     */
-    private $quotes;
-
     /**
      * using a file as database
      * QuotesRepository constructor.
@@ -45,25 +33,12 @@ class QuotesRepository
     }
 
     /**
-     * Parse the json file
-     * @return mixed|stdClass[]|string
-     */
-    public function getQuotes()
-    {
-        if (is_null($this->quotes)) {
-            $this->quotes = (string) file_get_contents($this->file);
-            $this->quotes = json_decode($this->quotes);
-        }
-        return $this->quotes;
-    }
-
-    /**
      * get one quote randomly
      * @return stdClass
      */
     public function random(): ?stdClass
     {
-        $quotes = $this->getQuotes();
+        $quotes = $this->getData();
         $index = array_rand($quotes, 1);
         return $quotes[$index];
     }
