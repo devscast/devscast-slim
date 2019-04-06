@@ -1,0 +1,20 @@
+{
+  "page" : {
+    "charset" : "utf-8",
+    "lang": "en",
+    "reply-to": "contact@devs-cast.com",
+    "type": "Website",
+
+    "title": "Devscast | devs-cast.com",
+    "image": "//devs-cast.com/images/icon.png",
+    "author": "bernard-ng",
+    "description": "Podcasts and tutorials for developers",
+    "keywords": "web podcasts, web tutorials, web developers, african developers",
+
+    "bots" : {
+      "googlebot" : "index, follow",
+      "robots": "index, follow",
+      "msnbot": "index, follow"
+    }
+  }
+}
