@@ -40,6 +40,7 @@ return [
     "twig.extensions" => [
         \Core\Twig\FormTwigExtension::class,
         \Core\Twig\AuthTwigExtension::class,
-        \Core\Twig\AssetsTwigExtension::class
+        \Core\Twig\AssetsTwigExtension::class,
+        \Core\Twig\MetaTwigExtension::class,
     ]
 ];
