@@ -12,6 +12,7 @@
 namespace App\Resources;
 
 use Core\Helpers\RouterAwareHelper;
+use Core\MetaManager;
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Slim\Router;
@@ -39,6 +40,11 @@ class Resource
      */
     protected $router;
 
+    /**
+     * @var MetaManager|mixed
+     */
+    protected $meta;
+
 
     use RouterAwareHelper;
 
@@ -50,6 +56,7 @@ class Resource
     {
         $this->renderer = $container->get(Renderer::class);
         $this->router = $container->get(Router::class);
+        $this->meta = $container->get(MetaManager::class);
         $this->container = $container;
     }
 }
