@@ -6,3 +6,5 @@ composer.lock
 node_modules/
 /docs/__cache__/*
 yarn.lock
+error_log
+public/error_log
