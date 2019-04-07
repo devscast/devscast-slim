@@ -2,17 +2,7 @@
     <section class="section-positive">
         <div class="container">
             <div class="row mt-70 mb-30">
-                <div class="col-sm-3 mb-40">
-                    <h2 class="title-separator white">Sitemap</h2>
-                    <ul class="footer-list">
-                        <li><a href="{{ path_for('home') }}">Home</a></li>
-                        <li><a href="{{ path_for('podcasts.index') }}">Podcasts</a></li>
-                        <li><a href="{{ path_for('about') }}">About</a></li>
-                        <li><a href="{{ path_for('contact') }}">contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-3 mb-40">
+                <div class="col-sm-4 mb-40">
                     <h2 class="title-separator white">Lastest Episodes</h2>
                     <ul class="footer-complement">
                         {% for l in last %}
@@ -25,32 +15,30 @@
                         {% endfor %}
                     </ul>
                 </div>
-
-                <div class="col-sm-3 mb-40">
+                <div class="col-sm-4 mb-40">
                     <h2 class="title-separator white">Contributors</h2>
                     <ul class="footer-complement">
                         <li>
-                            <a href="http://bernard-ng.github.io">bernard-ng</a>
+                            <a href="{{ meta.social.github }}">bernard-ng</a>
                             <span>Founder</span>
                         </li>
                         <li>
-                            <a href="http://bernard-ng.github.io">mahid_hm</a>
+                            <a href="{{ meta.social.sponsor }}">mahid_hm</a>
                             <span>Sponsor</span>
                         </li>
                         <li>
-                            <a href="https://github.com/itotafrica">itotafrica</a>
+                            <a href="{{ meta.social.developers }}">itotafrica</a>
                             <span>Developers</span>
                         </li>
                     </ul>
                 </div>
-
-                <div class="col-sm-3 mb-40">
+                <div class="col-sm-4 mb-40">
                     <h2 class="title-separator white">We are social</h2>
                     <ul class="social-list">
-                        <li class="social-item"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li class="social-item"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        <li class="social-item"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        <li class="social-item"><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                        <li class="social-item"><a href="{{ meta.social.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li class="social-item"><a href="{{ meta.social.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li class="social-item"><a href="{{ meta.social.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        <li class="social-item"><a href="{{ meta.social.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -61,7 +49,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <a href="http://bernard-ng.github.io">bernard-ng</a> - {{ 'now' | date('Y') }}. All rights reserved.
+                    <a href="{{ meta.social.github }}">bernard-ng</a> - {{ 'now' | date('Y') }}. All rights reserved.
                 </div>
             </div>
         </div>
