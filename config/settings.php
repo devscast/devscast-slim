@@ -42,5 +42,6 @@ return [
         \Core\Twig\AuthTwigExtension::class,
         \Core\Twig\AssetsTwigExtension::class,
         \Core\Twig\MetaTwigExtension::class,
+        \App\Twig\QuoteTwigExtension::class,
     ]
 ];
