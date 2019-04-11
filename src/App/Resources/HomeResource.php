@@ -53,7 +53,6 @@ class HomeResource extends Resource
     {
         $hero = $this->podcasts->last();
         $podcasts = $this->podcasts->latest(3);
-        $quote = $this->container->get(QuotesRepository::class)->random();
-        return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero', 'last', 'quote'));
+        return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero', 'last'));
     }
 }
