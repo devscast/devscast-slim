@@ -27,6 +27,20 @@ class EnableCORSMiddleware
 {
 
     /**
+     * @var array
+     */
+    private $allowOrigin;
+
+    /**
+     * EnableCORSMiddleware constructor.
+     * @param array $allowOrigin
+     */
+    public function __construct(array $allowOrigin = [])
+    {
+        $this->allowOrigin = $allowOrigin;
+    }
+
+    /**
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @param $next
@@ -34,11 +48,12 @@ class EnableCORSMiddleware
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
+        $origin = !empty($this->allowOrigin) ? implode(", ", $this->allowOrigin) : "" ;
         $response = $next($request, $response);
         return $response
-            ->withHeader('Access-Control-Allow-Origin', 'http://localhost:8080')
+            ->withHeader('Access-Control-Allow-Origin', $origin)
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
-            ->withHeader('X-Powered-By', 'Devcast Team');
+            ->withHeader('X-Powered-By', 'devscast');
     }
 }
