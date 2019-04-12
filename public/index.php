@@ -9,6 +9,8 @@
  */
 
 
+use App\Middlewares\NotFoundMiddleware;
+
 require(dirname(__DIR__) . '/vendor/autoload.php');
 require(dirname(__DIR__) . '/config/constants.php');
 
@@ -30,10 +32,8 @@ $app = new class() extends DI\Bridge\Slim\App {
 
         (require(ROOT . '/config/pipeline.php'))($this);
         (require(ROOT . '/config/routes/web.php'))($this);
-
-        if ($this->getContainer()->get('api.enable')) {
-            (require(ROOT . '/config/routes/api.php'))($this);
-        }
+        (require(ROOT . '/config/routes/api.php'))($this);
+        $this->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', [])->add(NotFoundMiddleware::class);
     }
 
     public function configureContainer(\DI\ContainerBuilder $builder)

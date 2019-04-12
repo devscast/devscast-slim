@@ -21,16 +21,11 @@ use Slim\Http\Response;
 /**
  * Class NotFoundMiddleware
  * Return an error page if any route is matched
- * @todo impove this
  * @package App\Middlewares
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class NotFoundMiddleware extends NotFound
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
 
     /**
      * @var Renderer|mixed
@@ -39,12 +34,22 @@ class NotFoundMiddleware extends NotFound
 
     /**
      * NotFoundMiddleware constructor.
-     * @param ContainerInterface $container
+     * @param Renderer $renderer
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Renderer $renderer)
     {
-        $this->container = $container;
-        $this->renderer = $container->get(Renderer::class);
+        $this->renderer = $renderer;
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function renderJsonNotFoundOutput()
+    {
+        return json_encode([
+            "status" => 404,
+            "message" => "Not Found"
+        ]);
     }
 
     /**

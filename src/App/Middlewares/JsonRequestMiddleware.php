@@ -35,11 +35,16 @@ class JsonRequestMiddleware extends AbstractHandler
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
         if ($this->determineContentType($request) === 'application/json') {
-            if ($request->hasHeader('authorization')) {
-                $request = $request->withAttribute('IsJson', true);
-                return $next($request, $response);
-            }
+            return $next($request, $response);
         }
-        return $next($request, $response);
+
+        $data = [
+            'status' => 400,
+            'message' => 'bad request : content-type application/json expected',
+            'data' => [
+                'currentContentType' => $this->determineContentType($request)
+            ],
+        ];
+        return $response->withJson($data, 400);
     }
 }
