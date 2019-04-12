@@ -24,12 +24,16 @@ $app = new class() extends DI\Bridge\Slim\App {
         }
 
         if (session_status() === PHP_SESSION_NONE) {
-            session_name('devcast_ssid');
+            session_name('devscast_ssid');
             session_start();
         }
 
-        (require(ROOT . '/config/middleware.php'))($this);
-        (require(ROOT . '/config/routes.php'))($this);
+        (require(ROOT . '/config/pipeline.php'))($this);
+        (require(ROOT . '/config/routes/web.php'))($this);
+
+        if ($this->getContainer()->get('api.enable')) {
+            (require(ROOT . '/config/routes/api.php'))($this);
+        }
     }
 
     public function configureContainer(\DI\ContainerBuilder $builder)
