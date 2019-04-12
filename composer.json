@@ -37,7 +37,8 @@
       "Tests\\": "tests/",
       "App\\": "src/App/",
       "Core\\": "src/Core/",
-      "Admin\\": "src/Admin/"
+      "Admin\\": "src/Admin/",
+      "API\\": "src/API/"
     }
   },
   "config": {
