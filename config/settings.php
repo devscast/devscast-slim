@@ -20,11 +20,7 @@ return [
     'settings.determineRouteBeforeAppMiddleware' => false,
     'settings.displayErrorDetails' => get('app.debug'),
 
-    /**
-     * API Configuration
-     */
-    'API.enable' => true,
-    'API.debug' => get('app.debug'),
+
 
     /**
      * Logger configurations
@@ -34,11 +30,15 @@ return [
     'logger.path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
     'logger.level' => \Monolog\Logger::DEBUG,
 
+
+
     /**
      * Views configuration
      */
     'views.path' => ROOT . DIRECTORY_SEPARATOR . "views",
     'views.cache' => !get('app.debug') ? get('views.path') . DIRECTORY_SEPARATOR . "__cache__" : false,
+
+
 
     /**
      * Allowed Origins for CORS
@@ -46,6 +46,8 @@ return [
     'CORS.allowOrigin' => [
         "http://localhost:8080"
     ],
+
+
 
     /**
      * Twig extensions list
