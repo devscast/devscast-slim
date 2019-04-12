@@ -23,8 +23,8 @@ return [
     /**
      * API Configuration
      */
-    'api.enable' => true,
-    'api.debug' => get('app.debug'),
+    'API.enable' => true,
+    'API.debug' => get('app.debug'),
 
     /**
      * Logger configurations

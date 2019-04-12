@@ -20,6 +20,5 @@ return function ($app) {
     });
 
     $app->add(\Core\Middlewares\HttpMethodMiddleware::class);
-    $app->add(\App\Middlewares\JsonRequestMiddleware::class);
     $app->add(\App\Middlewares\EnableCORSMiddleware::class);
 };

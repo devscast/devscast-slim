@@ -145,10 +145,4 @@ return function($app) {
             $this->delete('/{id:[0-9]+}', [NewsletterController::class, 'delete'])->setName('admin.newsletter.delete');
         });
     })->add(LoggedInMiddleware::class);
-
-
-    /**
-     * NOT FOUND HANDLER
-     */
-    $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', [])->add(NotFoundMiddleware::class);
 };
