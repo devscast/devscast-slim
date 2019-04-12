@@ -8,6 +8,7 @@
  * file that was distributed with this source code.
  */
 
+use App\Middlewares\EnableCORSMiddleware;
 use Awurth\SlimValidation\Validator;
 use Core\Renderer\Renderer;
 use Core\Renderer\RendererFactory;
@@ -28,6 +29,7 @@ return [
     \Slim\Csrf\Guard::class => factory(Core\Factories\SlimCSRFGuardFactory::class),
     \Core\Auth\AuthInterface::class => get(\App\Auth\DatabaseAuth::class),
     AssetsTwigExtension::class => create(AssetsTwigExtension::class)->constructor(get('app.cacheBusting')),
+    EnableCORSMiddleware::class => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),
 
     'logger' => factory(function () {
         $logger = new Monolog\Logger(get('logger.name'));

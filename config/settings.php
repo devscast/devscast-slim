@@ -21,6 +21,12 @@ return [
     'settings.displayErrorDetails' => get('app.debug'),
 
     /**
+     * API Configuration
+     */
+    'api.enable' => true,
+    'api.debug' => get('app.debug'),
+
+    /**
      * Logger configurations
      * @TODO fix this and make the logger active
      */
@@ -33,6 +39,13 @@ return [
      */
     'views.path' => ROOT . DIRECTORY_SEPARATOR . "views",
     'views.cache' => !get('app.debug') ? get('views.path') . DIRECTORY_SEPARATOR . "__cache__" : false,
+
+    /**
+     * Allowed Origins for CORS
+     */
+    'CORS.allowOrigin' => [
+        "http://localhost:8080"
+    ],
 
     /**
      * Twig extensions list
