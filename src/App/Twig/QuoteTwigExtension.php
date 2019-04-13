@@ -27,7 +27,7 @@ class QuoteTwigExtension extends \Twig_Extension implements \Twig_Extension_Glob
      * QuoteTwigExtension constructor.
      * @param QuotesRepository $repository
      */
-    public function  __construct(QuotesRepository $repository)
+    public function __construct(QuotesRepository $repository)
     {
         $this->repository = $repository;
     }

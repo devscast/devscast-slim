@@ -61,13 +61,13 @@ class MetaTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
      */
     public function getMeta(): ?string
     {
-       if (!empty($this->metaStore)) {
-        $meta = "";
-        foreach ($this->manager->metaStore as $name => $content) {
-            $meta .= "<meta name='{$name}' content='{$content}' />";
+        if (!empty($this->metaStore)) {
+            $meta = "";
+            foreach ($this->manager->metaStore as $name => $content) {
+                  $meta .= "<meta name='{$name}' content='{$content}' />";
+            }
+            return $meta;
         }
-        return $meta;
-       }
-       return null;
+        return null;
     }
 }

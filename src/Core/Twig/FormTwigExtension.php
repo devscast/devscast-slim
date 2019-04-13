@@ -89,8 +89,10 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
      */
     public function csrf(): string
     {
-        $csrf = "<input type='hidden' name='{$this->csrf->getTokenNameKey()}' value='{$this->csrf->getTokenName()}'/>";
-        $csrf .= "<input type='hidden' name='{$this->csrf->getTokenValueKey()}' value='{$this->csrf->getTokenValue()}'/>";
+        $csrf = <<< HTML
+<input type='hidden' name='{$this->csrf->getTokenNameKey()}' value='{$this->csrf->getTokenName()}'/>
+<input type='hidden' name='{$this->csrf->getTokenValueKey()}' value='{$this->csrf->getTokenValue()}'/>
+HTML
         return $csrf;
     }
 }

@@ -10,11 +10,11 @@
 
 
 namespace API\Middlewares;
+
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
-
 
 /**
  * Class DefaultMiddleware

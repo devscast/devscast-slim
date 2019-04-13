@@ -19,7 +19,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
 
-
 /**
  * Class Resource
  * @package API\Resources
@@ -32,7 +31,7 @@ class Resource extends \App\Resources\Resource
      * Resource Repository
      * @var object $repository
      */
-    protected  $repository;
+    protected $repository;
 
     /**
      * HTTP response code

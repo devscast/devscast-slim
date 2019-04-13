@@ -120,7 +120,11 @@ class PodcastsController extends CRUDController
 
             $data = compact('errors', 'input', 'item', 'categories');
             $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
-            return $this->renderer->render($response->withStatus($this->status), 'admin/podcasts/edit.html.twig', $data);
+            return $this->renderer->render(
+                $response->withStatus($this->status),
+                'admin/podcasts/edit.html.twig',
+                $data
+            );
         }
         return $response->withStatus(404);
     }

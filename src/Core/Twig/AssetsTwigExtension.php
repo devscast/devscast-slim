@@ -81,7 +81,7 @@ class AssetsTwigExtension extends \Twig_Extension
             $this->resetAssetPath();
             return $filename;
         } else {
-            throw new \InvalidArgumentException(sprintf("The file %s does not exists looked in (%s)", $file, $filename));
+            throw new \InvalidArgumentException(sprintf("%s does not exists looked in (%s)", $file, $filename));
         }
     }
 

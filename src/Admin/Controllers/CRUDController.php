@@ -98,7 +98,11 @@ class CRUDController extends DashboardController implements CRUDInterface
         }
 
         $data = compact('errors', 'input');
-        return $this->renderer->render($response->withStatus($this->status), "admin/{$this->module}/create.html.twig", $data);
+        return $this->renderer->render(
+            $response->withStatus($this->status),
+            "admin/{$this->module}/create.html.twig",
+            $data
+        );
     }
 
     /**
@@ -131,7 +135,11 @@ class CRUDController extends DashboardController implements CRUDInterface
             }
 
             $data = compact('errors', 'input', 'item');
-            return $this->renderer->render($response->withStatus($this->status), "admin/{$this->module}/edit.html.twig", $data);
+            return $this->renderer->render(
+                $response->withStatus($this->status),
+                "admin/{$this->module}/edit.html.twig",
+                $data
+            );
         }
         return $response->withStatus(404);
     }
