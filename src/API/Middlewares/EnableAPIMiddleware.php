@@ -13,6 +13,7 @@ namespace API\Middlewares;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 
 /**
@@ -51,7 +52,7 @@ class EnableAPIMiddleware
 
         return $response->withJson([
             "message" => "Devscast API is unavailable for the moment",
-            "status" => 503
-        ], 503);
+            "status" => StatusCode::HTTP_SERVICE_UNAVAILABLE
+        ], StatusCode::HTTP_SERVICE_UNAVAILABLE);
     }
 }

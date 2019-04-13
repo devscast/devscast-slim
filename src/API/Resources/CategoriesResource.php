@@ -11,11 +11,21 @@
 
 namespace API\Resources;
 
+use App\Repositories\CategoriesRepository;
+use Psr\Container\ContainerInterface;
+
 /**
  * Class CategoriesResource
  * @package API\Resources
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-class CategoriesResource
+class CategoriesResource extends Resource
 {
 
+    public function __construct(ContainerInterface $container)
+    {
+        parent::__construct($container);
+        $this->repository = $container->get(CategoriesRepository::class);
+        $this->resourceName = "categories";
+    }
 }

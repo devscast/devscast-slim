@@ -8,27 +8,64 @@
  * file that was distributed with this source code.
  */
 
+
 namespace API\Resources;
 
-use App\Repositories\PodcastsRepository;
+use App\Repositories\QuotesRepository;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
+
 
 /**
- * Class HomeResource
+ * Class Resource
  * @package API\Resources
- * @author bernard-ng, https://bernard-ng.github.io
+ *
  */
-class HomeResource extends Resource
+class Resource extends \App\Resources\Resource
 {
 
+    /**
+     * Resource Repository
+     * @var object $repository
+     */
+    protected  $repository;
+
+    /**
+     * HTTP response code
+     * @var int
+     */
+    protected $status = StatusCode::HTTP_OK;
+
+    /**
+     * @var string $resourceName
+     */
+    protected $resourceName;
+
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
+
+    /**
+     * Global quote
+     * @var null|\stdClass
+     */
+    protected $quote;
+
+
+    /**
+     * Resource constructor.
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->repository = $container->get(PodcastsRepository::class);
+        $this->container = $container;
+        $this->quote = $container->get(QuotesRepository::class)->random();
     }
 
     /**
@@ -41,9 +78,8 @@ class HomeResource extends Resource
         $data = [
             "status" => $this->status,
             "data" => [
-                "podcasts" => $this->repository->latest(3),
-                "hero" =>  $this->repository->last(),
-                "quote" => $this->quote
+                $this->resourceName => $this->repository->all(),
+                "quote" => $this->quote,
             ]
         ];
         return $response->withJson($data, $this->status);
