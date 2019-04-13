@@ -13,6 +13,7 @@ namespace Core\Helpers;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class RouterAwareHelper
@@ -30,7 +31,7 @@ trait RouterAwareHelper
      * @param array $params
      * @return ResponseInterface
      */
-    public function redirect(string $path, array $params = [], int $status = 301): ResponseInterface
+    public function redirect(string $path, array $params = [], int $status = StatusCode::HTTP_MOVED_PERMANENTLY): ResponseInterface
     {
         $uri = $this->router->pathFor($path, $params);
         return (new Response())->withRedirect($uri, $status);

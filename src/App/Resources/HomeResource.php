@@ -53,6 +53,6 @@ class HomeResource extends Resource
     {
         $hero = $this->podcasts->last();
         $podcasts = $this->podcasts->latest(3);
-        return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero', 'last'));
+        return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero'));
     }
 }

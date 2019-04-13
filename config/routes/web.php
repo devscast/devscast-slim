@@ -16,7 +16,6 @@ use Admin\Controllers\NewsletterController;
 use Admin\Controllers\PodcastLinksController;
 use Admin\Controllers\PodcastsController;
 use Admin\Controllers\UsersController;
-use App\Middlewares\NotFoundMiddleware;
 use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
 use App\Resources\NewsletterResource;

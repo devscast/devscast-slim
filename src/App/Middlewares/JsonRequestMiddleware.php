@@ -16,6 +16,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\AbstractHandler;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class JsonRequestMiddleware
@@ -39,12 +40,12 @@ class JsonRequestMiddleware extends AbstractHandler
         }
 
         $data = [
-            'status' => 400,
+            'status' => StatusCode::HTTP_BAD_REQUEST,
             'message' => 'bad request : content-type application/json expected',
             'data' => [
                 'currentContentType' => $this->determineContentType($request)
             ],
         ];
-        return $response->withJson($data, 400);
+        return $response->withJson($data, StatusCode::HTTP_BAD_REQUEST);
     }
 }

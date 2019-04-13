@@ -10,10 +10,9 @@
 
 namespace App\Resources;
 
-use Core\Renderer\Renderer;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -27,11 +26,11 @@ class StaticResource extends Resource
 {
     /**
      * Render about page
-     * @param RequestInterface|Request $request
+     * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
      */
-    public function about(RequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function about(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         return $this->renderer->render($response, 'about.html.twig');
     }

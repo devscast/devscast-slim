@@ -16,6 +16,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class PodcastsResource
@@ -56,22 +57,6 @@ class PodcastsResource extends Resource
         return $this->renderer->render($response, 'podcasts/index.html.twig', $data);
     }
 
-
-    /**
-     * Retrieve the last podcast
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
-     */
-    public function last(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
-    {
-        if ($request->getAttribute('isJson')) {
-            return $response->withJson(['podcast' => $this->podcasts->last()]);
-        }
-        return $response->withStatus(403);
-    }
-
-
     /**
      * Show a podcast thanks to its id
      * @param ServerRequestInterface $request
@@ -98,6 +83,6 @@ class PodcastsResource extends Resource
             }
             return $this->redirect('podcasts.show', ['slug' => $podcast->slug, 'id' => $podcast->id]);
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }
