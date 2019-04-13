@@ -196,7 +196,11 @@ class Insert extends Base
      */
     protected function getClauseInsertInto()
     {
-        return 'INSERT' . ($this->ignore ? " IGNORE" : '') . ($this->delayed ? " DELAYED" : '') . ' INTO ' . $this->statements['INSERT INTO'];
+        return 'INSERT' .
+            ($this->ignore ? " IGNORE" : '') .
+            ($this->delayed ? " DELAYED" : '') .
+            ' INTO ' .
+            $this->statements['INSERT INTO'];
     }
 
     /**

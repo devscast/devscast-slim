@@ -66,7 +66,7 @@ class MetaManager implements \ArrayAccess
      */
     public function __set(string $name, $value): void
     {
-       $this->offsetSet($name, $value);
+        $this->offsetSet($name, $value);
     }
 
     /**
@@ -88,7 +88,7 @@ class MetaManager implements \ArrayAccess
      */
     public function setMeta(string $name, string $content): void
     {
-        if(property_exists($this, $name)) {
+        if (property_exists($this, $name)) {
             $this->offsetSet($name, $content);
         } else {
             $this->metaStore[$name] = $content;

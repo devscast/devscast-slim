@@ -31,7 +31,7 @@ trait RouterAwareHelper
      * @param array $params
      * @return ResponseInterface
      */
-    public function redirect(string $path, array $params = [], int $status = StatusCode::HTTP_MOVED_PERMANENTLY): ResponseInterface
+    public function redirect(string $path, array $params = [], int $status = 301): ResponseInterface
     {
         $uri = $this->router->pathFor($path, $params);
         return (new Response())->withRedirect($uri, $status);

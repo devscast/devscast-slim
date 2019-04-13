@@ -11,7 +11,6 @@
 
 namespace App;
 
-
 use App\Middlewares\NotFoundMiddleware;
 use DI\ContainerBuilder;
 

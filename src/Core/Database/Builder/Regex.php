@@ -140,7 +140,10 @@ class Regex
     public function tableAlias($subject, &$matches = null)
     {
         return preg_match(
-            '/`?([' . self::SQLCHARS . ']+[.:]?[' . self::SQLCHARS . '*]*)`?(\s+AS)?(\s+`?([' . self::SQLCHARS . ']*)`?)?/ui',
+            '/`?([' .
+            self::SQLCHARS . ']+[.:]?[' .
+            self::SQLCHARS . '*]*)`?(\s+AS)?(\s+`?([' .
+            self::SQLCHARS . ']*)`?)?/ui',
             $subject,
             $matches
         );
