@@ -23,7 +23,7 @@ $ composer install
 ```
 
 #### 1.3 Create a database configuration and run migrations and seeding
-create your own database configuration by creating a ``settings.local.php`` in the ``src/``
+create your own database configuration by creating a ``settings.local.php`` in the ``config/``
 your configuration should match the ``settings.local.php.exemple`` then run migrations and seeding
 ```
 $ ./vendor/bin/phinx migrate -e development

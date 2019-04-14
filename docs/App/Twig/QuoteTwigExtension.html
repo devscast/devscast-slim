@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Core\Twig\MetaTwigExtension | Devcast API</title>
+    <title>App\Twig\QuoteTwigExtension | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Core_Twig_MetaTwigExtension" data-root-path="../../">
+    <body id="class" data-name="class:App_Twig_QuoteTwigExtension" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,20 +66,20 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Twig.html">Twig</a></li><li class="backslash">\</li><li>MetaTwigExtension</li>
+                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Twig.html">Twig</a></li><li class="backslash">\</li><li>QuoteTwigExtension</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            MetaTwigExtension
+            QuoteTwigExtension
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>MetaTwigExtension</strong>        extends Twig_Extension        implements
+    <strong>QuoteTwigExtension</strong>        extends Twig_Extension        implements
         Twig_Extension_GlobalsInterface
 </p>
 
@@ -87,7 +87,7 @@
     
 
             <div class="description">
-            <p>Class MetaTwigExtension</p>                                </div>
+            <p>Class QuoteTwigExtension</p>                                </div>
     
     
     
@@ -100,9 +100,9 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../Core/MetaManager.html"><abbr title="Core\MetaManager">MetaManager</abbr></a> $manager)
+                    <a href="#method___construct">__construct</a>(<a href="../../App/Repositories/QuotesRepository.html"><abbr title="App\Repositories\QuotesRepository">QuotesRepository</abbr></a> $repository)
         
-                                            <p>MetaTwigExtension constructor.</p>                </div>
+                                            <p>QuoteTwigExtension constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -115,27 +115,6 @@
                                             <p>Returns a list of global variables to add to the existing list.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getFunctions">getFunctions</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getMeta">getMeta</a>()
-        
-                                            <p>Generate meta from metaStore</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -144,9 +123,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 31</div>
+        <div class="location">at         line 30</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../Core/MetaManager.html"><abbr title="Core\MetaManager">MetaManager</abbr></a> $manager)
+    <strong>__construct</strong>(<a href="../../App/Repositories/QuotesRepository.html"><abbr title="App\Repositories\QuotesRepository">QuotesRepository</abbr></a> $repository)
         </code>
     </h3>
     <div class="details">
@@ -154,14 +133,14 @@
     
 
                     <div class="method-description">
-                                    <p>MetaTwigExtension constructor.</p>                                                </div>
+                                    <p>QuoteTwigExtension constructor.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Core/MetaManager.html"><abbr title="Core\MetaManager">MetaManager</abbr></a></td>
-                <td>$manager</td>
+                <td><a href="../../App/Repositories/QuotesRepository.html"><abbr title="App\Repositories\QuotesRepository">QuotesRepository</abbr></a></td>
+                <td>$repository</td>
                 <td></td>
             </tr>
             </table>
@@ -175,7 +154,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGlobals">
-        <div class="location">at         line 41</div>
+        <div class="location">at         line 40</div>
         <code>                    array
     <strong>getGlobals</strong>()
         </code>
@@ -194,64 +173,6 @@
         <tr>
             <td>array</td>
             <td>An array of global variables</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getFunctions">
-        <div class="location">at         line 51</div>
-        <code>                    array
-    <strong>getFunctions</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getMeta">
-        <div class="location">at         line 62</div>
-        <code>                    string|null
-    <strong>getMeta</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Generate meta from metaStore</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td></td>
         </tr>
     </table>
 

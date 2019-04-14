@@ -133,6 +133,14 @@ Add Redirect Method for Classes that have the Router
                 <td class="last"></td>
                 <td><small>from&nbsp;<a href="../../App/Resources/Resource.html#property_router"><abbr title="App\Resources\Resource">Resource</abbr></a></small></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_meta">
+                                        protected                                        <a href="../../Core/MetaManager.html"><abbr title="Core\MetaManager">MetaManager</abbr></a>|mixed
+                </td>
+                <td>$meta</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../App/Resources/Resource.html#property_meta"><abbr title="App\Resources\Resource">Resource</abbr></a></small></td>
+            </tr>
             </table>
 
     
@@ -164,7 +172,7 @@ Add Redirect Method for Classes that have the Router
                     <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_about">about</a>(<abbr title="Psr\Http\Message\RequestInterface">RequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
+                    <a href="#method_about">about</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
                                             <p>Render about page</p>                </div>
                 <div class="col-md-2"></div>
@@ -187,7 +195,7 @@ Add Redirect Method for Classes that have the Router
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_redirect">
-        <div class="location">in <a href="../../Core/Helpers/RouterAwareHelper.html#method_redirect"><abbr title="Core\Helpers\RouterAwareHelper">RouterAwareHelper</abbr></a> at         line 33</div>
+        <div class="location">in <a href="../../Core/Helpers/RouterAwareHelper.html#method_redirect"><abbr title="Core\Helpers\RouterAwareHelper">RouterAwareHelper</abbr></a> at         line 34</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>redirect</strong>(string $path, array $params = [], int $status = 301)
         </code>
@@ -237,7 +245,7 @@ Add Redirect Method for Classes that have the Router
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../App/Resources/Resource.html#method___construct"><abbr title="App\Resources\Resource">Resource</abbr></a> at         line 48</div>
+        <div class="location">in <a href="../../App/Resources/Resource.html#method___construct"><abbr title="App\Resources\Resource">Resource</abbr></a> at         line 58</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
         </code>
@@ -268,9 +276,9 @@ Add Redirect Method for Classes that have the Router
             </div>
                     <div class="method-item">
                     <h3 id="method_about">
-        <div class="location">at         line 34</div>
+        <div class="location">at         line 33</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
-    <strong>about</strong>(<abbr title="Psr\Http\Message\RequestInterface">RequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
+    <strong>about</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
     </h3>
     <div class="details">
@@ -284,7 +292,7 @@ Add Redirect Method for Classes that have the Router
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Psr\Http\Message\RequestInterface">RequestInterface</abbr></td>
+                <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
                 <td>$request</td>
                 <td></td>
             </tr>
@@ -313,7 +321,7 @@ Add Redirect Method for Classes that have the Router
             </div>
                     <div class="method-item">
                     <h3 id="method_contact">
-        <div class="location">at         line 47</div>
+        <div class="location">at         line 46</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>contact</strong>(<abbr title="Psr\Http\Message\RequestInterface">RequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>

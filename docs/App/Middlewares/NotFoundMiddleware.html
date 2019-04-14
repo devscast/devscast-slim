@@ -100,9 +100,20 @@ Return an error page if any route is matched</p>                                
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
+                    <a href="#method___construct">__construct</a>(<a href="../../Core/Renderer/Renderer.html"><abbr title="Core\Renderer\Renderer">Renderer</abbr></a> $renderer)
         
                                             <p>NotFoundMiddleware constructor.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_renderJsonNotFoundOutput">renderJsonNotFoundOutput</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -124,9 +135,9 @@ Return an error page if any route is matched</p>                                
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 44</div>
+        <div class="location">at         line 40</div>
         <code>                    
-    <strong>__construct</strong>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
+    <strong>__construct</strong>(<a href="../../Core/Renderer/Renderer.html"><abbr title="Core\Renderer\Renderer">Renderer</abbr></a> $renderer)
         </code>
     </h3>
     <div class="details">
@@ -140,8 +151,8 @@ Return an error page if any route is matched</p>                                
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr></td>
-                <td>$container</td>
+                <td><a href="../../Core/Renderer/Renderer.html"><abbr title="Core\Renderer\Renderer">Renderer</abbr></a></td>
+                <td>$renderer</td>
                 <td></td>
             </tr>
             </table>
@@ -154,8 +165,36 @@ Return an error page if any route is matched</p>                                
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_renderJsonNotFoundOutput">
+        <div class="location">at         line 48</div>
+        <code>            protected        mixed
+    <strong>renderJsonNotFoundOutput</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_renderHtmlNotFoundOutput">
-        <div class="location">at         line 54</div>
+        <div class="location">at         line 60</div>
         <code>            protected        string
     <strong>renderHtmlNotFoundOutput</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request)
         </code>
