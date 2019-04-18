@@ -12,4 +12,5 @@ use App\App;
 
 require(dirname(__DIR__) . '/vendor/autoload.php');
 require(dirname(__DIR__) . '/config/constants.php');
-(new App())->setup()->run();
+$app = new App();
+$app->setup()->run();

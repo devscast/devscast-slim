@@ -16,7 +16,7 @@ return [
             "host" => 'localhost',
             "name" => "devcast",
             "user" => "root",
-            "pass" => '',
+            "pass" => 'root',
             "port" => 3306,
             "charset" =>  "utf8",
         ],
