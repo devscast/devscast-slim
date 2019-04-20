@@ -10,6 +10,7 @@
 
 namespace Admin\Controllers;
 
+use App\Modules;
 use App\Repositories\CategoriesRepository;
 use App\Validators\CategoriesValidator;
 use Psr\Container\ContainerInterface;
@@ -31,6 +32,6 @@ class CategoriesController extends CRUDController
         parent::__construct($container);
         $this->repository = $container->get(CategoriesRepository::class);
         $this->validator = CategoriesValidator::class;
-        $this->module = 'categories';
+        $this->module = Modules::CATEGORIES;
     }
 }

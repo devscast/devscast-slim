@@ -80,6 +80,7 @@ class CRUDController extends DashboardController implements CRUDInterface
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        $errors = $input = [];
         if ($request->isPost()) {
             $validator = $this->container->get(Validator::class);
             $validator->validate($request, call_user_func([$this->validator, 'getValidationRules']));
@@ -115,6 +116,7 @@ class CRUDController extends DashboardController implements CRUDInterface
     {
         $id = $request->getAttribute('route')->getArgument('id');
         $item = $this->repository->find($id);
+        $errors = $input = [];
 
         if ($item) {
             if ($request->isPut()) {
