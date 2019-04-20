@@ -22,7 +22,7 @@ use Throwable;
  * @package Core\Uploaders
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class Uploader
+abstract class Uploader
 {
 
     /**
