@@ -8,7 +8,13 @@
  * file that was distributed with this source code.
  */
 
+use App\Twig\QuoteTwigExtension;
+use Core\Twig\AssetsTwigExtension;
+use Core\Twig\AuthTwigExtension;
+use Core\Twig\FormTwigExtension;
+use Core\Twig\MetaTwigExtension;
 use function DI\get;
+use Monolog\Logger;
 
 return [
 
@@ -28,7 +34,7 @@ return [
      */
     'logger.name' => 'devscast',
     'logger.path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
-    'logger.level' => \Monolog\Logger::DEBUG,
+    'logger.level' => Logger::DEBUG,
 
 
 
@@ -53,10 +59,10 @@ return [
      * Twig extensions list
      */
     "twig.extensions" => [
-        \Core\Twig\FormTwigExtension::class,
-        \Core\Twig\AuthTwigExtension::class,
-        \Core\Twig\AssetsTwigExtension::class,
-        \Core\Twig\MetaTwigExtension::class,
-        \App\Twig\QuoteTwigExtension::class,
+        FormTwigExtension::class,
+        AuthTwigExtension::class,
+        AssetsTwigExtension::class,
+        MetaTwigExtension::class,
+        QuoteTwigExtension::class,
     ]
 ];

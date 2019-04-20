@@ -10,6 +10,9 @@
 
 namespace Core\Database;
 
+use Exception;
+use PDO;
+use PDOException;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -23,20 +26,20 @@ class PDOFactory
 {
 
     /**
-     * @var null|\PDO
+     * @var null|PDO
      */
     private $PDO = null;
 
 
     /**
      * @param ContainerInterface $container
-     * @return \PDO
+     * @return PDO
      * @internal param string $host
      * @internal param string $dbname
      * @internal param string $username
      * @internal param string $password
      */
-    public function __invoke(ContainerInterface $container): \PDO
+    public function __invoke(ContainerInterface $container): PDO
     {
         if (is_null($this->PDO)) {
             $host = $container->get('database.host');
@@ -46,16 +49,16 @@ class PDOFactory
 
             try {
                 $attribute = [
-                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-                    \PDO::ATTR_ORACLE_NULLS => \PDO::NULL_EMPTY_STRING,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                    PDO::ATTR_ORACLE_NULLS => PDO::NULL_EMPTY_STRING,
                 ];
 
-                $PDO = new \PDO("mysql:Host={$host};dbname={$dbname};charset=utf8", $username, $password, $attribute);
+                $PDO = new PDO("mysql:Host={$host};dbname={$dbname};charset=utf8", $username, $password, $attribute);
                 $this->PDO = $PDO;
                 return $this->PDO;
-            } catch (\PDOException|\Exception $e) {
-                throw new \PDOException($e->getMessage());
+            } catch (PDOException|Exception $e) {
+                throw new PDOException($e->getMessage());
             }
         }
         return $this->PDO;

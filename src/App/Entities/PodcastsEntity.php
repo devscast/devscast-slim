@@ -13,7 +13,7 @@ namespace App\Entities;
 /**
  * Class PodcastsEntity
  * Represent a podcast
- * @package App\
+ * @package App\Entities
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastsEntity

@@ -12,12 +12,17 @@
 namespace Core;
 
 use App\Repositories\JsonFileRepository;
+use ArrayAccess;
+use OutOfBoundsException;
+use RuntimeException;
+use stdClass;
 
 /**
  * Class MetaManager
  * @package Core
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-class MetaManager implements \ArrayAccess
+class MetaManager implements ArrayAccess
 {
 
     /**
@@ -26,7 +31,7 @@ class MetaManager implements \ArrayAccess
     public $metaStore;
 
     /**
-     * @var \stdClass
+     * @var stdClass
      */
     private $meta;
 
@@ -50,14 +55,14 @@ class MetaManager implements \ArrayAccess
     /**
      * @param string $name
      * @return mixed
-     * @throws \OutOfBoundsException
+     * @throws OutOfBoundsException
      */
     public function __get(string $name)
     {
         if ($this->offsetExists($name)) {
             return $this->offsetGet($name);
         }
-        throw new \OutOfBoundsException(sprintf("the key %s does not exists", $name));
+        throw new OutOfBoundsException(sprintf("the key %s does not exists", $name));
     }
 
     /**
@@ -154,10 +159,10 @@ class MetaManager implements \ArrayAccess
      * </p>
      * @return void
      * @since 5.0.0
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function offsetUnset($offset): void
     {
-        throw new \RuntimeException("Cannot unset a meta data");
+        throw new RuntimeException("Cannot unset a meta data");
     }
 }

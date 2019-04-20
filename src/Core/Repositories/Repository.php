@@ -10,7 +10,10 @@
 
 namespace Core\Repositories;
 
+use Core\Database\Builder\Exception;
 use Core\Database\Builder\Query;
+use PDO;
+use PDOStatement;
 
 /**
  * Class Repository
@@ -34,15 +37,15 @@ class Repository
     protected $table;
 
     /**
-     * @var \PDO
+     * @var PDO
      */
     private $pdo;
 
     /**
      * Repository constructor.
-     * @param \PDO $pdo
+     * @param PDO $pdo
      */
-    public function __construct(\PDO $pdo)
+    public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
@@ -63,18 +66,26 @@ class Repository
      */
     public function create(array $data)
     {
-        return $this->makeQuery()->insertInto($this->table, $data)->execute();
+        try {
+            return $this->makeQuery()->insertInto($this->table, $data)->execute();
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
      * Update data
      * @param int $id
      * @param array $data
-     * @return bool|int|\PDOStatement
+     * @return bool|int|PDOStatement
      */
     public function update(int $id, array $data)
     {
-        return $this->makeQuery()->update($this->table, $data, $id)->execute();
+        try {
+            return $this->makeQuery()->update($this->table, $data, $id)->execute();
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -84,7 +95,11 @@ class Repository
      */
     public function destroy(int $id)
     {
-        return $this->makeQuery()->delete($this->table, $id)->execute();
+        try {
+            return $this->makeQuery()->delete($this->table, $id)->execute();
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -98,47 +113,59 @@ class Repository
 
     /**
      * Retrieve all data
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function all()
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select("{$this->table}.*")
-            ->orderBy("{$this->table}.id DESC")
-            ->all()->get();
+        try {
+            return $this->makeQuery()
+                ->into($this->entity)
+                ->from($this->table)
+                ->select("{$this->table}.*")
+                ->orderBy("{$this->table}.id DESC")
+                ->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve one record thanks to its 'id'
      * @param int $id
-     * @return mixed
+     * @return object|null
      */
     public function find(int $id)
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select("{$this->table}.*")
-            ->where("{$this->table}.id = ?", compact('id'))
-            ->all()->get(0);
+        try {
+            return $this->makeQuery()
+                ->into($this->entity)
+                ->from($this->table)
+                ->select("{$this->table}.*")
+                ->where("{$this->table}.id = ?", compact('id'))
+                ->all()->get(0);
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve a record with a specific condition
      * @param string $field
      * @param $value
-     * @return mixed
+     * @return object|null
      */
     public function findWith(string $field, $value)
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select("{$this->table}.*")
-            ->where("{$this->table}.{$field} = ?", [$field => $value])
-            ->all()->get();
+        try {
+            return $this->makeQuery()
+                ->into($this->entity)
+                ->from($this->table)
+                ->select("{$this->table}.*")
+                ->where("{$this->table}.{$field} = ?", [$field => $value])
+                ->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
@@ -146,10 +173,14 @@ class Repository
      */
     public function count()
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select("{$this->table}.id")
-            ->count();
+        try {
+            return $this->makeQuery()
+               ->into($this->entity)
+               ->from($this->table)
+               ->select("{$this->table}.id")
+               ->count();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 }

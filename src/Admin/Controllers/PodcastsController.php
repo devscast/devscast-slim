@@ -22,6 +22,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class PodcastsController
@@ -76,12 +77,12 @@ class PodcastsController extends CRUDController
                     } else {
                         $errors['audio'] = $audio->getErrors();
                         $errors['thumb'] = $thumb->getErrors();
-                        $this->status = 422;
+                        $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                     }
                 }
             } else {
                 $this->flash->error('podcast.create');
-                $this->status = 422;
+                $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             }
         }
 
@@ -117,7 +118,7 @@ class PodcastsController extends CRUDController
                     return $this->redirect('admin.podcasts');
                 } else {
                     $this->flash->error('podcast.update');
-                    $this->status = 422;
+                    $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                 }
             }
 
@@ -129,6 +130,6 @@ class PodcastsController extends CRUDController
                 $data
             );
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }

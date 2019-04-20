@@ -11,6 +11,7 @@
 namespace App\Repositories;
 
 use App\Entities\NewsletterEntity;
+use App\Modules;
 use Core\Repositories\Repository;
 
 /**
@@ -26,7 +27,7 @@ class NewsletterRepository extends Repository
      * The table name in the database
      * @var string
      */
-    protected $table = 'newsletter';
+    protected $table = Modules::NEWSLETTER;
 
 
     /**

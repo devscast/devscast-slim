@@ -13,6 +13,7 @@ namespace Core\Database\Builder\Queries;
 use Core\Database\Builder\Exception;
 use Core\Database\Builder\Literal;
 use Core\Database\Builder\Query;
+use PDOStatement;
 
 /**
  * Class Update
@@ -93,9 +94,9 @@ class Update extends Common
      *
      * @param boolean $getResultAsPdoStatement true to return the pdo statement instead of row count
      *
-     * @throws Exception
+     * @return int|boolean|PDOStatement
+     *@throws Exception
      *
-     * @return int|boolean|\PDOStatement
      */
     public function execute($getResultAsPdoStatement = false)
     {

@@ -38,7 +38,6 @@ class StaticResource extends Resource
 
     /**
      * Render contact page
-     * @TODO handle the post request
      * @param RequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
@@ -46,6 +45,7 @@ class StaticResource extends Resource
     public function contact(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         if ($request->isPost()) {
+            //@TODO handle the post request
         }
         return $this->renderer->render($response, 'contact.html.twig');
     }

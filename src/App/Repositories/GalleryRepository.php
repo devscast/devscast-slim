@@ -11,6 +11,7 @@
 namespace App\Repositories;
 
 use App\Entities\GalleryEntity;
+use App\Modules;
 use Core\Repositories\Repository;
 
 /**
@@ -26,7 +27,7 @@ class GalleryRepository extends Repository
      * The table name in the database
      * @var string
      */
-    protected $table = 'gallery';
+    protected $table = Modules::GALLERY;
 
     /**
      * Entity class

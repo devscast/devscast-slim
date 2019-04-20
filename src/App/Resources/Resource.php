@@ -15,9 +15,6 @@ use Core\Helpers\RouterAwareHelper;
 use Core\MetaManager;
 use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
-use Slim\Http\StatusCode;
 use Slim\Router;
 
 /**

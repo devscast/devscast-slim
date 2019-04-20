@@ -10,10 +10,9 @@
 
 namespace App\Resources;
 
-use App\Entities\NewsletterEntity;
 use App\Repositories\NewsletterRepository;
+use App\Validators\NewsletterValidator;
 use Awurth\SlimValidation\Validator;
-use Respect\Validation\Validator as v;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -59,7 +58,7 @@ class NewsletterResource extends Resource
      */
     public function store(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $this->validator->validate($request, NewsletterEntity::getValidationRules());
+        $this->validator->validate($request, NewsletterValidator::getValidationRules());
 
         if ($this->validator->isValid()) {
             $email = $request->getParam('email');

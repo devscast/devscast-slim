@@ -25,6 +25,7 @@ use Slim\Router;
 /**
  * Class LoggedInMiddleware
  * @package Core\Middlewares
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class LoggedInMiddleware
 {
@@ -56,7 +57,6 @@ class LoggedInMiddleware
      * @param ResponseInterface|Response $response
      * @param $next
      * @return ResponseInterface|Response
-     * @throws ForbiddenException if the user is null
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
     {

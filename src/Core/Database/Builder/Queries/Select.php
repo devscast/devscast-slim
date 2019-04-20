@@ -10,9 +10,13 @@
 
 namespace Core\Database\Builder\Queries;
 
+use ArrayIterator;
 use Core\Database\Builder\Exception;
 use Core\Database\Builder\Query;
 use Core\Database\Builder\Utilities;
+use Countable;
+use PDO;
+use PDOStatement;
 
 /**
  * Class Select
@@ -23,7 +27,7 @@ use Core\Database\Builder\Utilities;
  * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
-class Select extends Common implements \Countable
+class Select extends Common implements Countable
 {
 
     /** @var mixed */
@@ -89,7 +93,7 @@ class Select extends Common implements \Countable
      *
      * @return mixed string, array or false if there is no row
      */
-    public function fetch(?string $column = null, int $cursorOrientation = \PDO::FETCH_ORI_NEXT)
+    public function fetch(?string $column = null, int $cursorOrientation = PDO::FETCH_ORI_NEXT)
     {
         if ($this->result === null) {
             $this->execute();
@@ -123,14 +127,14 @@ class Select extends Common implements \Countable
      * @param $value
      * @param $object
      *
-     * @throws Exception
+     * @return array|PDOStatement
+     *@throws Exception
      *
-     * @return array|\PDOStatement
      */
     public function fetchPairs($key, $value, $object = false)
     {
         if (($s = $this->select("$key, $value", true)->asObject($object)->execute()) !== false) {
-            return $s->fetchAll(\PDO::FETCH_KEY_PAIR);
+            return $s->fetchAll(PDO::FETCH_KEY_PAIR);
         }
 
         return $s;
@@ -187,14 +191,14 @@ class Select extends Common implements \Countable
     }
 
     /**
-     * @throws Exception
+     * @return ArrayIterator|PDOStatement
+     *@throws Exception
      *
-     * @return \ArrayIterator|\PDOStatement
      */
     public function getIterator()
     {
         if ($this->fluent->convertRead === true) {
-            return new \ArrayIterator($this->fetchAll());
+            return new ArrayIterator($this->fetchAll());
         } else {
             return $this->execute();
         }

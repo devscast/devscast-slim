@@ -14,6 +14,7 @@ namespace Core\Auth;
 /**
  * Class User
  * @package Core\Auth
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 interface User
 {

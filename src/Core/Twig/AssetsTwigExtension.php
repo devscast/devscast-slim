@@ -11,14 +11,18 @@
 
 namespace Core\Twig;
 
+use InvalidArgumentException;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
+use Twig_Extension;
+use Twig_SimpleFunction;
 
 /**
  * Class AssetsTwigExtension
  * @package Core\Twig
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-class AssetsTwigExtension extends \Twig_Extension
+class AssetsTwigExtension extends Twig_Extension
 {
     /**
      * whether the cacheBusting is enable
@@ -61,7 +65,7 @@ class AssetsTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction("asset", [$this, 'asset'])
+            new Twig_SimpleFunction("asset", [$this, 'asset'])
         ];
     }
 
@@ -81,7 +85,7 @@ class AssetsTwigExtension extends \Twig_Extension
             $this->resetAssetPath();
             return $filename;
         } else {
-            throw new \InvalidArgumentException(sprintf("%s does not exists looked in (%s)", $file, $filename));
+            throw new InvalidArgumentException(sprintf("%s does not exists looked in (%s)", $file, $filename));
         }
     }
 

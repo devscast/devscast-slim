@@ -18,6 +18,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class CRUDController
@@ -94,7 +95,7 @@ class CRUDController extends DashboardController implements CRUDInterface
                 return $this->redirect("admin.{$this->module}");
             } else {
                 $this->flash->error("{$this->module}.create");
-                $this->status = 422;
+                $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             }
         }
 
@@ -132,7 +133,7 @@ class CRUDController extends DashboardController implements CRUDInterface
                     return $this->redirect("admin.{$this->module}");
                 } else {
                     $this->flash->error("{$this->module}.update");
-                    $this->status = 422;
+                    $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                 }
             }
 
@@ -143,7 +144,7 @@ class CRUDController extends DashboardController implements CRUDInterface
                 $data
             );
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 
     /**
@@ -162,6 +163,6 @@ class CRUDController extends DashboardController implements CRUDInterface
                 return $this->redirect("admin.{$this->module}");
             }
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }

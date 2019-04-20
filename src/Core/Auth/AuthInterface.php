@@ -13,6 +13,7 @@ namespace Core\Auth;
 /**
  * Interface AuthInterface
  * @package Core\Auth
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 interface AuthInterface
 {

@@ -16,6 +16,7 @@ use Respect\Validation\Validator as v;
 /**
  * Class UsersValidator
  * @package App\Repositories\Validators
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class UsersValidator implements ValidatorInterface
 {

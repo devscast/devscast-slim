@@ -11,6 +11,8 @@
 namespace App\Repositories;
 
 use App\Entities\UsersEntity;
+use App\Modules;
+use Core\Database\Builder\Exception;
 use Core\Repositories\Repository;
 
 /**
@@ -25,7 +27,7 @@ class UsersRepository extends Repository
      * The table name in the database
      * @var string
      */
-    protected $table = 'users';
+    protected $table = Modules::USERS;
 
     /**
      * Entity class
@@ -41,11 +43,15 @@ class UsersRepository extends Repository
      */
     public function findWith(string $field, $value)
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select("{$this->table}.*")
-            ->where("{$this->table}.{$field} = ?", [$field => $value])
-            ->all()->get(0);
+        try {
+            return $this->makeQuery()
+                ->into($this->entity)
+                ->from($this->table)
+                ->select("{$this->table}.*")
+                ->where("{$this->table}.{$field} = ?", [$field => $value])
+                ->all()->get(0);
+        } catch (Exception $e) {
+            return null;
+        }
     }
 }

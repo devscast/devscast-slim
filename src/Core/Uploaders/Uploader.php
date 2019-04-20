@@ -11,8 +11,10 @@
 
 namespace Core\Uploaders;
 
-use Cake\Core\Exception\Exception;
+use Error;
+use Exception;
 use Psr\Http\Message\UploadedFileInterface;
+use Throwable;
 
 /**
  * Class Upload
@@ -111,7 +113,7 @@ class Uploader
         try {
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
             $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
-        } catch (\Exception|\Throwable|\Error $e) {
+        } catch (Exception|Throwable|Error $e) {
             $this->errors[] = "Something went wrong, try again please";
         } finally {
             return $this;

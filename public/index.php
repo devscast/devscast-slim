@@ -9,8 +9,14 @@
  */
 
 use App\App;
+use Slim\Exception\MethodNotAllowedException;
+use Slim\Exception\NotFoundException;
 
 require(dirname(__DIR__) . '/vendor/autoload.php');
 require(dirname(__DIR__) . '/config/constants.php');
-$app = new App();
-$app->setup()->run();
+try {
+    $app = new App();
+    $app->setup()->run();
+} catch (MethodNotAllowedException | NotFoundException | Exception $e) {
+    echo $e->getMessage();
+}

@@ -24,4 +24,5 @@ abstract class Modules
     public const PODCASTLINKS = "podcastLinks";
     public const PODCASTS = "podcasts";
     public const CATEGORIES = "categories";
+    public const PODCASTLINKS_TABLE = "podcast_links";
 }

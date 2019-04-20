@@ -14,10 +14,6 @@ use App\Modules;
 use App\Repositories\GalleryRepository;
 use App\Validators\GalleryValidator;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 /**
  * Class GalleryController

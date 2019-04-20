@@ -12,6 +12,9 @@
 namespace Core\Twig;
 
 use Slim\Csrf\Guard;
+use Twig_Extension;
+use Twig_Extension_GlobalsInterface;
+use Twig_SimpleFunction;
 
 /**
  * Class FormTwigExtension
@@ -19,7 +22,7 @@ use Slim\Csrf\Guard;
  * @package Core\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
+class FormTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
 
     /**
@@ -67,8 +70,8 @@ class FormTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('_method', [$this, 'method'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('_csrf', [$this, 'csrf'], ['is_safe' => ['html']])
+            new Twig_SimpleFunction('_method', [$this, 'method'], ['is_safe' => ['html']]),
+            new Twig_SimpleFunction('_csrf', [$this, 'csrf'], ['is_safe' => ['html']])
         ];
     }
 

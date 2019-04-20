@@ -11,6 +11,7 @@
 namespace App\Repositories;
 
 use App\Entities\CategoriesEntity;
+use App\Modules;
 use Core\Repositories\Repository;
 
 /**
@@ -26,7 +27,7 @@ class CategoriesRepository extends Repository
      * The table name in the database
      * @var string
      */
-    protected $table = 'categories';
+    protected $table = Modules::CATEGORIES;
 
 
     /**

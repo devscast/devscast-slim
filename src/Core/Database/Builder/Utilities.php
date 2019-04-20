@@ -10,6 +10,10 @@
 
 namespace Core\Database\Builder;
 
+use Countable;
+use PDOStatement;
+use Traversable;
+
 /**
  * Class Utilities
  * @package Core\Database\Builder
@@ -52,12 +56,12 @@ class Utilities
     /**
      * Converts columns from strings to types according to PDOStatement::columnMeta()
      *
-     * @param \PDOStatement      $statement
-     * @param array|\Traversable $rows - provided by PDOStatement::fetch with PDO::FETCH_ASSOC
+     * @param PDOStatement      $statement
+     * @param array|Traversable $rows - provided by PDOStatement::fetch with PDO::FETCH_ASSOC
      *
-     * @return array|\Traversable
+     * @return array|Traversable
      */
-    public static function stringToNumeric(\PDOStatement $statement, $rows)
+    public static function stringToNumeric(PDOStatement $statement, $rows)
     {
         for ($i = 0; ($columnMeta = $statement->getColumnMeta($i)) !== false; $i++) {
             $type = $columnMeta['native_type'];
@@ -75,7 +79,7 @@ class Utilities
                     if (isset($rows[$columnMeta['name']])) {
                         $rows[$columnMeta['name']] = $rows[$columnMeta['name']] + 0;
                     } else {
-                        if (is_array($rows) || $rows instanceof \Traversable) {
+                        if (is_array($rows) || $rows instanceof Traversable) {
                             foreach ($rows as &$row) {
                                 if (isset($row[$columnMeta['name']])) {
                                     $row[$columnMeta['name']] = $row[$columnMeta['name']] + 0;
@@ -137,7 +141,7 @@ class Utilities
      */
     public static function isCountable($subject)
     {
-        return (is_array($subject) || ($subject instanceof \Countable));
+        return (is_array($subject) || ($subject instanceof Countable));
     }
 
     /**

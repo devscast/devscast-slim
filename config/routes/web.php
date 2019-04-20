@@ -25,6 +25,7 @@ use Core\Middlewares\LoggedInMiddleware;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 return function($app) {
     /**
