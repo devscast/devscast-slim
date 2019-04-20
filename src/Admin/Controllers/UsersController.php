@@ -35,4 +35,3 @@ class UsersController extends CRUDController
         $this->module = Modules::USERS;
     }
 }
-

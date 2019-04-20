@@ -11,6 +11,7 @@
 namespace App\Validators;
 
 use Core\Repositories\ValidatorInterface;
+use Respect\Validation\Validator as v;
 
 /**
  * Class GalleryValidator
@@ -19,6 +20,29 @@ use Core\Repositories\ValidatorInterface;
  */
 abstract class GalleryValidator implements ValidatorInterface
 {
+    /**
+     * Validation rules
+     * @var array
+     */
+    private static $validationRules = [];
+
+    /**
+     * Validation rules when there is an update
+     * @var array
+     */
+    private static $updateValidationRules = [];
+
+    /**
+     * List of fields that can be stored in the Repository
+     * @var array
+     */
+    private static $storeAbleFields = [];
+
+    /**
+     * List of fields that can be stored in the Repository
+     * @var array
+     */
+    private static $updateAbleFields = [];
 
     /**
      * Retrieve validation rules
@@ -26,7 +50,13 @@ abstract class GalleryValidator implements ValidatorInterface
      */
     public static function getValidationRules(): array
     {
-        // TODO: Implement getValidationRules() method.
+        if (!empty(self::$validationRules)) {
+            self::$validationRules = [
+                "name" => v::optional(v::notBlank()->length(1, 150))->setName("name"),
+                "description" => v::optional(V::notBlank()->length(1, 250))->setName("description")
+            ];
+        }
+        return self::$validationRules;
     }
 
     /**
@@ -35,7 +65,13 @@ abstract class GalleryValidator implements ValidatorInterface
      */
     public static function getUpdateValidationRules(): array
     {
-        // TODO: Implement getUpdateValidationRules() method.
+        if (!empty(self::$updateValidationRules)) {
+            self::$updateValidationRules = [
+                "name" => v::optional(v::notBlank()->length(1, 150))->setName("name"),
+                "description" => v::optional(V::notBlank()->length(1, 250))->setName("description")
+            ];
+        }
+        return self::$updateValidationRules;
     }
 
     /**
@@ -44,7 +80,10 @@ abstract class GalleryValidator implements ValidatorInterface
      */
     public static function getStoreAbleFields(): array
     {
-        // TODO: Implement getStoreAbleFields() method.
+        if (empty(self::$storeAbleFields)) {
+            self::$storeAbleFields = array_keys(self::getValidationRules());
+        }
+        return self::$storeAbleFields;
     }
 
     /**
@@ -53,6 +92,9 @@ abstract class GalleryValidator implements ValidatorInterface
      */
     public static function getUpdateAbleFields(): array
     {
-        // TODO: Implement getUpdateAbleFields() method.
+        if (empty(self::$updateAbleFields)) {
+            self::$updateAbleFields = array_keys(self::getUpdateValidationRules());
+        }
+        return self::$updateAbleFields;
     }
 }
