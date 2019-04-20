@@ -3,7 +3,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateGalleryTable extends AbstractMigration
+class RemovePodcastIdFieldInGalleryTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -33,10 +33,13 @@ class CreateGalleryTable extends AbstractMigration
     public function change()
     {
         $this->table('gallery')
-            ->addColumn('name', 'string')
-            ->addColumn('description', 'string', ['limit' => 300])
-            ->addColumn('url', 'string', ['limit' => \Phinx\Db\Adapter\MysqlAdapter::TEXT_LONG])
-            ->addColumn('podcasts_id', 'integer')
-            ->create();
+            ->removeColumn("podcasts_id")
+            ->renameColumn("url", "thumb")
+            ->addColumn('created_at', 'datetime')
+            ->addColumn('updated_at', 'datetime', ['null' => true])
+            ->addColumn('users_id', 'integer', ['default' => 1])
+            ->addForeignKey('users_id', 'users', 'id')
+            ->addColumn('online', 'boolean', ['default' => 1])
+            ->update();
     }
 }
