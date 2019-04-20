@@ -49,7 +49,7 @@ class AuthController extends DashboardController
      */
     public function login(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-
+        $errors = [];
         if ($request->isPost()) {
             $input = $request->getParams();
             $validator = $this->container->get(Validator::class);

@@ -1,46 +1,44 @@
 {% htmlcompress %}
 <!DOCTYPE html>
 <html lang="{{ meta.lang }}">
-<head>
-    <title>{{ meta.title }}</title>
-    {% include 'includes/meta.html.twig' %}
+    <head>
+        <title>{{ meta.title }}</title>
+        {% include 'includes/meta.html.twig' %}
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-    <link rel="icon" href="{{ asset('favicon.ico') }}"/>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
-    <link rel="stylesheet" href="{{ asset('app.css') }}">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
-    {% block stylesheet %}{% endblock %}
+        <link rel="icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/plugins/font-awesome/css/font-awesome.min.css' }}">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="{{  base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.css' }}">
+        <link rel="stylesheet" href="{{  base_url() ~ '/assets/admin/dist/css/adminlte.min.css' }}">
+        {% block stylesheet %}{% endblock %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-</head>
-<body itemscope itemtype="http://schema.org/WebSite">
-<noscript>
-    <div class="text-center mt-100">
-        <h2 style="color: orangered;">JavaScript is disabled</h2>
-        <p class="mb-40">
-            We're sorry but devcast doesn't work properly without JavaScript enabled. <br>
-            Please enable it to continue.
-        </p>
-    </div>
-</noscript>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    </head>
+    <body itemscope itemtype="http://schema.org/WebSite">
+    <noscript>
+            <div class="text-center mt-100">
+                <h2 style="color: orangered;">JavaScript is disabled</h2>
+                <p class="mb-40">
+                    We're sorry but devcast doesn't work properly without JavaScript enabled. <br>
+                    Please enable it to continue.
+                </p>
+            </div>
+        </noscript>
 
-{% include 'includes/header.html.twig' %}
+        {% block content %}{% endblock %}
 
-{% block content %}{% endblock %}
-
-{% include 'auth/footer.html.twig' %}
-
-<script src="{{ asset('js/jquery-1.11.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-{% block javascript %}{% endblock %}
-</body>
+        <script src="{{ asset('js/jquery-1.11.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('app.js') }}"></script>
+        {% block javascript %}{% endblock %}
+    </body>
 </html>
 {% endhtmlcompress %}
