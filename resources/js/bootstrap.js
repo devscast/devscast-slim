@@ -19,16 +19,16 @@ $('document').ready(function () {
 
   let menu = document.querySelector('.btn-hamburguer-menu');
   if (menu) {
-    menu.addEventListener('click', function(e) {
+    menu.addEventListener('click', function (e) {
       e.preventDefault()
       $('.navigation').find('.menu').slideToggle()
-        this.classList.toggle('active')
+      this.classList.toggle('active')
 
-        if ($(window).width() <= 991) {
-          $('.navigation').find('.dropdown').on('click', function () {
-            $(this).find('.droplist').slideToggle()
-          })
-        }
+      if ($(window).width() <= 991) {
+        $('.navigation').find('.dropdown').on('click', function () {
+          $(this).find('.droplist').slideToggle()
+        })
+      }
     })
   }
 
@@ -79,7 +79,7 @@ $('document').ready(function () {
   }
 
 
-  let map =  document.querySelector('#map')
+  let map = document.querySelector('#map')
   if (map) {
     map.addEventListener('click', function (e) {
       e.preventDefault()

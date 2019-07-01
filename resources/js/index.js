@@ -9,3 +9,7 @@
 
 import '../sass/main.scss'
 import './bootstrap'
+import UploadViewer from "./UploadViewer";
+
+const viewer = new UploadViewer('.js-upload-viewer');
+viewer.run();
