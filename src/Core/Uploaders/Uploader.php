@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -113,7 +114,9 @@ abstract class Uploader
         try {
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
             $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
-        } catch (Exception|Throwable|Error $e) {
+        } catch (Exception | Throwable | Error $e) {
+            var_dump($e->getMessage());
+            die();
             $this->errors[] = "Something went wrong, try again please";
         } finally {
             return $this;
