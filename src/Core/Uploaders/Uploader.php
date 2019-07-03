@@ -107,16 +107,19 @@ abstract class Uploader
 
     /**
      * Move the uploaded file to the target path
+     * create the target folder to avoid "Target not writable exception"
      * @return $this|self
      */
     public function upload(): self
     {
         try {
+            if (!is_dir(WEBROOT . $this->relativePath)) {
+                mkdir(WEBROOT . $this->relativePath, 0777, true);
+            }
+
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
             $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
         } catch (Exception | Throwable | Error $e) {
-            var_dump($e->getMessage());
-            die();
             $this->errors[] = "Something went wrong, try again please";
         } finally {
             return $this;
@@ -241,7 +244,7 @@ abstract class Uploader
     protected function getPath(): string
     {
         if (is_null($this->path)) {
-            $this->path = WEBROOT . DIRECTORY_SEPARATOR . $this->relativePath;
+            $this->path = WEBROOT . $this->relativePath;
         }
         return $this->path;
     }
