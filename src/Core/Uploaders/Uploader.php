@@ -118,7 +118,7 @@ abstract class Uploader
             }
 
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
-            $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
+            $this->uploadedFilename = $this->relativePath . DIRECTORY_SEPARATOR . $this->filename;
         } catch (Exception | Throwable | Error $e) {
             $this->errors[] = "Something went wrong, try again please";
         } finally {
@@ -209,7 +209,7 @@ abstract class Uploader
     public function getUploadedFilename(): string
     {
         if (is_null($this->uploadedFilename)) {
-            $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
+            $this->uploadedFilename = $this->relativePath . DIRECTORY_SEPARATOR . $this->filename;
         }
         return $this->uploadedFilename;
     }
