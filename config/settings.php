@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -15,6 +16,7 @@ use Core\Twig\FormTwigExtension;
 use Core\Twig\MetaTwigExtension;
 use function DI\get;
 use Monolog\Logger;
+use Core\Twig\FlashTwigExtension;
 
 return [
 
@@ -64,5 +66,6 @@ return [
         AssetsTwigExtension::class,
         MetaTwigExtension::class,
         QuoteTwigExtension::class,
+        FlashTwigExtension::class
     ]
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -87,5 +88,25 @@ class FlashService
             return $flash[$type];
         }
         return null;
+    }
+
+    /**
+     * Retrieve all flashes
+     * @return array|null
+     */
+    public function getAll(): ?array
+    {
+        $flashes = $this->session->get(self::FLASH_SESSION_KEY, []);
+        return $flashes ?? null;
+    }
+
+
+    /**
+     * Reset flash message
+     * @return void
+     */
+    public function reset(): void
+    {
+        $this->session->delete(self::FLASH_SESSION_KEY);
     }
 }

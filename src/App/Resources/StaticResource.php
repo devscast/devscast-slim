@@ -11,13 +11,14 @@
 
 namespace App\Resources;
 
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\StatusCode;
+use App\Validators\ContactValidator;
+use Awurth\SlimValidation\Validator;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Awurth\SlimValidation\Validator;
-use App\Validators\ContactValidator;
 
 /**
  * Class StaticResource
