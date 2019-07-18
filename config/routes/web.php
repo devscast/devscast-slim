@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -25,8 +26,9 @@ use Core\Middlewares\LoggedInMiddleware;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-return function($app) {
+return function ($app) {
     /**
      * GENERAL ROUTES (NON RESOURCE ROUTES)
      */
@@ -35,7 +37,7 @@ return function($app) {
         $this->get('/home', [HomeResource::class, 'index'])->setName('home.index');
         $this->post('/newsletter', [NewsletterResource::class, 'store'])->setName('newsletter.store');
         $this->get('/about', [StaticResource::class, 'about'])->setName('about');
-        $this->get('/contact', [StaticResource::class, 'contact'])->setName('contact');
+        $this->map(['GET', 'POST'], '/contact', [StaticResource::class, 'contact'])->setName('contact');
         $this->get('/search', [])->setName('search');
 
         $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');

@@ -10,6 +10,7 @@
 
 namespace Admin\Controllers;
 
+use App\Modules;
 use App\Repositories\NewsletterRepository;
 use App\Validators\NewsletterValidator;
 use Psr\Container\ContainerInterface;
@@ -33,6 +34,6 @@ class NewsletterController extends CRUDController
         parent::__construct($container);
         $this->repository = $container->get(NewsletterRepository::class);
         $this->validator = NewsletterValidator::class;
-        $this->module = 'newsletter';
+        $this->module = Modules::NEWSLETTER;
     }
 }

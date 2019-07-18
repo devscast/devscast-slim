@@ -8,3 +8,4 @@ node_modules/
 yarn.lock
 error_log
 public/error_log
+*.log

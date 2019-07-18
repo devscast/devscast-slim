@@ -177,7 +177,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    Object|array|mixed
+                    Object|array|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_all">all</a>()
@@ -188,7 +188,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    object|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_find">find</a>(int $id)
@@ -198,7 +198,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    object|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_findWith">findWith</a>(string $field, $value)
@@ -219,7 +219,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_allOnline">allOnline</a>()
@@ -229,7 +229,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_allOffline">allOffline</a>()
@@ -239,7 +239,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    Object|array|mixed
+                    Object|array|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_latest">latest</a>(int $limit)
@@ -249,7 +249,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    Object|array|mixed
+                    Object|array|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_last">last</a>()
@@ -259,7 +259,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    Object|array|mixed
+                    Object|array|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_next">next</a>($id)
@@ -269,7 +269,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    Object|array|mixed
+                    Object|array|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_previous">previous</a>($id)
@@ -285,7 +285,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method___construct"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 45</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method___construct"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 48</div>
         <code>                    
     <strong>__construct</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         </code>
@@ -316,7 +316,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_makeQuery">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_makeQuery"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 54</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_makeQuery"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 57</div>
         <code>            protected        <a href="../../Core/Database/Builder/Query.html"><abbr title="Core\Database\Builder\Query">Query</abbr></a>
     <strong>makeQuery</strong>()
         </code>
@@ -346,7 +346,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_create"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 64</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_create"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 67</div>
         <code>                    bool|int
     <strong>create</strong>(array $data)
         </code>
@@ -386,7 +386,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_update"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 75</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_update"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 82</div>
         <code>                    bool|int|<a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
     <strong>update</strong>(int $id, array $data)
         </code>
@@ -431,7 +431,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_destroy">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_destroy"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 85</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_destroy"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 96</div>
         <code>                    mixed
     <strong>destroy</strong>(int $id)
         </code>
@@ -471,7 +471,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_lastInsertId">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_lastInsertId"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 94</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_lastInsertId"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 109</div>
         <code>                    string|int|mixed
     <strong>lastInsertId</strong>()
         </code>
@@ -501,8 +501,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_all">
-        <div class="location">at         line 60</div>
-        <code>                    Object|array|mixed
+        <div class="location">at         line 62</div>
+        <code>                    Object|array|null
     <strong>all</strong>()
         </code>
     </h3>
@@ -516,7 +516,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>Object|array|mixed</td>
+            <td>Object|array|null</td>
             <td></td>
         </tr>
     </table>
@@ -529,8 +529,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_find">
-        <div class="location">at         line 115</div>
-        <code>                    mixed
+        <div class="location">at         line 137</div>
+        <code>                    object|null
     <strong>find</strong>(int $id)
         </code>
     </h3>
@@ -556,7 +556,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>object|null</td>
             <td></td>
         </tr>
     </table>
@@ -569,8 +569,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findWith">
-        <div class="location">at         line 128</div>
-        <code>                    mixed
+        <div class="location">at         line 154</div>
+        <code>                    object|null
     <strong>findWith</strong>(string $field, $value)
         </code>
     </h3>
@@ -601,7 +601,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>object|null</td>
             <td></td>
         </tr>
     </table>
@@ -614,7 +614,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_count"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 147</div>
+        <div class="location">in <a href="../../Core/Repositories/Repository.html#method_count"><abbr title="Core\Repositories\Repository">Repository</abbr></a> at         line 174</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -642,8 +642,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_allOnline">
-        <div class="location">at         line 69</div>
-        <code>                    mixed
+        <div class="location">at         line 75</div>
+        <code>                    null
     <strong>allOnline</strong>()
         </code>
     </h3>
@@ -659,7 +659,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>null</td>
             <td></td>
         </tr>
     </table>
@@ -672,8 +672,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_allOffline">
-        <div class="location">at         line 80</div>
-        <code>                    mixed
+        <div class="location">at         line 90</div>
+        <code>                    null
     <strong>allOffline</strong>()
         </code>
     </h3>
@@ -689,7 +689,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>null</td>
             <td></td>
         </tr>
     </table>
@@ -702,8 +702,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_latest">
-        <div class="location">at         line 92</div>
-        <code>                    Object|array|mixed
+        <div class="location">at         line 106</div>
+        <code>                    Object|array|null
     <strong>latest</strong>(int $limit)
         </code>
     </h3>
@@ -729,7 +729,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>Object|array|mixed</td>
+            <td>Object|array|null</td>
             <td></td>
         </tr>
     </table>
@@ -742,8 +742,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_last">
-        <div class="location">at         line 103</div>
-        <code>                    Object|array|mixed
+        <div class="location">at         line 121</div>
+        <code>                    Object|array|null
     <strong>last</strong>()
         </code>
     </h3>
@@ -759,7 +759,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>Object|array|mixed</td>
+            <td>Object|array|null</td>
             <td></td>
         </tr>
     </table>
@@ -772,8 +772,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 153</div>
-        <code>                    Object|array|mixed
+        <div class="location">at         line 187</div>
+        <code>                    Object|array|null
     <strong>next</strong>($id)
         </code>
     </h3>
@@ -799,7 +799,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>Object|array|mixed</td>
+            <td>Object|array|null</td>
             <td></td>
         </tr>
     </table>
@@ -812,8 +812,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_previous">
-        <div class="location">at         line 167</div>
-        <code>                    Object|array|mixed
+        <div class="location">at         line 201</div>
+        <code>                    Object|array|null
     <strong>previous</strong>($id)
         </code>
     </h3>
@@ -839,7 +839,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>Object|array|mixed</td>
+            <td>Object|array|null</td>
             <td></td>
         </tr>
     </table>

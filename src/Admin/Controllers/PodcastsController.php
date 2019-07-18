@@ -10,6 +10,7 @@
 
 namespace Admin\Controllers;
 
+use App\Modules;
 use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
 use App\Validators\PodcastsValidator;
@@ -21,6 +22,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class PodcastsController
@@ -39,7 +41,7 @@ class PodcastsController extends CRUDController
         parent::__construct($container);
         $this->repository = $container->get(PodcastsRepository::class);
         $this->validator = PodcastsValidator::class;
-        $this->module = 'podcasts';
+        $this->module = Modules::PODCASTS;
     }
 
     /**
@@ -50,6 +52,7 @@ class PodcastsController extends CRUDController
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        $errors = $input = [];
         if ($request->isPost()) {
             $validator = $this->container->get(Validator::class);
             $validator->validate($request, PodcastsValidator::getValidationRules());
@@ -74,12 +77,12 @@ class PodcastsController extends CRUDController
                     } else {
                         $errors['audio'] = $audio->getErrors();
                         $errors['thumb'] = $thumb->getErrors();
-                        $this->status = 422;
+                        $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                     }
                 }
             } else {
                 $this->flash->error('podcast.create');
-                $this->status = 422;
+                $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             }
         }
 
@@ -98,6 +101,7 @@ class PodcastsController extends CRUDController
     {
         $id = $request->getAttribute('route')->getArgument('id');
         $item = $this->repository->find($id);
+        $errors = $input = [];
 
         if ($item) {
             if ($request->isPut()) {
@@ -114,7 +118,7 @@ class PodcastsController extends CRUDController
                     return $this->redirect('admin.podcasts');
                 } else {
                     $this->flash->error('podcast.update');
-                    $this->status = 422;
+                    $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                 }
             }
 
@@ -126,6 +130,6 @@ class PodcastsController extends CRUDController
                 $data
             );
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }

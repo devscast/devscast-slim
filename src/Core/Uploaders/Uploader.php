@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -11,8 +12,10 @@
 
 namespace Core\Uploaders;
 
-use Cake\Core\Exception\Exception;
+use Error;
+use Exception;
 use Psr\Http\Message\UploadedFileInterface;
+use Throwable;
 
 /**
  * Class Upload
@@ -20,7 +23,7 @@ use Psr\Http\Message\UploadedFileInterface;
  * @package Core\Uploaders
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class Uploader
+abstract class Uploader
 {
 
     /**
@@ -104,14 +107,19 @@ class Uploader
 
     /**
      * Move the uploaded file to the target path
+     * create the target folder to avoid "Target not writable exception"
      * @return $this|self
      */
     public function upload(): self
     {
         try {
+            if (!is_dir(WEBROOT . $this->relativePath)) {
+                mkdir(WEBROOT . $this->relativePath, 0777, true);
+            }
+
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
-            $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
-        } catch (\Exception|\Throwable|\Error $e) {
+            $this->uploadedFilename = $this->relativePath . DIRECTORY_SEPARATOR . $this->filename;
+        } catch (Exception | Throwable | Error $e) {
             $this->errors[] = "Something went wrong, try again please";
         } finally {
             return $this;
@@ -201,7 +209,7 @@ class Uploader
     public function getUploadedFilename(): string
     {
         if (is_null($this->uploadedFilename)) {
-            $this->uploadedFilename = $this->relativePath . "/" . $this->filename;
+            $this->uploadedFilename = $this->relativePath . DIRECTORY_SEPARATOR . $this->filename;
         }
         return $this->uploadedFilename;
     }
@@ -236,7 +244,7 @@ class Uploader
     protected function getPath(): string
     {
         if (is_null($this->path)) {
-            $this->path = WEBROOT . DIRECTORY_SEPARATOR . $this->relativePath;
+            $this->path = WEBROOT . $this->relativePath;
         }
         return $this->path;
     }

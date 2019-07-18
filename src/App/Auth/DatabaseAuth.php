@@ -15,11 +15,13 @@ namespace App\Auth;
 use App\Repositories\UsersRepository;
 use Core\Auth\AuthInterface;
 use Core\Auth\User;
+use Core\Database\Builder\Exception;
 use Core\Session\SessionInterface;
 
 /**
  * Class DatabaseAuth
  * @package App\Auth
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class DatabaseAuth implements AuthInterface
 {

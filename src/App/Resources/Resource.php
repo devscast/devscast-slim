@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -11,14 +12,12 @@
 
 namespace App\Resources;
 
-use Core\Helpers\RouterAwareHelper;
+use Slim\Router;
 use Core\MetaManager;
 use Core\Renderer\Renderer;
+use Core\Session\FlashService;
+use Core\Helpers\RouterAwareHelper;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
-use Slim\Http\StatusCode;
-use Slim\Router;
 
 /**
  * Class Resource
@@ -48,6 +47,11 @@ class Resource
      */
     protected $meta;
 
+    /**
+     * @var FlashService
+     */
+    protected $flash;
+
 
     use RouterAwareHelper;
 
@@ -60,6 +64,7 @@ class Resource
         $this->renderer = $container->get(Renderer::class);
         $this->router = $container->get(Router::class);
         $this->meta = $container->get(MetaManager::class);
+        $this->flash = $container->get(FlashService::class);
         $this->container = $container;
     }
 }

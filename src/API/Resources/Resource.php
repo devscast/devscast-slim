@@ -22,7 +22,7 @@ use Slim\Http\StatusCode;
 /**
  * Class Resource
  * @package API\Resources
- *
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class Resource extends \App\Resources\Resource
 {

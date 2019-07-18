@@ -10,16 +10,14 @@
 
 namespace Core\Renderer;
 
-use Core\Auth\AuthInterface;
-use Core\Twig\AuthTwigExtension;
-use Core\Twig\FormTwigExtension;
 use nochso\HtmlCompressTwig\Extension;
 use Psr\Container\ContainerInterface;
-use Slim\Csrf\Guard;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Router;
 use Slim\Views\TwigExtension;
+use Twig_Extension_Debug;
+use Twig_Extensions_Extension_Text;
 
 /**
  * Class RendererFactory
@@ -55,7 +53,7 @@ class RendererFactory
         $router = $this->container->get(Router::class);
         $uri = Uri::createFromEnvironment(new Environment($_SERVER));
         $view->addExtension(new TwigExtension($router, $uri));
-        $view->addExtension(new \Twig_Extensions_Extension_Text());
+        $view->addExtension(new Twig_Extensions_Extension_Text());
         $view->addExtension(new Extension());
 
         foreach ($this->container->get('twig.extensions') as $extension) {
@@ -63,7 +61,7 @@ class RendererFactory
         }
 
         if ($this->container->get('app.debug')) {
-            $view->addExtension(new \Twig_Extension_Debug());
+            $view->addExtension(new Twig_Extension_Debug());
         }
         return $view;
     }

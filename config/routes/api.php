@@ -16,6 +16,7 @@ use App\Middlewares\JsonRequestMiddleware;
 
 /**
  * @param $app \Slim\App|\DI\Bridge\Slim\App
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 return function ($app) {
     $app->group("/api", function () {

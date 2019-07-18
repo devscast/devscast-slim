@@ -91,7 +91,7 @@ abstract class PodcastsValidator implements ValidatorInterface
         if (empty(self::$storeAbleFields)) {
             self::$storeAbleFields = array_keys(self::getValidationRules());
         }
-         return self::$storeAbleFields;
+        return self::$storeAbleFields;
     }
 
     /**

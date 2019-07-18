@@ -1,3 +1,12 @@
+/*
+ * This file is part of the devcast.
+ *
+ * (c) Bernard Ng <ngandubernard@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 $('document').ready(function () {
   Array.from(document.querySelectorAll('video, audio')).forEach(function (node) {
     if (!node.hasAttribute('data-devscast-initialized')) {
@@ -10,16 +19,16 @@ $('document').ready(function () {
 
   let menu = document.querySelector('.btn-hamburguer-menu');
   if (menu) {
-    menu.addEventListener('click', function(e) {
+    menu.addEventListener('click', function (e) {
       e.preventDefault()
       $('.navigation').find('.menu').slideToggle()
-        this.classList.toggle('active')
+      this.classList.toggle('active')
 
-        if ($(window).width() <= 991) {
-          $('.navigation').find('.dropdown').on('click', function () {
-            $(this).find('.droplist').slideToggle()
-          })
-        }
+      if ($(window).width() <= 991) {
+        $('.navigation').find('.dropdown').on('click', function () {
+          $(this).find('.droplist').slideToggle()
+        })
+      }
     })
   }
 
@@ -70,7 +79,7 @@ $('document').ready(function () {
   }
 
 
-  let map =  document.querySelector('#map')
+  let map = document.querySelector('#map')
   if (map) {
     map.addEventListener('click', function (e) {
       e.preventDefault()

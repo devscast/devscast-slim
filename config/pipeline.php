@@ -8,17 +8,20 @@
  * file that was distributed with this source code.
  */
 
+use App\Middlewares\EnableCORSMiddleware;
+use Core\Middlewares\HttpMethodMiddleware;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 return function ($app) {
     $app->options('/{routes:.+}', function (RequestInterface $request, ResponseInterface $response) {
         return $response;
     });
 
-    $app->add(\Core\Middlewares\HttpMethodMiddleware::class);
-    $app->add(\App\Middlewares\EnableCORSMiddleware::class);
+    $app->add(HttpMethodMiddleware::class);
+    $app->add(EnableCORSMiddleware::class);
 };

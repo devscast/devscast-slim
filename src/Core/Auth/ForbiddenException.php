@@ -11,11 +11,14 @@
 
 namespace Core\Auth;
 
+use Exception;
+
 /**
  * Class ForbiddenException
  * @package Core\Auth
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-class ForbiddenException extends \Exception
+class ForbiddenException extends Exception
 {
 
 }

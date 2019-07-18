@@ -11,9 +11,12 @@
 
 namespace App\Repositories;
 
+use stdClass;
+
 /**
  * Class JsonFileRepository
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class JsonFileRepository
 {
@@ -25,14 +28,14 @@ class JsonFileRepository
 
     /**
      * quotes fetched form file
-     * @var \stdClass[]|array
+     * @var stdClass[]|array
      */
     protected $data;
 
 
     /**
      * Parse the json file
-     * @return mixed|\stdClass[]|string
+     * @return mixed|stdClass[]|string
      */
     public function getData()
     {

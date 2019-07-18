@@ -49,6 +49,8 @@ class EnableCORSMiddleware
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
         $origin = !empty($this->allowOrigin) ? implode(", ", $this->allowOrigin) : "" ;
+
+        /** @var $response Response */
         $response = $next($request, $response);
         return $response
             ->withHeader('Access-Control-Allow-Origin', $origin)

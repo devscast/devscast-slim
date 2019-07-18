@@ -12,12 +12,16 @@
 namespace Core\Twig;
 
 use Core\MetaManager;
+use Twig_Extension;
+use Twig_Extension_GlobalsInterface;
+use Twig_SimpleFunction;
 
 /**
  * Class MetaTwigExtension
  * @package Core\Twig
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-class MetaTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
+class MetaTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
     /**
      * @var MetaManager
@@ -51,7 +55,7 @@ class MetaTwigExtension extends \Twig_Extension implements \Twig_Extension_Globa
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('meta', [$this, "getMeta"], ["is_safe" => ["html"]])
+            new Twig_SimpleFunction('meta', [$this, "getMeta"], ["is_safe" => ["html"]])
         ];
     }
 

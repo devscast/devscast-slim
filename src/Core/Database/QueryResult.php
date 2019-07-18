@@ -10,13 +10,17 @@
 
 namespace Core\Database;
 
+use ArrayAccess;
+use Iterator;
+use LogicException;
+
 /**
  * Class QueryResult
  * Abstraction for Raw Database query results
  * @package Core\Database
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class QueryResult implements \ArrayAccess, \Iterator
+class QueryResult implements ArrayAccess, Iterator
 {
     /**
      * Raw results
@@ -180,11 +184,11 @@ class QueryResult implements \ArrayAccess, \Iterator
      * </p>
      * @return void
      * @since 5.0.0
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function offsetSet($offset, $value)
     {
-        throw new \LogicException("Can't alter records");
+        throw new LogicException("Can't alter records");
     }
 
     /**
@@ -195,10 +199,10 @@ class QueryResult implements \ArrayAccess, \Iterator
      * </p>
      * @return void
      * @since 5.0.0
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function offsetUnset($offset)
     {
-        throw new \LogicException("Can't alter records");
+        throw new LogicException("Can't alter records");
     }
 }

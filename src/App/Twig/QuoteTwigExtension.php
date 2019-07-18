@@ -11,12 +11,15 @@
 namespace App\Twig;
 
 use App\Repositories\QuotesRepository;
+use Twig_Extension;
+use Twig_Extension_GlobalsInterface;
 
 /**
  * Class QuoteTwigExtension
  * @package App\Twig
+ * @author bernard-ng, https://bernard-ng.github.io
  */
-class QuoteTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
+class QuoteTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
     /**
      * @var QuotesRepository

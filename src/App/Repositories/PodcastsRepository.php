@@ -11,8 +11,9 @@
 namespace App\Repositories;
 
 use App\Entities\PodcastsEntity;
+use App\Modules;
+use Core\Database\Builder\Exception;
 use Core\Database\Builder\Queries\Select;
-use Core\Database\Builder\Query;
 use Core\Repositories\Repository;
 
 /**
@@ -27,7 +28,7 @@ class PodcastsRepository extends Repository
      * The table name in the database
      * @var string
      */
-    protected $table = 'podcasts';
+    protected $table = Modules::PODCASTS;
 
     /**
      * Entity class
@@ -39,6 +40,7 @@ class PodcastsRepository extends Repository
     /**
      * Base query for fetching with category and user
      * @return Select
+     * @throws Exception
      */
     private function withCategoryaAndUser(): Select
     {
@@ -55,81 +57,109 @@ class PodcastsRepository extends Repository
 
     /**
      * @inheritdoc
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function all()
     {
-        return $this->withCategoryaAndUser()->all()->get();
+        try {
+            return $this->withCategoryaAndUser()->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve online podcasts
-     * @return mixed
+     * @return null
      */
     public function allOnline()
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table}.online = 1")
-            ->all()->get();
+        try {
+            return $this->withCategoryaAndUser()
+                ->where("{$this->table}.online = 1")
+                ->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve offline podcasts
-     * @return mixed
+     * @return null
      */
     public function allOffline()
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table}.online = 0")
-            ->all()->get();
+        try {
+            return $this->withCategoryaAndUser()
+                ->where("{$this->table}.online = 0")
+                ->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve the latest podcasts
      * @param int $limit
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function latest(int $limit)
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table}.online = 1")
-            ->limit($limit)->all()->get();
+        try {
+            return $this->withCategoryaAndUser()
+                ->where("{$this->table}.online = 1")
+                ->limit($limit)->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve the last podcast
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function last()
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table}.online = 1")
-            ->limit(1)->all()->get(0);
+        try {
+            return $this->withCategoryaAndUser()
+                ->where("{$this->table}.online = 1")
+                ->limit(1)->all()->get(0);
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve one podcast thanks to an 'id'
      * @param int $id
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function find(int $id)
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table}.id", compact('id'))
-            ->all()->get(0);
+        try {
+            return $this->withCategoryaAndUser()
+                ->where("{$this->table}.id", compact('id'))
+                ->all()->get(0);
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve a podcast with specific conditions
      * @param string $field
      * @param $value
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function findWith(string $field, $value)
     {
-        return $this->withCategoryaAndUser()
-            ->where("{$this->table}.{$field} = ?", [$field => $value])
-            ->all()->get();
+        try {
+            return $this->withCategoryaAndUser()
+                ->where("{$this->table}.{$field} = ?", [$field => $value])
+                ->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
@@ -138,17 +168,21 @@ class PodcastsRepository extends Repository
      */
     private function singlePagination()
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select(["{$this->table}.name", "{$this->table}.slug", "{$this->table}.id"])
-            ->limit(1);
+        try {
+            return $this->makeQuery()
+                ->into($this->entity)
+                ->from($this->table)
+                ->select(["{$this->table}.name", "{$this->table}.slug", "{$this->table}.id"])
+                ->limit(1);
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Retrieve the next record
      * @param $id
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function next($id)
     {
@@ -162,7 +196,7 @@ class PodcastsRepository extends Repository
     /**
      * Retrieve the previous record
      * @param $id
-     * @return Object|array|mixed
+     * @return Object|array|null
      */
     public function previous($id)
     {

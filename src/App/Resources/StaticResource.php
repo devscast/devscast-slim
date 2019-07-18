@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -10,11 +11,14 @@
 
 namespace App\Resources;
 
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\StatusCode;
+use App\Validators\ContactValidator;
+use Awurth\SlimValidation\Validator;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 /**
  * Class StaticResource
@@ -38,7 +42,6 @@ class StaticResource extends Resource
 
     /**
      * Render contact page
-     * @TODO handle the post request
      * @param RequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
@@ -46,6 +49,19 @@ class StaticResource extends Resource
     public function contact(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         if ($request->isPost()) {
+            $validator = $this->container->get(Validator::class);
+            $validator->validate($request, ContactValidator::getValidationRules());
+            $errors = $validator->getErrors();
+            [$subject, $message, $email, $name] = $request->getParams();
+
+            if ($validator->isValid()) {
+                mail("devscast@devs-cast.com", $subject, $message);
+                $this->flash->success("contact");
+                return $this->redirect("home");
+            } else {
+                $this->flash->error("contact");
+                $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
+            }
         }
         return $this->renderer->render($response, 'contact.html.twig');
     }

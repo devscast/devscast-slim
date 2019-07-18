@@ -11,8 +11,6 @@
 namespace App\Resources;
 
 use App\Repositories\PodcastsRepository;
-use App\Repositories\QuotesRepository;
-use Core\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

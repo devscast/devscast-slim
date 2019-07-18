@@ -17,6 +17,7 @@ use Respect\Validation\Validator as v;
 /**
  * Class PodcastLinksValidator
  * @package App\Validators
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class PodcastLinksValidator implements ValidatorInterface
 {

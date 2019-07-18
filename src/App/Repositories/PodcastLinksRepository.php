@@ -11,6 +11,8 @@
 namespace App\Repositories;
 
 use App\Entities\PodcastLinksEntity;
+use App\Modules;
+use Core\Database\Builder\Exception;
 use Core\Repositories\Repository;
 
 /**
@@ -25,7 +27,7 @@ class PodcastLinksRepository extends Repository
      * The table name in the database
      * @var string
      */
-    protected $table = 'podcast_links';
+    protected $table = Modules::PODCASTLINKS_TABLE;
 
     /**
      * Entity class
@@ -40,12 +42,16 @@ class PodcastLinksRepository extends Repository
      */
     public function get(int $id)
     {
-        return $this->makeQuery()
-            ->into($this->entity)
-            ->from($this->table)
-            ->select("{$this->table}.*")
-            ->where("podcasts_id = ?", compact('id'))
-            ->orderBy("{$this->table}.reference ASC")
-            ->all()->get();
+        try {
+            return $this->makeQuery()
+                ->into($this->entity)
+                ->from($this->table)
+                ->select("{$this->table}.*")
+                ->where("podcasts_id = ?", compact('id'))
+                ->orderBy("{$this->table}.reference ASC")
+                ->all()->get();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 }

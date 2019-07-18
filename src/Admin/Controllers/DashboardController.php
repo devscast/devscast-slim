@@ -22,6 +22,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 use Slim\Router;
 
 /**
@@ -42,7 +43,7 @@ class DashboardController
      * response status of an action
      * @var int
      */
-    protected $status = 200;
+    protected $status = StatusCode::HTTP_OK;
 
     /**
      * @var Renderer|mixed

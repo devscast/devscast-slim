@@ -18,6 +18,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class CRUDController
@@ -80,6 +81,7 @@ class CRUDController extends DashboardController implements CRUDInterface
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        $errors = $input = [];
         if ($request->isPost()) {
             $validator = $this->container->get(Validator::class);
             $validator->validate($request, call_user_func([$this->validator, 'getValidationRules']));
@@ -93,7 +95,7 @@ class CRUDController extends DashboardController implements CRUDInterface
                 return $this->redirect("admin.{$this->module}");
             } else {
                 $this->flash->error("{$this->module}.create");
-                $this->status = 422;
+                $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             }
         }
 
@@ -115,6 +117,7 @@ class CRUDController extends DashboardController implements CRUDInterface
     {
         $id = $request->getAttribute('route')->getArgument('id');
         $item = $this->repository->find($id);
+        $errors = $input = [];
 
         if ($item) {
             if ($request->isPut()) {
@@ -130,7 +133,7 @@ class CRUDController extends DashboardController implements CRUDInterface
                     return $this->redirect("admin.{$this->module}");
                 } else {
                     $this->flash->error("{$this->module}.update");
-                    $this->status = 422;
+                    $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                 }
             }
 
@@ -141,7 +144,7 @@ class CRUDController extends DashboardController implements CRUDInterface
                 $data
             );
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 
     /**
@@ -160,6 +163,6 @@ class CRUDController extends DashboardController implements CRUDInterface
                 return $this->redirect("admin.{$this->module}");
             }
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }

@@ -10,11 +10,13 @@
 
 namespace App\Repositories;
 
+use InvalidArgumentException;
 use stdClass;
 
 /**
  * Class QuotesRepository
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class QuotesRepository extends JsonFileRepository
 {
@@ -28,7 +30,7 @@ class QuotesRepository extends JsonFileRepository
         if (file_exists($file)) {
             $this->file = $file;
         } else {
-            throw new \InvalidArgumentException("the given filename is not a file");
+            throw new InvalidArgumentException("the given filename is not a file");
         }
     }
 

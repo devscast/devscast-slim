@@ -66,7 +66,6 @@ class PodcastsResource extends Resource
     public function show(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $id = intval($request->getAttribute('route')->getArgument('id'));
-        $slug = strval($request->getAttribute('route')->getArgument('slug'));
         $podcast = $this->repository->find($id);
 
         if ($podcast) {

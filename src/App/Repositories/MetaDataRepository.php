@@ -13,6 +13,7 @@ namespace App\Repositories;
 /**
  * Class MetaDataRepository
  * @package App\Repositories
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class MetaDataRepository extends JsonFileRepository
 {

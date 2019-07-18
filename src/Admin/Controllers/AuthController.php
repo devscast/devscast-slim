@@ -19,10 +19,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class AuthController
  * @package Admin\Controllers
+ * @author bernard-ng, https://bernard-ng.github.io
  */
 class AuthController extends DashboardController
 {
@@ -49,7 +51,7 @@ class AuthController extends DashboardController
      */
     public function login(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $errors = [];
+        $errors = $input = [];
         if ($request->isPost()) {
             $input = $request->getParams();
             $validator = $this->container->get(Validator::class);
@@ -80,7 +82,10 @@ class AuthController extends DashboardController
      */
     public function logout(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $this->databaseAuth->logout();
-        return $this->redirect('home');
+        if ($request->isPost()) {
+            $this->databaseAuth->logout();
+            return $this->redirect('home');
+        }
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }

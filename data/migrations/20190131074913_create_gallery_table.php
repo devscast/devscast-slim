@@ -37,7 +37,6 @@ class CreateGalleryTable extends AbstractMigration
             ->addColumn('description', 'string', ['limit' => 300])
             ->addColumn('url', 'string', ['limit' => \Phinx\Db\Adapter\MysqlAdapter::TEXT_LONG])
             ->addColumn('podcasts_id', 'integer')
-            ->addForeignKey('podcasts_id','podcasts', 'id')
             ->create();
     }
 }

@@ -14,7 +14,7 @@ use Core\Database\Builder\Queries\Delete;
 use Core\Database\Builder\Queries\Insert;
 use Core\Database\Builder\Queries\Select;
 use Core\Database\Builder\Queries\Update;
-use Core\Database\QueryResult;
+use PDO;
 
 /**
  * Class Query
@@ -38,7 +38,7 @@ class Query
     /** @var bool - If a query errors, this determines how to handle it */
     public $exceptionOnError = false;
 
-    /** @var \PDO */
+    /** @var PDO */
     protected $pdo;
 
     /** @var Structure|null */
@@ -58,14 +58,14 @@ class Query
     /**
      * Query constructor
      *
-     * @param \PDO $pdo
+     * @param PDO $pdo
      * @param Structure|null $structure
      */
-    public function __construct(\PDO $pdo, Structure $structure = null)
+    public function __construct(PDO $pdo, Structure $structure = null)
     {
         $this->pdo = $pdo;
 
-        if ($this->pdo->getAttribute(\PDO::ATTR_ERRMODE) === \PDO::ERRMODE_EXCEPTION) {
+        if ($this->pdo->getAttribute(PDO::ATTR_ERRMODE) === PDO::ERRMODE_EXCEPTION) {
             $this->throwExceptionOnError(true);
         }
 
@@ -251,9 +251,9 @@ class Query
     }
 
     /**
-     * @return \PDO
+     * @return PDO
      */
-    public function getPdo(): \PDO
+    public function getPdo(): PDO
     {
         return $this->pdo;
     }

@@ -10,7 +10,6 @@
 
 namespace Core\Database\Builder\Queries;
 
-use App\Entities\PostEntity;
 use Core\Database\Builder\Exception;
 use Core\Database\Builder\Literal;
 use Core\Database\Builder\Query;
@@ -18,6 +17,10 @@ use Core\Database\Builder\Regex;
 use Core\Database\Builder\Structure;
 use Core\Database\Builder\Utilities;
 use Core\Database\QueryResult;
+use DateTime;
+use IteratorAggregate;
+use PDO;
+use PDOStatement;
 
 /**
  * Class Base
@@ -28,7 +31,7 @@ use Core\Database\QueryResult;
  * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License, version 3.0
  */
-abstract class Base implements \IteratorAggregate
+abstract class Base implements IteratorAggregate
 {
 
     /** @var float */
@@ -43,7 +46,7 @@ abstract class Base implements \IteratorAggregate
     /** @var Query */
     protected $fluent;
 
-    /** @var \PDOStatement */
+    /** @var PDOStatement */
     protected $result;
 
     /** @var array - definition clauses */
@@ -61,11 +64,6 @@ abstract class Base implements \IteratorAggregate
 
     /** @var @var int */
     protected $currentFetchMode;
-
-    /**
-     * @var array
-     */
-    private $records;
 
     /**
      * BaseQuery constructor.
@@ -193,7 +191,7 @@ abstract class Base implements \IteratorAggregate
     /**
      * Implements method from IteratorAggregate
      *
-     * @return \PDOStatement
+     * @return PDOStatement
      *
      * @throws Exception
      */
@@ -205,7 +203,7 @@ abstract class Base implements \IteratorAggregate
     /**
      * Execute query with earlier added parameters
      *
-     * @return \PDOStatement
+     * @return PDOStatement
      *
      * @throws Exception
      */
@@ -287,7 +285,7 @@ abstract class Base implements \IteratorAggregate
     /**
      * Get PDOStatement result
      *
-     * @return \PDOStatement
+     * @return PDOStatement
      */
     public function getResult()
     {
@@ -511,13 +509,13 @@ abstract class Base implements \IteratorAggregate
     }
 
     /**
-     * @param \DateTime $val
+     * @param DateTime $val
      *
      * @return mixed
      */
     private function formatValue($val)
     {
-        if ($val instanceof \DateTime) {
+        if ($val instanceof DateTime) {
             return $val->format("Y-m-d H:i:s"); // may be driver specific
         }
 
@@ -582,28 +580,29 @@ abstract class Base implements \IteratorAggregate
 
     /**
      * @return QueryResult
+     * @throws Exception
      */
     public function all(): QueryResult
     {
-        return new QueryResult($this->execute()->fetchAll(\PDO::FETCH_ASSOC), $this->fluent->getEntity());
+        return new QueryResult($this->execute()->fetchAll(PDO::FETCH_ASSOC), $this->fluent->getEntity());
     }
 
 
     /**
-     * @param \PDOStatement $result
+     * @param PDOStatement $result
      */
-    private function setObjectFetchMode(\PDOStatement &$result): void
+    private function setObjectFetchMode(PDOStatement &$result): void
     {
         if ($this->object !== false) {
             if (class_exists($this->object)) {
-                $this->currentFetchMode = \PDO::FETCH_CLASS;
+                $this->currentFetchMode = PDO::FETCH_CLASS;
                 $result->setFetchMode($this->currentFetchMode, $this->object);
             } else {
-                $this->currentFetchMode = \PDO::FETCH_OBJ;
+                $this->currentFetchMode = PDO::FETCH_OBJ;
                 $result->setFetchMode($this->currentFetchMode);
             }
-        } elseif ($this->fluent->getPdo()->getAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE) == \PDO::FETCH_BOTH) {
-            $this->currentFetchMode = \PDO::FETCH_ASSOC;
+        } elseif ($this->fluent->getPdo()->getAttribute(PDO::ATTR_DEFAULT_FETCH_MODE) == PDO::FETCH_BOTH) {
+            $this->currentFetchMode = PDO::FETCH_ASSOC;
             $result->setFetchMode($this->currentFetchMode);
         }
     }
@@ -611,7 +610,7 @@ abstract class Base implements \IteratorAggregate
     /**
      * Select an item as object
      *
-     * @param  \object|boolean $object If set to true, items are returned as stdClass, otherwise a class
+     * @param object|boolean $object If set to true, items are returned as stdClass, otherwise a class
      *                                 name can be passed and a new instance of this class is returned.
      *                                 Can be set to false to return items as an associative array.
      *
