@@ -1,0 +1,13 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Devscast",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://devs-cast.com/api/v1/",
+            "description": "Server API"
+        }
+    ]
+}
