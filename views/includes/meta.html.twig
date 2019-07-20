@@ -1,7 +1,7 @@
 <meta charset="{{ meta.charset ?: 'utf-8' }}">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta name="theme-color" content="{{ meta.themeColor }}" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
 <meta name="author" content="{{ meta.author }}" />
 <meta name="reply-to" content="{{ meta.replyTo }}" />
 <meta name="keywords" content="{{ meta.keywords }}" />
@@ -18,12 +18,10 @@
 <meta property="og:site_name" content="{{ meta.siteName }}" />
 <meta property="og:image" content="{{ meta.image }}" />
 
-<meta name="twitter:card" content="summary" />
+<meta content="summary" name="twitter:card" />
 <meta name="twitter:site" content="{{ meta.siteUrl }}" />
 <meta name="twitter:creator" content="{{ meta.author }}" />
 <meta name="twitter:title" content="{{ meta.title }}" />
 <meta name="twitter:description" content="{{ meta.descirption }}" />
 <meta name="twitter:domain" content="{{ meta.domain }}" />
-<meta name="twitter:image" content="{{ meta.image }}" />
-
-{{ meta() }}
+<meta name="twitter:image" content="{{ meta.image }}" /> {{ meta() }}

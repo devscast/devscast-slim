@@ -1,24 +1,25 @@
 {
-  "charset" : "utf-8",
-  "lang": "en",
-  "reply-to": "contact@devs-cast.com",
-  "type": "Website",
+    "charset": "utf-8",
+    "lang": "en",
+    "reply-to": "contact@devs-cast.com",
+    "type": "Website",
+    "themeColor": "#29B765",
 
-  "title": "Devscast | devs-cast.com",
-  "image": "//devs-cast.com/images/icon.png",
-  "author": "bernard-ng",
-  "description": "Podcasts and tutorials for developers",
-  "keywords": "web podcasts, web tutorials, web developers, african developers",
+    "title": "Devscast | devs-cast.com",
+    "image": "//devs-cast.com/images/icon.png",
+    "author": "bernard-ng",
+    "description": "Podcasts and tutorials for developers",
+    "keywords": "web podcasts, web tutorials, web developers, african developers",
 
-  "bots" : {
-    "googlebot" : "index, follow",
-    "robots": "index, follow",
-    "msnbot": "index, follow"
-  },
-  "social": {
-    "github": "http://bernard-ng.github.io",
-    "facebook": "",
-    "instgram": "",
-    "youtube": ""
-  }
+    "bots": {
+        "googlebot": "index, follow",
+        "robots": "index, follow",
+        "msnbot": "index, follow"
+    },
+    "social": {
+        "github": "http://bernard-ng.github.io",
+        "facebook": "",
+        "instgram": "",
+        "youtube": ""
+    }
 }

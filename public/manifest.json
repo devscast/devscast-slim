@@ -1,0 +1,17 @@
+{
+    "dir": "ltr",
+    "name": "DevsCast",
+    "short_name": "DevsCast",
+    "start_url": "/",
+    "background_color": "#18151F",
+    "theme_color": "#29B765",
+    "display": "standalone",
+    "orientation": "portrait",
+    "description": "Web Developers podcast",
+    "icons": [{
+        "src": "favicon/android-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "density": "4.0"
+    }]
+}
