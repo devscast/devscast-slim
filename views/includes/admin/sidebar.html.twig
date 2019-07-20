@@ -1,6 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ path_for('admin.index') }}" class="brand-link">
-        <span class="brand-text font-weight-light">Devscast <strong>Admin</strong></span>
+        <span class="brand-text font-weight-light">Devscast
+            <strong>Admin</strong>
+        </span>
     </a>
 
     <div class="sidebar">
@@ -14,10 +16,9 @@
         </div>
 
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-accordion="false" data-widget="treeview" role="menu">
                 <li class="nav-item">
-                    <a href="{{ path_for('admin.index') }}"
-                       class="nav-link {{ is_current_path('admin.index') ? 'active' : '' }}">
+                    <a href="{{ path_for('admin.index') }}" class="nav-link {{ is_current_path('admin.index') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
                             Dashboard
@@ -27,7 +28,7 @@
                 </li>
 
                 <li class="nav-item has-treeview {{ is_current_path('admin.podcasts') or is_current_path('admin.podcasts.create') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-microphone"></i>
                         <p>
                             Podcasts
@@ -50,7 +51,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.podcastLinks') or is_current_path('admin.podcastLinks.create') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link ">
+                    <a class="nav-link " href="#">
                         <i class="nav-icon fa fa-table"></i>
                         <p>
                             Podcast Links
@@ -73,7 +74,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.categories') or is_current_path('admin.categories.create') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-tags"></i>
                         <p>
                             Categories
@@ -96,7 +97,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.gallery') or is_current_path('admin.gallery.create') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-file-picture-o"></i>
                         <p>
                             Gallery
@@ -122,7 +123,7 @@
                 <div style="height: 1px; border-top:  1px solid #848484; margin: 20px 0;"></div>
 
                 <li class="nav-item has-treeview {{ is_current_path('admin.newsletter') or is_current_path('admin.newsletter.create') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-envelope-o"></i>
                         <p>
                             NewsLetter
@@ -145,7 +146,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.users') or is_current_path('admin.users.create') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-users"></i>
                         <p>
                             Users
@@ -168,24 +169,24 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-file"></i>
                         <p>
-                           Files Browser
+                            Files Browser
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ path_for('admin.users') }}" class="nav-link {{ is_current_path('admin.users') ? 'active' : '' }}">
+                            <a href="{{ path_for('admin.files.audio') }}" class="nav-link {{ is_current_path('admin.files.audio') ? 'active' : '' }}">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Podcasts Audio</p>
+                                <p>Audios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ path_for('admin.users.create') }}" class="nav-link {{ is_current_path('admin.users.create') ? 'active' : '' }}">
+                            <a href="{{ path_for('admin.files.images') }}" class="nav-link {{ is_current_path('admin.files.images') ? 'active' : '' }}">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Podcasts Linked Images</p>
+                                <p>Images</p>
                             </a>
                         </li>
                     </ul>

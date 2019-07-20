@@ -1,26 +1,32 @@
-{% extends 'layouts/main.html.twig' %}
-
-
-{% block content %}
-    <header class="page-header" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
-        <div class="page-header-inner">
-            <div class="container">
-
-                {# ===== BREADCRUMB ===== #}
-                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
-                    <li itemprop="itemListElement"><a href="{{ path_for('about') }}">About Us</a></li>
-                </ol>
-
-                {# ===== PAGE HEADER CONTENT ===== #}
-                <div class="page-header-content text-center">
-                    <h2>About Us</h2>
-                </div>
+{% extends 'layouts/main.html.twig' %} {% block content %}
+<header class="page-header" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
+    <div class="page-header-inner">
+        <div class="container">
+            <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement">
+                    <a href="{{ path_for('home') }}">Home</a>
+                </li>
+                <li itemprop="itemListElement">
+                    <a href="{{ path_for('about') }}">About Us</a>
+                </li>
+            </ol>
+            <div class="page-header-content text-center">
+                <h2>About Us</h2>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    {% include 'includes/about.html.twig' %}
-    {% include 'includes/newsletter.html.twig' %}
-    {% include 'includes/quote.html.twig' %}
-{% endblock %}
+<section class="section-negative" id="about-us">
+    <div class="container">
+        <h2 class="title-default text-center">Behind the mic...</h2>
+        <div class="row mb-30">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quisquam dicta! Error consequatur ducimus soluta aut at maiores repudiandae, necessitatibus repellat fugit minus vel iste dolorum cumque assumenda quia porro. Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Cupiditate est atque exercitationem alias laboriosam dignissimos eveniet consequuntur dolore in odit itaque quisquam adipisci magni delectus officia, tempora voluptates tempore incidunt? Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Blanditiis voluptas minus dolores! Quidem vitae error magnam ipsa voluptate veniam, sed nesciunt recusandae ut eius vero rerum similique, exercitationem cumque accusamus? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Minima quod a ab deserunt error cupiditate, dicta, commodi aspernatur placeat repellendus officiis. Error odit necessitatibus laboriosam ipsa alias nisi natus nesciunt!
+        </div>
+    </div>
+</section>
+
+{% include 'includes/newsletter.html.twig' %} {% include 'includes/quote.html.twig' %} {% endblock %}

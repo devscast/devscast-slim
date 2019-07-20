@@ -2,43 +2,32 @@
     <section class="section-positive">
         <div class="container">
             <div class="row mt-70 mb-30">
-                <div class="col-sm-4 mb-40">
-                    <h2 class="title-separator white">Lastest Episodes</h2>
-                    <ul class="footer-complement">
-                        {% for l in last %}
-                            <li id="{{ l.id }}">
-                                <a href="{{ path_for('podcasts.show', {id: l.id, slug: l.slug }) }}">
-                                    {{ l.name | truncate(20) }}
-                                </a>
-                                <span>{{ l.created_at | date('M d, Y') }}</span>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="col-sm-4 mb-40">
-                    <h2 class="title-separator white">Contributors</h2>
-                    <ul class="footer-complement">
-                        <li>
-                            <a href="{{ meta.social.github }}">bernard-ng</a>
-                            <span>Founder</span>
-                        </li>
-                        <li>
-                            <a href="{{ meta.social.sponsor }}">mahid_hm</a>
-                            <span>Sponsor</span>
-                        </li>
-                        <li>
-                            <a href="{{ meta.social.developers }}">itotafrica</a>
-                            <span>Developers</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 mb-40">
-                    <h2 class="title-separator white">We are social</h2>
+                <div class="col-sm-12 mb-20">
+                    <h2 class="title-separator white">About Us</h2>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt cupiditate numquam eum quis, et, autem debitis facere laboriosam fugiat repellendus necessitatibus eaque delectus, impedit distinctio. Fuga voluptatem eum blanditiis qui! Lorem ipsum dolor
+                    </p>
                     <ul class="social-list">
-                        <li class="social-item"><a href="{{ meta.social.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li class="social-item"><a href="{{ meta.social.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        <li class="social-item"><a href="{{ meta.social.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        <li class="social-item"><a href="{{ meta.social.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                        <li class="social-item">
+                            <a href="{{ meta.social.facebook }}" target="_blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="social-item">
+                            <a href="{{ meta.social.twitter }}" target="_blank">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="social-item">
+                            <a href="{{ meta.social.instagram }}" target="_blank">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="social-item">
+                            <a href="{{ meta.social.youtube }}" target="_blank">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

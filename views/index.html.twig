@@ -1,108 +1,101 @@
-{% extends 'layouts/main.html.twig' %}
-
-{% block content %}
-    {% if hero %}
-        <section class="podcast-hero" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
-            <div class="podcast-hero-inner">
-                <div class="container">
-                    <div class="podcast-hero-content">
-                        <span class="podcast-hero-date">{{ hero.createdAt | date('M d, Y') }}</span>
-                        <h2 class="podcast-hero-title">
-                            <a href="{{ path_for('podcasts.show', {id: hero.id, slug: hero.slug}) }}">
+{% extends 'layouts/main.html.twig' %} {% block content %} {% if hero %}
+<section class="podcast-hero" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
+    <div class="podcast-hero-inner">
+        <div class="container">
+            <div class="podcast-hero-content">
+                <span class="podcast-hero-date">{{ hero.createdAt | date('M d, Y') }}</span>
+                <h2 class="podcast-hero-title">
+                    <a href="{{ path_for('podcasts.show', {id: hero.id, slug: hero.slug}) }}">
                                 {{ hero.name | truncate(50) }}
                             </a>
+                </h2>
+                <ul class="podcast-hero-meta">
+                    <li class="item">
+                        <a href="{{ path_for('categories.show', {id: hero.categoriesId, slug: hero.categorySlug}) }}" class="podcast-hero-tag" rel="tag">{{ hero.categoryName }}</a>
+                    </li>
+                    <li class="item">
+                        <i class="fa fa-clock-o"></i> {{ hero.duration }} mins.
+                    </li>
+                    <li class="item">
+                        <a href="{{ hero.audio }}" class="podcast-hero-download">
+                            <i class="fa fa-download"></i> Download
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="podcast-hero-player-content">
+            <div class="container">
+                <audio src="{{ hero.audio }}"></audio>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<header class="page-header" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
+    <div class="page-header-inner">
+        <div class="container">
+            <div class="page-header-content text-center">
+                <h2>Learn in a different way</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur consequatur corporis ducimus eligendi enim, fugit harum illo illum modi mollitia nulla perferendis placeat quae ratione, reiciendis reprehenderit, voluptates voluptatum!</p>
+            </div>
+        </div>
+    </div>
+</header>
+{% endif %}
+
+<main class="main" id="main">
+    {% if podcasts %}
+    <section class="section-positive transition" id="#episodes">
+        <div class="container">
+            <h2 class="title-default">Another Episodes</h2>
+            {% for index, p in podcasts %}
+            <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
+                <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
+                    <figure class="podcast-image">
+                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                            <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}" />
+                        </a>
+                    </figure>
+                    <div class="podcast-content">
+                        <span class="podcast-date">{{ p.createdAt | date('M d, Y') }}</span>
+                        <h2 class="podcast-title">
+                            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                                            {{ p.name | truncate(30) }}
+                                        </a>
                         </h2>
-                        <ul class="podcast-hero-meta">
-                            <li class="item"><a
-                                        href="{{ path_for('categories.show', {id: hero.categoriesId, slug: hero.categorySlug}) }}"
-                                        class="podcast-hero-tag" rel="tag">{{ hero.categoryName }}</a></li>
-                            <li class="item"><i class="fa fa-clock-o"></i> {{ hero.duration }} mins.</li>
+                        <p class="podcast-excerpt">
+                            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                                            {{ p.description | truncate(100) }}
+                                        </a>
+                        </p>
+                        <ul class="podcast-meta">
                             <li class="item">
-                                <a href="{{ hero.audio }}" class="podcast-hero-download">
-                                    <i class="fa fa-download"></i> Download
+                                <a href="{{ path_for('categories.show', {id: p.categoriesId, slug: p.categorySlug}) }}" class="podcast-tag" rel="tag">
+                                                {{ p.categoryName }}
+                                            </a>
+                            </li>
+                            <li class="item">
+                                <i class="fa fa-clock-o"></i> {{ p.duration }} mins.
+                            </li>
+                            <li class="item">
+                                <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}" class="podcast-play">
+                                    <i class="fa fa-play"></i> Play Episode
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="podcast-hero-player-content">
-                    <div class="container">
-                        <audio src="{{ hero.audio }}"></audio>
-                    </div>
-                </div>
             </div>
-        </section>
-    {% else %}
-        <header class="page-header" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
-            <div class="page-header-inner">
-                <div class="container">
-                    <div class="page-header-content text-center">
-                        <h2>Learn in a different way</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur consequatur
-                            corporis ducimus eligendi enim, fugit harum illo illum modi mollitia nulla perferendis
-                            placeat quae ratione, reiciendis reprehenderit, voluptates voluptatum!</p>
-                    </div>
-                </div>
-            </div>
-        </header>
-    {% endif %}
+            {% endfor %}
 
-    <main id="main" class="main">
-        {% if podcasts %}
-            <section id="#episodes" class="section-positive transition">
-                <div class="container">
-                    <h2 class="title-default">Another Episodes</h2>
-                    {% for index, p in podcasts %}
-                        <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
-                            <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
-                                <figure class="podcast-image">
-                                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                        <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}"/>
-                                    </a>
-                                </figure>
-                                <div class="podcast-content">
-                                    <span class="podcast-date">{{ p.createdAt | date('M d, Y') }}</span>
-                                    <h2 class="podcast-title">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.name | truncate(30) }}
-                                        </a>
-                                    </h2>
-                                    <p class="podcast-excerpt">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.description | truncate(100) }}
-                                        </a>
-                                    </p>
-                                    <ul class="podcast-meta">
-                                        <li class="item">
-                                            <a href="{{ path_for('categories.show', {id: p.categoriesId, slug: p.categorySlug}) }}"
-                                               class="podcast-tag" rel="tag">
-                                                {{ p.categoryName }}
-                                            </a>
-                                        </li>
-                                        <li class="item"><i class="fa fa-clock-o"></i> {{ p.duration }} mins.</li>
-                                        <li class="item">
-                                            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}"
-                                               class="podcast-play">
-                                                <i class="fa fa-play"></i> Play Episode
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                    <div class="col-sm-12 mb-50">
-                        <a href="{{ path_for('podcasts.index') }}" class="btn btn-primary btn-block btn-lg">
+            <div class="col-sm-12 mb-50">
+                <a href="{{ path_for('podcasts.index') }}" class="btn btn-primary btn-block btn-lg">
                             View more episodes
                         </a>
-                    </div>
-                </div>
-            </section>
-        {% endif %}
-
-        {% include 'includes/about.html.twig' %}
-        {% include 'includes/newsletter.html.twig' %}
-        {% include 'includes/quote.html.twig' %}
-    </main>
+            </div>
+        </div>
+    </section>
+    {% endif %} {% include 'includes/about.html.twig' %} {% include 'includes/newsletter.html.twig' %} {% include 'includes/quote.html.twig' %}
+</main>
 {% endblock %}
