@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -9,6 +10,8 @@
  */
 
 namespace App\Repositories;
+
+use Core\Repositories\JsonFileRepository;
 
 /**
  * Class MetaDataRepository
@@ -21,7 +24,7 @@ class MetaDataRepository extends JsonFileRepository
      * MetaDataRepository constructor.
      * @param string $file
      */
-    public function __construct(string $file = ROOT . "/data/meta.json")
+    public function __construct(string $file)
     {
         $this->file = $file;
     }

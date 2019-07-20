@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -10,8 +11,9 @@
 
 namespace App\Repositories;
 
-use InvalidArgumentException;
 use stdClass;
+use InvalidArgumentException;
+use Core\Repositories\JsonFileRepository;
 
 /**
  * Class QuotesRepository
