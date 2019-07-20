@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -10,10 +11,11 @@
 
 namespace App\Repositories;
 
-use App\Entities\UsersEntity;
 use App\Modules;
-use Core\Database\Builder\Exception;
+use Core\Logger;
+use App\Entities\UsersEntity;
 use Core\Repositories\Repository;
+use Core\Database\Builder\Exception;
 
 /**
  * Class UsersRepository
@@ -31,7 +33,7 @@ class UsersRepository extends Repository
 
     /**
      * Entity class
-     * @var UsersEntity
+     * @var string
      */
     protected $entity = UsersEntity::class;
 
@@ -51,6 +53,7 @@ class UsersRepository extends Repository
                 ->where("{$this->table}.{$field} = ?", [$field => $value])
                 ->all()->get(0);
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }

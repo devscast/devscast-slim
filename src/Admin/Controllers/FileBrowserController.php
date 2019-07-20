@@ -38,6 +38,7 @@ class FileBrowserController extends DashboardController
         try {
             $directory = new \DirectoryIterator($filesPath);
         } catch (\Exception $e) {
+            Logger::error($e->getMessage(), [$e->getTraceAsString()]);
             $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             $this->flash->error($e->getMessage());
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -10,8 +11,9 @@
 
 namespace Core\Database;
 
-use Exception;
 use PDO;
+use Exception;
+use Core\Logger;
 use PDOException;
 use Psr\Container\ContainerInterface;
 
@@ -55,10 +57,12 @@ class PDOFactory
                 ];
 
                 $PDO = new PDO("mysql:Host={$host};dbname={$dbname};charset=utf8", $username, $password, $attribute);
+                Logger::info("New Connexion to the Database");
                 $this->PDO = $PDO;
                 return $this->PDO;
-            } catch (PDOException|Exception $e) {
-                throw new PDOException($e->getMessage());
+            } catch (PDOException | Exception $e) {
+                Logger::error($e->getMessage(), [$e->getTraceAsString()]);
+                exit();
             }
         }
         return $this->PDO;

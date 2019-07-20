@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -14,6 +15,7 @@ use App\Entities\PodcastLinksEntity;
 use App\Modules;
 use Core\Database\Builder\Exception;
 use Core\Repositories\Repository;
+use Core\Logger;
 
 /**
  * Class PodcastLinksRepository
@@ -31,7 +33,7 @@ class PodcastLinksRepository extends Repository
 
     /**
      * Entity class
-     * @var PodcastLinksEntity
+     * @var string
      */
     protected $entity = PodcastLinksEntity::class;
 
@@ -51,6 +53,7 @@ class PodcastLinksRepository extends Repository
                 ->orderBy("{$this->table}.reference ASC")
                 ->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }

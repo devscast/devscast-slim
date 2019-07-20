@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -10,11 +11,12 @@
 
 namespace App\Repositories;
 
-use App\Entities\PodcastsEntity;
 use App\Modules;
+use Core\Logger;
+use App\Entities\PodcastsEntity;
+use Core\Repositories\Repository;
 use Core\Database\Builder\Exception;
 use Core\Database\Builder\Queries\Select;
-use Core\Repositories\Repository;
 
 /**
  * Class PodcastsRepository
@@ -32,7 +34,7 @@ class PodcastsRepository extends Repository
 
     /**
      * Entity class
-     * @var PodcastsEntity
+     * @var string
      */
     protected $entity = PodcastsEntity::class;
 
@@ -64,6 +66,7 @@ class PodcastsRepository extends Repository
         try {
             return $this->withCategoryaAndUser()->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -79,6 +82,7 @@ class PodcastsRepository extends Repository
                 ->where("{$this->table}.online = 1")
                 ->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -94,6 +98,7 @@ class PodcastsRepository extends Repository
                 ->where("{$this->table}.online = 0")
                 ->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -110,6 +115,7 @@ class PodcastsRepository extends Repository
                 ->where("{$this->table}.online = 1")
                 ->limit($limit)->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -125,6 +131,7 @@ class PodcastsRepository extends Repository
                 ->where("{$this->table}.online = 1")
                 ->limit(1)->all()->get(0);
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -141,6 +148,7 @@ class PodcastsRepository extends Repository
                 ->where("{$this->table}.id", compact('id'))
                 ->all()->get(0);
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -158,6 +166,7 @@ class PodcastsRepository extends Repository
                 ->where("{$this->table}.{$field} = ?", [$field => $value])
                 ->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -175,6 +184,7 @@ class PodcastsRepository extends Repository
                 ->select(["{$this->table}.name", "{$this->table}.slug", "{$this->table}.id"])
                 ->limit(1);
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }

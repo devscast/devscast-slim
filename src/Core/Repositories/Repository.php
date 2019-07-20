@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -10,10 +11,11 @@
 
 namespace Core\Repositories;
 
-use Core\Database\Builder\Exception;
-use Core\Database\Builder\Query;
 use PDO;
+use Core\Logger;
 use PDOStatement;
+use Core\Database\Builder\Query;
+use Core\Database\Builder\Exception;
 
 /**
  * Class Repository
@@ -69,6 +71,7 @@ class Repository
         try {
             return $this->makeQuery()->insertInto($this->table, $data)->execute();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return false;
         }
     }
@@ -84,6 +87,7 @@ class Repository
         try {
             return $this->makeQuery()->update($this->table, $data, $id)->execute();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return false;
         }
     }
@@ -98,6 +102,7 @@ class Repository
         try {
             return $this->makeQuery()->delete($this->table, $id)->execute();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return false;
         }
     }
@@ -125,6 +130,7 @@ class Repository
                 ->orderBy("{$this->table}.id DESC")
                 ->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -144,6 +150,7 @@ class Repository
                 ->where("{$this->table}.id = ?", compact('id'))
                 ->all()->get(0);
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -164,6 +171,7 @@ class Repository
                 ->where("{$this->table}.{$field} = ?", [$field => $value])
                 ->all()->get();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
@@ -175,11 +183,12 @@ class Repository
     {
         try {
             return $this->makeQuery()
-               ->into($this->entity)
-               ->from($this->table)
-               ->select("{$this->table}.id")
-               ->count();
+                ->into($this->entity)
+                ->from($this->table)
+                ->select("{$this->table}.id")
+                ->count();
         } catch (Exception $e) {
+            Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }

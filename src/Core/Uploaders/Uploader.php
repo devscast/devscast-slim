@@ -120,6 +120,7 @@ abstract class Uploader
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
             $this->uploadedFilename = $this->relativePath . DIRECTORY_SEPARATOR . $this->filename;
         } catch (Exception | Throwable | Error $e) {
+            Logger::error($e->getMessage(), [$e->getTraceAsString()]);
             $this->errors[] = "Something went wrong, try again please";
         } finally {
             return $this;
