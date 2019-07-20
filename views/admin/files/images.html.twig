@@ -1,0 +1,143 @@
+{% extends 'layouts/dashboard.html.twig' %} {% block breadcrumb %}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Administration - images files</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path_for('home') }}">home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path_for('admin.index') }}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Files images</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} {% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h5>Podcasts Thumbs</h5>
+                <div class="card">
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover" id="table1">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Last Modified</th>
+                                    <th>Size</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, f in thumbsDirectory %} {% if f.getFilename != '.' and f.getFilename != '..' %}
+                                <tr>
+                                    <th>{{ key }}</th>
+                                    <th>{{ f.getFilename() | truncate(20) }}</th>
+                                    <th>{{ f.getMtime() | date('M d Y H:i:s') }}</th>
+                                    <th>{{ (f.getSize() / 1024) / 1024 ~ " Mb" }}</th>
+                                    <th>
+                                        <div class="btn-group-justified">
+                                            <form action="{{ path_for('admin.files.audio') }}" method="post" style="display: inline" id="delete">
+                                                <input type="hidden" name="file" value="{{ f.getPathName() }}"> {{ _csrf() }} {{ _method('DELETE') }}
+                                                <button class="btn btn-danger" type="submit">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                            </form>
+                                        </div>
+                                    </th>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Last Modified</th>
+                                    <th>Size</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h5>Images</h5>
+                <div class="card">
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover" id="table1">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Last Modified</th>
+                                    <th>Size</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, f in imagesDirectory %} {% if f.getFilename != '.' and f.getFilename != '..' %}
+                                <tr>
+                                    <th>{{ key }}</th>
+                                    <th>{{ f.getFilename() | truncate(20) }}</th>
+                                    <th>{{ f.getMtime() | date('M d Y H:i:s') }}</th>
+                                    <th>{{ (f.getSize() / 1024) / 1024 ~ " Mb" }}</th>
+                                    <th>
+                                        <div class="btn-group-justified">
+                                            <form action="{{ path_for('admin.files.audio') }}" method="post" style="display: inline" id="delete">
+                                                <input type="hidden" name="file" value="{{ f.getPathName() }}"> {{ _csrf() }} {{ _method('DELETE') }}
+                                                <button class="btn btn-danger" type="submit">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                            </form>
+                                        </div>
+                                    </th>
+                                </tr>
+                                {% endif %} {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Last Modified</th>
+                                    <th>Size</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} {% block javascripPlugins %}
+<script src="{{ base_url() ~ '/assets/admin/plugins/datatables/jquery.dataTables.js' }}"></script>
+<script src="{{ base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.js' }}"></script>
+<script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
+{% endblock %} {% block javascript %}
+<script>
+    ajaxDelete();
+    showTableImage();
+    $(function() {
+        $("#table1").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+</script>
+{% endblock %}
