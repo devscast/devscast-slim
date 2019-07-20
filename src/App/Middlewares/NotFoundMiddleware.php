@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -12,12 +13,8 @@
 namespace App\Middlewares;
 
 use Core\Renderer\Renderer;
-use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\NotFound;
-use Slim\Http\Response;
-use UnexpectedValueException;
 
 /**
  * Class NotFoundMiddleware

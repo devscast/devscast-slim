@@ -24,6 +24,7 @@ use Admin\Controllers\GalleryController as AdminGalleryController;
 use Admin\Controllers\PodcastsController as AdminPodcastsController;
 use Admin\Controllers\CategoriesController as AdminCategoriesController;
 use Admin\Controllers\NewsletterController as AdminNewsletterController;
+use App\Actions\DownloadAction;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
@@ -40,6 +41,7 @@ return function ($app) {
         $this->get('/about', [StaticController::class, 'about'])->setName('about');
         $this->map(['GET', 'POST'], '/contact', [StaticController::class, 'contact'])->setName('contact');
         $this->get('/search', [])->setName('search');
+        $this->get('/download', DownloadAction::class)->setName('download');
 
         $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
         $this->post('/logout', [AuthController::class, 'logout'])->setName('auth.logout');
