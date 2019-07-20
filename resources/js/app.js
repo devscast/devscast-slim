@@ -17,6 +17,19 @@ $('document').ready(function() {
         }
     })
 
+    if ($.fn.owlCarousel) {
+        console.log('owl');
+        var Slider = $('.podcasts-slides');
+        Slider.owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            smartSpeed: 1500,
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
+        })
+    }
+
     let menu = document.querySelector('.btn-hamburguer-menu');
     if (menu) {
         menu.addEventListener('click', function(e) {
