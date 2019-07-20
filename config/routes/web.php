@@ -13,17 +13,17 @@ use App\Controllers\HomeController;
 use Admin\Controllers\AuthController;
 use App\Controllers\StaticController;
 use Admin\Controllers\UsersController;
+use App\Controllers\PodcastsController;
 use Core\Middlewares\LoggedInMiddleware;
-use Admin\Controllers\PodcastsController;
+use App\Controllers\CategoriesController;
+use App\Controllers\NewsletterController;
 use Admin\Controllers\DashboardController;
-use Admin\Controllers\CategoriesController;
-use Admin\Controllers\NewsletterController;
 use Admin\Controllers\FileBrowserController;
 use Admin\Controllers\PodcastLinksController;
 use Admin\Controllers\GalleryController as AdminGalleryController;
-use App\Controllers\PodcastsController as AdminPodcastsController;
-use App\Controllers\CategoriesController as AdminCategoriesController;
-use App\Controllers\NewsletterController as AdminNewsletterController;
+use Admin\Controllers\PodcastsController as AdminPodcastsController;
+use Admin\Controllers\CategoriesController as AdminCategoriesController;
+use Admin\Controllers\NewsletterController as AdminNewsletterController;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
