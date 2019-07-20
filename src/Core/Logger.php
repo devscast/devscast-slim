@@ -11,7 +11,6 @@
 
 namespace Core;
 
-
 /**
  * Class Logger
  * Static Adapter for the Logger
@@ -107,7 +106,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function debug($message, array $context = array())
+    public static function debug($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::DEBUG, $message, $context);
     }
@@ -121,7 +120,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function info($message, array $context = array())
+    public static function info($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::INFO, $message, $context);
     }
@@ -135,7 +134,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function notice($message, array $context = array())
+    public static function notice($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::NOTICE, $message, $context);
     }
@@ -149,7 +148,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function warn($message, array $context = array())
+    public static function warn($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::WARNING, $message, $context);
     }
@@ -163,7 +162,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function warning($message, array $context = array())
+    public static function warning($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::WARNING, $message, $context);
     }
@@ -177,7 +176,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function err($message, array $context = array())
+    public static function err($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::ERROR, $message, $context);
     }
@@ -191,7 +190,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function error($message, array $context = array())
+    public static function error($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::ERROR, $message, $context);
     }
@@ -205,7 +204,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function crit($message, array $context = array())
+    public static function crit($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::CRITICAL, $message, $context);
     }
@@ -219,7 +218,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function critical($message, array $context = array())
+    public static function critical($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::CRITICAL, $message, $context);
     }
@@ -233,7 +232,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function alert($message, array $context = array())
+    public static function alert($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::ALERT, $message, $context);
     }
@@ -247,7 +246,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function emerg($message, array $context = array())
+    public static function emerg($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::EMERGENCY, $message, $context);
     }
@@ -261,7 +260,7 @@ abstract class Logger
      * @param  array  $context The log context
      * @return bool   Whether the record has been processed
      */
-    public static function emergency($message, array $context = array())
+    public static function emergency($message, array $context = [])
     {
         return self::getLogger()->addRecord(static::EMERGENCY, $message, $context);
     }
