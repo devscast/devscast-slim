@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -11,15 +12,16 @@
 
 namespace Admin\Controllers;
 
+use Core\Logger;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\StatusCode;
 use App\Auth\DatabaseAuth;
 use App\Validators\UsersValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Slim\Http\StatusCode;
 
 /**
  * Class AuthController
@@ -62,13 +64,16 @@ class AuthController extends DashboardController
 
                 if (!$user) {
                     $this->flash->error('Invalid Credentials');
-                    $this->status = 422;
+                    $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
+                    Logger::info("Attempt Connexion");
                 } else {
+                    Logger::info("Administrator Login");
                     return $this->redirect('admin.index');
                 }
             } else {
                 $errors = $validator->getErrors();
-                $this->status = 422;
+                $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
+                Logger::info("Attempt Connexion");
             }
         }
 
@@ -86,6 +91,8 @@ class AuthController extends DashboardController
             $this->databaseAuth->logout();
             return $this->redirect('home');
         }
+
+        Logger::info("Administrator Logout");
         return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }

@@ -85,7 +85,7 @@ abstract class Logger
     private static function getLogger(): \Monolog\Logger
     {
         if (is_null(self::$logger)) {
-            $logger = new \Monolog\Logger("Devscast");
+            $logger = new \Monolog\Logger("DEVSCAST");
             $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
             $logger->pushHandler(new \Monolog\Handler\StreamHandler(
                 ROOT . "/data/logs/app.log",

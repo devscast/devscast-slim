@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -12,15 +13,15 @@
 
 namespace Core\Middlewares;
 
-use Core\Auth\AuthInterface;
-use Core\Auth\ForbiddenException;
-use Core\Helpers\RouterAwareHelper;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Core\Logger;
+use Slim\Router;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Core\Auth\AuthInterface;
+use Core\Helpers\RouterAwareHelper;
 use Slim\Interfaces\RouterInterface;
-use Slim\Router;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class LoggedInMiddleware
@@ -62,6 +63,7 @@ class LoggedInMiddleware
     {
         $user = $this->auth->getUser();
         if (is_null($user)) {
+            Logger::info("Attempt access to backoffice", ['path' => $request->getUri()->getPath()]);
             return $this->redirect('auth.login');
         }
         return $next($request->withAttribute('user', $user), $response);

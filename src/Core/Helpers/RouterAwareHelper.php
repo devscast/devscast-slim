@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -13,7 +14,6 @@ namespace Core\Helpers;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
-use Slim\Http\StatusCode;
 
 /**
  * Class RouterAwareHelper
