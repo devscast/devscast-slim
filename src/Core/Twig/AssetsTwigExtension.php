@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -11,11 +12,12 @@
 
 namespace Core\Twig;
 
-use InvalidArgumentException;
-use Slim\Http\Environment;
+use Core\Logger;
 use Slim\Http\Uri;
 use Twig_Extension;
 use Twig_SimpleFunction;
+use Slim\Http\Environment;
+use InvalidArgumentException;
 
 /**
  * Class AssetsTwigExtension
@@ -35,6 +37,13 @@ class AssetsTwigExtension extends Twig_Extension
      * @var string
      */
     private $assetPath = "assets";
+
+    /**
+     * directories of images
+     *
+     * @var string
+     */
+    private $imagesPath = "images";
 
     /**
      * Base Url of the website
@@ -65,7 +74,8 @@ class AssetsTwigExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction("asset", [$this, 'asset'])
+            new Twig_SimpleFunction("asset", [$this, 'asset']),
+            new Twig_SimpleFunction("images", [$this, "images"])
         ];
     }
 
@@ -83,8 +93,32 @@ class AssetsTwigExtension extends Twig_Extension
             $filename = $this->getFilename($filename);
             $filename = "{$this->baseUrl}/{$this->assetPath}/{$filename}";
             $this->resetAssetPath();
+            $this->resetImagesPath();
             return $filename;
         } else {
+            Logger::error(sprintf("%s does not exists looked in (%s)", $file, $filename));
+            throw new InvalidArgumentException(sprintf("%s does not exists looked in (%s)", $file, $filename));
+        }
+    }
+
+    /**
+     * get the filename
+     * @param string $file
+     * @return string
+     */
+    public function images(string $file): string
+    {
+        $filename  = WEBROOT . DIRECTORY_SEPARATOR . "{$this->imagesPath}" . DIRECTORY_SEPARATOR . $file;
+        $filename = str_replace('/', $this->ds, $filename);
+
+        if (file_exists($filename)) {
+            $filename = $this->getFilename($filename);
+            $filename = "{$this->baseUrl}/{$this->imagesPath}/{$filename}";
+            $this->resetImagesPath();
+            $this->resetAssetPath();
+            return $filename;
+        } else {
+            Logger::error(sprintf("%s does not exists looked in (%s)", $file, $filename));
             throw new InvalidArgumentException(sprintf("%s does not exists looked in (%s)", $file, $filename));
         }
     }
@@ -128,5 +162,21 @@ class AssetsTwigExtension extends Twig_Extension
     private function resetAssetPath()
     {
         $this->assetPath = "assets";
+    }
+
+    /**
+     * @param string $imagesPath
+     */
+    private function setImagesPath(string $imagesPath)
+    {
+        $this->imagesPath = $imagesPath;
+    }
+
+    /**
+     * reset the images path to his default value
+     */
+    private function resetImagesPath()
+    {
+        $this->imagesPath = "images";
     }
 }
