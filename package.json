@@ -1,37 +1,24 @@
 {
-  "name": "devcast-backend",
-  "version": "1.1.0-beta",
-  "description": "podcasts for web developers",
-  "main": "index.js",
-  "repository": "https://github.com/itotafrica/devcast-api",
-  "author": "bernard-ng <ngandubernard@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "scripts": {
-    "dev": "webpack --mode=development",
-    "build": "webpack --mode=production"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "autoprefixer": "^9.4.7",
-    "babel-loader": "^8.0.4",
-    "css-loader": "^2.1.0",
-    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
-    "file-loader": "^3.0.1",
-    "img-loader": "^3.0.1",
-    "node-sass": "^4.11.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "svg-loader": "^0.0.2",
-    "uglifyjs-webpack-plugin": "^2.1.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2"
-  },
-  "dependencies": {
-    "babel-plugin-syntax-dynamic-import": "^6.18.0"
-  }
+    "name": "devcast-backend",
+    "version": "1.1.0-beta.3",
+    "description": "podcasts for web developers",
+    "main": "index.js",
+    "repository": "https://github.com/itotafrica/devcast-api",
+    "author": "bernard-ng <ngandubernard@gmail.com>",
+    "license": "APACHE 2.0",
+    "private": false,
+    "dependencies": {
+        "bootstrap": "3.3.6",
+        "jquery": "1.11.1",
+        "magnific-popup": "^1.1.0",
+        "owl.carousel2": "^2.2.1",
+    },
+    "devDependencies": {
+        "del": "^5.0.0",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-csso": "^3.0.1",
+        "gulp-sass": "^4.0.2",
+        "gulp-scss": "^1.4.0"
+    }
 }
