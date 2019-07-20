@@ -9,14 +9,13 @@
  * file that was distributed with this source code.
  */
 
+use function DI\get;
 use App\Twig\QuoteTwigExtension;
-use Core\Twig\AssetsTwigExtension;
 use Core\Twig\AuthTwigExtension;
 use Core\Twig\FormTwigExtension;
 use Core\Twig\MetaTwigExtension;
-use function DI\get;
-use Monolog\Logger;
 use Core\Twig\FlashTwigExtension;
+use Core\Twig\AssetsTwigExtension;
 
 return [
 
@@ -29,23 +28,11 @@ return [
     'settings.displayErrorDetails' => get('app.debug'),
 
 
-
-    /**
-     * Logger configurations
-     * @TODO fix this and make the logger active
-     */
-    'logger.name' => 'devscast',
-    'logger.path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
-    'logger.level' => Logger::DEBUG,
-
-
-
     /**
      * Views configuration
      */
     'views.path' => ROOT . DIRECTORY_SEPARATOR . "views",
     'views.cache' => !get('app.debug') ? get('views.path') . DIRECTORY_SEPARATOR . "__cache__" : false,
-
 
 
     /**
@@ -55,6 +42,15 @@ return [
         "http://localhost:8080"
     ],
 
+
+    /**
+     * Data Config
+     */
+    "data.messages" => ROOT . "/data/messages.json",
+    "data.meta" => ROOT . "/data/meta.json",
+    "data.quotes" => ROOT . "/data/quotes.json",
+    "data.lang.en" => ROOT . "/data/lang/en.json",
+    "data.lang.fr" => ROOT . "/data/lang/fr.json",
 
 
     /**

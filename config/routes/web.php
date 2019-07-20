@@ -9,20 +9,21 @@
  * file that was distributed with this source code.
  */
 
-use Admin\Controllers\AuthController;
-use Admin\Controllers\CategoriesController;
-use Admin\Controllers\DashboardController;
-use Admin\Controllers\GalleryController;
-use Admin\Controllers\NewsletterController;
-use Admin\Controllers\PodcastLinksController;
-use Admin\Controllers\PodcastsController;
-use Admin\Controllers\UsersController;
-use App\Resources\CategoriesResource;
 use App\Resources\HomeResource;
-use App\Resources\NewsletterResource;
-use App\Resources\PodcastsResource;
 use App\Resources\StaticResource;
+use App\Resources\PodcastsResource;
+use Admin\Controllers\AuthController;
+use App\Resources\CategoriesResource;
+use App\Resources\NewsletterResource;
+use Admin\Controllers\UsersController;
+use Admin\Controllers\GalleryController;
 use Core\Middlewares\LoggedInMiddleware;
+use Admin\Controllers\PodcastsController;
+use Admin\Controllers\DashboardController;
+use Admin\Controllers\CategoriesController;
+use Admin\Controllers\NewsletterController;
+use Admin\Controllers\FileBrowserController;
+use Admin\Controllers\PodcastLinksController;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
@@ -144,6 +145,11 @@ return function ($app) {
             $this->get('/create', [NewsletterController::class, 'create'])->setName('admin.newsletter.create');
             $this->post('/send', [NewsletterController::class, 'send'])->setName('admin.newsletter.send');
             $this->delete('/{id:[0-9]+}', [NewsletterController::class, 'delete'])->setName('admin.newsletter.delete');
+        });
+
+        $this->group('/files', function () {
+            $this->map(['GET', 'DELETE'], '/audio', [FileBrowserController::class, 'audio'])->setName('admin.files.audio');
+            $this->map(['GET', 'DELETE'], '/images', [FileBrowserController::class, 'images'])->setName('admin.files.images');
         });
     })->add(LoggedInMiddleware::class);
 };

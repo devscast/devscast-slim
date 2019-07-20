@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -8,40 +9,39 @@
  * file that was distributed with this source code.
  */
 
-use API\Middlewares\EnableAPIMiddleware;
-use App\Middlewares\EnableCORSMiddleware;
-use Awurth\SlimValidation\Validator;
-use Core\Renderer\Renderer;
-use Core\Renderer\RendererFactory;
-use Core\Session\PHPSession;
-use Core\Session\SessionInterface;
-use Core\Twig\AssetsTwigExtension;
+use function DI\get;
 use function DI\create;
 use function DI\factory;
-use function DI\get;
+use App\Auth\DatabaseAuth;
+use Core\Renderer\Renderer;
+use Core\Session\PHPSession;
+use Core\Database\PDOFactory;
+use Core\Session\FlashService;
+use Core\Renderer\RendererFactory;
+use Core\Session\SessionInterface;
+use Core\Twig\AssetsTwigExtension;
+use Awurth\SlimValidation\Validator;
+use Core\Session\FlashServiceFactory;
+use App\Repositories\QuotesRepository;
+use API\Middlewares\EnableAPIMiddleware;
+use App\Repositories\MetaDataRepository;
+use Core\Factories\SlimCSRFGuardFactory;
+use App\Middlewares\EnableCORSMiddleware;
 
 return [
-    \PDO::class => factory(\Core\Database\PDOFactory::class),
+    \PDO::class => factory(PDOFactory::class),
 
-    Validator::class => create(Validator::class)->constructor(false),
-    Renderer::class => factory(RendererFactory::class),
-    SessionInterface::class => create(PHPSession::class),
+    Validator::class            => create(Validator::class)->constructor(false),
+    Renderer::class             => factory(RendererFactory::class),
+    SessionInterface::class     => create(PHPSession::class),
+    FlashService::class         => factory(FlashServiceFactory::class),
+    MetaDataRepository::class   => create(MetaDataRepository::class)->constructor(get('data.meta')),
+    QuotesRepository::class     => create(QuotesRepository::class)->constructor(get('data.quotes')),
 
-    \Slim\Csrf\Guard::class => factory(Core\Factories\SlimCSRFGuardFactory::class),
-    \Core\Auth\AuthInterface::class => get(\App\Auth\DatabaseAuth::class),
-    AssetsTwigExtension::class => create(AssetsTwigExtension::class)->constructor(get('app.cacheBusting')),
+    \Slim\Csrf\Guard::class         => factory(SlimCSRFGuardFactory::class),
+    \Core\Auth\AuthInterface::class => get(DatabaseAuth::class),
+    AssetsTwigExtension::class      => create(AssetsTwigExtension::class)->constructor(get('app.cacheBusting')),
 
-
-    EnableCORSMiddleware::class => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),
-    EnableAPIMiddleware::class => create(EnableAPIMiddleware::class)->constructor(get('API.enable')),
-
-    'logger' => factory(function () {
-        $logger = new Monolog\Logger(get('logger.name'));
-        $logger->pushProcessor(new Monolog\Processor\UidProcessor());
-        $logger->pushHandler(new Monolog\Handler\StreamHandler(
-            get('logger.path'),
-            get('logger.level')
-        ));
-        return $logger;
-    })
+    EnableCORSMiddleware::class     => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),
+    EnableAPIMiddleware::class      => create(EnableAPIMiddleware::class)->constructor(get('API.enable')),
 ];
