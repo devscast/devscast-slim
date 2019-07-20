@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -18,5 +19,16 @@ try {
     $app = new App();
     $app->setup()->run();
 } catch (MethodNotAllowedException | NotFoundException | Exception $e) {
-    echo $e->getMessage();
+    Core\Logger::error($e->getMessage(), [$e->getTraceAsString()]);
+    switch (gettype($e)) {
+        case MethodNotAllowedException::class:
+            return http_response_code(Slim\Http\StatusCode::HTTP_METHOD_NOT_ALLOWED);
+            break;
+        case NotFoundException::class:
+            return http_response_code(Slim\Http\StatusCode::HTTP_NOT_FOUND);
+            break;
+        default:
+            return http_response_code(Slim\Http\StatusCode::HTTP_INTERNAL_SERVER_ERROR);
+            break;
+    }
 }
