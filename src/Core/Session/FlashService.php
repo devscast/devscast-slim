@@ -11,6 +11,8 @@
 
 namespace Core\Session;
 
+use Core\Repositories\JsonFileRepository;
+
 /**
  * Class FlashService
  * Flash Messages using Session
@@ -34,9 +36,26 @@ class FlashService
      * FlashService constructor.
      * @param SessionInterface $session
      */
-    public function __construct(SessionInterface $session)
+    public function __construct(SessionInterface $session, JsonFileRepository $messages)
     {
         $this->session = $session;
+        $this->messages = $messages;
+    }
+
+    /**
+     * retrieve a message for a given key
+     *
+     * @param string $message
+     * @param string $type
+     * @return string
+     */
+    private function getMessage(string $message, string $type = 'success'): string
+    {
+        $messages = $this->messages->getData();
+        return
+            $message->en->{$type}->{$message} ??
+            $message->fr->{$type}->{$message} ??
+            $message;
     }
 
     /**
@@ -48,7 +67,7 @@ class FlashService
     public function success(string $message): void
     {
         $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
-        $flash['success'] = $message;
+        $flash['success'] = $this->getMessage($message, 'success');
         $this->session->set(self::FLASH_SESSION_KEY, $flash);
     }
 
@@ -60,7 +79,7 @@ class FlashService
     public function error(string $message): void
     {
         $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
-        $flash['error'] = $message;
+        $flash['error'] = $this->getMessage($message, 'error');
         $this->session->set(self::FLASH_SESSION_KEY, $flash);
     }
 
@@ -72,7 +91,7 @@ class FlashService
     public function warning(string $message): void
     {
         $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
-        $flash['warning'] = $message;
+        $flash['warning'] = $this->getMessage($message, 'warning');
         $this->session->set(self::FLASH_SESSION_KEY, $flash);
     }
 

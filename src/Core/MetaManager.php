@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -11,7 +12,7 @@
 
 namespace Core;
 
-use App\Repositories\JsonFileRepository;
+use Core\Repositories\JsonFileRepository;
 use ArrayAccess;
 use OutOfBoundsException;
 use RuntimeException;
@@ -79,7 +80,8 @@ class MetaManager implements ArrayAccess
      */
     public function __construct()
     {
-        $this->meta = (new class() extends JsonFileRepository {
+        $this->meta = (new class () extends JsonFileRepository
+        {
             public function __construct(string $file = ROOT . "/data/meta.json")
             {
                 $this->file = $file;
