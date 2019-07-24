@@ -57,7 +57,6 @@ class PDOFactory
                 ];
 
                 $PDO = new PDO("mysql:Host={$host};dbname={$dbname};charset=utf8", $username, $password, $attribute);
-                Logger::info("New Connexion to the Database");
                 $this->PDO = $PDO;
                 return $this->PDO;
             } catch (PDOException | Exception $e) {
