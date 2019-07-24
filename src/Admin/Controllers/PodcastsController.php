@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -62,8 +63,15 @@ class PodcastsController extends CRUDController
 
             if ($validator->isValid()) {
                 if ($request->getUploadedFiles()) {
-                    $audio = (new AudioUploader($request->getUploadedFiles()['audio']))->prepare()->upload();
-                    $thumb = (new ImageUploader($request->getUploadedFiles()['thumb']))->prepare()->upload();
+                    uploading: {
+                        $audio = new AudioUploader($request->getUploadedFiles()['audio']);
+                        $audio->setFilename($params['title']);
+                        $audio->prepare()->upload();
+
+                        $thumb = new ImageUploader($request->getUploadedFiles()['thumb']);
+                        $thumb->setFilename("{$params['title']}.jpg");
+                        $thumb->prepare()->upload();
+                    }
 
                     if ($audio->isUploaded() && $thumb->isUploaded()) {
                         $params['audio'] = $audio->getUploadedFilename();
@@ -122,7 +130,7 @@ class PodcastsController extends CRUDController
                 }
             }
 
-            $data = compact('errors', 'input', 'item', 'categories');
+            $data = compact('errors', 'input', 'item');
             $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
             return $this->renderer->render(
                 $response->withStatus($this->status),
