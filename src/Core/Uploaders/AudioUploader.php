@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -28,7 +29,7 @@ class AudioUploader extends Uploader
     /**
      * @inheritDoc
      */
-    protected const EXTENSIONS = ['mp3', 'mpeg', 'wav', '3gp'];
+    protected const EXTENSIONS = ['mp3', 'mpeg', 'wav', '3gp', 'opus'];
 
     /**
      * @inheritDoc
@@ -37,7 +38,8 @@ class AudioUploader extends Uploader
         'mp3' => 'audio/mp3',
         'mpeg' => 'audio/mpeg',
         'wav' => 'audio/wav',
-        '3gp' => 'audio/3gp'
+        '3gp' => 'audio/3gp',
+        'opus' => 'audio/opus'
     ];
 
     /**
