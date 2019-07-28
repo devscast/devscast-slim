@@ -18,7 +18,6 @@ $('document').ready(function() {
     })
 
     if ($.fn.owlCarousel) {
-        console.log('owl');
         var Slider = $('.podcasts-slides');
         Slider.owlCarousel({
             items: 1,
