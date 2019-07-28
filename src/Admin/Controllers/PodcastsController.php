@@ -65,11 +65,11 @@ class PodcastsController extends CRUDController
                 if ($request->getUploadedFiles()) {
                     uploading: {
                         $audio = new AudioUploader($request->getUploadedFiles()['audio']);
-                        $audio->setFilename($params['title']);
+                        $audio->setFilename("{$params['name']}.opus");
                         $audio->prepare()->upload();
 
                         $thumb = new ImageUploader($request->getUploadedFiles()['thumb']);
-                        $thumb->setFilename("{$params['title']}.jpg");
+                        $thumb->setFilename("{$params['name']}.jpg");
                         $thumb->prepare()->upload();
                     }
 
