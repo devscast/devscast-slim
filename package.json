@@ -11,7 +11,7 @@
         "bootstrap": "3.3.6",
         "jquery": "1.11.1",
         "magnific-popup": "^1.1.0",
-        "owl.carousel2": "^2.2.1",
+        "owl.carousel2": "^2.2.1"
     },
     "devDependencies": {
         "del": "^5.0.0",
