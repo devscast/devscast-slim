@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Core\Session\PHPSession | Devcast API</title>
+    <title>Core\Twig\FlashTwigExtension | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Core_Session_PHPSession" data-root-path="../../">
+    <body id="class" data-name="class:Core_Twig_FlashTwigExtension" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,29 +66,28 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Session.html">Session</a></li><li class="backslash">\</li><li>PHPSession</li>
+                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Twig.html">Twig</a></li><li class="backslash">\</li><li>FlashTwigExtension</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            PHPSession
+            FlashTwigExtension
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>PHPSession</strong>        implements
-        <a href="../../Core/Session/SessionInterface.html"><abbr title="Core\Session\SessionInterface">SessionInterface</abbr></a>
+    <strong>FlashTwigExtension</strong>        extends Twig_Extension        implements
+        Twig_Extension_GlobalsInterface
 </p>
 
         
     
 
             <div class="description">
-            <p>Class PHPSession
-Implementation for PHP native Session</p>                                </div>
+            <p>Class FlashTwigExtension</p>                                </div>
     
     
     
@@ -98,33 +97,23 @@ Implementation for PHP native Session</p>                                </div>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_get">get</a>(string $key, null $default = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../Core/Session/FlashService.html"><abbr title="Core\Session\FlashService">FlashService</abbr></a> $flash)
         
-                                            <p>Retrieve the value of the given $key or return
-$default value</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(string $key, $value)
+                    <a href="#method_getGlobals">getGlobals</a>()
         
-                                            <p>Set a $value for the given $key</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_delete">delete</a>(string $key)
-        
-                                            <p>unset the given $key</p>                </div>
+                                            <p>Returns a list of global variables to add to the existing list.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -134,10 +123,39 @@ $default value</p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_get">
+                    <h3 id="method___construct">
+        <div class="location">at         line 32</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../Core/Session/FlashService.html"><abbr title="Core\Session\FlashService">FlashService</abbr></a> $flash)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Core/Session/FlashService.html"><abbr title="Core\Session\FlashService">FlashService</abbr></a></td>
+                <td>$flash</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGlobals">
         <div class="location">at         line 42</div>
-        <code>                    mixed
-    <strong>get</strong>(string $key, null $default = null)
+        <code>                    array
+    <strong>getGlobals</strong>()
         </code>
     </h3>
     <div class="details">
@@ -145,116 +163,15 @@ $default value</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Retrieve the value of the given $key or return
-$default value</p>                                                </div>
+                                    <p>Returns a list of global variables to add to the existing list.</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>null</td>
-                <td>$default</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_set">
-        <div class="location">at         line 57</div>
-        <code>                    void
-    <strong>set</strong>(string $key, $value)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Set a $value for the given $key</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_delete">
-        <div class="location">at         line 68</div>
-        <code>                    void
-    <strong>delete</strong>(string $key)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>unset the given $key</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
+            <td>array</td>
+            <td>An array of global variables</td>
         </tr>
     </table>
 

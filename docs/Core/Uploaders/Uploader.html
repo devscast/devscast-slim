@@ -201,7 +201,8 @@ Super Class for uploading</p>                                </div>
                 <div class="col-md-8 type">
                     <a href="#method_upload">upload</a>()
         
-                                            <p>Move the uploaded file to the target path</p>                </div>
+                                            <p>Move the uploaded file to the target path
+create the target folder to avoid "Target not writable exception"</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -272,7 +273,7 @@ Super Class for uploading</p>                                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 84</div>
+        <div class="location">at         line 85</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Psr\Http\Message\UploadedFileInterface">UploadedFileInterface</abbr> $file)
         </code>
@@ -303,7 +304,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_prepare">
-        <div class="location">at         line 96</div>
+        <div class="location">at         line 97</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>prepare</strong>(string|null $oldVersion = null, bool $override = false)
         </code>
@@ -348,7 +349,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_upload">
-        <div class="location">at         line 111</div>
+        <div class="location">at         line 113</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>upload</strong>()
         </code>
@@ -358,7 +359,8 @@ Super Class for uploading</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Move the uploaded file to the target path</p>                                                </div>
+                                    <p>Move the uploaded file to the target path
+create the target folder to avoid "Target not writable exception"</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -378,7 +380,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isUploaded">
-        <div class="location">at         line 127</div>
+        <div class="location">at         line 134</div>
         <code>                    bool
     <strong>isUploaded</strong>()
         </code>
@@ -408,7 +410,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrors">
-        <div class="location">at         line 194</div>
+        <div class="location">at         line 201</div>
         <code>                    array
     <strong>getErrors</strong>()
         </code>
@@ -438,7 +440,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getUploadedFilename">
-        <div class="location">at         line 203</div>
+        <div class="location">at         line 210</div>
         <code>                    string
     <strong>getUploadedFilename</strong>()
         </code>
@@ -468,7 +470,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPath">
-        <div class="location">at         line 216</div>
+        <div class="location">at         line 223</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>setPath</strong>(string $path)
         </code>
@@ -508,7 +510,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFilename">
-        <div class="location">at         line 227</div>
+        <div class="location">at         line 234</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>setFilename</strong>(null|string $filename)
         </code>
@@ -548,7 +550,7 @@ Super Class for uploading</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPath">
-        <div class="location">at         line 238</div>
+        <div class="location">at         line 245</div>
         <code>            protected        string
     <strong>getPath</strong>()
         </code>

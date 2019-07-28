@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>App\Repositories\QuotesRepository | Devcast API</title>
+    <title>Core\Repositories\JsonFileRepository | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:App_Repositories_QuotesRepository" data-root-path="../../">
+    <body id="class" data-name="class:Core_Repositories_JsonFileRepository" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Repositories.html">Repositories</a></li><li class="backslash">\</li><li>QuotesRepository</li>
+                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Repositories.html">Repositories</a></li><li class="backslash">\</li><li>JsonFileRepository</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            QuotesRepository
+            JsonFileRepository
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>QuotesRepository</strong>        extends <a href="../../Core/Repositories/JsonFileRepository.html"><abbr title="Core\Repositories\JsonFileRepository">JsonFileRepository</abbr></a>
+    <strong>JsonFileRepository</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Class QuotesRepository</p>                                </div>
+            <p>Class JsonFileRepository</p>                                </div>
     
     
     
@@ -99,7 +99,7 @@
                 </td>
                 <td>$file</td>
                 <td class="last">database</td>
-                <td><small>from&nbsp;<a href="../../Core/Repositories/JsonFileRepository.html#property_file"><abbr title="Core\Repositories\JsonFileRepository">JsonFileRepository</abbr></a></small></td>
+                <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_data">
@@ -107,7 +107,7 @@
                 </td>
                 <td>$data</td>
                 <td class="last">quotes fetched form file</td>
-                <td><small>from&nbsp;<a href="../../Core/Repositories/JsonFileRepository.html#property_data"><abbr title="Core\Repositories\JsonFileRepository">JsonFileRepository</abbr></a></small></td>
+                <td></td>
             </tr>
             </table>
 
@@ -123,27 +123,6 @@
                     <a href="#method_getData">getData</a>()
         
                                             <p>Parse the json file</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Repositories/JsonFileRepository.html#method_getData"><abbr title="Core\Repositories\JsonFileRepository">JsonFileRepository</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $file = ROOT . &quot;/data/quotes.json&quot;)
-        
-                                            <p>using a file as database
-QuotesRepository constructor.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a target="_blank" href="http://php.net/stdClass">stdClass</a>|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_random">random</a>()
-        
-                                            <p>get one quote randomly</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -154,7 +133,7 @@ QuotesRepository constructor.</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getData">
-        <div class="location">in <a href="../../Core/Repositories/JsonFileRepository.html#method_getData"><abbr title="Core\Repositories\JsonFileRepository">JsonFileRepository</abbr></a> at         line 41</div>
+        <div class="location">at         line 41</div>
         <code>                    mixed|<a target="_blank" href="http://php.net/stdClass">stdClass</a>[]|string
     <strong>getData</strong>()
         </code>
@@ -172,68 +151,6 @@ QuotesRepository constructor.</p>                </div>
                     <table class="table table-condensed">
         <tr>
             <td>mixed|<a target="_blank" href="http://php.net/stdClass">stdClass</a>[]|string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 30</div>
-        <code>                    
-    <strong>__construct</strong>(string $file = ROOT . &quot;/data/quotes.json&quot;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>using a file as database
-QuotesRepository constructor.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$file</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_random">
-        <div class="location">at         line 43</div>
-        <code>                    <a target="_blank" href="http://php.net/stdClass">stdClass</a>|null
-    <strong>random</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>get one quote randomly</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/stdClass">stdClass</a>|null</td>
             <td></td>
         </tr>
     </table>

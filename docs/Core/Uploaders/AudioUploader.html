@@ -201,7 +201,8 @@ Abstraction for Audio Uploads</p>                                </div>
                 <div class="col-md-8 type">
                     <a href="#method_upload">upload</a>()
         
-                                            <p>Move the uploaded file to the target path</p>                </div>
+                                            <p>Move the uploaded file to the target path
+create the target folder to avoid "Target not writable exception"</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Core/Uploaders/Uploader.html#method_upload"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -273,7 +274,7 @@ Abstraction for Audio Uploads</p>                                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method___construct"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 82</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method___construct"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 85</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Psr\Http\Message\UploadedFileInterface">UploadedFileInterface</abbr> $file)
         </code>
@@ -304,7 +305,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_prepare">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_prepare"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 94</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_prepare"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 97</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>prepare</strong>(string|null $oldVersion = null, bool $override = false)
         </code>
@@ -349,7 +350,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_upload">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_upload"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 109</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_upload"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 113</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>upload</strong>()
         </code>
@@ -359,7 +360,8 @@ Abstraction for Audio Uploads</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Move the uploaded file to the target path</p>                                                </div>
+                                    <p>Move the uploaded file to the target path
+create the target folder to avoid "Target not writable exception"</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -379,7 +381,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isUploaded">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_isUploaded"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 125</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_isUploaded"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 134</div>
         <code>                    bool
     <strong>isUploaded</strong>()
         </code>
@@ -409,7 +411,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrors">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getErrors"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 192</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getErrors"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 201</div>
         <code>                    array
     <strong>getErrors</strong>()
         </code>
@@ -439,7 +441,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getUploadedFilename">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getUploadedFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 201</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_getUploadedFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 210</div>
         <code>                    string
     <strong>getUploadedFilename</strong>()
         </code>
@@ -469,7 +471,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPath">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setPath"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 214</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setPath"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 223</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>setPath</strong>(string $path)
         </code>
@@ -509,7 +511,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFilename">
-        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 225</div>
+        <div class="location">in <a href="../../Core/Uploaders/Uploader.html#method_setFilename"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a> at         line 234</div>
         <code>                    <a href="../../Core/Uploaders/Uploader.html"><abbr title="Core\Uploaders\Uploader">Uploader</abbr></a>
     <strong>setFilename</strong>(null|string $filename)
         </code>
@@ -549,7 +551,7 @@ Abstraction for Audio Uploads</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPath">
-        <div class="location">at         line 51</div>
+        <div class="location">at         line 53</div>
         <code>            protected        string
     <strong>getPath</strong>()
         </code>

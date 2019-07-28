@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Core\Middlewares\LoggedInMiddleware | Devcast API</title>
+    <title>App\Controllers\PodcastsController | Devcast API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Core_Middlewares_LoggedInMiddleware" data-root-path="../../">
+    <body id="class" data-name="class:App_Controllers_PodcastsController" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,28 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../Core/Middlewares.html">Middlewares</a></li><li class="backslash">\</li><li>LoggedInMiddleware</li>
+                        <li><a href="../../App.html">App</a></li><li class="backslash">\</li><li><a href="../../App/Controllers.html">Controllers</a></li><li class="backslash">\</li><li>PodcastsController</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            LoggedInMiddleware
+            PodcastsController
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>LoggedInMiddleware</strong>
+    <strong>PodcastsController</strong>        extends <a href="../../App/Controllers/Controller.html"><abbr title="App\Controllers\Controller">Controller</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Class LoggedInMiddleware</p>                                </div>
+            <p>Class PodcastsController
+Data Provider for API and renderer for WebApp</p>                                </div>
     
             <h2>Traits</h2>
 
@@ -105,6 +106,51 @@ Add Redirect Method for Classes that have the Router
             </div>
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_container">
+                                        protected                                        <abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr>
+                </td>
+                <td>$container</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../App/Controllers/Controller.html#property_container"><abbr title="App\Controllers\Controller">Controller</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_renderer">
+                                        protected                                        <a href="../../Core/Renderer/Renderer.html"><abbr title="Core\Renderer\Renderer">Renderer</abbr></a>|mixed
+                </td>
+                <td>$renderer</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../App/Controllers/Controller.html#property_renderer"><abbr title="App\Controllers\Controller">Controller</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_router">
+                                        protected                                        mixed|<abbr title="Slim\Router">Router</abbr>
+                </td>
+                <td>$router</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../App/Controllers/Controller.html#property_router"><abbr title="App\Controllers\Controller">Controller</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_meta">
+                                        protected                                        <a href="../../Core/MetaManager.html"><abbr title="Core\MetaManager">MetaManager</abbr></a>|mixed
+                </td>
+                <td>$meta</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../App/Controllers/Controller.html#property_meta"><abbr title="App\Controllers\Controller">Controller</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_flash">
+                                        protected                                        <a href="../../Core/Session/FlashService.html"><abbr title="Core\Session\FlashService">FlashService</abbr></a>
+                </td>
+                <td>$flash</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../App/Controllers/Controller.html#property_flash"><abbr title="App\Controllers\Controller">Controller</abbr></a></small></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -124,9 +170,9 @@ Add Redirect Method for Classes that have the Router
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../Core/Auth/AuthInterface.html"><abbr title="Core\Auth\AuthInterface">AuthInterface</abbr></a> $auth, <abbr title="Slim\Router">Router</abbr> $router)
+                    <a href="#method___construct">__construct</a>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
         
-                                            <p>LoggedInMiddleware constructor.</p>                </div>
+                                            <p>PodcastsController constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -134,10 +180,19 @@ Add Redirect Method for Classes that have the Router
                     <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___invoke">__invoke</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response, $next)
+                    <a href="#method_index">index</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>List podcasts</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_show">show</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
+        
+                                            <p>Show a podcast thanks to its id</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -198,9 +253,9 @@ Add Redirect Method for Classes that have the Router
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 50</div>
+        <div class="location">at         line 39</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../Core/Auth/AuthInterface.html"><abbr title="Core\Auth\AuthInterface">AuthInterface</abbr></a> $auth, <abbr title="Slim\Router">Router</abbr> $router)
+    <strong>__construct</strong>(<abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr> $container)
         </code>
     </h3>
     <div class="details">
@@ -208,19 +263,14 @@ Add Redirect Method for Classes that have the Router
     
 
                     <div class="method-description">
-                                    <p>LoggedInMiddleware constructor.</p>                                                </div>
+                                    <p>PodcastsController constructor.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Core/Auth/AuthInterface.html"><abbr title="Core\Auth\AuthInterface">AuthInterface</abbr></a></td>
-                <td>$auth</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Slim\Router">Router</abbr></td>
-                <td>$router</td>
+                <td><abbr title="Psr\Container\ContainerInterface">ContainerInterface</abbr></td>
+                <td>$container</td>
                 <td></td>
             </tr>
             </table>
@@ -233,16 +283,18 @@ Add Redirect Method for Classes that have the Router
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___invoke">
-        <div class="location">at         line 62</div>
+                    <h3 id="method_index">
+        <div class="location">at         line 52</div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
-    <strong>__invoke</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response, $next)
+    <strong>index</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>List podcasts</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -257,9 +309,49 @@ Add Redirect Method for Classes that have the Router
                 <td>$response</td>
                 <td></td>
             </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_show">
+        <div class="location">at         line 67</div>
+        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+    <strong>show</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request, <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Show a podcast thanks to its id</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
                     <tr>
+                <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
+                <td>$request</td>
                 <td></td>
-                <td>$next</td>
+            </tr>
+                    <tr>
+                <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+                <td>$response</td>
                 <td></td>
             </tr>
             </table>
