@@ -57,7 +57,7 @@ class App extends \DI\Bridge\Slim\App
         $aggregator = new ConfigAggregator(
             [
                 new ArrayProvider([
-                    ConfigAggregator::ENABLE_CACHE => getenv("APP_ENV", 'false') === 'prod'
+                    ConfigAggregator::ENABLE_CACHE => getenv("APP_ENV") === 'prod'
                 ]),
                 new PhpFileProvider(ROOT . "/config/autoload/*.php")
             ],

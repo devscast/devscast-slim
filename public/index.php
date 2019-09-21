@@ -17,7 +17,10 @@ require(dirname(__DIR__) . '/config/constants.php');
 
 try {
     $app = new App();
-    $app->run();
+
+    if (php_sapi_name() == 'cli') {
+        $app->run();
+    }
 } catch (Throwable | Exception $e) {
     Logger::error($e->getMessage(), [$e->getTraceAsString()]);
 }

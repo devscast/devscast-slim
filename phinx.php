@@ -1,14 +1,13 @@
 <?php
+
 /**
- * This file is part of the devcast.
- *
+ * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * file that was distributed with the source code.
  */
 
-require(__DIR__. "/public/index.php");
+require(WEBROOT . "/index.php");
 
 return [
     "paths" => [
@@ -17,27 +16,27 @@ return [
     ],
 
     "environments" => [
-        "default_migration_table" => "phinxlog",
+        "default_migration_table" => getenv('DATABASE_MIGRATION_TABLE'),
         "default_database" => "development",
 
         "development" => [
-            "adapter" => 'mysql',
-            "host" => 'localhost',
-            "name" => "devcast",
-            "user" => "root",
-            "pass" => 'root',
-            "port" => 3306,
-            "charset" =>  "utf8",
+            "adapter" => getenv('DATABASE_ADAPTER'),
+            "host" => getenv('DATABASE_HOST'),
+            "name" => getenv('DATABASE_NAME'),
+            "user" => getenv('DATABASE_USERNAME'),
+            "pass" => getenv('DATABASE_PASSWORD'),
+            "port" => getenv('DATABASE_PORT'),
+            "charset" => getenv('DATABASE_CHARSET'),
         ],
 
         "production" => [
-            "adapter" => 'mysql',
-            "host" => $app->getContainer()->get('database.host'),
-            "name" => $app->getContainer()->get('database.name'),
-            "user" => $app->getContainer()->get('database.username'),
-            "pass" => $app->getContainer()->get('database.password'),
-            "port" => 3306,
-            "charset" =>  "utf8",
+            "adapter" => getenv('DATABASE_ADAPTER'),
+            "host" => getenv('DATABASE_HOST'),
+            "name" => getenv('DATABASE_NAME'),
+            "user" => getenv('DATABASE_USERNAME'),
+            "pass" => getenv('DATABASE_PASSWORD'),
+            "port" => getenv('DATABASE_PORT'),
+            "charset" => getenv('DATABASE_CHARSET'),
         ]
     ]
 ];
