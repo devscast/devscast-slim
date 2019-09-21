@@ -50,7 +50,7 @@ abstract class Hydrator
      */
     private static function getSetter(string $field): string
     {
-        return "set". self::getProperty($field);
+        return "set" . self::getProperty($field);
     }
 
     /**
