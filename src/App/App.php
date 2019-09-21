@@ -1,34 +1,89 @@
 <?php
+
 /**
- * This file is part of the devcast.
+ * This file is part of DevsCast.
  *
  * (c) Bernard Ng <ngandubernard@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * file that was distributed with the source code.
  */
-
 
 namespace App;
 
 use App\Middlewares\NotFoundMiddleware;
 use DI\ContainerBuilder;
+use Dotenv\Dotenv;
+use Zend\ConfigAggregator\ArrayProvider;
+use Zend\ConfigAggregator\ConfigAggregator;
+use Zend\ConfigAggregator\PhpFileProvider;
 
 /**
  * Class App
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class App extends \DI\Bridge\Slim\App
 {
 
     /**
+     * App constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadRoutingAndMiddleware();
+    }
+
+    /**
+     * @param ContainerBuilder $builder
+     * @author bernard-ng <ngandubernard@gmail.com>
+     */
+    protected function configureContainer(ContainerBuilder $builder)
+    {
+        $this->loadEnvConfig();
+        $builder->useAutowiring(true);
+        $builder->addDefinitions($this->loadAutoloadConfig());
+    }
+
+    /**
+     * Load autoload configuration
+     * @return array
+     * @author bernard-ng <ngandubernard@gmail.com>
+     */
+    private function loadAutoloadConfig()
+    {
+        $aggregator = new ConfigAggregator(
+            [
+                new ArrayProvider([
+                    ConfigAggregator::ENABLE_CACHE => getenv("APP_ENV", 'false') === 'prod'
+                ]),
+                new PhpFileProvider(ROOT . "/config/autoload/*.php")
+            ],
+            getenv('APP_ENV') === 'dev' ? false : ROOT . "/data/cache/config.php"
+        );
+
+        return $aggregator->getMergedConfig();
+    }
+
+    /**
+     * load the .env config
+     * @author bernard-ng <ngandubernard@gmail.com>
+     */
+    private function loadEnvConfig()
+    {
+        $env = Dotenv::create(ROOT);
+        $env->load();
+    }
+
+    /**
      * @return $this
      * @author bernard-ng <ngandubernard@gmail.com>
      */
-    public function setup(): self
+    private function loadRoutingAndMiddleware(): self
     {
-        (require(ROOT . '/config/pipeline.php'))($this);
+        (require(ROOT . '/config/middleware.php'))($this);
         (require(ROOT . '/config/routes/app.php'))($this);
         (require(ROOT . '/config/routes/api.php'))($this);
         (require(ROOT . '/config/routes/backend.php'))($this);
@@ -38,17 +93,5 @@ class App extends \DI\Bridge\Slim\App
             []
         )->add(NotFoundMiddleware::class);
         return $this;
-    }
-
-    /**
-     * @param ContainerBuilder $builder
-     * @author bernard-ng <ngandubernard@gmail.com>
-     */
-    public function configureContainer(ContainerBuilder $builder)
-    {
-        $builder->useAutowiring(true);
-        $builder->addDefinitions(ROOT . "/config/settings.php");
-        $builder->addDefinitions(ROOT . "/config/settings.local.php");
-        $builder->addDefinitions(ROOT . "/config/dependencies.php");
     }
 }

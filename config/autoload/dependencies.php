@@ -2,9 +2,7 @@
 
 /**
  * This file is part of the devcast.
- *
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -31,17 +29,19 @@ use App\Middlewares\EnableCORSMiddleware;
 return [
     \PDO::class => factory(PDOFactory::class),
 
-    Validator::class            => create(Validator::class)->constructor(false),
-    Renderer::class             => factory(RendererFactory::class),
-    SessionInterface::class     => create(PHPSession::class),
-    FlashService::class         => factory(FlashServiceFactory::class),
-    MetaDataRepository::class   => create(MetaDataRepository::class)->constructor(get('data.meta')),
-    QuotesRepository::class     => create(QuotesRepository::class)->constructor(get('data.quotes')),
+    Validator::class => create(Validator::class)->constructor(false),
+    Renderer::class => factory(RendererFactory::class),
+    SessionInterface::class => create(PHPSession::class),
+    FlashService::class => factory(FlashServiceFactory::class),
+    MetaDataRepository::class => create(MetaDataRepository::class)->constructor(get('data.meta')),
+    QuotesRepository::class => create(QuotesRepository::class)->constructor(get('data.quotes')),
 
-    \Slim\Csrf\Guard::class         => factory(SlimCSRFGuardFactory::class),
+    \Slim\Csrf\Guard::class => factory(SlimCSRFGuardFactory::class),
     \Framework\Auth\AuthInterface::class => get(DatabaseAuth::class),
-    AssetsTwigExtension::class      => create(AssetsTwigExtension::class)->constructor(get('app.cacheBusting')),
+    AssetsTwigExtension::class => create(AssetsTwigExtension::class)
+        ->constructor(evalbool(getenv('APP_CACHEBUSTING'))),
 
-    EnableCORSMiddleware::class     => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),
-    EnableAPIMiddleware::class      => create(EnableAPIMiddleware::class)->constructor(get('API.enable')),
+    EnableCORSMiddleware::class => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),
+    EnableAPIMiddleware::class => create(EnableAPIMiddleware::class)
+        ->constructor(evalBool(getenv('API_ENABLE'))),
 ];

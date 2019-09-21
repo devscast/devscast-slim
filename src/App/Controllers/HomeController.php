@@ -19,15 +19,15 @@ use Slim\Http\Response;
 
 /**
  * Class HomeController
- * Data Provider for API and renderer for WebApp
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Controllers
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class HomeController extends Controller
 {
 
     /**
-     * podcats table
+     * podcasts table
      * @var PodcastsRepository|mixed
      */
     private $podcasts;

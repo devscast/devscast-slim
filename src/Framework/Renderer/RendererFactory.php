@@ -16,8 +16,8 @@ use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Router;
 use Slim\Views\TwigExtension;
-use Twig_Extension_Debug;
-use Twig_Extensions_Extension_Text;
+use Twig\Extension\DebugExtension;
+use Twig\Extensions\TextExtension;
 
 /**
  * Class RendererFactory
@@ -47,21 +47,21 @@ class RendererFactory
     {
         $view = new Renderer($this->container->get('views.path'), [
             'cache' => $this->container->get('views.cache'),
-            'debug' => $this->container->get('app.debug')
+            'debug' => evalBool(getenv('APP_DEBUG'))
         ]);
 
         $router = $this->container->get(Router::class);
         $uri = Uri::createFromEnvironment(new Environment($_SERVER));
         $view->addExtension(new TwigExtension($router, $uri));
-        $view->addExtension(new Twig_Extensions_Extension_Text());
-        $view->addExtension(new Extension());
+        $view->addExtension(new TextExtension());
+        $view->addExtension(new Extension(true));
 
         foreach ($this->container->get('twig.extensions') as $extension) {
             $view->addExtension($this->container->get($extension));
         }
 
-        if ($this->container->get('app.debug')) {
-            $view->addExtension(new Twig_Extension_Debug());
+        if (evalBool(getenv('APP_DEBUG'))) {
+            $view->addExtension(new DebugExtension());
         }
         return $view;
     }
