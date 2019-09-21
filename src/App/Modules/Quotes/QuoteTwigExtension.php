@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Twig;
+namespace App\Renderer\Twig\Extensions;
 
 use App\Repositories\QuotesRepository;
 use Twig\Extension\AbstractExtension;

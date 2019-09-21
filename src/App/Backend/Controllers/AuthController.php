@@ -12,7 +12,7 @@ use Framework\Logger;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
-use App\Auth\DatabaseAuth;
+use App\Authenticators\DatabaseAuth;
 use App\Validators\UsersValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Container\ContainerInterface;

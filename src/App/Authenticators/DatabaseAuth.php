@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Auth;
+namespace App\Authenticators;
 
 use App\Repositories\UsersRepository;
 use Framework\Auth\AuthInterface;

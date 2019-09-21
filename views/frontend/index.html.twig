@@ -1,4 +1,4 @@
-{% extends 'layouts/main.html.twig' %} {% block content %} {% if hero %}
+{% extends '../layouts/main.html.twig' %} {% block content %} {% if hero %}
 <section class="podcast-hero" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
     <div class="podcast-hero-inner">
         <div class="container">
@@ -96,6 +96,6 @@
             </div>
         </div>
     </section>
-    {% endif %} {% include 'includes/about.html.twig' %} {% include 'includes/newsletter.html.twig' %} {% include 'includes/quote.html.twig' %}
+    {% endif %} {% include 'includes' %} {% include 'includes' %} {% include 'includes' %}
 </main>
 {% endblock %}

@@ -9,7 +9,7 @@
 use function DI\get;
 use function DI\create;
 use function DI\factory;
-use App\Auth\DatabaseAuth;
+use App\Authenticators\DatabaseAuth;
 use Framework\Renderer\Renderer;
 use Framework\Session\PHPSession;
 use Framework\Database\PDOFactory;
