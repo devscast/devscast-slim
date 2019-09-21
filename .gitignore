@@ -11,3 +11,5 @@ error_log
 public/error_log
 *.log
 .vscode/
+/docs/
+/data/apikeys.json
