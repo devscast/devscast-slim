@@ -2,7 +2,7 @@
     "name": "bernard-ng/devscast",
     "description": "the backend of the devscast app",
     "homepage": "https://devs-cast.com",
-    "license": "APACHE 2.0",
+    "license": "APACHE-2.0",
     "authors": [{
         "name": "bernard-ng",
         "email": "ngandubernard@gmail.com"
@@ -21,7 +21,7 @@
         "twig/extensions": "^1.5",
         "slim/csrf": "^0.8.3",
         "ext-json": "*",
-        "ext-pdo": "*",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.8",
