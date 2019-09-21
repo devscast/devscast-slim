@@ -12,16 +12,16 @@
 namespace Framework\Twig;
 
 use Framework\MetaManager;
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
+use Twig\TwigFunction;
 
 /**
  * Class MetaTwigExtension
  * @package Framework\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class MetaTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class MetaTwigExtension extends AbstractExtension implements GlobalsInterface
 {
     /**
      * @var MetaManager
@@ -55,7 +55,7 @@ class MetaTwigExtension extends Twig_Extension implements Twig_Extension_Globals
     public function getFunctions(): array
     {
         return [
-            new Twig_SimpleFunction('meta', [$this, "getMeta"], ["is_safe" => ["html"]])
+            new TwigFunction('meta', [$this, "getMeta"], ["is_safe" => ["html"]])
         ];
     }
 

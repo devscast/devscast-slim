@@ -113,8 +113,8 @@ abstract class Uploader
     public function upload(): self
     {
         try {
-            if (!is_dir(WEBROOT . $this->relativePath)) {
-                mkdir(WEBROOT . $this->relativePath, 0777, true);
+            if (!is_dir(WEB_ROOT . $this->relativePath)) {
+                mkdir(WEB_ROOT . $this->relativePath, 0777, true);
             }
 
             $this->file->moveTo($this->getPath() . DIRECTORY_SEPARATOR . $this->filename);
@@ -245,7 +245,7 @@ abstract class Uploader
     protected function getPath(): string
     {
         if (is_null($this->path)) {
-            $this->path = WEBROOT . $this->relativePath;
+            $this->path = WEB_ROOT . $this->relativePath;
         }
         return $this->path;
     }

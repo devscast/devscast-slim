@@ -53,7 +53,7 @@ class AudioUploader extends Uploader
     protected function getPath(): string
     {
         if (is_null($this->path)) {
-            $this->path = WEBROOT . DIRECTORY_SEPARATOR . $this->relativePath;
+            $this->path = WEB_ROOT . DIRECTORY_SEPARATOR . $this->relativePath;
         }
         return $this->path;
     }

@@ -1,26 +1,24 @@
 <?php
 /**
  * This file is part of the devcast.
- *
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-
 namespace Framework\Twig;
 
 use Framework\Auth\AuthInterface;
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 
 /**
  * Class AuthTwigExtension
- * @package Framework\Twig
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package Framework\Twig
  */
-class AuthTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class AuthTwigExtension extends AbstractExtension implements GlobalsInterface
 {
 
     /**

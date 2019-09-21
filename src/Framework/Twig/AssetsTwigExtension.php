@@ -1,39 +1,38 @@
 <?php
-
 /**
- * This file is part of the devcast.
- *
+ * This file is part of the DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 
 namespace Framework\Twig;
 
 use Framework\Logger;
 use Slim\Http\Uri;
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 use Slim\Http\Environment;
 use InvalidArgumentException;
 
 /**
  * Class AssetsTwigExtension
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Twig
- * @author bernard-ng, https://bernard-ng.github.io
  */
-class AssetsTwigExtension extends Twig_Extension
+class AssetsTwigExtension extends AbstractExtension
 {
     /**
      * whether the cacheBusting is enable
+     *
      * @var bool
      */
     private $cacheBusting;
 
     /**
      * directories of assets
+     *
      * @var string
      */
     private $assetPath = "assets";
@@ -47,18 +46,21 @@ class AssetsTwigExtension extends Twig_Extension
 
     /**
      * Base Url of the website
+     *
      * @var string
      */
     private $baseUrl;
 
     /**
      * Cross Os directory separator
+     *
      * @var string
      */
     private $ds;
 
     /**
      * AssetsTwigExtension constructor.
+     *
      * @param bool $cacheBusting
      */
     public function __construct(bool $cacheBusting = false)
@@ -74,19 +76,20 @@ class AssetsTwigExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction("asset", [$this, 'asset']),
-            new Twig_SimpleFunction("images", [$this, "images"])
+            new TwigFunction("asset", [$this, 'asset']),
+            new TwigFunction("images", [$this, "images"])
         ];
     }
 
     /**
      * get the filename
+     *
      * @param string $file
      * @return string
      */
     public function asset(string $file): string
     {
-        $filename  = WEBROOT . DIRECTORY_SEPARATOR . "{$this->assetPath}" . DIRECTORY_SEPARATOR . $file;
+        $filename = WEB_ROOT . DIRECTORY_SEPARATOR . "{$this->assetPath}" . DIRECTORY_SEPARATOR . $file;
         $filename = str_replace('/', $this->ds, $filename);
 
         if (file_exists($filename)) {
@@ -103,12 +106,13 @@ class AssetsTwigExtension extends Twig_Extension
 
     /**
      * get the filename
+     *
      * @param string $file
      * @return string
      */
     public function images(string $file): string
     {
-        $filename  = WEBROOT . DIRECTORY_SEPARATOR . "{$this->imagesPath}" . DIRECTORY_SEPARATOR . $file;
+        $filename = WEB_ROOT . DIRECTORY_SEPARATOR . "{$this->imagesPath}" . DIRECTORY_SEPARATOR . $file;
         $filename = str_replace('/', $this->ds, $filename);
 
         if (file_exists($filename)) {
@@ -125,6 +129,7 @@ class AssetsTwigExtension extends Twig_Extension
 
     /**
      * generate a hash when the file has been update
+     *
      * @param string $filename
      * @return string
      */

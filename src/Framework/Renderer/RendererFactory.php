@@ -1,9 +1,7 @@
 <?php
 /**
- * This file is part of the devcast.
- *
+ * This file is part of the DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -21,8 +19,9 @@ use Twig\Extensions\TextExtension;
 
 /**
  * Class RendererFactory
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Renderer
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class RendererFactory
 {
@@ -33,6 +32,7 @@ class RendererFactory
 
     /**
      * RendererFactory constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)

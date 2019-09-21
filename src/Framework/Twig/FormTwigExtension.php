@@ -1,28 +1,25 @@
 <?php
 /**
- * This file is part of the devcast.
- *
+ * This file is part of the DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-
 namespace Framework\Twig;
 
 use Slim\Csrf\Guard;
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 use Twig_SimpleFunction;
 
 /**
  * Class FormTwigExtension
- * Add _token and _method function to Twig
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Twig
- * @author bernard-ng, https://bernard-ng.github.io
  */
-class FormTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class FormTwigExtension extends AbstractExtension implements GlobalsInterface
 {
 
     /**
@@ -32,6 +29,7 @@ class FormTwigExtension extends Twig_Extension implements Twig_Extension_Globals
 
     /**
      * FormTwigExtension constructor.
+     *
      * @param Guard $guard
      */
     public function __construct(Guard $guard)
@@ -41,6 +39,7 @@ class FormTwigExtension extends Twig_Extension implements Twig_Extension_Globals
 
     /**
      * Return a list of global variables to add to the existing list.
+     *
      * @return array An array of global variables
      */
     public function getGlobals(): array
@@ -51,12 +50,12 @@ class FormTwigExtension extends Twig_Extension implements Twig_Extension_Globals
         $csrfValue = $this->csrf->getTokenValue();
 
         return [
-            'csrf'   => [
+            'csrf' => [
                 'keys' => [
-                    'name'  => $csrfNameKey,
+                    'name' => $csrfNameKey,
                     'value' => $csrfValueKey
                 ],
-                'name'  => $csrfName,
+                'name' => $csrfName,
                 'value' => $csrfValue
             ]
         ];
@@ -77,6 +76,7 @@ class FormTwigExtension extends Twig_Extension implements Twig_Extension_Globals
 
     /**
      * Set request method that cannot be sent via a web browser
+     *
      * @param string $method
      * @return string
      */
@@ -88,14 +88,14 @@ class FormTwigExtension extends Twig_Extension implements Twig_Extension_Globals
 
     /**
      * Generate csrf token inputs
+     *
      * @return string
      */
     public function csrf(): string
     {
-        $csrf = <<< HTML
-<input type='hidden' name='{$this->csrf->getTokenNameKey()}' value='{$this->csrf->getTokenName()}'/>
-<input type='hidden' name='{$this->csrf->getTokenValueKey()}' value='{$this->csrf->getTokenValue()}'/>
+        return <<< HTML
+    <input type='hidden' name='{$this->csrf->getTokenNameKey()}' value='{$this->csrf->getTokenName()}'/>
+    <input type='hidden' name='{$this->csrf->getTokenValueKey()}' value='{$this->csrf->getTokenValue()}'/>
 HTML;
-        return $csrf;
     }
 }

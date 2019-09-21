@@ -79,20 +79,24 @@ abstract class Logger
 
 
     /**
-     * create an instace of the logger
+     * create an instance of the logger
      * @return \Monolog\Logger
      */
     private static function getLogger(): \Monolog\Logger
     {
         if (is_null(self::$logger)) {
-            $logger = new \Monolog\Logger("DEVSCAST");
-            $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
-            $logger->pushHandler(new \Monolog\Handler\StreamHandler(
-                ROOT . "/data/logs/app.log",
-                \Monolog\Logger::DEBUG
-            ));
-            self::$logger = $logger;
-            return self::$logger;
+            try {
+                $logger = new \Monolog\Logger(APP_NAME);
+                $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
+                $logger->pushHandler(new \Monolog\Handler\StreamHandler(
+                    ROOT . "/data/logs/" . LOGFILE,
+                    \Monolog\Logger::DEBUG
+                ));
+                self::$logger = $logger;
+                return self::$logger;
+            } catch (\Exception $e) {
+                die('error: logger #01');
+            }
         }
         return self::$logger;
     }

@@ -1,27 +1,25 @@
 <?php
 
 /**
- * This file is part of the devcast.
- *
+ * This file is part of the DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-
 namespace Framework\Twig;
 
-use Twig_Extension;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 use Framework\Session\FlashService;
-use Twig_Extension_GlobalsInterface;
 
 /**
  * Class FlashTwigExtension
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Twig
- * @author bernard-ng, https://bernard-ng.github.io
  */
-class FlashTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class FlashTwigExtension extends AbstractExtension implements GlobalsInterface
 {
 
     /**
