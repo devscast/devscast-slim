@@ -10,7 +10,7 @@
  */
 
 
-namespace Core;
+namespace Framework;
 
 use Core\Repositories\JsonFileRepository;
 use ArrayAccess;
