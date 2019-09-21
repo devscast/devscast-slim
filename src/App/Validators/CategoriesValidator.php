@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -11,7 +12,7 @@
 
 namespace App\Validators;
 
-use Core\Repositories\ValidatorInterface;
+use Framework\Repositories\ValidatorInterface;
 use Respect\Validation\Validator as v;
 
 /**

@@ -10,7 +10,7 @@
  */
 
 
-namespace Core\Uploaders;
+namespace Framework\Uploaders;
 
 use Error;
 use Exception;
@@ -20,7 +20,7 @@ use Throwable;
 /**
  * Class Upload
  * Super Class for uploading
- * @package Core\Uploaders
+ * @package Framework\Uploaders
  * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class Uploader

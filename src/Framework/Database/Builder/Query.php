@@ -8,17 +8,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database\Builder;
+namespace Framework\Database\Builder;
 
-use Core\Database\Builder\Queries\Delete;
-use Core\Database\Builder\Queries\Insert;
-use Core\Database\Builder\Queries\Select;
-use Core\Database\Builder\Queries\Update;
+use Framework\Database\Builder\Queries\Delete;
+use Framework\Database\Builder\Queries\Insert;
+use Framework\Database\Builder\Queries\Select;
+use Framework\Database\Builder\Queries\Update;
 use PDO;
 
 /**
  * Class Query
- * @package Core\Database\Builder
+ * @package Framework\Database\Builder
  * @link      https://github.com/envms/fluentpdo
  * @author    envms, start@env.ms
  * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner

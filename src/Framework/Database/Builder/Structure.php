@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database\Builder;
+namespace Framework\Database\Builder;
 
 /**
  * Class Structure
- * @package Core\Database\Builder
+ * @package Framework\Database\Builder
  * @link      https://github.com/envms/fluentpdo
  * @author    envms, start@env.ms
  * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner

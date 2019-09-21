@@ -10,7 +10,7 @@
  */
 
 
-namespace Core\Repositories;
+namespace Framework\Repositories;
 
 use stdClass;
 

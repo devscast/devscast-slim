@@ -12,7 +12,7 @@
 
 namespace Framework;
 
-use Core\Repositories\JsonFileRepository;
+use Framework\Repositories\JsonFileRepository;
 use ArrayAccess;
 use OutOfBoundsException;
 use RuntimeException;
@@ -20,7 +20,7 @@ use stdClass;
 
 /**
  * Class MetaManager
- * @package Core
+ * @package Framework
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class MetaManager implements ArrayAccess

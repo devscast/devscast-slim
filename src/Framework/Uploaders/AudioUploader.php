@@ -10,12 +10,12 @@
  */
 
 
-namespace Core\Uploaders;
+namespace Framework\Uploaders;
 
 /**
  * Class AudioUploader
  * Abstraction for Audio Uploads
- * @package Core\Uploaders
+ * @package Framework\Uploaders
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class AudioUploader extends Uploader

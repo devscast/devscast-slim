@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database\Builder\Queries;
+namespace Framework\Database\Builder\Queries;
 
-use Core\Database\Builder\Exception;
-use Core\Database\Builder\Literal;
-use Core\Database\Builder\Query;
-use Core\Database\Builder\Regex;
-use Core\Database\Builder\Structure;
-use Core\Database\Builder\Utilities;
-use Core\Database\QueryResult;
+use Framework\Database\Builder\Exception;
+use Framework\Database\Builder\Literal;
+use Framework\Database\Builder\Query;
+use Framework\Database\Builder\Regex;
+use Framework\Database\Builder\Structure;
+use Framework\Database\Builder\Utilities;
+use Framework\Database\QueryResult;
 use DateTime;
 use IteratorAggregate;
 use PDO;
@@ -25,7 +25,7 @@ use PDOStatement;
 /**
  * Class Base
  * Base query Builder
- * @package Core\Database\Builder\Queries
+ * @package Framework\Database\Builder\Queries
  * @link      https://github.com/envms/fluentpdo
  * @author    envms, start@env.ms
  * @copyright 2012-2018 env.ms - Chris Bornhoft, Aldo Matelli, Stefan Yohansson, Kevin Sanabria, Marek Lichtner

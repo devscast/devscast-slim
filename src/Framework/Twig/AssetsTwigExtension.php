@@ -10,9 +10,9 @@
  */
 
 
-namespace Core\Twig;
+namespace Framework\Twig;
 
-use Core\Logger;
+use Framework\Logger;
 use Slim\Http\Uri;
 use Twig_Extension;
 use Twig_SimpleFunction;
@@ -21,7 +21,7 @@ use InvalidArgumentException;
 
 /**
  * Class AssetsTwigExtension
- * @package Core\Twig
+ * @package Framework\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class AssetsTwigExtension extends Twig_Extension

@@ -11,7 +11,7 @@
 
 namespace App\Repositories;
 
-use Core\Repositories\JsonFileRepository;
+use Framework\Repositories\JsonFileRepository;
 
 /**
  * Class MetaDataRepository

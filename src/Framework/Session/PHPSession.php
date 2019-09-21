@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Session;
+namespace Framework\Session;
 
 /**
  * Class PHPSession
  * Implementation for PHP native Session
- * @package Core\Session
+ * @package Framework\Session
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class PHPSession implements SessionInterface

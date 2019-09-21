@@ -9,16 +9,16 @@
  */
 
 
-namespace Core\Twig;
+namespace Framework\Twig;
 
-use Core\MetaManager;
+use Framework\MetaManager;
 use Twig_Extension;
 use Twig_Extension_GlobalsInterface;
 use Twig_SimpleFunction;
 
 /**
  * Class MetaTwigExtension
- * @package Core\Twig
+ * @package Framework\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class MetaTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface

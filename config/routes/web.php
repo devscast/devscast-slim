@@ -14,7 +14,7 @@ use Admin\Controllers\AuthController;
 use App\Controllers\StaticController;
 use Admin\Controllers\UsersController;
 use App\Controllers\PodcastsController;
-use Core\Middlewares\LoggedInMiddleware;
+use Framework\Middlewares\LoggedInMiddleware;
 use App\Controllers\CategoriesController;
 use App\Controllers\NewsletterController;
 use Admin\Controllers\DashboardController;

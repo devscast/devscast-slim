@@ -10,7 +10,7 @@
  */
 
 
-namespace Core\Helpers;
+namespace Framework\Helpers;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
@@ -18,7 +18,7 @@ use Slim\Http\Response;
 /**
  * Class RouterAwareHelper
  * Add Redirect Method for Classes that have the Router
- * @package Core\Helpers
+ * @package Framework\Helpers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 trait RouterAwareHelper

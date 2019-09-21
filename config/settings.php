@@ -11,11 +11,11 @@
 
 use function DI\get;
 use App\Twig\QuoteTwigExtension;
-use Core\Twig\AuthTwigExtension;
-use Core\Twig\FormTwigExtension;
-use Core\Twig\MetaTwigExtension;
-use Core\Twig\FlashTwigExtension;
-use Core\Twig\AssetsTwigExtension;
+use Framework\Twig\AuthTwigExtension;
+use Framework\Twig\FormTwigExtension;
+use Framework\Twig\MetaTwigExtension;
+use Framework\Twig\FlashTwigExtension;
+use Framework\Twig\AssetsTwigExtension;
 
 return [
 

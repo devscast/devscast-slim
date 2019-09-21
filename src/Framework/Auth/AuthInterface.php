@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Auth;
+namespace Framework\Auth;
 
 /**
  * Interface AuthInterface
- * @package Core\Auth
+ * @package Framework\Auth
  * @author bernard-ng, https://bernard-ng.github.io
  */
 interface AuthInterface

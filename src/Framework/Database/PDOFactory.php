@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database;
+namespace Framework\Database;
 
 use PDO;
 use Exception;
-use Core\Logger;
+use Framework\Logger;
 use PDOException;
 use Psr\Container\ContainerInterface;
 
@@ -21,7 +21,7 @@ use Psr\Container\ContainerInterface;
  * Class PDOFactory
  * \PDO::class factory
  * @see \PDO
- * @package Core\Database
+ * @package Framework\Database
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class PDOFactory

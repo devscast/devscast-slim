@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -12,7 +13,7 @@
 namespace Admin\Controllers;
 
 use Awurth\SlimValidation\Validator;
-use Core\CRUDInterface;
+use Framework\CRUDInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -30,7 +30,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App/",
-            "Core\\": "src/Core/",
+            "Framework\\": "src/Framework/",
             "Admin\\": "src/Admin/",
             "API\\": "src/API/"
         }

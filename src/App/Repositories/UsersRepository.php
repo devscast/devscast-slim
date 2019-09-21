@@ -12,10 +12,10 @@
 namespace App\Repositories;
 
 use App\Modules;
-use Core\Logger;
+use Framework\Logger;
 use App\Entities\UsersEntity;
-use Core\Repositories\Repository;
-use Core\Database\Builder\Exception;
+use Framework\Repositories\Repository;
+use Framework\Database\Builder\Exception;
 
 /**
  * Class UsersRepository

@@ -12,7 +12,7 @@
 
 namespace Admin\Controllers;
 
-use Core\Logger;
+use Framework\Logger;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;

@@ -9,15 +9,15 @@
  */
 
 
-namespace Core\Factories;
+namespace Framework\Factories;
 
-use \Slim\Csrf\Guard;
+use Slim\Csrf\Guard;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class SlimCSRFGuardFactory
- * @package Core\Factories
+ * @package Framework\Factories
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class SlimCSRFGuardFactory

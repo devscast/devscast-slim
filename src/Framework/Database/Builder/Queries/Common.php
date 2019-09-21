@@ -8,16 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database\Builder\Queries;
+namespace Framework\Database\Builder\Queries;
 
-use Core\Database\Builder\Exception;
-use Core\Database\Builder\Literal;
-use Core\Database\Builder\Utilities;
+use Framework\Database\Builder\Exception;
+use Framework\Database\Builder\Literal;
+use Framework\Database\Builder\Utilities;
 
 /**
  * class Common
  * CommonQuery add JOIN and WHERE clauses for (SELECT, UPDATE, DELETE)
- * @package Core\Database\Builder\Queries
+ * @package Framework\Database\Builder\Queries
  * @method $this from(string $table) - add FROM to DELETE query
  * @method $this leftJoin(string $statement) - add LEFT JOIN to query
  *         $statement can be the 'table' name only or 'table:' to back reference the join

@@ -10,15 +10,15 @@
  */
 
 
-namespace Core\Twig;
+namespace Framework\Twig;
 
 use Twig_Extension;
-use Core\Session\FlashService;
+use Framework\Session\FlashService;
 use Twig_Extension_GlobalsInterface;
 
 /**
  * Class FlashTwigExtension
- * @package Core\Twig
+ * @package Framework\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class FlashTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface

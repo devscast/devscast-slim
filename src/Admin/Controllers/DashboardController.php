@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -14,9 +15,9 @@ use App\Repositories\CategoriesRepository;
 use App\Repositories\GalleryRepository;
 use App\Repositories\NewsletterRepository;
 use App\Repositories\PodcastsRepository;
-use Core\Helpers\RouterAwareHelper;
-use Core\Renderer\Renderer;
-use Core\Session\FlashService;
+use Framework\Helpers\RouterAwareHelper;
+use Framework\Renderer\Renderer;
+use Framework\Session\FlashService;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

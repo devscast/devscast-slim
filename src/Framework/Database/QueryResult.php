@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database;
+namespace Framework\Database;
 
 use ArrayAccess;
 use Iterator;
@@ -17,7 +17,7 @@ use LogicException;
 /**
  * Class QueryResult
  * Abstraction for Raw Database query results
- * @package Core\Database
+ * @package Framework\Database
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class QueryResult implements ArrayAccess, Iterator

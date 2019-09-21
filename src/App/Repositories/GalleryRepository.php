@@ -12,7 +12,7 @@ namespace App\Repositories;
 
 use App\Entities\GalleryEntity;
 use App\Modules;
-use Core\Repositories\Repository;
+use Framework\Repositories\Repository;
 
 /**
  * Class GalleryRepository

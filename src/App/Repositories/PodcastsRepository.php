@@ -12,11 +12,11 @@
 namespace App\Repositories;
 
 use App\Modules;
-use Core\Logger;
+use Framework\Logger;
 use App\Entities\PodcastsEntity;
-use Core\Repositories\Repository;
-use Core\Database\Builder\Exception;
-use Core\Database\Builder\Queries\Select;
+use Framework\Repositories\Repository;
+use Framework\Database\Builder\Exception;
+use Framework\Database\Builder\Queries\Select;
 
 /**
  * Class PodcastsRepository

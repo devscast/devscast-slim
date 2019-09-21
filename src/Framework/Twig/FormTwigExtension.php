@@ -9,7 +9,7 @@
  */
 
 
-namespace Core\Twig;
+namespace Framework\Twig;
 
 use Slim\Csrf\Guard;
 use Twig_Extension;
@@ -19,7 +19,7 @@ use Twig_SimpleFunction;
 /**
  * Class FormTwigExtension
  * Add _token and _method function to Twig
- * @package Core\Twig
+ * @package Framework\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class FormTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface

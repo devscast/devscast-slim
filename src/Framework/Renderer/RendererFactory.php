@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Renderer;
+namespace Framework\Renderer;
 
 use nochso\HtmlCompressTwig\Extension;
 use Psr\Container\ContainerInterface;
@@ -21,7 +21,7 @@ use Twig_Extensions_Extension_Text;
 
 /**
  * Class RendererFactory
- * @package Core\Renderer
+ * @package Framework\Renderer
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class RendererFactory

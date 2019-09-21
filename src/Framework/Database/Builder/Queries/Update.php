@@ -8,17 +8,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database\Builder\Queries;
+namespace Framework\Database\Builder\Queries;
 
-use Core\Database\Builder\Exception;
-use Core\Database\Builder\Literal;
-use Core\Database\Builder\Query;
+use Framework\Database\Builder\Exception;
+use Framework\Database\Builder\Literal;
+use Framework\Database\Builder\Query;
 use PDOStatement;
 
 /**
  * Class Update
  * UPDATE query builder
- * @package Core\Database\Builder\Queries
+ * @package Framework\Database\Builder\Queries
  * @method Update  leftJoin(string $statement) add LEFT JOIN to query
  *                        ($statement can be 'table' name only or 'table:' means back reference)
  * @method Update  innerJoin(string $statement) add INNER JOIN to query

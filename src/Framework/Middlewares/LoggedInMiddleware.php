@@ -11,21 +11,21 @@
 
 
 
-namespace Core\Middlewares;
+namespace Framework\Middlewares;
 
-use Core\Logger;
+use Framework\Logger;
 use Slim\Router;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Core\Auth\AuthInterface;
-use Core\Helpers\RouterAwareHelper;
+use Framework\Auth\AuthInterface;
+use Framework\Helpers\RouterAwareHelper;
 use Slim\Interfaces\RouterInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class LoggedInMiddleware
- * @package Core\Middlewares
+ * @package Framework\Middlewares
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class LoggedInMiddleware

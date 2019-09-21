@@ -7,5 +7,5 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) {
     return false;
 } else {
     $_SERVER['SCRIPT_NAME'] = '/index.php';
-    require $_SERVER['DOCUMENT_ROOT'] . '/public/index.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/index.php';
 }

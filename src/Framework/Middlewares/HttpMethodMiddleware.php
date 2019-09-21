@@ -9,7 +9,7 @@
  */
 
 
-namespace Core\Middlewares;
+namespace Framework\Middlewares;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,7 +21,7 @@ use Slim\Http\Response;
  * Check if there's _method field in $_POST
  * and then change the request method value to the
  * _method value
- * @package Core\Middlewares
+ * @package Framework\Middlewares
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class HttpMethodMiddleware

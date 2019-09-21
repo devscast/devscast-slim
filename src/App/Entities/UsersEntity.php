@@ -10,7 +10,7 @@
 
 namespace App\Entities;
 
-use Core\Auth\User;
+use Framework\Auth\User;
 
 /**
  * Class UsersEntity

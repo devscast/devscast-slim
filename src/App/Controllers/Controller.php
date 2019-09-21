@@ -13,10 +13,10 @@
 namespace App\Controllers;
 
 use Slim\Router;
-use Core\MetaManager;
-use Core\Renderer\Renderer;
-use Core\Session\FlashService;
-use Core\Helpers\RouterAwareHelper;
+use Framework\MetaManager;
+use Framework\Renderer\Renderer;
+use Framework\Session\FlashService;
+use Framework\Helpers\RouterAwareHelper;
 use Psr\Container\ContainerInterface;
 
 /**

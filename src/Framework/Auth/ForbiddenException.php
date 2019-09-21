@@ -9,13 +9,13 @@
  */
 
 
-namespace Core\Auth;
+namespace Framework\Auth;
 
 use Exception;
 
 /**
  * Class ForbiddenException
- * @package Core\Auth
+ * @package Framework\Auth
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class ForbiddenException extends Exception

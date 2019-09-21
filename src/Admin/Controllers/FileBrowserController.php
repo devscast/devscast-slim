@@ -11,7 +11,7 @@
 
 namespace Admin\Controllers;
 
-use Core\Logger;
+use Framework\Logger;
 use Slim\Http\Request;
 use Slim\Http\StatusCode;
 use Psr\Http\Message\ResponseInterface;

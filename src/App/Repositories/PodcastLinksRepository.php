@@ -13,9 +13,9 @@ namespace App\Repositories;
 
 use App\Entities\PodcastLinksEntity;
 use App\Modules;
-use Core\Database\Builder\Exception;
-use Core\Repositories\Repository;
-use Core\Logger;
+use Framework\Database\Builder\Exception;
+use Framework\Repositories\Repository;
+use Framework\Logger;
 
 /**
  * Class PodcastLinksRepository

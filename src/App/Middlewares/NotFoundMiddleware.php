@@ -12,7 +12,7 @@
 
 namespace App\Middlewares;
 
-use Core\Renderer\Renderer;
+use Framework\Renderer\Renderer;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\NotFound;
 

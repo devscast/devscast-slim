@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Repositories;
+namespace Framework\Repositories;
 
 use PDO;
-use Core\Logger;
+use Framework\Logger;
 use PDOStatement;
-use Core\Database\Builder\Query;
-use Core\Database\Builder\Exception;
+use Framework\Database\Builder\Query;
+use Framework\Database\Builder\Exception;
 
 /**
  * Class Repository
  * Abstraction for a database table
- * @package Core/Repositories
+ * @package Framework\Repositories
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class Repository

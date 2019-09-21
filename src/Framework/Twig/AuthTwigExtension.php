@@ -9,15 +9,15 @@
  */
 
 
-namespace Core\Twig;
+namespace Framework\Twig;
 
-use Core\Auth\AuthInterface;
+use Framework\Auth\AuthInterface;
 use Twig_Extension;
 use Twig_Extension_GlobalsInterface;
 
 /**
  * Class AuthTwigExtension
- * @package Core\Twig
+ * @package Framework\Twig
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class AuthTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface

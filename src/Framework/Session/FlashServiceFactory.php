@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Session;
+namespace Framework\Session;
 
 use Psr\Container\ContainerInterface;
-use Core\Repositories\JsonFileRepository;
+use Framework\Repositories\JsonFileRepository;
 
 /**
  * class FlashServiceFactory
- * @package Core\Session
+ * @package Framework\Session
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class FlashServiceFactory

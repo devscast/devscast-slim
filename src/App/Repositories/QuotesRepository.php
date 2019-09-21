@@ -13,7 +13,7 @@ namespace App\Repositories;
 
 use stdClass;
 use InvalidArgumentException;
-use Core\Repositories\JsonFileRepository;
+use Framework\Repositories\JsonFileRepository;
 
 /**
  * Class QuotesRepository

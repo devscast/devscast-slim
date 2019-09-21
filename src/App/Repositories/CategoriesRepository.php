@@ -12,7 +12,7 @@ namespace App\Repositories;
 
 use App\Entities\CategoriesEntity;
 use App\Modules;
-use Core\Repositories\Repository;
+use Framework\Repositories\Repository;
 
 /**
  * Class CategoriesRepository

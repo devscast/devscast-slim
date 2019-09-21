@@ -13,19 +13,19 @@ use function DI\get;
 use function DI\create;
 use function DI\factory;
 use App\Auth\DatabaseAuth;
-use Core\Renderer\Renderer;
-use Core\Session\PHPSession;
-use Core\Database\PDOFactory;
-use Core\Session\FlashService;
-use Core\Renderer\RendererFactory;
-use Core\Session\SessionInterface;
-use Core\Twig\AssetsTwigExtension;
+use Framework\Renderer\Renderer;
+use Framework\Session\PHPSession;
+use Framework\Database\PDOFactory;
+use Framework\Session\FlashService;
+use Framework\Renderer\RendererFactory;
+use Framework\Session\SessionInterface;
+use Framework\Twig\AssetsTwigExtension;
 use Awurth\SlimValidation\Validator;
-use Core\Session\FlashServiceFactory;
+use Framework\Session\FlashServiceFactory;
 use App\Repositories\QuotesRepository;
 use API\Middlewares\EnableAPIMiddleware;
 use App\Repositories\MetaDataRepository;
-use Core\Factories\SlimCSRFGuardFactory;
+use Framework\Factories\SlimCSRFGuardFactory;
 use App\Middlewares\EnableCORSMiddleware;
 
 return [
@@ -39,7 +39,7 @@ return [
     QuotesRepository::class     => create(QuotesRepository::class)->constructor(get('data.quotes')),
 
     \Slim\Csrf\Guard::class         => factory(SlimCSRFGuardFactory::class),
-    \Core\Auth\AuthInterface::class => get(DatabaseAuth::class),
+    \Framework\Auth\AuthInterface::class => get(DatabaseAuth::class),
     AssetsTwigExtension::class      => create(AssetsTwigExtension::class)->constructor(get('app.cacheBusting')),
 
     EnableCORSMiddleware::class     => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),

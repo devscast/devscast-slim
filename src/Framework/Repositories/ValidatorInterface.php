@@ -9,7 +9,7 @@
  */
 
 
-namespace Core\Repositories;
+namespace Framework\Repositories;
 
 /**
  * Interface RepositoryValidatorInterface

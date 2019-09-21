@@ -9,7 +9,7 @@
  */
 
 use App\Middlewares\EnableCORSMiddleware;
-use Core\Middlewares\HttpMethodMiddleware;
+use Framework\Middlewares\HttpMethodMiddleware;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

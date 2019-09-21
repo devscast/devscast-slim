@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the devcast.
  *
@@ -19,7 +20,7 @@ use Slim\Http\Response;
  * Interface CRUDControllerInterface
  * describe how a crud controller should work
  * and communicate with the database
- * @package Core
+ * @package Framework
  * @author bernard-ng, https://bernard-ng.github.io
  */
 interface CRUDInterface

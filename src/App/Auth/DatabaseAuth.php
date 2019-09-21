@@ -13,10 +13,10 @@
 namespace App\Auth;
 
 use App\Repositories\UsersRepository;
-use Core\Auth\AuthInterface;
-use Core\Auth\User;
-use Core\Database\Builder\Exception;
-use Core\Session\SessionInterface;
+use Framework\Auth\AuthInterface;
+use Framework\Auth\User;
+use Framework\Database\Builder\Exception;
+use Framework\Session\SessionInterface;
 
 /**
  * Class DatabaseAuth

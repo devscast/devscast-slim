@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Session;
+namespace Framework\Session;
 
-use Core\Repositories\JsonFileRepository;
+use Framework\Repositories\JsonFileRepository;
 
 /**
  * Class FlashService
  * Flash Messages using Session
- * @package Core\Session
+ * @package Framework\Session
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class FlashService

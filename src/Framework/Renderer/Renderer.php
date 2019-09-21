@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Renderer;
+namespace Framework\Renderer;
 
 use Slim\Views\Twig;
 
@@ -16,7 +16,7 @@ use Slim\Views\Twig;
  * Class Renderer
  * Decorator of the Slim\Views\Twig
  * @see Twig
- * @package Core\Renderer
+ * @package Framework\Renderer
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class Renderer extends Twig

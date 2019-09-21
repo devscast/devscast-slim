@@ -9,11 +9,11 @@
  */
 
 
-namespace Core\Auth;
+namespace Framework\Auth;
 
 /**
  * Class User
- * @package Core\Auth
+ * @package Framework\Auth
  * @author bernard-ng, https://bernard-ng.github.io
  */
 interface User

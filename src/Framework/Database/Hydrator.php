@@ -8,12 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Core\Database;
+namespace Framework\Database;
 
 /**
  * Class Hydrator
  * Hydrate an object with data coming from an array
- * @package Core\Database
+ * @package Framework\Database
  * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class Hydrator
