@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ruleset name="NgFrame">
-    <description>Lint Rules for voting-machine-api</description>
+    <description>Lint Rules</description>
     <arg name="colors"/>
     <arg value="p"/>
 

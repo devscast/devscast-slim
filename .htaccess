@@ -1,31 +1,34 @@
-RewriteEngine on
-RewriteOptions inherit
-
 <IfModule mod_headers.c>
   <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
     Header set Access-Control-Allow-Origin "*"
   </FilesMatch>
 </IfModule>
-RewriteCond %{HTTP_HOST} ^devs-cast\.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.devs-cast\.com$
-RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
-RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
-RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
-# redirect to no-www
-RewriteBase /
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+<IfModule mod_rewrite.c >
+  RewriteEngine on
+  RewriteOptions inherit
 
-# https redirect
-RewriteCond %{HTTPS} !=on
-RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  RewriteCond %{HTTP_HOST} ^devs-cast\.com$ [OR]
+  RewriteCond %{HTTP_HOST} ^www\.devs-cast\.com$
+  RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+  RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
-# redirect all requests to app's public directory
-RewriteCond %{REQUEST_URI} !public/
-RewriteRule (.*) /public/$1 [L]
+  # redirect to no-www
+  RewriteBase /
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-# serves the files directly if exists else process the request to the app's router
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /public/index.php?url=$1 [QSA,L]
+  # https redirect
+  RewriteCond %{HTTPS} !=on
+  RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # redirect all requests to app's public directory
+  RewriteCond %{REQUEST_URI} !public/
+  RewriteRule (.*) /public/$1 [L]
+
+  # serves the files directly if exists else process the request to the app's router
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ /public/index.php?url=$1 [QSA,L]
+</IfModule>

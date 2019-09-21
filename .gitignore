@@ -1,11 +1,10 @@
 /vendor/
-/logs/*
 composer.lock
-!/logs/README.md
 /.idea/
 node_modules/
 /docs/__cache__/*
 yarn.lock
+package-lock.json
 *.lock
 error_log
 public/error_log
