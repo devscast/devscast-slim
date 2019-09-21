@@ -7,7 +7,7 @@
  * file that was distributed with the source code.
  */
 
-require(WEBROOT . "/index.php");
+require(WEB_ROOT . "/index.php");
 
 return [
     "paths" => [

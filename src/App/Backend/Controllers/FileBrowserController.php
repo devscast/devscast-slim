@@ -34,7 +34,7 @@ class FileBrowserController extends DashboardController
      */
     public function audio(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $filesPath = WEBROOT . "/uploads/podcasts";
+        $filesPath = WEB_ROOT . "/uploads/podcasts";
         try {
             $directory = new \DirectoryIterator($filesPath);
         } catch (\Exception $e) {
@@ -72,8 +72,8 @@ class FileBrowserController extends DashboardController
      */
     public function images(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $thumbsPath = WEBROOT . "/uploads/thumbs";
-        $imagesPath = WEBROOT . "/uploads/images";
+        $thumbsPath = WEB_ROOT . "/uploads/thumbs";
+        $imagesPath = WEB_ROOT . "/uploads/images";
         try {
             $thumbsDirectory = new \DirectoryIterator($thumbsPath);
             $imagesDirectory = new \DirectoryIterator($imagesPath);

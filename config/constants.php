@@ -9,5 +9,7 @@
  */
 
 define('SITE_URL', '//devs-cast.com');
-define('WEBROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR . "public");
+define('WEB_ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR . "public");
 define('ROOT', dirname(__DIR__));
+define('LOGFILE', date("m-d-Y") . ".log");
+define('APP_NAME', 'devscast');

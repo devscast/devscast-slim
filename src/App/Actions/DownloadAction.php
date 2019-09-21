@@ -32,7 +32,7 @@ class DownloadAction
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $file = strval($request->getQueryParams()['file']) ?? null;
-        $expectedFile = $file ? WEBROOT . "/uploads/podcasts/{$file}" : null;
+        $expectedFile = $file ? WEB_ROOT . "/uploads/podcasts/{$file}" : null;
 
         if (!is_null($expectedFile) && file_exists($expectedFile)) {
             $basename = basename($expectedFile);
