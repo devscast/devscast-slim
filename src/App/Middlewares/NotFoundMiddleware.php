@@ -53,6 +53,8 @@ class NotFoundMiddleware extends NotFound
     /**
      * @param ServerRequestInterface $request
      * @return string
+     * @throws \Twig\Error\LoaderError
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     protected function renderHtmlNotFoundOutput(ServerRequestInterface $request)
     {

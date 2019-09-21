@@ -10,7 +10,7 @@
  */
 
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use Framework\Logger;
 use Slim\Http\Request;
@@ -25,7 +25,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class AuthController
- * @package Admin\Controllers
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class AuthController extends DashboardController

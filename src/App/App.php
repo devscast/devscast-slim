@@ -23,21 +23,26 @@ class App extends \DI\Bridge\Slim\App
 {
 
     /**
-     * setUp the app add middlewares and register routes
-     * @return App
+     * @return $this
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function setup(): self
     {
-        $this->isCliServer();
         (require(ROOT . '/config/pipeline.php'))($this);
-        (require(ROOT . '/config/routes/web.php'))($this);
+        (require(ROOT . '/config/routes/app.php'))($this);
         (require(ROOT . '/config/routes/api.php'))($this);
-        $this->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', [])->add(NotFoundMiddleware::class);
+        (require(ROOT . '/config/routes/backend.php'))($this);
+        $this->map(
+            ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+            '/{routes:.+}',
+            []
+        )->add(NotFoundMiddleware::class);
         return $this;
     }
 
     /**
      * @param ContainerBuilder $builder
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function configureContainer(ContainerBuilder $builder)
     {
@@ -45,19 +50,5 @@ class App extends \DI\Bridge\Slim\App
         $builder->addDefinitions(ROOT . "/config/settings.php");
         $builder->addDefinitions(ROOT . "/config/settings.local.php");
         $builder->addDefinitions(ROOT . "/config/dependencies.php");
-    }
-
-    /**
-     * @return bool
-     */
-    private function isCliServer()
-    {
-        if (PHP_SAPI == 'cli-server') {
-            $url = parse_url($_SERVER['REQUEST_URI']);
-            $file = __DIR__ . $url['path'];
-            if (is_file($file)) {
-                return false;
-            }
-        }
     }
 }

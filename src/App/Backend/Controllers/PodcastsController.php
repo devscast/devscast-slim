@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use App\Modules;
 use App\Repositories\CategoriesRepository;
@@ -27,7 +27,7 @@ use Slim\Http\StatusCode;
 
 /**
  * Class PodcastsController
- * @package Admin\Controllers
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class PodcastsController extends CRUDController

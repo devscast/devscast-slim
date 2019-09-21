@@ -8,31 +8,30 @@
  * file that was distributed with this source code.
  */
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use App\Modules;
-use App\Repositories\GalleryRepository;
-use App\Validators\GalleryValidator;
+use App\Repositories\CategoriesRepository;
+use App\Validators\CategoriesValidator;
 use Psr\Container\ContainerInterface;
 
 /**
- * Class GalleryController
- * administration of the gallery modules
- * @package Admin\Controllers
+ * Class CategoriesController
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class GalleryController extends CRUDController
+class CategoriesController extends CRUDController
 {
 
     /**
-     * GalleryController constructor.
+     * CategoriesController constructor.
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->repository = $container->get(GalleryRepository::class);
-        $this->validator = GalleryValidator::class;
-        $this->module = Modules::GALLERY;
+        $this->repository = $container->get(CategoriesRepository::class);
+        $this->validator = CategoriesValidator::class;
+        $this->module = Modules::CATEGORIES;
     }
 }

@@ -10,7 +10,7 @@
  */
 
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use Awurth\SlimValidation\Validator;
 use Framework\CRUDInterface;
@@ -24,7 +24,7 @@ use Slim\Http\StatusCode;
 /**
  * Class CRUDController
  * Implementation of CRUDInterface, this is for avoid code repetition
- * @package Admin\Controllers
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class CRUDController extends DashboardController implements CRUDInterface

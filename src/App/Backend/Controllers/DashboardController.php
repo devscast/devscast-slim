@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use App\Repositories\CategoriesRepository;
 use App\Repositories\GalleryRepository;
@@ -29,7 +29,7 @@ use Slim\Router;
 /**
  * Class DashboardController
  * Super class for Controllers
- * @package Admin\Controllers
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class DashboardController

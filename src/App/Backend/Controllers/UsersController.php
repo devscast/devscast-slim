@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use App\Modules;
 use App\Validators\UsersValidator;
@@ -17,7 +17,7 @@ use Psr\Container\ContainerInterface;
 
 /**
  * Class UsersController
- * @package Admin\Controllers
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class UsersController extends CRUDController

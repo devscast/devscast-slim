@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use App\Modules;
 use App\Repositories\NewsletterRepository;
@@ -19,7 +19,7 @@ use Psr\Container\ContainerInterface;
  * Class NewsletterController
  * manage the newsletter module, create and send messages
  * Crud the newsletter subscribers
- * @package Admin\Controllers
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
 class NewsletterController extends CRUDController

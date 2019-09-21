@@ -10,6 +10,7 @@
     <rule ref="PSR2">
         <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
     </rule>
+    <rule ref="PSR12" />
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <rule ref="Squiz.Classes.ValidClassName"/>

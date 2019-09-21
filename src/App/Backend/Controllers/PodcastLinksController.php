@@ -8,30 +8,30 @@
  * file that was distributed with this source code.
  */
 
-namespace Admin\Controllers;
+namespace App\Backend\Controllers;
 
 use App\Modules;
-use App\Repositories\CategoriesRepository;
-use App\Validators\CategoriesValidator;
+use App\Repositories\PodcastLinksRepository;
+use App\Validators\PodcastLinksValidator;
 use Psr\Container\ContainerInterface;
 
 /**
- * Class CategoriesController
- * @package Admin\Controllers
+ * Class PodcastLinksController
+ * @package App\Backend\Controllers
  * @author bernard-ng, https://bernard-ng.github.io
  */
-class CategoriesController extends CRUDController
+class PodcastLinksController extends CRUDController
 {
 
     /**
-     * CategoriesController constructor.
+     * PodcastLinksController constructor.
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->repository = $container->get(CategoriesRepository::class);
-        $this->validator = CategoriesValidator::class;
-        $this->module = Modules::CATEGORIES;
+        $this->repository = $container->get(PodcastLinksRepository::class);
+        $this->validator = PodcastLinksValidator::class;
+        $this->module = Modules::PODCASTLINKS;
     }
 }

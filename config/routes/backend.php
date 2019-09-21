@@ -9,69 +9,26 @@
  * file that was distributed with this source code.
  */
 
-use App\Controllers\HomeController;
-use Admin\Controllers\AuthController;
-use App\Controllers\StaticController;
-use Admin\Controllers\UsersController;
-use App\Controllers\PodcastsController;
+
 use Framework\Middlewares\LoggedInMiddleware;
-use App\Controllers\CategoriesController;
-use App\Controllers\NewsletterController;
-use Admin\Controllers\DashboardController;
-use Admin\Controllers\FileBrowserController;
-use Admin\Controllers\PodcastLinksController;
-use Admin\Controllers\GalleryController as AdminGalleryController;
-use Admin\Controllers\PodcastsController as AdminPodcastsController;
-use Admin\Controllers\CategoriesController as AdminCategoriesController;
-use Admin\Controllers\NewsletterController as AdminNewsletterController;
-use App\Actions\DownloadAction;
+use App\Backend\Controllers\AuthController;
+use App\Backend\Controllers\UsersController;
+use App\Backend\Controllers\DashboardController;
+use App\Backend\Controllers\FileBrowserController;
+use App\Backend\Controllers\PodcastLinksController;
+use App\Backend\Controllers\GalleryController;
+use App\Backend\Controllers\PodcastsController;
+use App\Backend\Controllers\CategoriesController;
+use App\Backend\Controllers\NewsletterController;
 
 /**
  * @param $app Slim\App|DI\Bridge\Slim\App
  * @author bernard-ng, https://bernard-ng.github.io
  */
 return function ($app) {
-    /**
-     * GENERAL ROUTES (NON Controller ROUTES)
-     */
-    $app->group('', function () {
-        $this->get('/', [HomeController::class, 'index'])->setName('home');
-        $this->get('/home', [HomeController::class, 'index'])->setName('home.index');
-        $this->post('/newsletter', [NewsletterController::class, 'store'])->setName('newsletter.store');
-        $this->get('/about', [StaticController::class, 'about'])->setName('about');
-        $this->map(['GET', 'POST'], '/contact', [StaticController::class, 'contact'])->setName('contact');
-        $this->get('/search', [])->setName('search');
-        $this->get('/download', DownloadAction::class)->setName('download');
 
-        $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
-        $this->post('/logout', [AuthController::class, 'logout'])->setName('auth.logout');
-    });
-
-
-    /**
-     * PODCATS Controller ROUTES
-     */
-    $app->group('/podcasts', function () {
-        $this->get('', [PodcastsController::class, 'index'])->setName('podcasts.index');
-        $this->get('/last', [PodcastsController::class, 'last'])->setName('podcasts.last');
-        $this->get(
-            '/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}',
-            [PodcastsController::class, 'show']
-        )->setName('podcasts.show');
-    });
-
-
-    /**
-     * CATEGORIES Controller ROUTES
-     */
-    $app->group('/categories', function () {
-        $this->get('', [CategoriesController::class, 'index'])->setName('categories.index');
-        $this->get(
-            '/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}',
-            [CategoriesController::class, 'show']
-        )->setName('categories.show');
-    });
-
+    $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
+    $this->post('/logout', [AuthController::class, 'logout'])->setName('auth.logout');
 
     /**
      * ADMIN CONTROLLERS ROUTES
@@ -79,63 +36,63 @@ return function ($app) {
     $app->group('/admin', function () {
         $this->get('', [DashboardController::class, 'index'])->setName('admin.index');
         $this->group('/podcasts', function () {
-            $this->get('', [AdminPodcastsController::class, 'index'])->setName('admin.podcasts');
+            $this->get('', [PodcastsController::class, 'index'])->setName('admin.podcasts');
             $this->map(
                 ['GET', 'POST'],
                 '/create',
-                [AdminPodcastsController::class, 'create']
+                [PodcastsController::class, 'create']
             )->setName('admin.podcasts.create');
 
             $this->map(
                 ['GET', 'PUT'],
                 '/{id:[0-9]+}',
-                [AdminPodcastsController::class, 'update']
+                [PodcastsController::class, 'update']
             )->setName('admin.podcasts.update');
 
             $this->delete(
                 '/{id:[0-9]+}',
-                [AdminPodcastsController::class, 'delete']
+                [PodcastsController::class, 'delete']
             )->setName('admin.podcasts.delete');
         });
 
         $this->group('/categories', function () {
-            $this->get('', [AdminCategoriesController::class, 'index'])->setName('admin.categories');
+            $this->get('', [CategoriesController::class, 'index'])->setName('admin.categories');
 
             $this->map(
                 ['GET', 'POST'],
                 '/create',
-                [AdminCategoriesController::class, 'create']
+                [CategoriesController::class, 'create']
             )->setName('admin.categories.create');
 
             $this->map(
                 ['GET', 'PUT'],
                 '/{id:[0-9]+}',
-                [AdminCategoriesController::class, 'update']
+                [CategoriesController::class, 'update']
             )->setName('admin.categories.update');
 
             $this->delete(
                 '/{id:[0-9]+}',
-                [AdminCategoriesController::class, 'delete']
+                [CategoriesController::class, 'delete']
             )->setName('admin.categories.delete');
         });
 
         $this->group('/gallery', function () {
-            $this->get('', [AdminGalleryController::class, 'index'])->setName('admin.gallery');
+            $this->get('', [GalleryController::class, 'index'])->setName('admin.gallery');
             $this->map(
                 ['GET', 'POST'],
                 '/create',
-                [AdminGalleryController::class, 'create']
+                [GalleryController::class, 'create']
             )->setName('admin.gallery.create');
 
             $this->map(
                 ['GET', 'PUT'],
                 '/{id:[0-9]+}',
-                [AdminGalleryController::class, 'update']
+                [GalleryController::class, 'update']
             )->setName('admin.gallery.update');
 
             $this->delete(
                 '/{id:[0-9]+}',
-                [AdminGalleryController::class, 'delete']
+                [GalleryController::class, 'delete']
             )->setName('admin.gallery.delete');
         });
 
@@ -177,20 +134,20 @@ return function ($app) {
         });
 
         $this->group('/newsletter', function () {
-            $this->get('', [AdminNewsletterController::class, 'index'])->setName('admin.newsletter');
+            $this->get('', [NewsletterController::class, 'index'])->setName('admin.newsletter');
             $this->get(
                 '/create',
-                [AdminNewsletterController::class, 'create']
+                [NewsletterController::class, 'create']
             )->setName('admin.newsletter.create');
 
             $this->post(
                 '/send',
-                [AdminNewsletterController::class, 'send']
+                [NewsletterController::class, 'send']
             )->setName('admin.newsletter.send');
 
             $this->delete(
                 '/{id:[0-9]+}',
-                [AdminNewsletterController::class, 'delete']
+                [NewsletterController::class, 'delete']
             )->setName('admin.newsletter.delete');
         });
 
