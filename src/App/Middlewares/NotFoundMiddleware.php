@@ -8,7 +8,7 @@
 
 namespace App\Middlewares;
 
-use Framework\Renderer\Renderer;
+use Framework\Renderer\RendererInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\NotFound;
 
@@ -22,15 +22,15 @@ class NotFoundMiddleware extends NotFound
 {
 
     /**
-     * @var Renderer|mixed
+     * @var RendererInterface|mixed
      */
     private $renderer;
 
     /**
      * NotFoundMiddleware constructor.
-     * @param Renderer $renderer
+     * @param RendererInterface $renderer
      */
-    public function __construct(Renderer $renderer)
+    public function __construct(RendererInterface $renderer)
     {
         $this->renderer = $renderer;
     }
@@ -49,11 +49,10 @@ class NotFoundMiddleware extends NotFound
     /**
      * @param ServerRequestInterface $request
      * @return string
-     * @throws \Twig\Error\LoaderError
      * @author bernard-ng <ngandubernard@gmail.com>
      */
     protected function renderHtmlNotFoundOutput(ServerRequestInterface $request)
     {
-        return $this->renderer->fetch('errors/404.html.twig');
+        return $this->renderer->fetch('@errors/404.html.twig');
     }
 }
