@@ -1,25 +1,20 @@
 <?php
-
 /**
- * This file is part of the devcast.
- *
+ * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * file that was distributed with the source code.
  */
 
 namespace Framework\Session;
 
-use Framework\Repositories\JsonFileRepository;
-
 /**
- * Class FlashService
- * Flash Messages using Session
+ * Class FlashMessage
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Session
- * @author bernard-ng, https://bernard-ng.github.io
  */
-class FlashService
+class FlashMessage
 {
 
     /**
@@ -34,12 +29,14 @@ class FlashService
 
     /**
      * FlashService constructor.
+     *
      * @param SessionInterface $session
+     * @param array $messages
      */
-    public function __construct(SessionInterface $session)
+    public function __construct(SessionInterface $session, $messages = [])
     {
         $this->session = $session;
-        $this->messages = [];
+        $this->messages = $messages;
     }
 
     /**
