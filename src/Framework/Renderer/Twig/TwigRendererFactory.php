@@ -6,6 +6,8 @@
  * file that was distributed with the source code.
  */
 
+namespace Framework\Renderer\Twig;
+
 use Psr\Container\ContainerInterface;
 use Slim\Http\Environment;
 use Slim\Http\Uri;

@@ -6,6 +6,8 @@
  * file that was distributed with the source code.
  */
 
+namespace Framework\Renderer\Twig;
+
 use Framework\Renderer\RendererInterface;
 use Slim\Views\Twig;
 

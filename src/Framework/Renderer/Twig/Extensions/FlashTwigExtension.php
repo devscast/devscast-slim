@@ -10,7 +10,7 @@ namespace Framework\Renderer\Twig\Extensions;
 
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
-use Framework\Session\FlashService;
+use Framework\Session\FlashMessage;
 
 /**
  * Class FlashTwigExtension
@@ -22,11 +22,11 @@ class FlashTwigExtension extends AbstractExtension implements GlobalsInterface
 {
 
     /**
-     * @var FlashService
+     * @var FlashMessage
      */
     private $flash;
 
-    public function __construct(FlashService $flash)
+    public function __construct(FlashMessage $flash)
     {
         $this->flash = $flash;
     }
