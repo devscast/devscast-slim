@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-namespace Framework\Middlewares;
+namespace Framework\Middleware;
 
 use Framework\Logger;
 use Slim\Router;

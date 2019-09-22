@@ -10,15 +10,17 @@ namespace Framework\Auth;
 
 /**
  * Interface AuthInterface
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Auth
- * @author bernard-ng, https://bernard-ng.github.io
  */
 interface AuthInterface
 {
 
     /**
      * Retrieve a logged user or null
-     * @return User|null
+     *
+     * @return UserInterface|null
      */
-    public function getUser(): ?User;
+    public function getUser(): ?UserInterface;
 }

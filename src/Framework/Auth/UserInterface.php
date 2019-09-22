@@ -13,7 +13,7 @@ namespace Framework\Auth;
  * @package Framework\Auth
  * @author bernard-ng, https://bernard-ng.github.io
  */
-interface User
+interface UserInterface
 {
 
     /**

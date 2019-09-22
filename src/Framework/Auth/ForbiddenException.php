@@ -6,17 +6,16 @@
  * file that was distributed with the source code.
  */
 
-
 namespace Framework\Auth;
 
 use Exception;
 
 /**
  * Class ForbiddenException
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Auth
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class ForbiddenException extends Exception
 {
-
 }
