@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-use Framework\Middlewares\LoggedInMiddleware;
+use Framework\Middleware\LoggedInMiddleware;
 use App\Backend\Controllers\AuthController;
 use App\Backend\Controllers\UsersController;
 use App\Backend\Controllers\DashboardController;
