@@ -1,50 +1,42 @@
 <?php
 /**
- * This file is part of the devcast.
- *
+ * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
- *
  * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * file that was distributed with the source code.
  */
 
 namespace Framework\Database;
 
 /**
  * Class Hydrator
- * Hydrate an object with data coming from an array
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database
- * @author bernard-ng, https://bernard-ng.github.io
  */
 abstract class Hydrator
 {
 
-    /**
-     * Hydrate an object with data coming from an array
-     * @param array $data
-     * @param $object
-     * @return mixed
-     */
-    public static function hydrate(array $data, $object)
+    public static function hydrate(array $data, $entity)
     {
-        $instance = new $object();
+        $instance = new $entity();
 
-        foreach ($data as $key => $datum) {
-            $method = self::getSetter($key);
-            if (method_exists($instance, $method)) {
-                $instance->$method($datum);
+        foreach ($data as $property => $value) {
+            $setter = self::getSetter($property);
+            if (method_exists($instance, $setter)) {
+                $instance->$setter($value);
             } else {
-                $property = lcfirst(self::getProperty($key));
-                $instance->$property = $datum;
+                $property = lcfirst(self::getProperty($property));
+                $instance->$property = $value;
             }
         }
+
         return $instance;
     }
 
-
     /**
-     * Generate setter for all property
-     * create_at => setCreateAt
+     * get the setter for a property
+     *
      * @param string $field
      * @return string
      */
@@ -54,8 +46,9 @@ abstract class Hydrator
     }
 
     /**
-     * Transforms a snake case to PascalCase
-     * create_at => CreateAt
+     * transforms a snake case to PascalCase
+     *  Ex: created_at => CreatedAt
+     *
      * @param string $field
      * @return string
      */
