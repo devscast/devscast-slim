@@ -6,22 +6,18 @@
  * file that was distributed with the source code.
  */
 
+use App\Application;
+use Modules\Backend\DashboardController;
+use Modules\Backend\User\AuthController;
+use Modules\Backend\User\UsersController;
 use Framework\Middleware\LoggedInMiddleware;
-use App\Backend\Controllers\AuthController;
-use App\Backend\Controllers\UsersController;
-use App\Backend\Controllers\DashboardController;
+use Modules\Backend\Podcast\PodcastsController;
+use Modules\Backend\Podcast\CategoriesController;
+use Modules\Backend\Podcast\NewsletterController;
 use App\Backend\Controllers\FileBrowserController;
-use App\Backend\Controllers\PodcastLinksController;
-use App\Backend\Controllers\GalleryController;
-use App\Backend\Controllers\PodcastsController;
-use App\Backend\Controllers\CategoriesController;
-use App\Backend\Controllers\NewsletterController;
+use Modules\Backend\Podcast\PodcastLinksController;
 
-/**
- * @param $app Slim\App|DI\Bridge\Slim\App
- * @author bernard-ng, https://bernard-ng.github.io
- */
-return function ($app) {
+return function (Application $app) {
 
     $this->map(['GET', 'POST'], '/login', [AuthController::class, 'login'])->setName('auth.login');
     $this->post('/logout', [AuthController::class, 'logout'])->setName('auth.logout');
@@ -70,26 +66,6 @@ return function ($app) {
                 '/{id:[0-9]+}',
                 [CategoriesController::class, 'delete']
             )->setName('admin.categories.delete');
-        });
-
-        $this->group('/gallery', function () {
-            $this->get('', [GalleryController::class, 'index'])->setName('admin.gallery');
-            $this->map(
-                ['GET', 'POST'],
-                '/create',
-                [GalleryController::class, 'create']
-            )->setName('admin.gallery.create');
-
-            $this->map(
-                ['GET', 'PUT'],
-                '/{id:[0-9]+}',
-                [GalleryController::class, 'update']
-            )->setName('admin.gallery.update');
-
-            $this->delete(
-                '/{id:[0-9]+}',
-                [GalleryController::class, 'delete']
-            )->setName('admin.gallery.delete');
         });
 
         $this->group('/podcast-links', function () {

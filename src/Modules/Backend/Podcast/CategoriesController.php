@@ -6,20 +6,22 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\Podcast;
 
 use App\Modules;
-use App\Repositories\CategoriesRepository;
-use App\Validators\CategoriesValidator;
+use App\Paths;
+use Modules\Backend\AbstractCRUDController;
+use Modules\Podcast\Category\CategoriesRepository;
+use Modules\Podcast\Category\CategoriesValidator;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class CategoriesController
  *
- * @author bernard-ng, https://bernard-ng.github.io
- * @package App\Backend\Controllers
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\Backend\Podcast
  */
-class CategoriesController extends CRUDController
+class CategoriesController extends AbstractCRUDController
 {
 
     /**
@@ -33,5 +35,6 @@ class CategoriesController extends CRUDController
         $this->repository = $container->get(CategoriesRepository::class);
         $this->validator = CategoriesValidator::class;
         $this->module = Modules::CATEGORIES;
+        $this->path = Paths::CATEGORIES;
     }
 }

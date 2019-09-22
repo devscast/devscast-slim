@@ -8,12 +8,10 @@
 
 namespace Framework\Middleware;
 
-use Framework\Logger;
 use Slim\Router;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Framework\Logger;
+use App\RouterAwareHelper;
 use Framework\Auth\AuthInterface;
-use Framework\Helpers\RouterAwareHelper;
 use Slim\Interfaces\RouterInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,8 +38,9 @@ class LoggedInMiddleware
 
     /**
      * LoggedInMiddleware constructor.
+     *
      * @param AuthInterface $auth
-     * @param RouterInterface|Router $router
+     * @param Router $router
      */
     public function __construct(AuthInterface $auth, Router $router)
     {
@@ -50,10 +49,11 @@ class LoggedInMiddleware
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
      * @param $next
-     * @return ResponseInterface|Response
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
     {

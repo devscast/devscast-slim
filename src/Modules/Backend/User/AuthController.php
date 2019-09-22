@@ -6,18 +6,17 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\User;
 
 use Framework\Logger;
-use Slim\Http\Request;
-use Slim\Http\Response;
 use Slim\Http\StatusCode;
-use App\Authenticators\DatabaseAuthenticator;
-use App\Validators\UsersValidator;
+use Modules\User\UsersValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
+use Modules\Backend\DashboardController;
 use Psr\Http\Message\ServerRequestInterface;
+use App\Authenticators\DatabaseAuthenticator;
 
 /**
  * Class AuthController
@@ -45,9 +44,10 @@ class AuthController extends DashboardController
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function login(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -75,13 +75,18 @@ class AuthController extends DashboardController
             }
         }
 
-        return $this->renderer->render($response, "auth/login.html.twig", compact('input', 'errors'));
+        return $this->renderer->render(
+            $response,
+            "@backend/auth/login.html.twig",
+            compact('input', 'errors')
+        );
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function logout(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {

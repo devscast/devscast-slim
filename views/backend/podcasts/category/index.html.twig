@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Administration - PodcastLink</h1>
+                    <h1>Administration - categories</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ path_for('home') }}">home</a></li>
                         <li class="breadcrumb-item"><a href="{{ path_for('admin.index') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">PodcastLinks</li>
+                        <li class="breadcrumb-item active">categories</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <div style="padding-bottom: 15px;">
-                        <a href="{{ path_for('admin.podcastLinks.create') }}" class="btn btn-primary">New PodcastLinks</a>
+                        <a href="{{ path_for('admin.categories.create') }}" class="btn btn-primary">New category</a>
                     </div>
                     <div class="card">
                         <div class="card-body table-responsive">
@@ -33,9 +33,8 @@
                                 <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>Reference</th>
+                                    <th>Name</th>
                                     <th>Description</th>
-                                    <th>Podcasts_id</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -43,13 +42,12 @@
                                 {% for i in items %}
                                     <tr>
                                         <th>{{ i.id }}</th>
-                                        <th>{{ i.reference }}</th>
+                                        <th><a href="{{ path_for('categories.show', {slug: i.slug, id: i.id}) }}">{{ i.name | truncate(30) }}</a></th>
                                         <th>{{ i.description | striptags | truncate(100) }}</th>
-                                        <th>{{ i.podcastsId }}</th>
                                         <th>
                                             <div class="btn-group-justified">
-                                                <a href="{{ path_for('admin.podcastLinks.update', {id: i.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                <form action="{{ path_for('admin.podcastLinks.delete', {id: i.id}) }}" method="post" style="display: inline" id="delete">
+                                                <a href="{{ path_for('admin.categories.update', {id: i.id} ) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <form action="{{ path_for('admin.categories.delete', {id: i.id}) }}" method="post" style="display: inline" id="delete">
                                                     {{ _csrf() }}
                                                     {{ _method('DELETE') }}
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -82,7 +80,7 @@
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
 {% endblock %}
 
-{% block javascript %}
+{% block js %}
     <script>
         ajaxDelete();
         showTableImage();

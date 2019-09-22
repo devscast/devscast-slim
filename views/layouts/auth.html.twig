@@ -1,10 +1,8 @@
 {% htmlcompress %}
-<!DOCTYPE html>
-<html lang="{{ meta.lang }}">
+    <!DOCTYPE html>
+    <html lang="{{ meta.lang }}">
     <head>
         <title>{{ meta.title }}</title>
-        {% include 'includes/meta.html.twig' %}
-
         <link rel="icon" href="{{ images('logo.ico') }}"/>
         <link rel="shortcut icon" href="{{ images('logo.ico') }}"/>
         <meta content="#000" name="theme-color"/>
@@ -13,26 +11,27 @@
         <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/plugins/font-awesome/css/font-awesome.min.css' }}">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.css' }}">
-        <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/dist/css/adminlte.min.css' }}"> {% block stylesheet %}{% endblock %}
+        <link rel="stylesheet" href="{{ base_url() ~ '/assets/admin/dist/css/adminlte.min.css' }}">
+        {% block stylesheet %}{% endblock %}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     </head>
     <body itemscope itemtype="http://schema.org/WebSite">
-        <noscript>
-            <div class="text-center mt-100">
-                <h2 style="color: orangered;">JavaScript is disabled</h2>
-                <p class="mb-40">a
-                                        We're sorry but devcast doesn't work properly without JavaScript enabled.
-                    <br>
-                    Please enable it to continue.
-                </p>
-            </div>
-        </noscript>
+    <noscript>
+        <div class="text-center mt-100">
+            <h2 style="color: orangered;">JavaScript is disabled</h2>
+            <p class="mb-40">a
+                We're sorry but devscast doesn't work properly without JavaScript enabled.
+                <br>
+                Please enable it to continue.
+            </p>
+        </div>
+    </noscript>
 
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
-        <script src="{{ asset('js/app.js') }}"></script>
-        {% block javascript %}{% endblock %}
+    <script src="{{ asset('js/app.js') }}"></script>
+    {% block js %}{% endblock %}
     </body>
-</html>
+    </html>
 {% endhtmlcompress %}

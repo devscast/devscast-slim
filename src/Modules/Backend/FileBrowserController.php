@@ -8,21 +8,27 @@
 
 namespace App\Backend\Controllers;
 
+use App\Modules;
 use Framework\Logger;
 use Slim\Http\Request;
 use Slim\Http\StatusCode;
 use Psr\Http\Message\ResponseInterface;
+use Modules\Backend\DashboardController;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Class GalleryController
- * administration of  files
+ * Class FileBrowserController
  *
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Backend\Controllers
  */
 class FileBrowserController extends DashboardController
 {
+
+    /**
+     * @var string
+     */
+    private $module = Modules::FILES;
 
     /**
      * managing files
@@ -99,7 +105,7 @@ class FileBrowserController extends DashboardController
 
         return $this->renderer->render(
             $response->withStatus($this->status),
-            "admin/files/images.html.twig",
+            "@backend/{$this->module}/images.html.twig",
             compact('thumbsDirectory', 'imagesDirectory')
         );
     }

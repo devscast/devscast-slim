@@ -1,5 +1,5 @@
 {% extends 'layouts/dashboard.html.twig' %}
-{% import 'includes/admin/forms.html.twig' as form %}
+{% import '@backend/_includes/forms.macro.twig' as form %}
 
 {% block breadcrumb %}
     <section class="content-header">
@@ -100,7 +100,7 @@
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
 {% endblock %}
 
-{% block javascript %}
+{% block js %}
     <script>
         showImageBeforeUpload("form[data-thumb]");
         $(function () {

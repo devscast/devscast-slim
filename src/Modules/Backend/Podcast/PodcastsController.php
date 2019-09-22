@@ -6,21 +6,21 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\Podcast;
 
 use App\Modules;
-use App\Repositories\CategoriesRepository;
-use App\Repositories\PodcastsRepository;
-use App\Validators\PodcastsValidator;
+use App\Paths;
+use Slim\Http\StatusCode;
 use Awurth\SlimValidation\Validator;
 use Framework\Uploader\AudioUploader;
 use Framework\Uploader\ImageUploader;
 use Psr\Container\ContainerInterface;
+use Modules\Podcast\PodcastsValidator;
+use Modules\Podcast\PodcastsRepository;
 use Psr\Http\Message\ResponseInterface;
+use Modules\Backend\AbstractCRUDController;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Slim\Http\StatusCode;
+use Modules\Podcast\Category\CategoriesRepository;
 
 /**
  * Class PodcastsController
@@ -28,7 +28,7 @@ use Slim\Http\StatusCode;
  * @author bernard-ng, https://bernard-ng.github.io
  * @package App\Backend\Controllers
  */
-class PodcastsController extends CRUDController
+class PodcastsController extends AbstractCRUDController
 {
 
     /**
@@ -42,14 +42,14 @@ class PodcastsController extends CRUDController
         $this->repository = $container->get(PodcastsRepository::class);
         $this->validator = PodcastsValidator::class;
         $this->module = Modules::PODCASTS;
+        $this->path = Paths::PODCASTS;
     }
 
     /**
-     * create and store podcast
-     *
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
      * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -80,7 +80,7 @@ class PodcastsController extends CRUDController
                         if (empty($errors)) {
                             $this->repository->create($params);
                             $this->flash->success('podcast.create');
-                            return $this->redirect('admin.podcasts');
+                            return $this->redirect("admin.{$this->path}");
                         }
                     } else {
                         $errors['audio'] = $audio->getErrors();
@@ -96,15 +96,18 @@ class PodcastsController extends CRUDController
 
         $data = compact('errors', 'input');
         $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
-        return $this->renderer->render($response->withStatus($this->status), 'admin/podcasts/create.html.twig', $data);
+        return $this->renderer->render(
+            $response->withStatus($this->status),
+            "@backend/{$this->module}/create.html.twig",
+            $data
+        );
     }
 
     /**
-     * update a single podcast
-     *
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
      * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -124,7 +127,7 @@ class PodcastsController extends CRUDController
                 if ($validator->isValid()) {
                     $this->repository->update($id, $params);
                     $this->flash->success('podcast.update');
-                    return $this->redirect('admin.podcasts');
+                    return $this->redirect("admin.{$this->path}");
                 } else {
                     $this->flash->error('podcast.update');
                     $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
@@ -135,7 +138,7 @@ class PodcastsController extends CRUDController
             $data['categories'] = $this->container->get(CategoriesRepository::class)->all();
             return $this->renderer->render(
                 $response->withStatus($this->status),
-                'admin/podcasts/edit.html.twig',
+                "@backend/{$this->module}/edit.html.twig",
                 $data
             );
         }

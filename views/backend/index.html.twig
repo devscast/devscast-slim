@@ -36,7 +36,7 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-4">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ podcasts ?? 0 }}</h3>
@@ -50,8 +50,7 @@
                     </a>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-4">
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{ categories ?? 0 }}</h3>
@@ -65,23 +64,7 @@
                     </a>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{ gallery  ?? 0 }}</h3>
-                        <p>Gallery</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="{{ path_for('admin.gallery') }}" class="small-box-footer">More info
-                        <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-4">
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>{{ newsletter ?? 0 }}</h3>
@@ -131,7 +114,7 @@
     <script src="{{ base_url() ~ '/assets/admin/plugins/chartjs-old/Chart.min.js' }}"></script>
 {% endblock %}
 
-{% block javascript %}
+{% block js %}
     <script>
         $(function () {
             'use strict';
@@ -139,7 +122,7 @@
             let salesChart = new Chart(salesChartCanvas);
 
             let salesChartData = {
-                labels: ['Podcasts', 'Categories', 'Gallery', 'Newsletter'],
+                labels: ['Podcasts', 'Categories', 'Newsletter'],
                 datasets: [
                     {
                         label: 'En ligne',
@@ -152,7 +135,6 @@
                         data: [
                             {{ podcasts  | default('0') }},
                             {{ categories | default('0') }},
-                            {{ gallery  | default('0') }},
                             {{ newsletter | default('0') }}
                         ]
                     }

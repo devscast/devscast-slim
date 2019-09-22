@@ -6,25 +6,21 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend;
 
+use Slim\Http\StatusCode;
 use Awurth\SlimValidation\Validator;
-use Framework\CRUDInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Slim\Http\StatusCode;
 
 /**
- * Class CRUDController
- * Implementation of CRUDInterface, this is for avoid code repetition
+ * Class AbstractCRUDController
  *
- * @author bernard-ng, https://bernard-ng.github.io
- * @package App\Backend\Controllers
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\Backend
  */
-class CRUDController extends DashboardController implements CRUDInterface
+class AbstractCRUDController extends DashboardController implements CRUDControllerInterface
 {
 
     /**
@@ -40,6 +36,12 @@ class CRUDController extends DashboardController implements CRUDInterface
      * @var string
      */
     protected $module;
+
+    /**
+     * Route name
+     * @var string
+     */
+    protected $path;
 
     /**
      * @var ContainerInterface
@@ -64,24 +66,20 @@ class CRUDController extends DashboardController implements CRUDInterface
     }
 
     /**
-     * [READ] implementation should list all data for a particular module
-     *
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
+     * @inheritDoc
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $items = $this->repository->all();
-        return $this->renderer->render($response, "admin/{$this->module}/index.html.twig", compact('items'));
+        return $this->renderer->render(
+            $response,
+            "@backend/{$this->module}/index.html.twig",
+            compact('items')
+        );
     }
 
     /**
-     * [CREATE] implementation should store new data for a particular module
-     *
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
+     * @inheritDoc
      */
     public function create(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -96,9 +94,9 @@ class CRUDController extends DashboardController implements CRUDInterface
             if ($validator->isValid()) {
                 $this->repository->create($params);
                 $this->flash->success("{$this->module}.create");
-                return $this->redirect("admin.{$this->module}");
+                return $this->redirect("admin.{$this->path}");
             } else {
-                $this->flash->error("{$this->module}.create");
+                $this->flash->error("{$this->path}.create");
                 $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             }
         }
@@ -106,17 +104,13 @@ class CRUDController extends DashboardController implements CRUDInterface
         $data = compact('errors', 'input');
         return $this->renderer->render(
             $response->withStatus($this->status),
-            "admin/{$this->module}/create.html.twig",
+            "@backend/{$this->module}/create.html.twig",
             $data
         );
     }
 
     /**
-     * [UPDATE] implementation should update data for a particular module
-     *
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
+     * @inheritDoc
      */
     public function update(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -134,10 +128,10 @@ class CRUDController extends DashboardController implements CRUDInterface
 
                 if ($validator->isValid()) {
                     $this->repository->update($id, $params);
-                    $this->flash->success("{$this->module}.update");
-                    return $this->redirect("admin.{$this->module}");
+                    $this->flash->success("{$this->path}.update");
+                    return $this->redirect("admin.{$this->path}");
                 } else {
-                    $this->flash->error("{$this->module}.update");
+                    $this->flash->error("{$this->path}.update");
                     $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                 }
             }
@@ -145,7 +139,7 @@ class CRUDController extends DashboardController implements CRUDInterface
             $data = compact('errors', 'input', 'item');
             return $this->renderer->render(
                 $response->withStatus($this->status),
-                "admin/{$this->module}/edit.html.twig",
+                "@backend/{$this->module}/edit.html.twig",
                 $data
             );
         }
@@ -153,11 +147,7 @@ class CRUDController extends DashboardController implements CRUDInterface
     }
 
     /**
-     * [DELETE] implementation should destroy data for a particular module
-     *
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface
+     * @inheritDoc
      */
     public function delete(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -165,8 +155,8 @@ class CRUDController extends DashboardController implements CRUDInterface
             $id = $request->getAttribute('route')->getArgument('id');
             if ($this->repository->find($id)) {
                 $this->repository->destroy($id);
-                $this->flash->success("{$this->module}.delete");
-                return $this->redirect("admin.{$this->module}");
+                $this->flash->success("{$this->path}.delete");
+                return $this->redirect("admin.{$this->path}");
             }
         }
         return $response->withStatus(StatusCode::HTTP_NOT_FOUND);

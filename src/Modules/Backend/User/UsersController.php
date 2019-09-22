@@ -6,20 +6,22 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\User;
 
 use App\Modules;
-use App\Validators\UsersValidator;
-use App\Repositories\UsersRepository;
+use App\Paths;
+use Modules\User\UsersValidator;
+use Modules\User\UsersRepository;
 use Psr\Container\ContainerInterface;
+use Modules\Backend\AbstractCRUDController;
 
 /**
  * Class UsersController
  *
- * @author bernard-ng, https://bernard-ng.github.io
- * @package App\Backend\Controllers
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\Backend\User
  */
-class UsersController extends CRUDController
+class UsersController extends AbstractCRUDController
 {
 
     /**
@@ -33,5 +35,6 @@ class UsersController extends CRUDController
         $this->repository = $container->get(UsersRepository::class);
         $this->validator = UsersValidator::class;
         $this->module = Modules::USERS;
+        $this->path = Paths::USERS;
     }
 }

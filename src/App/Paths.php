@@ -8,18 +8,12 @@
 
 namespace App;
 
-/**
- * Class Modules
- *
- * @author bernard-ng <ngandubernard@gmail.com>
- * @package App
- */
-abstract class Modules
+abstract class Paths
 {
     public const USERS = "users";
     public const PODCASTS = "podcasts";
-    public const NEWSLETTER = "podcasts/newsletter";
-    public const PODCASTLINKS = "podcasts/link";
-    public const CATEGORIES = "podcasts/category";
+    public const NEWSLETTER = "newsletter";
+    public const PODCASTLINKS = "podcastLinks";
+    public const CATEGORIES = "categories";
     public const FILES = "files";
 }

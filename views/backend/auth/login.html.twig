@@ -1,11 +1,11 @@
-{% extends 'layouts/auth.html.twig' %}
-{% import 'includes/admin/forms.html.twig' as form %}
+{% extends '@layouts/auth.html.twig' %}
+{% import '@backend/_includes/forms.macro.twig' as form %}
 
 
 {% block content %}
     <div class="login-box">
         <div class="login-logo">
-            <strong><a href="{{ path_for('home') }}">Devcast</a></strong>
+            <strong><a href="{{ path_for('home') }}">Devscast</a></strong>
         </div>
 
         <div class="card">

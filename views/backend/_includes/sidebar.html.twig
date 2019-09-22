@@ -96,30 +96,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ is_current_path('admin.gallery') or is_current_path('admin.gallery.create') ? 'menu-open' : '' }}">
-                    <a class="nav-link" href="#">
-                        <i class="nav-icon fa fa-file-picture-o"></i>
-                        <p>
-                            Gallery
-                            <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ path_for('admin.gallery') }}" class="nav-link {{ is_current_path('admin.gallery') ? 'active' : '' }}">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path_for('admin.gallery.create') }}" class="nav-link {{ is_current_path('admin.gallery.create') ? 'active' : '' }}">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
                 <div style="height: 1px; border-top:  1px solid #848484; margin: 20px 0;"></div>
 
                 <li class="nav-item has-treeview {{ is_current_path('admin.newsletter') or is_current_path('admin.newsletter.create') ? 'menu-open' : '' }}">

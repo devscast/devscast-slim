@@ -6,20 +6,22 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\Podcast;
 
 use App\Modules;
-use App\Repositories\PodcastLinksRepository;
-use App\Validators\PodcastLinksValidator;
+use App\Paths;
 use Psr\Container\ContainerInterface;
+use Modules\Backend\AbstractCRUDController;
+use Modules\Podcast\Link\PodcastLinksRepository;
+use Modules\Podcast\Link\PodcastLinksValidator;
 
 /**
  * Class PodcastLinksController
  *
- * @author bernard-ng, https://bernard-ng.github.io
- * @package App\Backend\Controllers
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\Backend\Podcast
  */
-class PodcastLinksController extends CRUDController
+class PodcastLinksController extends AbstractCRUDController
 {
 
     /**
@@ -33,5 +35,6 @@ class PodcastLinksController extends CRUDController
         $this->repository = $container->get(PodcastLinksRepository::class);
         $this->validator = PodcastLinksValidator::class;
         $this->module = Modules::PODCASTLINKS;
+        $this->path = Paths::PODCASTLINKS;
     }
 }

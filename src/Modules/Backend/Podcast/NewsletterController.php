@@ -6,22 +6,22 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\Podcast;
 
 use App\Modules;
-use App\Repositories\NewsletterRepository;
-use App\Validators\NewsletterValidator;
+use App\Paths;
+use Modules\Backend\AbstractCRUDController;
+use Modules\Podcast\Newsletter\NewsletterRepository;
+use Modules\Podcast\Newsletter\NewsletterValidator;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class NewsletterController
- * manage the newsletter module, create and send messages
- * Crud the newsletter subscribers
  *
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Backend\Controllers
  */
-class NewsletterController extends CRUDController
+class NewsletterController extends AbstractCRUDController
 {
 
     /**
@@ -35,5 +35,6 @@ class NewsletterController extends CRUDController
         $this->repository = $container->get(NewsletterRepository::class);
         $this->validator = NewsletterValidator::class;
         $this->module = Modules::NEWSLETTER;
+        $this->path = Paths::NEWSLETTER;
     }
 }

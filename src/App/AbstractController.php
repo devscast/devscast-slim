@@ -48,8 +48,7 @@ class AbstractController
      */
     protected $flash;
 
-
-
+    use RouterAwareHelper;
 
     /**
      * Controller constructor.
@@ -62,18 +61,5 @@ class AbstractController
         $this->meta = $container->get(MetaManager::class);
         $this->flash = $container->get(FlashMessage::class);
         $this->container = $container;
-    }
-
-    /**
-     * @param string $route
-     * @param array $params
-     * @param int $status
-     * @return ResponseInterface
-     * @author bernard-ng <ngandubernard@gmail.com>
-     */
-    public function redirect(string $route, array $params = [], $status = 301): ResponseInterface
-    {
-        $uri = $this->router->pathFor($route, $params);
-        return (new Response())->withRedirect($uri, $status);
     }
 }

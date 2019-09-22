@@ -12,10 +12,9 @@ use Framework\Auth\UserInterface;
 
 /**
  * Class UsersEntity
- * Represent a user
  *
- * @author bernard-ng, https://bernard-ng.github.io
- * @package App\Entities
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\User
  */
 class UsersEntity implements UserInterface
 {

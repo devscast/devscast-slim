@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Validators;
+namespace Modules\User;
 
 use App\AbstractValidator;
 use Respect\Validation\Validator as v;
