@@ -7,13 +7,13 @@
  */
 
 
-namespace Framework\Uploaders;
+namespace Framework\Uploader;
 
 /**
  * Class ImageUploader
- * Abstraction for Image Uploads
- * @package Framework\Uploaders
- * @author bernard-ng, https://bernard-ng.github.io
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Framework\Uploader
  */
 class ImageUploader extends Uploader
 {

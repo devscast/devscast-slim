@@ -7,18 +7,19 @@
  */
 
 
-namespace Framework\Uploaders;
+namespace Framework\Uploader;
 
 use Error;
 use Exception;
+use Framework\Logger;
 use Psr\Http\Message\UploadedFileInterface;
 use Throwable;
 
 /**
- * Class Upload
- * Super Class for uploading
- * @package Framework\Uploaders
- * @author bernard-ng, https://bernard-ng.github.io
+ * Class Uploader
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Framework\Uploader
  */
 abstract class Uploader
 {
