@@ -6,50 +6,57 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Podcasts;
+namespace Modules\Podcast\Newsletter;
 
-use Framework\Repositories\ValidatorInterface;
+use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
- * Class PodcastLinksValidator
+ * Class NewsletterValidator
  *
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Modules\Podcasts
+ * @package App\Validators
  */
-abstract class PodcastLinksValidator implements ValidatorInterface
+abstract class NewsletterValidator extends AbstractValidator
 {
-
     /**
+     * Validation rules
+     *
      * @var array
      */
-    private static $updateAbleFields = ['reference', 'description'];
+    private static $validationRules = [];
 
     /**
+     * Validation rules when there is an update
+     *
      * @var array
      */
-    private static $storeAbleFields = ['reference', 'podcasts_id', 'description'];
+    private static $updateValidationRules = [];
 
     /**
+     * List of fields that can be stored in the Repository
+     *
      * @var array
      */
-    private static $validationRules;
+    private static $storeAbleFields = [];
 
     /**
+     * List of fields that can be updated in the Repository
+     *
      * @var array
      */
-    private static $updateValidationRules;
+    private static $updateAbleFields = [];
 
     /**
      * Retrieve validation rules
+     *
      * @return array
      */
     public static function getValidationRules(): array
     {
         if (empty(self::$validationRules)) {
             self::$validationRules = [
-                'reference' => v::notEmpty()->setName('Reference'),
-                'description' => v::notEmpty()->setName('Description')
+                'email' => v::notEmpty()->email()->setName('Email'),
             ];
         }
         return self::$validationRules;
@@ -57,14 +64,14 @@ abstract class PodcastLinksValidator implements ValidatorInterface
 
     /**
      * Retrieve update validation rules
+     *
      * @return array
      */
     public static function getUpdateValidationRules(): array
     {
         if (empty(self::$updateValidationRules)) {
             self::$updateValidationRules = [
-                'reference' => v::notEmpty()->setName('Reference'),
-                'description' => v::notEmpty()->setName('Description')
+                'email' => v::notEmpty()->email()->setName('Email'),
             ];
         }
         return self::$updateValidationRules;
@@ -72,24 +79,26 @@ abstract class PodcastLinksValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of storeable fields
+     *
      * @return array
      */
     public static function getStoreAbleFields(): array
     {
         if (empty(self::$storeAbleFields)) {
-            self::$storeAbleFields = array_keys(self::getUpdateAbleFields());
+            self::$storeAbleFields = array_keys(self::getValidationRules());
         }
         return self::$storeAbleFields;
     }
 
     /**
      * Retrieve the list of updateable fields
+     *
      * @return array
      */
     public static function getUpdateAbleFields(): array
     {
         if (empty(self::$updateAbleFields)) {
-            self::$updateAbleFields = array_keys(self::getUpdateAbleFields());
+            self::$updateAbleFields = array_keys(self::getUpdateValidationRules());
         }
         return self::$updateAbleFields;
     }

@@ -6,13 +6,13 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules;
+namespace App;
 
+use Framework\Renderer\RendererInterface;
+use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Slim\Router;
-use Framework\MetaManager;
-use Framework\Renderer\Renderer;
-use Framework\Session\FlashService;
-use Framework\Helpers\RouterAwareHelper;
+use Framework\Session\FlashMessage;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -29,7 +29,7 @@ class AbstractController
     protected $container;
 
     /**
-     * @var Renderer|mixed
+     * @var RendererInterface|mixed
      */
     protected $renderer;
 
@@ -44,12 +44,12 @@ class AbstractController
     protected $meta;
 
     /**
-     * @var FlashService
+     * @var FlashMessage
      */
     protected $flash;
 
 
-    use RouterAwareHelper;
+
 
     /**
      * Controller constructor.
@@ -57,10 +57,23 @@ class AbstractController
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->renderer = $container->get(Renderer::class);
+        $this->renderer = $container->get(RendererInterface::class);
         $this->router = $container->get(Router::class);
         $this->meta = $container->get(MetaManager::class);
-        $this->flash = $container->get(FlashService::class);
+        $this->flash = $container->get(FlashMessage::class);
         $this->container = $container;
+    }
+
+    /**
+     * @param string $route
+     * @param array $params
+     * @param int $status
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
+     */
+    public function redirect(string $route, array $params = [], $status = 301): ResponseInterface
+    {
+        $uri = $this->router->pathFor($route, $params);
+        return (new Response())->withRedirect($uri, $status);
     }
 }

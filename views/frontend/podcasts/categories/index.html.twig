@@ -1,8 +1,8 @@
-{% extends 'layouts/main.html.twig' %}
+{% extends '@layouts/main.html.twig' %}
 
 
 {% block content %}
-    <header class="page-header" style="background-image: url('/assets/background.jpg')">
+    <header class="page-header" style="background-image: url('{{ base_url() }}/assets/background.jpg')">
         <div class="page-header-inner">
             <div class="container">
 
@@ -14,8 +14,8 @@
 
                 {# ===== PAGE HEADER CONTENT ===== #}
                 <div class="page-header-content text-center">
-                    <h2>{{ category.name }}</h2>
-                    <p>{{ category.description }}</p>
+                    <h2>Categories</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
                 </div>
             </div>
         </div>
@@ -25,35 +25,26 @@
         <section id="#episodes" class="section-positive">
             <div class="container">
                 <div class="row">
-                    {% for index, p in podcasts %}
-                        <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
-                            <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
-                                <figure class="podcast-image">
-                                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                        <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}" />
+                    {% for c in categories %}
+                        <div class="col-sm-6 mb-40">
+                            <div class="podcast-card boxed">
+                                <figure class="podcast-image categories">
+                                    <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
+                                        <img src="http://localhost/photofills" alt="{{ c.name }}" title="{{ c.name }}" />
                                     </a>
                                 </figure>
                                 <div class="podcast-content">
-                                    <span class="podcast-date">{{ p.created_at | date('M d, Y') }}</span>
+                                    <span class="podcast-date">{{ c.createdAt | date('M d, Y') }}</span>
                                     <h2 class="podcast-title">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.name | truncate(30) }}
+                                        <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
+                                            {{ c.name | truncate(30) }}
                                         </a>
                                     </h2>
                                     <p class="podcast-excerpt">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.description | truncate(100) }}
+                                        <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
+                                            {{ c.description | truncate(200) }}
                                         </a>
                                     </p>
-                                    <ul class="podcast-meta">
-                                        <li class="item"><a href="#" class="podcast-tag" rel="tag">{{ p.category }}</a></li>
-                                        <li class="item"><i class="fa fa-clock-o"></i> 29 mins.</li>
-                                        <li class="item">
-                                            <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}" class="podcast-play">
-                                                <i class="fa fa-play"></i> Play Episode
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +63,7 @@
                 </div>
             </div>
         </section>
-
-        {% include 'includes/quote.html.twig' %}
     </main>
+
+    {% include '@frontend/_includes/quote.html.twig' %}
 {% endblock %}

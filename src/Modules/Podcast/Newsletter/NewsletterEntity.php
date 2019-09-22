@@ -6,14 +6,16 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Category;
+namespace Modules\Podcast\Newsletter;
+
+use Framework\Database\AbstractEntity;
 
 /**
- * Class CategoriesEntity
+ * Class NewsletterEntity
  *
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Modules\Category
+ * @package App\Entities
  */
-class CategoriesEntity
+class NewsletterEntity extends AbstractEntity
 {
 }

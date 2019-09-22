@@ -13,6 +13,7 @@ use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Router;
 use Slim\Views\TwigExtension;
+use Twig\Extension\DebugExtension;
 
 /**
  * Class TwigRendererFactory
@@ -40,6 +41,10 @@ class TwigRendererFactory
                 Uri::createFromEnvironment(new Environment($_SERVER))
             )
         );
+
+        if (evalBool(getenv('APP_DEBUG'))) {
+            $twig->addExtension(new DebugExtension());
+        }
 
         // Custom extensions
         foreach ($container->get('renderer.twig.extensions') as $extension) {

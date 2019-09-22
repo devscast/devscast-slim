@@ -6,52 +6,51 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Validators;
+namespace Modules\Podcast\Link;
 
-use Framework\Repositories\ValidatorInterface;
+use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
- * Class NewsletterValidator
+ * Class PodcastLinksValidator
  *
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Validators
+ * @package App\Modules\Podcasts
  */
-abstract class NewsletterValidator implements ValidatorInterface
+abstract class PodcastLinksValidator extends AbstractValidator
 {
-    /**
-     * Validation rules
-     * @var array
-     */
-    private static $validationRules = [];
 
     /**
-     * Validation rules when there is an update
      * @var array
      */
-    private static $updateValidationRules = [];
+    private static $updateAbleFields = ['reference', 'description'];
 
     /**
-     * List of fields that can be stored in the Repository
      * @var array
      */
-    private static $storeAbleFields = [];
+    private static $storeAbleFields = ['reference', 'podcasts_id', 'description'];
 
     /**
-     * List of fields that can be updated in the Repository
      * @var array
      */
-    private static $updateAbleFields = [];
+    private static $validationRules;
+
+    /**
+     * @var array
+     */
+    private static $updateValidationRules;
 
     /**
      * Retrieve validation rules
+     *
      * @return array
      */
     public static function getValidationRules(): array
     {
         if (empty(self::$validationRules)) {
             self::$validationRules = [
-                'email' => v::notEmpty()->email()->setName('Email'),
+                'reference' => v::notEmpty()->setName('Reference'),
+                'description' => v::notEmpty()->setName('Description')
             ];
         }
         return self::$validationRules;
@@ -59,13 +58,15 @@ abstract class NewsletterValidator implements ValidatorInterface
 
     /**
      * Retrieve update validation rules
+     *
      * @return array
      */
     public static function getUpdateValidationRules(): array
     {
         if (empty(self::$updateValidationRules)) {
             self::$updateValidationRules = [
-            'email' => v::notEmpty()->email()->setName('Email'),
+                'reference' => v::notEmpty()->setName('Reference'),
+                'description' => v::notEmpty()->setName('Description')
             ];
         }
         return self::$updateValidationRules;
@@ -73,24 +74,26 @@ abstract class NewsletterValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of storeable fields
+     *
      * @return array
      */
     public static function getStoreAbleFields(): array
     {
         if (empty(self::$storeAbleFields)) {
-            self::$storeAbleFields = array_keys(self::getValidationRules());
+            self::$storeAbleFields = array_keys(self::getUpdateAbleFields());
         }
         return self::$storeAbleFields;
     }
 
     /**
      * Retrieve the list of updateable fields
+     *
      * @return array
      */
     public static function getUpdateAbleFields(): array
     {
         if (empty(self::$updateAbleFields)) {
-            self::$updateAbleFields = array_keys(self::getUpdateValidationRules());
+            self::$updateAbleFields = array_keys(self::getUpdateAbleFields());
         }
         return self::$updateAbleFields;
     }

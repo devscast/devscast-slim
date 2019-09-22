@@ -6,36 +6,39 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Repositories;
+namespace Modules\User;
 
-use App\Modules;
+use App\Tables;
+use Exception;
+use Framework\Database\AbstractRepository;
 use Framework\Logger;
-use App\Entities\UsersEntity;
-use Framework\Repositories\Repository;
-use Framework\Database\Builder\Exception;
 
 /**
  * Class UsersRepository
- * @package App\Repositories
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Repositories
  */
-class UsersRepository extends Repository
+class UsersRepository extends AbstractRepository
 {
 
     /**
      * The table name in the database
+     *
      * @var string
      */
-    protected $table = Modules::USERS;
+    protected $table = Tables::USERS;
 
     /**
      * Entity class
+     *
      * @var string
      */
     protected $entity = UsersEntity::class;
 
     /**
      * Retrieve a record with a specific condition
+     *
      * @param string $field
      * @param $value
      * @return mixed
@@ -48,7 +51,8 @@ class UsersRepository extends Repository
                 ->from($this->table)
                 ->select("{$this->table}.*")
                 ->where("{$this->table}.{$field} = ?", [$field => $value])
-                ->all()->get(0);
+                ->all()
+                ->get(0);
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;

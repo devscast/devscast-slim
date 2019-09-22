@@ -8,7 +8,7 @@
 
 namespace Framework\Renderer\Twig\Extensions;
 
-use Framework\MetaManager;
+use App\MetaManager;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFunction;

@@ -12,7 +12,7 @@ use Framework\Logger;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
-use App\Authenticators\DatabaseAuth;
+use App\Authenticators\DatabaseAuthenticator;
 use App\Validators\UsersValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Container\ContainerInterface;
@@ -21,25 +21,27 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class AuthController
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class AuthController extends DashboardController
 {
 
     /**
-     * @var DatabaseAuth|mixed
+     * @var DatabaseAuthenticator|mixed
      */
     private $databaseAuth;
 
     /**
      * AuthController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->databaseAuth = $container->get(DatabaseAuth::class);
+        $this->databaseAuth = $container->get(DatabaseAuthenticator::class);
     }
 
     /**

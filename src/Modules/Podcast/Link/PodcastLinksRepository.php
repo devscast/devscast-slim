@@ -6,8 +6,12 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Podcasts;
+namespace Modules\Podcast\Link;
 
+use App\Tables;
+use Exception;
+use Framework\Database\AbstractRepository;
+use Framework\Logger;
 
 /**
  * Class PodcastLinksRepository
@@ -20,18 +24,21 @@ class PodcastLinksRepository extends AbstractRepository
 
     /**
      * The table name in the database
+     *
      * @var string
      */
-    protected $table = Modules::PODCASTLINKS_TABLE;
+    protected $table = Tables::PODCASTLINKS;
 
     /**
      * Entity class
+     *
      * @var string
      */
     protected $entity = PodcastLinksEntity::class;
 
     /**
      * Retrieve all podcastLinks for a specific podcast
+     *
      * @param int $id
      * @return Object|array|mixed
      */
@@ -44,7 +51,8 @@ class PodcastLinksRepository extends AbstractRepository
                 ->select("{$this->table}.*")
                 ->where("podcasts_id = ?", compact('id'))
                 ->orderBy("{$this->table}.reference ASC")
-                ->all()->get();
+                ->all()
+                ->get();
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;

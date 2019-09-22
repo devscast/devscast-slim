@@ -14,7 +14,7 @@ use App\Repositories\NewsletterRepository;
 use App\Repositories\PodcastsRepository;
 use Framework\Helpers\RouterAwareHelper;
 use Framework\Renderer\Renderer;
-use Framework\Session\FlashService;
+use Framework\Session\FlashMessage;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,8 +26,9 @@ use Slim\Router;
 /**
  * Class DashboardController
  * Super class for Controllers
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class DashboardController
 {
@@ -39,6 +40,7 @@ class DashboardController
 
     /**
      * response status of an action
+     *
      * @var int
      */
     protected $status = StatusCode::HTTP_OK;
@@ -59,13 +61,14 @@ class DashboardController
     protected $router;
 
     /**
-     * @var FlashService|mixed
+     * @var FlashMessage|mixed
      */
     protected $flash;
 
 
     /**
      * DashboardController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -73,7 +76,7 @@ class DashboardController
         $this->container = $container;
         $this->renderer = $container->get(Renderer::class);
         $this->router = $container->get(Router::class);
-        $this->flash = $container->get(FlashService::class);
+        $this->flash = $container->get(FlashMessage::class);
     }
 
 
@@ -99,6 +102,7 @@ class DashboardController
     /**
      * filters data sent by the user and retrieves only
      * that are valid
+     *
      * @param array $params
      * @param array $fields
      * @return array

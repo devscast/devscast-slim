@@ -8,10 +8,6 @@
 
         <nav class="navigation">
             <ul class="menu">
-                <li class="menuitem">
-                    <a href="{{ path_for('search') }}">search &nbsp;<span><i class="fa fa-search"></i></span></a>
-                </li>
-
                 {% if currentUser and currentUser.role == 'admin' %}
                     <li class="menuitem">
                         <a href="{{ path_for('admin.index') }}" >Admin</a>

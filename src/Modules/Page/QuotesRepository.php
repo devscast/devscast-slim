@@ -6,23 +6,30 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Quote;
+namespace Modules\Page;
+
+use Framework\JsonReader;
+use InvalidArgumentException;
+use stdClass;
 
 /**
  * Class QuotesRepository
- * @package App\Repositories
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Repositories
  */
-class QuotesRepository extends JsonFileRepository
+class QuotesRepository extends JsonReader
 {
     /**
      * using a file as database
      * QuotesRepository constructor.
+     *
      * @param string $file
      */
     public function __construct(string $file = ROOT . "/data/quotes.json")
     {
         if (file_exists($file)) {
+            parent::__construct($file);
             $this->file = $file;
         } else {
             throw new InvalidArgumentException("the given filename is not a file");
@@ -31,6 +38,7 @@ class QuotesRepository extends JsonFileRepository
 
     /**
      * get one quote randomly
+     *
      * @return stdClass
      */
     public function random(): ?stdClass

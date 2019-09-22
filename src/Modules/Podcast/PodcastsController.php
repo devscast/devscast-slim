@@ -6,10 +6,16 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Podcasts;
+namespace Modules\Podcast;
 
-
-use App\Modules\AbstractController;
+use App\Modules;
+use Slim\Http\Response;
+use Slim\Http\StatusCode;
+use App\AbstractController;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Modules\Podcast\Link\PodcastLinksRepository;
 
 /**
  * Class PodcastsController
@@ -25,7 +31,13 @@ class PodcastsController extends AbstractController
     private $podcasts;
 
     /**
+     * @var string
+     */
+    private $module = Modules::PODCASTS;
+
+    /**
      * PodcastsController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -37,6 +49,7 @@ class PodcastsController extends AbstractController
 
     /**
      * List podcasts
+     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -47,11 +60,12 @@ class PodcastsController extends AbstractController
         $last = $this->podcasts->latest(3);
         $podcasts = $this->podcasts->all();
         $data = compact('hero', 'last', 'podcasts');
-        return $this->renderer->render($response, 'podcasts/index.html.twig', $data);
+        return $this->renderer->render($response, "@frontend/{$this->module}/index.html.twig", $data);
     }
 
     /**
      * Show a podcast thanks to its id
+     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -69,9 +83,7 @@ class PodcastsController extends AbstractController
                 $previous = $this->podcasts->previous($podcast->id);
                 $links = $this->container->get(PodcastLinksRepository::class)->get($id);
                 $data = compact('podcast', 'links', 'last', 'next', 'previous');
-
-                return ($request->getAttribute('isJson')) ?
-                    $response->withJson($data) : $this->renderer->render($response, 'podcasts/show.html.twig', $data);
+                return $this->renderer->render($response, "@frontend/{$this->module}/show.html.twig", $data);
             }
             return $this->redirect('podcasts.show', ['slug' => $podcast->slug, 'id' => $podcast->id]);
         }

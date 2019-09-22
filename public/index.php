@@ -6,14 +6,14 @@
  * file that was distributed with the source code.
  */
 
-use App\App;
+use App\Application;
 use Framework\Logger;
 
 require(dirname(__DIR__) . '/vendor/autoload.php');
 require(dirname(__DIR__) . '/config/constants.php');
 
 try {
-    $app = new App();
+    $app = new Application();
 
     if (php_sapi_name() !== 'cli') {
         $app->run();

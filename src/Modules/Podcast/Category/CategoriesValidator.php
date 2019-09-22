@@ -6,53 +6,59 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Gallery;
+namespace Modules\Podcast\Category;
 
-use Framework\Repositories\ValidatorInterface;
+use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
- * Class GalleryValidator
+ * Class CategoriesValidator
  *
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Modules\Gallery
+ * @package App\Modules\Category
  */
-abstract class GalleryValidator implements ValidatorInterface
+abstract class CategoriesValidator extends AbstractValidator
 {
     /**
      * Validation rules
+     *
      * @var array
      */
     private static $validationRules = [];
 
     /**
      * Validation rules when there is an update
+     *
      * @var array
      */
     private static $updateValidationRules = [];
 
     /**
      * List of fields that can be stored in the Repository
+     *
      * @var array
      */
     private static $storeAbleFields = [];
 
     /**
-     * List of fields that can be stored in the Repository
+     * List of fields that can be updated in the Repository
+     *
      * @var array
      */
-    private static $updateAbleFields = [];
+    private static $updateAbleFields = ['name', 'slug', 'description'];
 
     /**
      * Retrieve validation rules
+     *
      * @return array
      */
     public static function getValidationRules(): array
     {
-        if (!empty(self::$validationRules)) {
+        if (empty(self::$validationRules)) {
             self::$validationRules = [
-                "name" => v::optional(v::notBlank()->length(1, 150))->setName("name"),
-                "description" => v::optional(V::notBlank()->length(1, 250))->setName("description")
+                'name' => v::notEmpty()->setName('Name'),
+                'slug' => v::optional(v::slug())->setName('Slug'),
+                'description' => v::notEmpty()->notBlank()->setName('Description'),
             ];
         }
         return self::$validationRules;
@@ -60,21 +66,24 @@ abstract class GalleryValidator implements ValidatorInterface
 
     /**
      * Retrieve update validation rules
+     *
      * @return array
      */
     public static function getUpdateValidationRules(): array
     {
-        if (!empty(self::$updateValidationRules)) {
-            self::$updateValidationRules = [
-                "name" => v::optional(v::notBlank()->length(1, 150))->setName("name"),
-                "description" => v::optional(V::notBlank()->length(1, 250))->setName("description")
+        if (empty(self::$updateValidationRules)) {
+            self::$validationRules = [
+                'name' => v::notEmpty()->setName('Name'),
+                'slug' => v::optional(v::slug())->setName('Slug'),
+                'description' => v::notEmpty()->notBlank()->setName('Description'),
             ];
         }
         return self::$updateValidationRules;
     }
 
     /**
-     * Retrieve the list of storeable fields
+     * rRetrieve the list of storeable fields
+     *
      * @return array
      */
     public static function getStoreAbleFields(): array
@@ -87,6 +96,7 @@ abstract class GalleryValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of updateable fields
+     *
      * @return array
      */
     public static function getUpdateAbleFields(): array

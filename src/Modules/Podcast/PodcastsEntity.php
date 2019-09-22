@@ -6,7 +6,9 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Podcasts;
+namespace Modules\Podcast;
+
+use Framework\Database\AbstractEntity;
 
 /**
  * Class PodcastsEntity
@@ -14,7 +16,6 @@ namespace App\Modules\Podcasts;
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Entities
  */
-class PodcastsEntity
+class PodcastsEntity extends AbstractEntity
 {
-
 }

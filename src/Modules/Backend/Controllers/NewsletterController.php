@@ -17,14 +17,16 @@ use Psr\Container\ContainerInterface;
  * Class NewsletterController
  * manage the newsletter module, create and send messages
  * Crud the newsletter subscribers
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class NewsletterController extends CRUDController
 {
 
     /**
      * NewsletterController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)

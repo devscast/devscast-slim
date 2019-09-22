@@ -17,9 +17,9 @@ use Slim\Http\StatusCode;
 
 /**
  * Class JsonRequestMiddleware
- * check if the request is a json one and than return json instead of rendering views
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Middlewares
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class JsonRequestMiddleware extends AbstractHandler
 {

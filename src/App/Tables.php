@@ -9,16 +9,17 @@
 namespace App;
 
 /**
- * Class Modules
+ * Class Tables
  *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package App
  */
-abstract class Modules
+abstract class Tables
 {
+    public const GALLERY = "gallery";
     public const USERS = "users";
+    public const NEWSLETTER = "newsletter";
+    public const PODCASTLINKS = "podcast_links";
     public const PODCASTS = "podcasts";
-    public const NEWSLETTER = "podcasts/newsletter";
-    public const PODCASTLINKS = "podcasts/podcastLinks";
-    public const CATEGORIES = "podcasts/categories";
+    public const CATEGORIES = "categories";
 }

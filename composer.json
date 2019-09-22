@@ -34,9 +34,9 @@
   "autoload": {
     "psr-4": {
       "App\\": "src/App/",
+      "Modules\\": "src/Modules/",
       "Framework\\": "src/Framework/",
-      "Admin\\": "src/Admin/",
-      "API\\": "src/API/"
+      "API\\": "src/Modules/API/"
     },
     "files": [
       "src/functions.php"

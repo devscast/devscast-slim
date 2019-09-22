@@ -6,18 +6,14 @@
  * file that was distributed with the source code.
  */
 
-use App\Controllers\HomeController;
-use App\Controllers\StaticController;
-use App\Controllers\PodcastsController;
-use App\Controllers\CategoriesController;
-use App\Controllers\NewsletterController;
-use App\Actions\DownloadAction;
+use App\Application;
+use Modules\Page\HomeController;
+use Modules\Page\PagesController;
+use Modules\Podcast\Category\CategoriesController;
+use Modules\Podcast\Newsletter\NewsletterController;
+use Modules\Podcast\PodcastsController;
 
-/**
- * @param $app Slim\App|DI\Bridge\Slim\App
- * @author bernard-ng, https://bernard-ng.github.io
- */
-return function ($app) {
+return function (Application $app): void {
 
     /**
      * GENERAL ROUTES (NON Controller ROUTES)
@@ -26,10 +22,10 @@ return function ($app) {
         $this->get('/', [HomeController::class, 'index'])->setName('home');
         $this->get('/home', [HomeController::class, 'index'])->setName('home.index');
         $this->post('/newsletter', [NewsletterController::class, 'store'])->setName('newsletter.store');
-        $this->get('/about', [StaticController::class, 'about'])->setName('about');
-        $this->map(['GET', 'POST'], '/contact', [StaticController::class, 'contact'])->setName('contact');
-        $this->get('/search', [])->setName('search');
-        $this->get('/download', DownloadAction::class)->setName('download');
+        $this->get('/about', [PagesController::class, 'about'])->setName('about');
+        $this->map(['GET', 'POST'], '/contact', [PagesController::class, 'contact'])->setName('contact');
+        //$this->get('/search', [])->setName('search');
+        //$this->get('/download', DownloadAction::class)->setName('download');
     });
 
     /**

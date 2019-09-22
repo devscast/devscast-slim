@@ -6,16 +6,16 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Renderer\Twig\Extensions;
+namespace Modules\Page;
 
-use App\Repositories\QuotesRepository;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 
 /**
  * Class QuoteTwigExtension
- * @package App\Twig
- * @author bernard-ng, https://bernard-ng.github.io
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\Page
  */
 class QuoteTwigExtension extends AbstractExtension implements GlobalsInterface
 {
@@ -26,6 +26,7 @@ class QuoteTwigExtension extends AbstractExtension implements GlobalsInterface
 
     /**
      * QuoteTwigExtension constructor.
+     *
      * @param QuotesRepository $repository
      */
     public function __construct(QuotesRepository $repository)

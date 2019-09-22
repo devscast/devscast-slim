@@ -20,20 +20,23 @@ use Slim\Http\StatusCode;
 /**
  * Class CRUDController
  * Implementation of CRUDInterface, this is for avoid code repetition
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class CRUDController extends DashboardController implements CRUDInterface
 {
 
     /**
      * Module repository Class
+     *
      * @var Object
      */
     protected $repository;
 
     /**
      * Module full name
+     *
      * @var string
      */
     protected $module;
@@ -45,12 +48,14 @@ class CRUDController extends DashboardController implements CRUDInterface
 
     /**
      * Module data validation class
+     *
      * @var string
      */
     protected $validator;
 
     /**
      * CRUDController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -60,6 +65,7 @@ class CRUDController extends DashboardController implements CRUDInterface
 
     /**
      * [READ] implementation should list all data for a particular module
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -72,6 +78,7 @@ class CRUDController extends DashboardController implements CRUDInterface
 
     /**
      * [CREATE] implementation should store new data for a particular module
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -106,6 +113,7 @@ class CRUDController extends DashboardController implements CRUDInterface
 
     /**
      * [UPDATE] implementation should update data for a particular module
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -146,6 +154,7 @@ class CRUDController extends DashboardController implements CRUDInterface
 
     /**
      * [DELETE] implementation should destroy data for a particular module
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface

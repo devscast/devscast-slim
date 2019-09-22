@@ -8,24 +8,25 @@
 
 namespace App\Authenticators;
 
-use App\Repositories\UsersRepository;
+use Modules\User\UsersRepository;
 use Framework\Auth\AuthInterface;
-use Framework\Auth\User;
-use Framework\Database\Builder\Exception;
+use Framework\Auth\UserInterface;
 use Framework\Session\SessionInterface;
 
 /**
- * Class DatabaseAuth
- * @package App\Auth
- * @author bernard-ng, https://bernard-ng.github.io
+ * Class DatabaseAuthenticator
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package App\Authenticators
  */
-class DatabaseAuth implements AuthInterface
+class DatabaseAuthenticator implements AuthInterface
 {
 
     /**
      * @var UsersRepository
      */
     private $users;
+
     /**
      * @var SessionInterface
      */
@@ -33,7 +34,7 @@ class DatabaseAuth implements AuthInterface
 
     /**
      * User session cache
-     * @var user;
+     * @var userInterface;
      */
     private $user;
 
@@ -52,9 +53,9 @@ class DatabaseAuth implements AuthInterface
      * Return a user if credentials are correct
      * @param string $email
      * @param string $password
-     * @return User|null
+     * @return UserInterface|null
      */
-    public function login(string $email, string $password): ?User
+    public function login(string $email, string $password): ?UserInterface
     {
         if (!empty($email) || !empty($password)) {
             $user = $this->users->findWith('email', $email);
@@ -77,9 +78,9 @@ class DatabaseAuth implements AuthInterface
 
     /**
      * Retrieve a logged user or null
-     * @return User|null
+     * @return UserInterface|null
      */
-    public function getUser(): ?User
+    public function getUser(): ?UserInterface
     {
         if (!$this->user) {
             $userId = $this->session->get('auth.user');

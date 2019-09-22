@@ -6,30 +6,32 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Category;
+namespace Modules\Podcast\Newsletter;
 
-use App\Modules;
-use Framework\Repositories\Repository;
+use App\Tables;
+use Framework\Database\AbstractRepository;
 
 /**
- * Class CategoriesRepository
+ * Class NewsletterRepository
  *
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Modules\Category
+ * @package App\Modules\Newsletter
  */
-class CategoriesRepository extends Repository
+class NewsletterRepository extends AbstractRepository
 {
 
     /**
      * The table name in the database
+     *
      * @var string
      */
-    protected $table = Modules::CATEGORIES;
+    protected $table = Tables::NEWSLETTER;
 
 
     /**
      * Entity class
-     * @var CategoriesEntity
+     *
+     * @var NewsletterEntity
      */
-    protected $entity = CategoriesEntity::class;
+    protected $entity = NewsletterEntity::class;
 }

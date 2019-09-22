@@ -13,8 +13,8 @@ use App\Repositories\CategoriesRepository;
 use App\Repositories\PodcastsRepository;
 use App\Validators\PodcastsValidator;
 use Awurth\SlimValidation\Validator;
-use Framework\Uploaders\AudioUploader;
-use Framework\Uploaders\ImageUploader;
+use Framework\Uploader\AudioUploader;
+use Framework\Uploader\ImageUploader;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -24,14 +24,16 @@ use Slim\Http\StatusCode;
 
 /**
  * Class PodcastsController
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class PodcastsController extends CRUDController
 {
 
     /**
      * PodcastsController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -44,6 +46,7 @@ class PodcastsController extends CRUDController
 
     /**
      * create and store podcast
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface
@@ -98,6 +101,7 @@ class PodcastsController extends CRUDController
 
     /**
      * update a single podcast
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface

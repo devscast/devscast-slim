@@ -14,9 +14,9 @@ use Slim\Handlers\NotFound;
 
 /**
  * Class NotFoundMiddleware
- * Return an error page if any route is matched
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Middlewares
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class NotFoundMiddleware extends NotFound
 {

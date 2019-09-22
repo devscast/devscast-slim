@@ -6,16 +6,21 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Category;
+namespace Modules\Podcast\Category;
 
-use App\Modules\AbstractController;
+use App\AbstractController;
+use App\Modules;
+use Psr\Container\ContainerInterface;
+use Modules\Podcast\PodcastsRepository;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 /**
  * Class CategoriesController
- * Data Provider for API and renderer for WebApp
  *
- * @author bernard-ng, https://bernard-ng.github.io
- *@package App\Controllers
+ * @author bernard-ng <ngandubernard@gmail.com>
+ * @package Modules\Category
  */
 class CategoriesController extends AbstractController
 {
@@ -30,8 +35,15 @@ class CategoriesController extends AbstractController
      */
     private $podcasts;
 
+
+    /**
+     * @var string
+     */
+    private $module = Modules::CATEGORIES;
+
     /**
      * CategoriesController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -43,6 +55,7 @@ class CategoriesController extends AbstractController
 
     /**
      * listing all categories
+     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -50,12 +63,17 @@ class CategoriesController extends AbstractController
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $categories = $this->categories->all();
-        return $this->renderer->render($response, 'categories/index.html.twig', compact('categories'));
+        return $this->renderer->render(
+            $response,
+            "@frontend/{$this->module}/index.html.twig",
+            compact('categories')
+        );
     }
 
 
     /**
      * Show a particular categories, thanks to an id
+     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
@@ -71,7 +89,11 @@ class CategoriesController extends AbstractController
             $data = compact('category', 'podcasts');
 
             if ($category->slug == $slug) {
-                return $this->renderer->render($response, 'categories/show.html.twig', $data);
+                return $this->renderer->render(
+                    $response,
+                    "@frontend/{$this->module}/show.html.twig",
+                    $data
+                );
             }
             return $this->redirect('categories.show', ['id' => $category->id, 'slug' => $category->slug]);
         }

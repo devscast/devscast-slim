@@ -6,10 +6,10 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Page;
+namespace Modules\Page;
 
-use App\Modules\AbstractController;
-use App\Repositories\PodcastsRepository;
+use App\AbstractController;
+use Modules\Podcast\PodcastsRepository;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,12 +26,14 @@ class HomeController extends AbstractController
 
     /**
      * podcasts table
+     *
      * @var PodcastsRepository|mixed
      */
     private $podcasts;
 
     /**
      * HomeController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -42,6 +44,7 @@ class HomeController extends AbstractController
 
     /**
      * Homepage
+     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
@@ -50,6 +53,10 @@ class HomeController extends AbstractController
     {
         $hero = $this->podcasts->last();
         $podcasts = $this->podcasts->latest(3);
-        return $this->renderer->render($response, 'index.html.twig', compact('podcasts', 'hero'));
+        return $this->renderer->render(
+            $response,
+            '@frontend/index.html.twig',
+            compact('podcasts', 'hero')
+        );
     }
 }

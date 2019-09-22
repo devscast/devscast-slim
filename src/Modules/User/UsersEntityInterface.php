@@ -6,17 +6,18 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Entities;
+namespace Modules\User;
 
-use Framework\Auth\User;
+use Framework\Auth\UserInterface;
 
 /**
  * Class UsersEntity
  * Represent a user
- * @package App\Entities
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Entities
  */
-class UsersEntity implements User
+class UsersEntity implements UserInterface
 {
 
     /**
@@ -35,9 +36,9 @@ class UsersEntity implements User
     public $password;
 
 
-
     /**
      * Retrieve the username
+     *
      * @return string
      */
     public function getUsername(): string
@@ -47,6 +48,7 @@ class UsersEntity implements User
 
     /**
      * Retrieve the roles of a user
+     *
      * @return array
      */
     public function getRoles(): array

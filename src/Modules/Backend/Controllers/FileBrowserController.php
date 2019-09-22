@@ -17,14 +17,16 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Class GalleryController
  * administration of  files
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class FileBrowserController extends DashboardController
 {
 
     /**
      * managing files
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface $response
      * @return ResponseInterface
@@ -63,6 +65,7 @@ class FileBrowserController extends DashboardController
 
     /**
      * managing files
+     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface

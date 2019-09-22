@@ -11,6 +11,7 @@
 namespace App;
 
 use App\Middlewares\NotFoundMiddleware;
+use DI\Bridge\Slim\App;
 use DI\ContainerBuilder;
 use Dotenv\Dotenv;
 use Zend\ConfigAggregator\ArrayProvider;
@@ -23,7 +24,7 @@ use Zend\ConfigAggregator\PhpFileProvider;
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package App
  */
-class App extends \DI\Bridge\Slim\App
+class Application extends App
 {
 
     /**

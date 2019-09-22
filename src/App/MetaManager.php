@@ -6,18 +6,19 @@
  * file that was distributed with the source code.
  */
 
-namespace Framework;
+namespace App;
 
-use Framework\Repositories\JsonFileRepository;
 use ArrayAccess;
+use Framework\JsonReader;
 use OutOfBoundsException;
 use RuntimeException;
 use stdClass;
 
 /**
  * Class MetaManager
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class MetaManager implements ArrayAccess
 {
@@ -76,10 +77,11 @@ class MetaManager implements ArrayAccess
      */
     public function __construct()
     {
-        $this->meta = (new class () extends JsonFileRepository
+        $this->meta = (new class () extends JsonReader
         {
             public function __construct(string $file = ROOT . "/data/meta.json")
             {
+                parent::__construct($file);
                 $this->file = $file;
             }
         })->getData();

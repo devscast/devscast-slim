@@ -6,26 +6,33 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Podcasts;
+namespace Modules\Podcast;
 
-
+use App\Tables;
+use Exception;
+use Framework\Database\AbstractRepository;
+use Framework\Database\Mysql\Builder\Queries\Select;
+use Framework\Logger;
 
 /**
  * Class PodcastsRepository
- * @package App\Repositories
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Repositories
  */
 class PodcastsRepository extends AbstractRepository
 {
 
     /**
      * The table name in the database
+     *
      * @var string
      */
-    protected $table = Modules::PODCASTS;
+    protected $table = Tables::PODCASTS;
 
     /**
      * Entity class
+     *
      * @var string
      */
     protected $entity = PodcastsEntity::class;
@@ -33,6 +40,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Base query for fetching with category and user
+     *
      * @return Select
      * @throws Exception
      */
@@ -65,6 +73,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve online podcasts
+     *
      * @return null
      */
     public function allOnline()
@@ -72,7 +81,8 @@ class PodcastsRepository extends AbstractRepository
         try {
             return $this->withCategoryaAndUser()
                 ->where("{$this->table}.online = 1")
-                ->all()->get();
+                ->all()
+                ->get();
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
@@ -81,6 +91,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve offline podcasts
+     *
      * @return null
      */
     public function allOffline()
@@ -88,7 +99,8 @@ class PodcastsRepository extends AbstractRepository
         try {
             return $this->withCategoryaAndUser()
                 ->where("{$this->table}.online = 0")
-                ->all()->get();
+                ->all()
+                ->get();
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
@@ -97,6 +109,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve the latest podcasts
+     *
      * @param int $limit
      * @return Object|array|null
      */
@@ -105,7 +118,9 @@ class PodcastsRepository extends AbstractRepository
         try {
             return $this->withCategoryaAndUser()
                 ->where("{$this->table}.online = 1")
-                ->limit($limit)->all()->get();
+                ->limit($limit)
+                ->all()
+                ->get();
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
@@ -114,6 +129,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve the last podcast
+     *
      * @return Object|array|null
      */
     public function last()
@@ -121,7 +137,9 @@ class PodcastsRepository extends AbstractRepository
         try {
             return $this->withCategoryaAndUser()
                 ->where("{$this->table}.online = 1")
-                ->limit(1)->all()->get(0);
+                ->limit(1)
+                ->all()
+                ->get(0);
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
@@ -130,6 +148,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve one podcast thanks to an 'id'
+     *
      * @param int $id
      * @return Object|array|null
      */
@@ -138,7 +157,8 @@ class PodcastsRepository extends AbstractRepository
         try {
             return $this->withCategoryaAndUser()
                 ->where("{$this->table}.id", compact('id'))
-                ->all()->get(0);
+                ->all()
+                ->get(0);
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
@@ -147,6 +167,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve a podcast with specific conditions
+     *
      * @param string $field
      * @param $value
      * @return Object|array|null
@@ -156,17 +177,15 @@ class PodcastsRepository extends AbstractRepository
         try {
             return $this->withCategoryaAndUser()
                 ->where("{$this->table}.{$field} = ?", [$field => $value])
-                ->all()->get();
+                ->all()
+                ->get();
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
         }
     }
 
-    /**
-     * Base Query for singlePagination
-     * @return Select
-     */
+
     private function singlePagination()
     {
         try {
@@ -183,6 +202,7 @@ class PodcastsRepository extends AbstractRepository
 
     /**
      * Retrieve the next record
+     *
      * @param $id
      * @return Object|array|null
      */
@@ -192,11 +212,13 @@ class PodcastsRepository extends AbstractRepository
             ->where("{$this->table}.id > ?", compact('id'))
             ->where("{$this->table}.online = 1")
             ->orderBy("{$this->table}.id ASC")
-            ->all()->get(0);
+            ->all()
+            ->get(0);
     }
 
     /**
      * Retrieve the previous record
+     *
      * @param $id
      * @return Object|array|null
      */
@@ -206,6 +228,7 @@ class PodcastsRepository extends AbstractRepository
             ->where("{$this->table}.id < ?", compact('id'))
             ->where("{$this->table}.online = 1")
             ->orderBy("{$this->table}.id DESC")
-            ->all()->get(0);
+            ->all()
+            ->get(0);
     }
 }

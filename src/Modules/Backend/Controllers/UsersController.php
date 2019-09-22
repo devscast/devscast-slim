@@ -15,14 +15,16 @@ use Psr\Container\ContainerInterface;
 
 /**
  * Class UsersController
- * @package App\Backend\Controllers
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Backend\Controllers
  */
 class UsersController extends CRUDController
 {
 
     /**
      * UsersController constructor.
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)

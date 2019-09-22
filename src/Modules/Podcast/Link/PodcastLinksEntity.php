@@ -6,15 +6,16 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Gallery;
+namespace Modules\Podcast\Link;
+
+use Framework\Database\AbstractEntity;
 
 /**
- * Class GalleryEntity
+ * Class PodcastLinksEntity
  *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Entities
  */
-class GalleryEntity
+class PodcastLinksEntity extends AbstractEntity
 {
-
 }

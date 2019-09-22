@@ -6,9 +6,9 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Validators;
+namespace Modules\Page;
 
-use Framework\Repositories\ValidatorInterface;
+use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
@@ -17,7 +17,7 @@ use Respect\Validation\Validator as v;
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Validators
  */
-abstract class ContactValidator implements ValidatorInterface
+abstract class ContactValidator extends AbstractValidator
 {
 
     /**
@@ -32,6 +32,7 @@ abstract class ContactValidator implements ValidatorInterface
 
     /**
      * Retrieve validation rules
+     *
      * @return array
      */
     public static function getValidationRules(): array
@@ -49,6 +50,7 @@ abstract class ContactValidator implements ValidatorInterface
 
     /**
      * Retrieve update validation rules
+     *
      * @return array
      */
     public static function getUpdateValidationRules(): array
@@ -58,6 +60,7 @@ abstract class ContactValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of storeable fields
+     *
      * @return array
      */
     public static function getStoreAbleFields(): array
@@ -67,6 +70,7 @@ abstract class ContactValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of updateable fields
+     *
      * @return array
      */
     public static function getUpdateAbleFields(): array

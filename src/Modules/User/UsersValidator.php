@@ -8,15 +8,16 @@
 
 namespace App\Validators;
 
-use Framework\Repositories\ValidatorInterface;
+use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
  * Class UsersValidator
- * @package App\Repositories\Validators
+ *
  * @author bernard-ng, https://bernard-ng.github.io
+ * @package App\Repositories\Validators
  */
-abstract class UsersValidator implements ValidatorInterface
+abstract class UsersValidator extends AbstractValidator
 {
 
     /**
@@ -26,6 +27,7 @@ abstract class UsersValidator implements ValidatorInterface
 
     /**
      * Retrieve validation rules
+     *
      * @return array
      */
     public static function getValidationRules(): array
@@ -35,6 +37,7 @@ abstract class UsersValidator implements ValidatorInterface
 
     /**
      * Retrieve update validation rules
+     *
      * @return array
      */
     public static function getUpdateValidationRules(): array
@@ -44,6 +47,7 @@ abstract class UsersValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of storeable fields
+     *
      * @return array
      */
     public static function getStoreAbleFields(): array
@@ -53,6 +57,7 @@ abstract class UsersValidator implements ValidatorInterface
 
     /**
      * Retrieve the list of updateable fields
+     *
      * @return array
      */
     public static function getUpdateAbleFields(): array
@@ -63,6 +68,7 @@ abstract class UsersValidator implements ValidatorInterface
 
     /**
      * Retrieve validations rules for login action
+     *
      * @return array
      */
     public static function getLoginValidationRules(): array

@@ -6,13 +6,12 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Controllers;
+namespace Modules\Page;
 
-use App\Modules\AbstractController;
+use App\AbstractController;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
-use App\Validators\ContactValidator;
 use Awurth\SlimValidation\Validator;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -28,18 +27,20 @@ class PagesController extends AbstractController
 {
     /**
      * Render about page
+     *
      * @param ServerRequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
      */
     public function about(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $this->renderer->render($response, 'about.html.twig');
+        return $this->renderer->render($response, '@frontend/about.html.twig');
     }
 
 
     /**
      * Render contact page
+     *
      * @param RequestInterface|Request $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|string
@@ -61,6 +62,6 @@ class PagesController extends AbstractController
                 $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
             }
         }
-        return $this->renderer->render($response, 'contact.html.twig');
+        return $this->renderer->render($response, '@frontend/contact.html.twig');
     }
 }

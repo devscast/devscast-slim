@@ -6,30 +6,32 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Modules\Category;
+namespace Modules\Podcast\Category;
 
-use App\Modules;
-use App\Entities\GalleryEntity;
-use Framework\Repositories\Repository;
+use App\Tables;
+use Framework\Database\AbstractRepository;
 
 /**
- * Class GalleryRepository
+ * Class CategoriesRepository
  *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Modules\Category
  */
-class GalleryRepository extends Repository
+class CategoriesRepository extends AbstractRepository
 {
 
     /**
      * The table name in the database
+     *
      * @var string
      */
-    protected $table = Modules::GALLERY;
+    protected $table = Tables::CATEGORIES;
+
 
     /**
      * Entity class
-     * @var GalleryEntity
+     *
+     * @var CategoriesEntity
      */
-    protected $entity = GalleryEntity::class;
+    protected $entity = CategoriesEntity::class;
 }

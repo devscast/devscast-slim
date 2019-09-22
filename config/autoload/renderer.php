@@ -7,13 +7,14 @@
  */
 
 
-use App\Renderer\Twig\Extensions\QuoteTwigExtension;
 use Framework\Renderer\Twig\Extensions\AssetsTwigExtension;
 use Framework\Renderer\Twig\Extensions\AuthTwigExtension;
 use Framework\Renderer\Twig\Extensions\FlashTwigExtension;
 use Framework\Renderer\Twig\Extensions\FormTwigExtension;
 use Framework\Renderer\Twig\Extensions\MetaTwigExtension;
+use Modules\Page\QuoteTwigExtension;
 use nochso\HtmlCompressTwig\Extension;
+use Twig\Extensions\TextExtension;
 use function DI\get;
 
 return [
@@ -35,6 +36,7 @@ return [
 
         // Framework Extensions
         Extension::class,
+        TextExtension::class,
         FormTwigExtension::class,
         AuthTwigExtension::class,
         AssetsTwigExtension::class,
@@ -48,7 +50,7 @@ return [
     // Twig Renderer Namespace
     'renderer.twig.paths' => [
         get('renderer.views.path'),
-        'layout' => ROOT . "/views/layouts",
+        'layouts' => ROOT . "/views/layouts",
         'frontend' => ROOT . "/views/frontend",
         'backend' => ROOT . "/views/backend",
         'errors' => ROOT . "/views/errors"

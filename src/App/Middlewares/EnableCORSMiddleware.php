@@ -15,10 +15,9 @@ use Slim\Http\Response;
 
 /**
  * Class EnableCORSMiddleware
- * enable the cors for the frontend application
- * so that we can make ajax request to the backend application
+ *
+ * @author bernard-ng <ngandubernard@gmail.com>
  * @package App\Middlewares
- * @author bernard-ng, https://bernard-ng.github.io
  */
 class EnableCORSMiddleware
 {

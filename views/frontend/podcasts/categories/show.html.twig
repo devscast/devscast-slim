@@ -1,55 +1,40 @@
-{% extends 'layouts/main.html.twig' %}
+{% extends '@layouts/main.html.twig' %}
+
 
 {% block content %}
-    <section class="podcast-hero" style="background-image: url({{ hero.thumb }})">
-        <div class="podcast-hero-inner">
+    <header class="page-header" style="background-image: url('{{ base_url() }}/assets/background.jpg')">
+        <div class="page-header-inner">
             <div class="container">
-                <div class="podcast-hero-content">
-                    <span class="podcast-hero-date">{{ hero.createdAt | date('M d, Y') }}</span>
-                    <h2 class="podcast-hero-title">
-                        <a href="{{ path_for('podcasts.show', {id: hero.id, slug: hero.slug}) }}">
-                            {{ hero.name | truncate(50) }}
-                        </a>
-                    </h2>
-                    <ul class="podcast-hero-meta">
-                        <li class="item">
-                            <a href="{{ path_for('categories.show', {id: hero.categoriesId, slug: hero.categorySlug}) }}"
-                               class="podcast-hero-tag" rel="tag">
-                                {{ hero.categoryName }}
-                            </a>
-                        </li>
-                        <li class="item"><i class="fa fa-clock-o"></i> {{ hero.durantion }} mins.</li>
-                        <li class="item">
-                            <a href="{{ hero.audio }}" class="podcast-hero-download">
-                                <i class="fa fa-download"></i> Download
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="podcast-hero-player-content">
-                <div class="container">
-                    <audio src="{{ hero.audio }}"></audio>
+
+                {# ===== BREADCRUMB ===== #}
+                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
+                    <li itemprop="itemListElement"><a href="{{ path_for('categories.index') }}">Categories</a></li>
+                </ol>
+
+                {# ===== PAGE HEADER CONTENT ===== #}
+                <div class="page-header-content text-center">
+                    <h2>{{ category.name }}</h2>
+                    <p>{{ category.description }}</p>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <main class="main" id="main">
         <section id="#episodes" class="section-positive">
             <div class="container">
-                <h2 class="title-default">Episodes</h2>
                 <div class="row">
                     {% for index, p in podcasts %}
                         <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
                             <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
                                 <figure class="podcast-image">
                                     <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                        <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}"/>
+                                        <img src="{{ p.thumb }}" alt="{{ p.name }}" title="{{ p.name }}" />
                                     </a>
                                 </figure>
                                 <div class="podcast-content">
-                                    <span class="podcast-date">{{ p.createdAt | date('M d, Y') }}</span>
+                                    <span class="podcast-date">{{ p.created_at | date('M d, Y') }}</span>
                                     <h2 class="podcast-title">
                                         <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
                                             {{ p.name | truncate(30) }}
@@ -61,16 +46,10 @@
                                         </a>
                                     </p>
                                     <ul class="podcast-meta">
+                                        <li class="item"><a href="#" class="podcast-tag" rel="tag">{{ p.category }}</a></li>
+                                        <li class="item"><i class="fa fa-clock-o"></i> 29 mins.</li>
                                         <li class="item">
-                                            <a href="{{ path_for('categories.show', {id: p.categoriesId, slug: p.categorySlug}) }}"
-                                               class="podcast-tag" rel="tag">
-                                                {{ p.categoryName }}
-                                            </a>
-                                        </li>
-                                        <li class="item"><i class="fa fa-clock-o"></i> {{ p.duration }} mins.</li>
-                                        <li class="item">
-                                            <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}"
-                                               class="podcast-play">
+                                            <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}" class="podcast-play">
                                                 <i class="fa fa-play"></i> Play Episode
                                             </a>
                                         </li>
