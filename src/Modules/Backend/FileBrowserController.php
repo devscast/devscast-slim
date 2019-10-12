@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -6,7 +7,7 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Backend\Controllers;
+namespace Modules\Backend\Controllers;
 
 use App\Modules;
 use Framework\Logger;
@@ -63,7 +64,7 @@ class FileBrowserController extends DashboardController
 
         return $this->renderer->render(
             $response->withStatus($this->status),
-            "admin/files/audio.html.twig",
+            "@backend/{$this->module}/audio.html.twig",
             compact('directory')
         );
     }
