@@ -6,28 +6,27 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Middlewares;
+namespace App\Handlers;
 
 use Framework\Renderer\RendererInterface;
+use Framework\Renderer\Twig\TwigRenderer;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\NotFound;
+use Twig\Error\LoaderError;
 
 /**
- * Class NotFoundMiddleware
- *
+ * Class ErrorHandler
+ * @package App\Handlers
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Middlewares
  */
-class NotFoundMiddleware extends NotFound
+class NotFoundHandler extends NotFound
 {
 
-    /**
-     * @var RendererInterface|mixed
-     */
+    /** @var RendererInterface|TwigRenderer */
     private $renderer;
 
     /**
-     * NotFoundMiddleware constructor.
+     * ErrorHandler constructor.
      * @param RendererInterface $renderer
      */
     public function __construct(RendererInterface $renderer)
@@ -36,23 +35,15 @@ class NotFoundMiddleware extends NotFound
     }
 
     /**
-     * @return mixed
-     */
-    protected function renderJsonNotFoundOutput()
-    {
-        return json_encode([
-            "status" => 404,
-            "message" => "Not Found"
-        ]);
-    }
-
-    /**
      * @param ServerRequestInterface $request
      * @return string
+     * @throws LoaderError
      * @author bernard-ng <ngandubernard@gmail.com>
      */
     protected function renderHtmlNotFoundOutput(ServerRequestInterface $request)
     {
-        return $this->renderer->fetch('@errors/404.html.twig');
+        $refererHeader = $request->getHeader('HTTP_REFERER');
+        $referer = ($refererHeader) ? array_shift($refererHeader) : "/";
+        return $this->renderer->fetch("@errors/404.html.twig", compact("referer"));
     }
 }

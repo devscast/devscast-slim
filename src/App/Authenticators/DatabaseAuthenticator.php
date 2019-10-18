@@ -59,7 +59,6 @@ class DatabaseAuthenticator implements AuthInterface
     {
         if (!empty($email) || !empty($password)) {
             $user = $this->users->findWith('email', $email);
-
             if ($user && password_verify($password, $user->password)) {
                 $this->session->set('auth.user', $user->id);
                 return $user;

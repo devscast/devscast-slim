@@ -7,6 +7,7 @@
  */
 
 use App\Authenticators\DatabaseAuthenticator;
+use App\Handlers\{ErrorHandler, NotAllowedHandler, NotFoundHandler, PhpErrorHandler};
 use Awurth\SlimValidation\Validator;
 use Framework\Auth\AuthInterface;
 use Framework\Database\{DatabaseInterface, Mysql\MysqlDatabase, Mysql\MysqlPDOFactory};
@@ -19,6 +20,12 @@ use Framework\Session\{FlashMessage, FlashMessageFactory, PHPSession, SessionInt
 use function DI\{get, create, factory};
 
 return [
+
+    // Override Slim default error handlers to use custom error pages
+    "errorHandler" => get(ErrorHandler::class),
+    "phpErrorHandler" => get(PhpErrorHandler::class),
+    "notAllowedHandler" => get(NotAllowedHandler::class),
+    "notFoundHandler" => get(NotFoundHandler::class),
 
     // Renderer
     RendererInterface::class => get(TwigRenderer::class),
