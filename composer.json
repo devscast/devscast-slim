@@ -2,7 +2,7 @@
   "name": "bernard-ng/devscast",
   "description": "the backend of the devscast app",
   "homepage": "https://devs-cast.com",
-  "license": "APACHE-2.0",
+  "license": "CC-BY-NC-SA-4.0",
   "authors": [
     {
       "name": "bernard-ng",

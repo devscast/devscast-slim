@@ -1,4 +1,11 @@
-const {series, task, src, dest, watch, parallel} = require('gulp');
+/*
+ * This file is part of DevsCast.
+ * (c) Bernard Ng <ngandubernard@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with the source code.
+ */
+
+const {series, src, dest, watch, parallel} = require('gulp');
 const concat = require('gulp-concat');
 const minifyCSS = require('gulp-csso');
 const gulpSass = require('gulp-sass');

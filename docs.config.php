@@ -6,6 +6,10 @@
  * file that was distributed with this source code.
  */
 
+/**
+ * use http://get.sensiolabs.org/sami.phar to generate API documentation
+ * @see https://github.com/FriendsOfPHP/Sami
+ */
 return new \Sami\Sami(__DIR__ . DIRECTORY_SEPARATOR . "src", [
     'title' => 'Devcast API',
     'build_dir' => __DIR__ . '/docs',
