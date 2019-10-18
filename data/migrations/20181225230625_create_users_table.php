@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Roles;
+use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 
 class CreateUsersTable extends AbstractMigration
@@ -36,6 +38,10 @@ class CreateUsersTable extends AbstractMigration
             ->addColumn('name', 'string', ['limit' => 60])
             ->addColumn('email', 'string', ['limit' => 60])
             ->addColumn('password', 'string', ['limit' => 255])
+            ->addColumn('role', 'integer', [
+                'limit' => MysqlAdapter::INT_TINY,
+                'default' => ROLES::USERS
+            ])
             ->create();
     }
 }

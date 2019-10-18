@@ -6,25 +6,17 @@
  * file that was distributed with the source code.
  */
 
-use API\Middlewares\EnableAPIMiddleware;
 use App\Authenticators\DatabaseAuthenticator;
-use App\Middlewares\EnableCORSMiddleware;
 use Awurth\SlimValidation\Validator;
 use Framework\Auth\AuthInterface;
-use Framework\Database\DatabaseInterface;
-use Framework\Database\Mysql\MysqlDatabase;
-use Framework\Database\Mysql\MysqlPDOFactory;
-use Framework\Renderer\RendererInterface;
-use Framework\Renderer\Twig\Extensions\AssetsTwigExtension;
-use Framework\Renderer\Twig\TwigRenderer;
-use Framework\Renderer\Twig\TwigRendererFactory;
-use Framework\Session\FlashMessage;
-use Framework\Session\FlashMessageFactory;
-use Framework\Session\PHPSession;
-use Framework\Session\SessionInterface;
-use function DI\get;
-use function DI\create;
-use function DI\factory;
+use Framework\Database\{DatabaseInterface, Mysql\MysqlDatabase, Mysql\MysqlPDOFactory};
+use Framework\Middleware\EnableCORSMiddleware;
+use Framework\Renderer\{RendererInterface,
+    Twig\Extensions\AssetsTwigExtension,
+    Twig\TwigRenderer,
+    Twig\TwigRendererFactory};
+use Framework\Session\{FlashMessage, FlashMessageFactory, PHPSession, SessionInterface};
+use function DI\{get, create, factory};
 
 return [
 
@@ -46,10 +38,9 @@ return [
 
     // Twig Extensions
     AssetsTwigExtension::class => create(AssetsTwigExtension::class)
-        ->constructor(evalbool(getenv('APP_CACHEBUSTING'))),
+        ->constructor(evalbool(getenv('APP_CACHE_BUSTING'))),
 
     // Middlewares
-    EnableCORSMiddleware::class => create(EnableCORSMiddleware::class)->constructor(get('CORS.allowOrigin')),
-    EnableAPIMiddleware::class => create(EnableAPIMiddleware::class)
-        ->constructor(evalBool(getenv('API_ENABLE'))),
+    EnableCORSMiddleware::class => create(EnableCORSMiddleware::class)
+        ->constructor(get('cors.trustedOrigins')),
 ];

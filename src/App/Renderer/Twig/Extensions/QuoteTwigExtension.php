@@ -6,10 +6,10 @@
  * file that was distributed with the source code.
  */
 
-namespace Modules\Page;
+namespace App\Renderer\Twig\Extensions;
 
-use Twig\Extension\AbstractExtension;
-use Twig\Extension\GlobalsInterface;
+use Twig\Extension\{AbstractExtension, GlobalsInterface};
+use Modules\Page\QuotesRepository;
 
 /**
  * Class QuoteTwigExtension
@@ -19,9 +19,7 @@ use Twig\Extension\GlobalsInterface;
  */
 class QuoteTwigExtension extends AbstractExtension implements GlobalsInterface
 {
-    /**
-     * @var QuotesRepository
-     */
+    /** @var QuotesRepository */
     private $repository;
 
     /**

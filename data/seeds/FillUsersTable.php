@@ -18,9 +18,9 @@ class FillUsersTable extends AbstractSeed
         $table = $this->table('users');
 
         $table->insert([
-            'name' => 'admin',
-            'email' => 'admin@devscast.com',
-            'password' => password_hash('admin', PASSWORD_BCRYPT)
+            'name' => getenv('DEFAULT_ADMIN_NAME'),
+            'email' => getenv('DEFAULT_ADMIN_EMAIL'),
+            'password' => password_hash(getenv('DEFAULT_ADMIN_PASS'), PASSWORD_BCRYPT)
         ]);
         $table->save();
     }

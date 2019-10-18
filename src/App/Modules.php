@@ -19,7 +19,6 @@ abstract class Modules
     public const USERS = "users";
     public const PODCASTS = "podcasts";
     public const NEWSLETTER = "podcasts/newsletter";
-    public const PODCASTLINKS = "podcasts/link";
     public const CATEGORIES = "podcasts/category";
     public const FILES = "files";
 }

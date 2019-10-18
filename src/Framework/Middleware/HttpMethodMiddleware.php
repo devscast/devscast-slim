@@ -8,33 +8,36 @@
 
 namespace Framework\Middleware;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class HttpMethodMiddleware
- *
+ * @todo Use the PSR-15 instead https://www.php-fig.org/psr/psr-15/
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Middlewares
  */
 class HttpMethodMiddleware
 {
+    /**
+     * valid http method
+     * @var array
+     */
+    private $methods = ['POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS', 'HEAD', 'GET'];
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @param callable $next
+     * parse the request in order to overwrite the default http method with the one redefined
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param Callable $next
      * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
     {
-        if ($request->isPost()) {
-            $method = $request->getParam('_method');
-            if (in_array(strtoupper($method), ['POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS', 'HEAD', 'GET'])) {
-                $request = $request->withMethod($method);
-                return $next($request, $response);
+        if ($request->getMethod() === "POST") {
+            $method = $request->getParsedBody()['_method'] ?? null;
+            if ($method && in_array(strtoupper($method), $this->methods)) {
+                return $next($request->withMethod($method), $response);
             }
             return $next($request, $response);
         }

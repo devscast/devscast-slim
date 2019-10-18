@@ -6,47 +6,44 @@
  * file that was distributed with the source code.
  */
 
-namespace App\Middlewares;
+namespace Framework\Middleware;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class EnableCORSMiddleware
- *
+ * @todo Use the PSR-15 instead https://www.php-fig.org/psr/psr-15/
+ * @package Framework\Middlewares
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Middlewares
  */
 class EnableCORSMiddleware
 {
 
-    /**
-     * @var array
-     */
-    private $allowOrigin;
+    /** @var array */
+    private $trustedOrigins;
 
     /**
      * EnableCORSMiddleware constructor.
-     * @param array $allowOrigin
+     * @param array $trustedOrigins
      */
-    public function __construct(array $allowOrigin = [])
+    public function __construct(array $trustedOrigins = [])
     {
-        $this->allowOrigin = $allowOrigin;
+        $this->trustedOrigins = $trustedOrigins;
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
+     * allows CORS for ajax requests
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
      * @param $next
-     * @return mixed
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
     {
         $origin = !empty($this->allowOrigin) ? implode(", ", $this->allowOrigin) : "" ;
 
-        /** @var $response Response */
+        /** @var $response ResponseInterface */
         $response = $next($request, $response);
         return $response
             ->withHeader('Access-Control-Allow-Origin', $origin)
@@ -55,6 +52,6 @@ class EnableCORSMiddleware
                 'X-Requested-With, Content-Type, Accept, Origin, Authorization'
             )
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
-            ->withHeader('X-Powered-By', 'devscast');
+            ->withHeader('X-Powered-By', APP_NAME);
     }
 }

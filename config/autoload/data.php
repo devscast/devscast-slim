@@ -7,9 +7,7 @@
  */
 
 return [
-    "data.messages" => ROOT . "/data/messages.json",
     "data.meta" => ROOT . "/data/meta.json",
     "data.quotes" => ROOT . "/data/quotes.json",
-    "data.lang.en" => ROOT . "/data/lang/en.json",
-    "data.lang.fr" => ROOT . "/data/lang/fr.json",
+    "data.lang" => ROOT . "/data/lang",
 ];

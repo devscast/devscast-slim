@@ -49,6 +49,7 @@ class Application extends App
 
     /**
      * Load autoload configuration
+     * @todo fix the bug when using cached-config
      * @return array
      * @author bernard-ng <ngandubernard@gmail.com>
      */
@@ -60,8 +61,8 @@ class Application extends App
                     ConfigAggregator::ENABLE_CACHE => getenv("APP_ENV") === 'prod'
                 ]),
                 new PhpFileProvider(ROOT . "/config/autoload/*.php")
-            ],
-            getenv('APP_ENV') === 'dev' ? false : ROOT . "/data/cache/config.php"
+            ]
+            //getenv('APP_ENV') === 'dev' ? false : ROOT . "/data/cache/config.php"
         );
 
         return $aggregator->getMergedConfig();

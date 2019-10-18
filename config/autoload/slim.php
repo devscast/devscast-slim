@@ -11,8 +11,4 @@ return [
     'settings.outputBuffering' => 'append',
     'settings.determineRouteBeforeAppMiddleware' => false,
     'settings.displayErrorDetails' => evalBool(getenv('APP_DEBUG')),
-
-    'CORS.allowOrigin' => [
-        "http://localhost:8080"
-    ],
 ];

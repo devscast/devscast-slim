@@ -1,6 +1,7 @@
 <?php
 
 
+use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 
 class CreateCategoriesTable extends AbstractMigration
@@ -34,6 +35,9 @@ class CreateCategoriesTable extends AbstractMigration
     {
         $this->table('categories')
             ->addColumn('name', 'string', ['limit' => 255])
+            ->addColumn('slug', 'string')
+            ->addColumn('description', 'string', MysqlAdapter::TEXT_LONG)
+            ->addTimestamps()
             ->create();
     }
 }

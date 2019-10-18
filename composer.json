@@ -25,7 +25,8 @@
     "ext-json": "*",
     "ext-pdo": "*",
     "zendframework/zend-config-aggregator": "^1.1",
-    "vlucas/phpdotenv": "^3.6"
+    "vlucas/phpdotenv": "^3.6",
+    "cocur/slugify": "^3.2"
   },
   "require-dev": {
     "fzaninotto/faker": "^1.8",

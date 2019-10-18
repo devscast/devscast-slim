@@ -7,12 +7,11 @@
  */
 
 
-use Framework\Renderer\Twig\Extensions\AssetsTwigExtension;
-use Framework\Renderer\Twig\Extensions\AuthTwigExtension;
-use Framework\Renderer\Twig\Extensions\FlashTwigExtension;
-use Framework\Renderer\Twig\Extensions\FormTwigExtension;
-use Framework\Renderer\Twig\Extensions\MetaTwigExtension;
-use Modules\Page\QuoteTwigExtension;
+use Framework\Renderer\{Twig\Extensions\AssetsTwigExtension,
+    Twig\Extensions\AuthTwigExtension,
+    Twig\Extensions\FlashTwigExtension,
+    Twig\Extensions\FormTwigExtension,
+    Twig\Extensions\MetaTwigExtension};
 use nochso\HtmlCompressTwig\Extension;
 use Twig\Extensions\TextExtension;
 use function DI\get;
@@ -25,9 +24,7 @@ return [
     // Twig Renderer Configuration
     'renderer.twig.config' => [
         'debug' => getenv('APP_ENV') === 'dev',
-        'cache' => getenv('APP_ENV') === 'prod'
-            ? ROOT . "/config/cache/renderer"
-            : false,
+        'cache' => getenv('APP_ENV') === 'prod' ? ROOT . "/config/cache/renderer" : false,
         'autoreload' => getenv('APP_ENV') === 'dev',
         'strict_variables' => false,
     ],

@@ -1,3 +1,10 @@
+/*!
+ * This file is part of DevsCast.
+ * (c) Bernard Ng <ngandubernard@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with the source code.
+ */
+
 // should be the 3rd importation
 
 @import "./variables";
@@ -46,57 +53,57 @@
     color: #110f16;
     background: #ecf0f1;
     border: #ecf0f1;
-    
+
     &:hover, &:focus {
       background: #dde4e6;
       border: #dde4e6;
     }
   }
-  
+
   &-info {
     background: #3498db;
     border: #3498db;
-    
+
     &:hover, &:focus {
       background: #258cd1;
       border: #258cd1;
     }
   }
-  
+
   &-danger {
     background: #e74c3c;
     border: #e74c3c;
-    
+
     &:hover, &:focus {
       background: #e43725;
       border: #e43725;
     }
   }
-  
+
   &-warning {
     background: #f39c12;
     border: #f39c12;
-    
+
     &:hover, &:focus {
       background: #e08e0b;
       border: #e08e0b;
     }
   }
-  
+
   &-success {
     background: #2ecc71;
     border: #2ecc71;
-    
+
     &:hover, &:focus {
       background: #29b765;
       border: #29b765;
     }
   }
-  
+
   &-primary {
     background: #18151f;
     border: #18151f;
-    
+
     &:hover, &:focus, &.active {
       background: #050507 !important;
       border: #050507;
@@ -110,27 +117,27 @@
     background: #ecf0f1;
     border: #ecf0f1;
   }
-  
+
   &-info {
     background: #3498db;
     border: #3498db;
   }
-  
+
   &-danger {
     background: #e74c3c;
     border: #e74c3c;
   }
-  
+
   &-warning {
     background: #f39c12;
     border: #f39c12;
   }
-  
+
   &-success {
     background: #2ecc71;
     border: #2ecc71;
   }
-  
+
   &-primary {
     background: #18151f;
     border: #18151f;

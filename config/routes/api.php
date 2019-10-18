@@ -10,30 +10,17 @@ use API\Middlewares\EnableAPIMiddleware;
 use API\Resources\CategoriesResource;
 use API\Resources\HomeResource;
 use API\Resources\PodcastsResource;
+use App\Application;
 use App\Middlewares\JsonRequestMiddleware;
 
 /**
- * @param $app \Slim\App|\DI\Bridge\Slim\App
- * @author bernard-ng, https://bernard-ng.github.io
+ * the routes of the API application
+ * @param Application $app
+ * @todo add API routes once available, grouped by resource type
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
-return function ($app) {
-    $app->group("/api", function () {
-        $this->get("/home", [HomeResource::class, 'index'])->setName('api.index');
-
-        $this->group("/podcasts", function () {
-            $this->get("", [PodcastsResource::class, 'index'])->setName('api.podcasts.index');
-            $this->get(
-                '/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}',
-                [PodcastsResource::class, 'show']
-            )->setName('api.podcasts.show');
-        });
-
-        $this->group('/categories', function () {
-            $this->get("", [CategoriesResource::class, 'index'])->setName('api.categories.index');
-            $this->get(
-                '/{slug:[a-zA-Z0-9-]+}-{id:[0-9]+}',
-                [CategoriesResource::class, 'show']
-            )->setName('api.categories.show');
-        });
+return function (Application $app) {
+    $app->group("/api/v1/", function () {
+        // TODO : add API routes once available, grouped by resource type
     })->add(EnableAPIMiddleware::class)->add(JsonRequestMiddleware::class);
 };

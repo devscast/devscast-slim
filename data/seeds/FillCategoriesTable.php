@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Tables;
 use Phinx\Seed\AbstractSeed;
 
 class FillCategoriesTable extends AbstractSeed
@@ -16,11 +17,15 @@ class FillCategoriesTable extends AbstractSeed
     public function run()
     {
         $faker = \Faker\Factory::create('fr_FR');
-        $table = $this->table('categories');
+        $table = $this->table(Tables::CATEGORIES);
+        $slugify = new Cocur\Slugify\Slugify();
 
         for($i = 0; $i < 10; $i++) {
+            $name = $faker->name;
             $table->insert([
-               'name' => $faker->firstName
+               'name' => $name,
+                'slug' => $slugify->slugify($name),
+                'description' => $faker->text(250)
             ]);
         }
         $table->save();

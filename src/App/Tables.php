@@ -16,10 +16,8 @@ namespace App;
  */
 abstract class Tables
 {
-    public const GALLERY = "gallery";
     public const USERS = "users";
     public const NEWSLETTER = "newsletter";
-    public const PODCASTLINKS = "podcast_links";
     public const PODCASTS = "podcasts";
     public const CATEGORIES = "categories";
 }

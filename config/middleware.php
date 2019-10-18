@@ -6,16 +6,17 @@
  * file that was distributed with the source code.
  */
 
-use App\Middlewares\EnableCORSMiddleware;
-use Framework\Middleware\HttpMethodMiddleware;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use App\Application;
+use Framework\Middleware\{EnableCORSMiddleware, HttpMethodMiddleware};
+use Psr\Http\Message\{RequestInterface, ResponseInterface};
+
 
 /**
- * @param $app Slim\App|DI\Bridge\Slim\App
- * @author bernard-ng, https://bernard-ng.github.io
+ * registration of global middlewares
+ * @param Application $app
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
-return function ($app) {
+return function (Application $app) {
     $app->options('/{routes:.+}', function (RequestInterface $request, ResponseInterface $response) {
         return $response;
     });

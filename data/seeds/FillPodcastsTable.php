@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Tables;
 use Phinx\Seed\AbstractSeed;
 
 class FillPodcastsTable extends AbstractSeed
@@ -16,19 +17,21 @@ class FillPodcastsTable extends AbstractSeed
     public function run()
     {
         $faker = \Faker\Factory::create('fr_fR');
-        $table = $this->table('podcasts');
+        $table = $this->table(Tables::PODCASTS);
+        $slugify = new Cocur\Slugify\Slugify();
 
         for ($i = 0; $i < 20; $i++) {
+            $name = $faker->text(40);
             $table->insert([
-                'name' => $faker->paragraphs(4, true),
+                'name' => $name,
                 'description' => $faker->text(300),
                 'duration' => mt_rand(5, 50),
                 'thumb' => 'https://picsum.photos/200/300',
                 'audio' => 'https://lushitrap.com/assets/artists/bernard-ng/audio/Calm_lushitrapMUSIC.mp3',
-                'slug' => $faker->slug,
+                'slug' => $slugify->slugify($name),
                 'users_id' => 1,
                 'categories_id' => mt_rand(1, 5),
-                'created_at' => date('Y:M:d H:i:s', $faker->unixTime('now')),
+                'created_at' => date('Y:M:d H:i:s', time()),
             ]);
         }
         $table->save();
