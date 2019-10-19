@@ -6,44 +6,46 @@ const xhr = new XMLHttpRequest();
  */
 function ajaxDelete() {
     let deleteForms = document.querySelectorAll('#delete');
-    for (let i = 0; i < deleteForms.length; i++) {
+    if (deleteForms) {
+      for (let i = 0; i < deleteForms.length; i++) {
         deleteForms[i].addEventListener('submit', function (e) {
-            e.preventDefault();
-            let response = window.confirm('Voulez-vous vraiment Supprimer ?');
-            if (response) {
-                let data = (new FormData(this));
-                let deleteBtn = this.querySelector('button');
-                let nativeContent = deleteBtn.innerHTML;
-                deleteBtn.innerHTML = "Chargement...";
+          e.preventDefault();
+          let response = window.confirm('Voulez-vous vraiment Supprimer ?');
+          if (response) {
+            let data = (new FormData(this));
+            let deleteBtn = this.querySelector('button');
+            let nativeContent = deleteBtn.innerHTML;
+            deleteBtn.innerHTML = "Chargement...";
 
-                xhr.open('POST', this.getAttribute('action'), true);
-                xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
-                xhr.onreadystatechange = () => {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            let $th = $(this).parent().parent().parent();
-                            $th.fadeOut();
-                        } else {
-                            console.log(xhr.responseText);
-                            deleteBtn.innerHTML = nativeContent;
-                            alert('Une erreur est survenue');
-                        }
-                    }
-                };
-                try {
-                    xhr.send(data);
-                } catch (e) {
-                    if (e.NETWORK_ERR) {
-                        alert('Aucune connexion internet');
-                    } else if (e.ABORT_ERR) {
-                        alert("La suppression a ete annule");
-                    }
+            xhr.open('POST', this.getAttribute('action'), true);
+            xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+            xhr.onreadystatechange = () => {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                  let $th = $(this).parent().parent().parent();
+                  $th.fadeOut();
+                } else {
+                  console.log(xhr.responseText);
+                  deleteBtn.innerHTML = nativeContent;
+                  alert('Une erreur est survenue');
                 }
-                xhr.timeout = 10000;
-            } else {
-                return false;
+              }
+            };
+            try {
+              xhr.send(data);
+            } catch (e) {
+              if (e.NETWORK_ERR) {
+                alert('Aucune connexion internet');
+              } else if (e.ABORT_ERR) {
+                alert("La suppression a ete annule");
+              }
             }
+            xhr.timeout = 10000;
+          } else {
+            return false;
+          }
         })
+      }
     }
 }
 
@@ -53,25 +55,26 @@ function ajaxDelete() {
  */
 function showTableImage() {
     let trigger = document.querySelector("#show-table-images");
-    let images = [].slice.call(document.querySelectorAll('img[data-src]'));
-
-    trigger.addEventListener('click', () => {
+    if (trigger) {
+      let images = [].slice.call(document.querySelectorAll('img[data-src]'));
+      trigger.addEventListener('click', () => {
         if (images) {
-            images.forEach(image => {
-                let dataSrc = image.getAttribute('data-src');
-                let src = image.getAttribute('src');
-                if (dataSrc) {
-                    image.removeAttribute('data-src');
-                    image.setAttribute('src', dataSrc);
-                } else if (src) {
-                    image.removeAttribute('src');
-                    image.setAttribute('data-src', src);
-                }
-            });
+          images.forEach(image => {
+            let dataSrc = image.getAttribute('data-src');
+            let src = image.getAttribute('src');
+            if (dataSrc) {
+              image.removeAttribute('data-src');
+              image.setAttribute('src', dataSrc);
+            } else if (src) {
+              image.removeAttribute('src');
+              image.setAttribute('data-src', src);
+            }
+          });
         } else {
-            alert('aucune image a afficher');
+          alert('aucune image a afficher');
         }
-    });
+      });
+    }
 }
 
 
