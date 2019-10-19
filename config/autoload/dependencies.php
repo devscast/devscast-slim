@@ -38,7 +38,6 @@ return [
 
     // Session
     SessionInterface::class => create(PHPSession::class),
-    FlashMessage::class => factory(FlashMessageFactory::class),
 
     // Authentication
     AuthInterface::class => get(DatabaseAuthenticator::class),

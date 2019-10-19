@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast\Newsletter;
 
-use App\Tables;
+use App\TablesEnum;
 use Framework\Database\AbstractRepository;
 
 /**
@@ -25,7 +25,7 @@ class NewsletterRepository extends AbstractRepository
      *
      * @var string
      */
-    protected $table = Tables::NEWSLETTER;
+    protected $table = TablesEnum::NEWSLETTER;
 
 
     /**

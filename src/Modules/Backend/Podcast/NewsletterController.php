@@ -34,7 +34,7 @@ class NewsletterController extends AbstractCRUDController
         parent::__construct($container);
         $this->repository = $container->get(NewsletterRepository::class);
         $this->validator = NewsletterValidator::class;
-        $this->module = Modules::NEWSLETTER;
-        $this->path = Paths::NEWSLETTER;
+        $this->module = ModulesEnum::NEWSLETTER;
+        $this->path = PathsEnum::NEWSLETTER;
     }
 }

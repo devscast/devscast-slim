@@ -13,7 +13,7 @@ use Slim\Views\Twig;
 
 /**
  * Class TwigRenderer
- *
+ * @package Framework\Renderer\Twig
  * @author bernard-ng <ngandubernard@gmail.com>
  */
 class TwigRenderer extends Twig implements RendererInterface

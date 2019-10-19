@@ -11,25 +11,24 @@ namespace Framework\Uploader;
 
 /**
  * Class AudioUploader
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Uploader
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class AudioUploader extends Uploader
 {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected $relativePath = "/uploads/podcasts";
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected const EXTENSIONS = ['mp3', 'mpeg', 'wav', '3gp', 'opus'];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected const MIME_TYPES = [
         'mp3' => 'audio/mp3',
@@ -40,12 +39,12 @@ class AudioUploader extends Uploader
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected const MAX_SIZE = 104857600;
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
     protected function getPath(): string
     {

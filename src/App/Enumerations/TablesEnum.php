@@ -9,13 +9,14 @@
 namespace App;
 
 /**
- * Class Roles
- *
- * @author bernard-ng <ngandubernard@gmail.com>
+ * Class TablesEnum
  * @package App
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
-abstract class Roles
+abstract class TablesEnum
 {
-    public const USERS = "2";
-    public const ADMIN = "1";
+    public const USERS = "users";
+    public const NEWSLETTER = "newsletter";
+    public const PODCASTS = "podcasts";
+    public const CATEGORIES = "categories";
 }

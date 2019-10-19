@@ -9,22 +9,19 @@
 namespace Framework\Renderer\Twig\Extensions;
 
 use Slim\Csrf\Guard;
-use Twig\Extension\AbstractExtension;
-use Twig\Extension\GlobalsInterface;
-use Twig_SimpleFunction;
+use Twig\Extension\{AbstractExtension, GlobalsInterface};
+use Twig\TwigFunction;
 
 /**
  * Class FormTwigExtension
- *
- * @author bernard-ng <ngandubernard@gmail.com>
+ * @todo fix the CSRF Guard
  * @package Framework\Renderer\Twig\Extensions
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class FormTwigExtension extends AbstractExtension implements GlobalsInterface
 {
 
-    /**
-     * @var Guard
-     */
+    /** @var Guard  */
     protected $csrf;
 
     /**
@@ -69,8 +66,8 @@ class FormTwigExtension extends AbstractExtension implements GlobalsInterface
     public function getFunctions(): array
     {
         return [
-            new Twig_SimpleFunction('_method', [$this, 'method'], ['is_safe' => ['html']]),
-            new Twig_SimpleFunction('_csrf', [$this, 'csrf'], ['is_safe' => ['html']])
+            new TwigFunction('_method', [$this, 'method'], ['is_safe' => ['html']]),
+            new TwigFunction('_csrf', [$this, 'csrf'], ['is_safe' => ['html']])
         ];
     }
 

@@ -8,7 +8,7 @@
 
 namespace Modules\User;
 
-use App\Tables;
+use App\TablesEnum;
 use Exception;
 use Framework\Database\AbstractRepository;
 use Framework\Logger;
@@ -27,7 +27,7 @@ class UsersRepository extends AbstractRepository
      *
      * @var string
      */
-    protected $table = Tables::USERS;
+    protected $table = TablesEnum::USERS;
 
     /**
      * Entity class

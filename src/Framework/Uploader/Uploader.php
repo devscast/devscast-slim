@@ -17,9 +17,8 @@ use Throwable;
 
 /**
  * Class Uploader
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Uploader
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 abstract class Uploader
 {
@@ -75,7 +74,6 @@ abstract class Uploader
      */
     protected $relativePath = "uploads";
 
-
     /**
      * Upload constructor.
      * @param UploadedFileInterface $file
@@ -101,7 +99,6 @@ abstract class Uploader
         }
         return clone $this;
     }
-
 
     /**
      * Move the uploaded file to the target path
@@ -234,7 +231,6 @@ abstract class Uploader
         $this->filename = $filename;
         return clone $this;
     }
-
 
     /**
      * Retrieve the target path

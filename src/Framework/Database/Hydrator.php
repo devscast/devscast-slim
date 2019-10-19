@@ -10,9 +10,8 @@ namespace Framework\Database;
 
 /**
  * Class Hydrator
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 abstract class Hydrator
 {

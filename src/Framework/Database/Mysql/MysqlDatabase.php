@@ -13,20 +13,19 @@ use Framework\Database\DatabaseInterface;
 
 /**
  * Class MysqlDatabase
- *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database\Mysql
  */
 class MysqlDatabase implements DatabaseInterface
 {
 
-
-    /**
-     * @var PDO
-     */
+    /** @var PDO */
     private $PDO;
 
-
+    /**
+     * MysqlDatabase constructor.
+     * @param PDO $PDO
+     */
     public function __construct(PDO $PDO)
     {
         $this->PDO = $PDO;

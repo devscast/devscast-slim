@@ -14,7 +14,6 @@ use LogicException;
 
 /**
  * Class QueryResult
- *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database
  */

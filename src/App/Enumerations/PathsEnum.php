@@ -6,14 +6,18 @@
  * file that was distributed with the source code.
  */
 
-namespace App;
+namespace App\Enumerations;
 
-abstract class Paths
+/**
+ * Class PathsEnum
+ * @package App\Enumerations
+ * @author bernard-ng <ngandubernard@gmail.com>
+ */
+abstract class PathsEnum
 {
     public const USERS = "users";
     public const PODCASTS = "podcasts";
     public const NEWSLETTER = "newsletter";
-    public const PODCASTLINKS = "podcastLinks";
     public const CATEGORIES = "categories";
     public const FILES = "files";
 }

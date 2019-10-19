@@ -10,19 +10,15 @@
 
 namespace App;
 
-use App\Middlewares\NotFoundMiddleware;
-use DI\Bridge\Slim\App;
-use DI\ContainerBuilder;
+use App\Handlers\NotFoundHandler;
+use DI\{Bridge\Slim\App, ContainerBuilder};
 use Dotenv\Dotenv;
-use Zend\ConfigAggregator\ArrayProvider;
-use Zend\ConfigAggregator\ConfigAggregator;
-use Zend\ConfigAggregator\PhpFileProvider;
+use Zend\ConfigAggregator\{ArrayProvider, ConfigAggregator, PhpFileProvider};
 
 /**
- * Class App
- *
- * @author bernard-ng <ngandubernard@gmail.com>
+ * Class Application
  * @package App
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class Application extends App
 {
@@ -92,7 +88,7 @@ class Application extends App
             ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
             '/{routes:.+}',
             []
-        )->add(NotFoundMiddleware::class);
+        )->add(NotFoundHandler::class);
         return $this;
     }
 }

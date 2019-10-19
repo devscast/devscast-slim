@@ -33,7 +33,7 @@ class PodcastsController extends AbstractController
     /**
      * @var string
      */
-    private $module = Modules::PODCASTS;
+    private $module = ModulesEnum::PODCASTS;
 
     /**
      * PodcastsController constructor.

@@ -18,7 +18,7 @@
                     {% endfor %}
                 {% endif %}
 
-                <form action="{{ path_for('auth.login') }}" method="post">
+                <form action="{{ path_for('admin.auth.login') }}" method="post">
                     {{ form.email('email', 'email', errors.email, input.email) }}
                     {{ form.password('password', 'password', errors.password) }}
 

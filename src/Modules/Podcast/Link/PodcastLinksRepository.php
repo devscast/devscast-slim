@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast\Link;
 
-use App\Tables;
+use App\TablesEnum;
 use Exception;
 use Framework\Database\AbstractRepository;
 use Framework\Logger;
@@ -27,7 +27,7 @@ class PodcastLinksRepository extends AbstractRepository
      *
      * @var string
      */
-    protected $table = Tables::PODCASTLINKS;
+    protected $table = TablesEnum::PODCASTLINKS;
 
     /**
      * Entity class

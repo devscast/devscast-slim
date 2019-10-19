@@ -34,7 +34,7 @@ class CategoriesController extends AbstractCRUDController
         parent::__construct($container);
         $this->repository = $container->get(CategoriesRepository::class);
         $this->validator = CategoriesValidator::class;
-        $this->module = Modules::CATEGORIES;
-        $this->path = Paths::CATEGORIES;
+        $this->module = ModulesEnum::CATEGORIES;
+        $this->path = PathsEnum::CATEGORIES;
     }
 }

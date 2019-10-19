@@ -34,7 +34,7 @@ class UsersController extends AbstractCRUDController
         parent::__construct($container);
         $this->repository = $container->get(UsersRepository::class);
         $this->validator = UsersValidator::class;
-        $this->module = Modules::USERS;
-        $this->path = Paths::USERS;
+        $this->module = ModulesEnum::USERS;
+        $this->path = PathsEnum::USERS;
     }
 }

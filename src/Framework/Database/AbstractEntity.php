@@ -10,7 +10,6 @@ namespace Framework\Database;
 
 /**
  * Class AbstractEntity
- *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database
  */

@@ -11,25 +11,24 @@ namespace Framework\Uploader;
 
 /**
  * Class ImageUploader
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Uploader
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class ImageUploader extends Uploader
 {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected $relativePath = "/uploads/thumbs";
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected const EXTENSIONS = ['jpg', 'png', 'gif', 'jpeg'];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected const MIME_TYPES = [
         'jpg' => 'image/jpg',
@@ -39,12 +38,12 @@ class ImageUploader extends Uploader
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected const MAX_SIZE = 15728640;
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      * @return string
      */
     protected function getPath(): string

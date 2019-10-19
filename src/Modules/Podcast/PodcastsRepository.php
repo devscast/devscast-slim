@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast;
 
-use App\Tables;
+use App\TablesEnum;
 use Exception;
 use Framework\Database\AbstractRepository;
 use Framework\Database\Mysql\Builder\Queries\Select;
@@ -28,7 +28,7 @@ class PodcastsRepository extends AbstractRepository
      *
      * @var string
      */
-    protected $table = Tables::PODCASTS;
+    protected $table = TablesEnum::PODCASTS;
 
     /**
      * Entity class

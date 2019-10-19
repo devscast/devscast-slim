@@ -9,23 +9,23 @@
 namespace Framework\Renderer\Twig\Extensions;
 
 use Framework\Auth\AuthInterface;
-use Twig\Extension\AbstractExtension;
-use Twig\Extension\GlobalsInterface;
+use Twig\Extension\{AbstractExtension, GlobalsInterface};
 
 /**
  * Class AuthTwigExtension
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Renderer\Twig\Extensions
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class AuthTwigExtension extends AbstractExtension implements GlobalsInterface
 {
 
-    /**
-     * @var AuthInterface
-     */
+    /** @var AuthInterface */
     private $auth;
 
+    /**
+     * AuthTwigExtension constructor.
+     * @param AuthInterface $auth
+     */
     public function __construct(AuthInterface $auth)
     {
         $this->auth = $auth;

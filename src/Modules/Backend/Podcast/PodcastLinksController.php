@@ -34,7 +34,7 @@ class PodcastLinksController extends AbstractCRUDController
         parent::__construct($container);
         $this->repository = $container->get(PodcastLinksRepository::class);
         $this->validator = PodcastLinksValidator::class;
-        $this->module = Modules::PODCASTLINKS;
-        $this->path = Paths::PODCASTLINKS;
+        $this->module = ModulesEnum::PODCASTLINKS;
+        $this->path = PathsEnum::PODCASTLINKS;
     }
 }

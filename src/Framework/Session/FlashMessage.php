@@ -8,11 +8,12 @@
 
 namespace Framework\Session;
 
+use Framework\LangProvider;
+
 /**
  * Class FlashMessage
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Session
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class FlashMessage
 {
@@ -22,37 +23,33 @@ class FlashMessage
      */
     private const FLASH_SESSION_KEY = 'flash';
 
-    /**
-     * @var SessionInterface
-     */
+    /** @var SessionInterface */
     private $session;
+
+    /** @var LangProvider */
+    private $messages;
 
     /**
      * FlashService constructor.
      *
      * @param SessionInterface $session
-     * @param array $messages
+     * @param LangProvider $messages
      */
-    public function __construct(SessionInterface $session, $messages = [])
+    public function __construct(SessionInterface $session, LangProvider $messages)
     {
         $this->session = $session;
-        $this->messages = $messages;
+        $this->messages = $messages->getData(true);
     }
 
     /**
      * retrieve a message for a given key
-     *
+     * flash messages are defined in a json file for easy maintenance and updating
      * @param string $message
-     * @param string $type
      * @return string
      */
-    private function getMessage(string $message, string $type = 'success'): string
+    private function getMessage(string $message): string
     {
-        $messages = $this->messages->getData();
-        return
-            $message->en->{$type}->{$message} ??
-            $message->fr->{$type}->{$message} ??
-            $message;
+        return $this->messages[$message] ?? $message;
     }
 
     /**
@@ -63,9 +60,7 @@ class FlashMessage
      */
     public function success(string $message): void
     {
-        $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
-        $flash['success'] = $this->getMessage($message, 'success');
-        $this->session->set(self::FLASH_SESSION_KEY, $flash);
+       $this->addMessage('success', $message);
     }
 
     /**
@@ -75,9 +70,7 @@ class FlashMessage
      */
     public function error(string $message): void
     {
-        $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
-        $flash['error'] = $this->getMessage($message, 'error');
-        $this->session->set(self::FLASH_SESSION_KEY, $flash);
+        $this->addMessage('error', $message);
     }
 
     /**
@@ -87,9 +80,7 @@ class FlashMessage
      */
     public function warning(string $message): void
     {
-        $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
-        $flash['warning'] = $this->getMessage($message, 'warning');
-        $this->session->set(self::FLASH_SESSION_KEY, $flash);
+        $this->addMessage('warning', $message);
     }
 
     /**
@@ -113,9 +104,9 @@ class FlashMessage
     public function getAll(): ?array
     {
         $flashes = $this->session->get(self::FLASH_SESSION_KEY, []);
-        return $flashes ?? null;
+        $this->session->delete(self::FLASH_SESSION_KEY);
+        return $flashes;
     }
-
 
     /**
      * Reset flash message
@@ -124,5 +115,18 @@ class FlashMessage
     public function reset(): void
     {
         $this->session->delete(self::FLASH_SESSION_KEY);
+    }
+
+    /**
+     * set a flash message
+     * @param string $type
+     * @param string $message
+     * @author bernard-ng <ngandubernard@gmail.com>
+     */
+    private function addMessage(string $type, string $message)
+    {
+        $flash = $this->session->get(self::FLASH_SESSION_KEY, []);
+        $flash[$type] = $this->getMessage($message);
+        $this->session->set(self::FLASH_SESSION_KEY, $flash);
     }
 }

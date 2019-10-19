@@ -10,9 +10,8 @@ namespace Framework\Session;
 
 /**
  * Interface SessionInterface
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Session
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 interface SessionInterface
 {

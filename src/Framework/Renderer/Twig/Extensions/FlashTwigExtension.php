@@ -8,15 +8,13 @@
 
 namespace Framework\Renderer\Twig\Extensions;
 
-use Twig\Extension\AbstractExtension;
-use Twig\Extension\GlobalsInterface;
+use Twig\Extension\{AbstractExtension, GlobalsInterface};
 use Framework\Session\FlashMessage;
 
 /**
  * Class FlashTwigExtension
- *
+ * @package Framework\Renderer\Twig\Extensions
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package Framework\Twig
  */
 class FlashTwigExtension extends AbstractExtension implements GlobalsInterface
 {
@@ -26,6 +24,10 @@ class FlashTwigExtension extends AbstractExtension implements GlobalsInterface
      */
     private $flash;
 
+    /**
+     * FlashTwigExtension constructor.
+     * @param FlashMessage $flash
+     */
     public function __construct(FlashMessage $flash)
     {
         $this->flash = $flash;
@@ -39,7 +41,7 @@ class FlashTwigExtension extends AbstractExtension implements GlobalsInterface
     public function getGlobals(): array
     {
         return [
-            'flash' => $this->flash
+            'flash' => $this->flash->getAll()
         ];
     }
 }

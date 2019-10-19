@@ -10,7 +10,6 @@ namespace Framework\Database;
 
 /**
  * Interface DatabaseInterface
- *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database
  */

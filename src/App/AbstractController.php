@@ -8,18 +8,14 @@
 
 namespace App;
 
-use Framework\Renderer\RendererInterface;
-use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
+use Framework\{Renderer\RendererInterface, Session\FlashMessage};
 use Slim\Router;
-use Framework\Session\FlashMessage;
 use Psr\Container\ContainerInterface;
 
 /**
- * Class Controller
- *
+ * Class AbstractController
+ * @package App
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Modules
  */
 class AbstractController
 {

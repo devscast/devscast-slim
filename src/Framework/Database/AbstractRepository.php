@@ -12,12 +12,12 @@ use Exception;
 use Framework\Database\Mysql\Builder\Query;
 use Framework\Logger;
 use PDO;
+use PDOStatement;
 
 /**
  * Class AbstractRepository
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class AbstractRepository
 {
@@ -33,9 +33,7 @@ class AbstractRepository
      */
     protected $table;
 
-    /**
-     * @var PDO
-     */
+    /** @var PDO */
     private $pdo;
 
     /**

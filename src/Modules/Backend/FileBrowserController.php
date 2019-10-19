@@ -29,7 +29,7 @@ class FileBrowserController extends DashboardController
     /**
      * @var string
      */
-    private $module = Modules::FILES;
+    private $module = ModulesEnum::FILES;
 
     /**
      * managing files

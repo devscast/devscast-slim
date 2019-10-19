@@ -9,15 +9,12 @@
 namespace Framework\Renderer\Twig;
 
 use Psr\Container\ContainerInterface;
-use Slim\Http\Environment;
-use Slim\Http\Uri;
-use Slim\Router;
-use Slim\Views\TwigExtension;
+use Slim\{Http\Environment, Http\Uri, Router, Views\TwigExtension};
 use Twig\Extension\DebugExtension;
 
 /**
  * Class TwigRendererFactory
- *
+ * @package Framework\Renderer\Twig
  * @author bernard-ng <ngandubernard@gmail.com>
  */
 class TwigRendererFactory

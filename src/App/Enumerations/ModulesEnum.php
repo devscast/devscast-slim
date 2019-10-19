@@ -6,15 +6,14 @@
  * file that was distributed with the source code.
  */
 
-namespace App;
+namespace App\Enumerations;
 
 /**
- * Class Modules
- *
+ * Class ModulesEnum
+ * @package App\Enumerations
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App
  */
-abstract class Modules
+abstract class ModulesEnum
 {
     public const USERS = "users";
     public const PODCASTS = "podcasts";

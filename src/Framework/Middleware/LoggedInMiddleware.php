@@ -9,31 +9,26 @@
 namespace Framework\Middleware;
 
 use Slim\Router;
-use Framework\Logger;
 use App\RouterAwareHelper;
-use Framework\Auth\AuthInterface;
 use Slim\Interfaces\RouterInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Framework\{Logger, Auth\AuthInterface};
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class LoggedInMiddleware
- *
+ * @todo Use the PSR-15 instead https://www.php-fig.org/psr/psr-15/
+ * @package Framework\Middleware
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package Framework\Middlewares
  */
 class LoggedInMiddleware
 {
 
     use RouterAwareHelper;
 
-    /**
-     * @var AuthInterface
-     */
+    /** @var AuthInterface */
     private $auth;
-    /**
-     * @var RouterInterface
-     */
+
+    /** @var RouterInterface */
     private $router;
 
     /**
@@ -51,7 +46,7 @@ class LoggedInMiddleware
     /**
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
-     * @param $next
+     * @param Callable $next
      * @return ResponseInterface
      * @author bernard-ng <ngandubernard@gmail.com>
      */
@@ -60,7 +55,7 @@ class LoggedInMiddleware
         $user = $this->auth->getUser();
         if (is_null($user)) {
             Logger::info("Attempt access to backoffice", ['path' => $request->getUri()->getPath()]);
-            return $this->redirect('auth.login');
+            return $this->redirect('admin.auth.login');
         }
         return $next($request->withAttribute('user', $user), $response);
     }

@@ -12,9 +12,8 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Interface RendererInterface
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Renderer
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 interface RendererInterface
 {

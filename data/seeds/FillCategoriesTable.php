@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Tables;
+use App\TablesEnum;
 use Phinx\Seed\AbstractSeed;
 
 class FillCategoriesTable extends AbstractSeed
@@ -17,7 +17,7 @@ class FillCategoriesTable extends AbstractSeed
     public function run()
     {
         $faker = \Faker\Factory::create('fr_FR');
-        $table = $this->table(Tables::CATEGORIES);
+        $table = $this->table(TablesEnum::CATEGORIES);
         $slugify = new Cocur\Slugify\Slugify();
 
         for($i = 0; $i < 10; $i++) {

@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Tables;
+use App\TablesEnum;
 use Phinx\Seed\AbstractSeed;
 
 class FillPodcastsTable extends AbstractSeed
@@ -17,7 +17,7 @@ class FillPodcastsTable extends AbstractSeed
     public function run()
     {
         $faker = \Faker\Factory::create('fr_fR');
-        $table = $this->table(Tables::PODCASTS);
+        $table = $this->table(TablesEnum::PODCASTS);
         $slugify = new Cocur\Slugify\Slugify();
 
         for ($i = 0; $i < 20; $i++) {

@@ -55,10 +55,10 @@ return function (Application $app) {
     ];
 
     // groups all routes by modules using the same url schema
-    $crud($app, Modules::PODCASTS, PodcastsController::class, $adminMiddlewares);
-    $crud($app, Modules::CATEGORIES, CategoriesController::class, $adminMiddlewares);
-    $crud($app, Modules::PODCASTLINKS, PodcastLinksController::class, $adminMiddlewares);
-    $crud($app, Modules::USERS, UsersController::class, $adminMiddlewares);
+    $crud($app, ModulesEnum::PODCASTS, PodcastsController::class, $adminMiddlewares);
+    $crud($app, ModulesEnum::CATEGORIES, CategoriesController::class, $adminMiddlewares);
+    $crud($app, ModulesEnum::PODCASTLINKS, PodcastLinksController::class, $adminMiddlewares);
+    $crud($app, ModulesEnum::USERS, UsersController::class, $adminMiddlewares);
 
 
     // groups together the administration modules that do not have CRUD functionality

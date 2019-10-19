@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast\Category;
 
-use App\Tables;
+use App\TablesEnum;
 use Framework\Database\AbstractRepository;
 
 /**
@@ -25,7 +25,7 @@ class CategoriesRepository extends AbstractRepository
      *
      * @var string
      */
-    protected $table = Tables::CATEGORIES;
+    protected $table = TablesEnum::CATEGORIES;
 
 
     /**

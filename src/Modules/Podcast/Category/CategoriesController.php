@@ -39,7 +39,7 @@ class CategoriesController extends AbstractController
     /**
      * @var string
      */
-    private $module = Modules::CATEGORIES;
+    private $module = ModulesEnum::CATEGORIES;
 
     /**
      * CategoriesController constructor.

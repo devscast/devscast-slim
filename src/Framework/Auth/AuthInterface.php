@@ -10,9 +10,8 @@ namespace Framework\Auth;
 
 /**
  * Interface AuthInterface
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Auth
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 interface AuthInterface
 {

@@ -9,9 +9,9 @@
 namespace Framework\Auth;
 
 /**
- * Class User
+ * Interface UserInterface
  * @package Framework\Auth
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 interface UserInterface
 {

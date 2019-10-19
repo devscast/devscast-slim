@@ -9,17 +9,14 @@
 namespace Framework\Renderer\Twig\Extensions;
 
 use Framework\Logger;
-use Slim\Http\Uri;
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
-use Slim\Http\Environment;
+use Twig\{Extension\AbstractExtension, TwigFunction};
+use Slim\{Http\Uri, Http\Environment};
 use InvalidArgumentException;
 
 /**
  * Class AssetsTwigExtension
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Renderer\Twig\Extensions
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class AssetsTwigExtension extends AbstractExtension
 {

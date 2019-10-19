@@ -41,8 +41,8 @@ class PodcastsController extends AbstractCRUDController
         parent::__construct($container);
         $this->repository = $container->get(PodcastsRepository::class);
         $this->validator = PodcastsValidator::class;
-        $this->module = Modules::PODCASTS;
-        $this->path = Paths::PODCASTS;
+        $this->module = ModulesEnum::PODCASTS;
+        $this->path = PathsEnum::PODCASTS;
     }
 
     /**

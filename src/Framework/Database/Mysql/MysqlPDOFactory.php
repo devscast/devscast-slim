@@ -16,7 +16,6 @@ use Psr\Container\ContainerInterface;
 
 /**
  * Class MysqlPDOFactory
- *
  * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Database\Mysql
  */
@@ -29,10 +28,9 @@ class MysqlPDOFactory
     private $instance = null;
 
     /**
-     * Undocumented function
-     *
      * @param ContainerInterface $container
      * @return PDO
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function __invoke(ContainerInterface $container): PDO
     {

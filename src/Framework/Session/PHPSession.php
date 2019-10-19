@@ -10,9 +10,8 @@ namespace Framework\Session;
 
 /**
  * Class PHPSession
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Session
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class PHPSession implements SessionInterface
 {
@@ -24,7 +23,7 @@ class PHPSession implements SessionInterface
     private function ensureStarted(): void
     {
         if (session_status() === PHP_SESSION_NONE) {
-            session_name("devscast_ssid");
+            session_name(APP_NAME);
             session_start();
         }
     }

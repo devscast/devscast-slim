@@ -8,11 +8,13 @@
 
 namespace Framework;
 
+use Monolog\{Handler\StreamHandler, Processor\UidProcessor};
+
 /**
  * Class Logger
- * Static Adapter for the Logger
- * @package Admin\Controllers
- * @author bernard-ng, https://bernard-ng.github.io
+ * this is a hack to easily use the logger ;) :p
+ * @package Framework
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 abstract class Logger
 {
@@ -84,9 +86,9 @@ abstract class Logger
         if (is_null(self::$logger)) {
             try {
                 $logger = new \Monolog\Logger(APP_NAME);
-                $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
-                $logger->pushHandler(new \Monolog\Handler\StreamHandler(
-                    ROOT . "/data/logs/" . LOGFILE,
+                $logger->pushProcessor(new UidProcessor());
+                $logger->pushHandler(new StreamHandler(
+                    ROOT . "/data/logs/" . LOG_FILE,
                     \Monolog\Logger::DEBUG
                 ));
                 self::$logger = $logger;

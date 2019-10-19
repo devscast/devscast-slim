@@ -6,18 +6,15 @@
  * file that was distributed with the source code.
  */
 
-namespace App;
+namespace App\Enumerations;
 
 /**
- * Class Tables
- *
+ * Class RolesEnum
+ * @package App\Enumerations
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App
  */
-abstract class Tables
+abstract class RolesEnum
 {
-    public const USERS = "users";
-    public const NEWSLETTER = "newsletter";
-    public const PODCASTS = "podcasts";
-    public const CATEGORIES = "categories";
+    public const USERS = "2";
+    public const ADMIN = "1";
 }

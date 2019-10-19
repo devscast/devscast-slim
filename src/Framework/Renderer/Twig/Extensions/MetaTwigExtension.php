@@ -9,21 +9,17 @@
 namespace Framework\Renderer\Twig\Extensions;
 
 use App\MetaManager;
-use Twig\Extension\AbstractExtension;
-use Twig\Extension\GlobalsInterface;
+use Twig\Extension\{AbstractExtension, GlobalsInterface};
 use Twig\TwigFunction;
 
 /**
  * Class MetaTwigExtension
- *
- * @author bernard-ng <ngandubernard@gmail.com>
  * @package Framework\Renderer\Twig\Extensions
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class MetaTwigExtension extends AbstractExtension implements GlobalsInterface
 {
-    /**
-     * @var MetaManager
-     */
+    /** @var MetaManager */
     private $manager;
 
     /**
