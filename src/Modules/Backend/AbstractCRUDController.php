@@ -94,7 +94,7 @@ class AbstractCRUDController extends DashboardController implements CRUDControll
             if ($validator->isValid()) {
                 $this->repository->create($params);
                 $this->flash->success("{$this->module}.create");
-                return $this->redirect("admin.{$this->path}");
+                return $this->redirect("admin.{$this->module}");
             } else {
                 $this->flash->error("{$this->path}.create");
                 $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
@@ -104,7 +104,7 @@ class AbstractCRUDController extends DashboardController implements CRUDControll
         $data = compact('errors', 'input');
         return $this->renderer->render(
             $response->withStatus($this->status),
-            "@backend/{$this->module}/create.html.twig",
+            "@backend/{$this->path}/create.html.twig",
             $data
         );
     }
@@ -128,10 +128,10 @@ class AbstractCRUDController extends DashboardController implements CRUDControll
 
                 if ($validator->isValid()) {
                     $this->repository->update($id, $params);
-                    $this->flash->success("{$this->path}.update");
-                    return $this->redirect("admin.{$this->path}");
+                    $this->flash->success("{$this->module}.update");
+                    return $this->redirect("admin.{$this->module}");
                 } else {
-                    $this->flash->error("{$this->path}.update");
+                    $this->flash->error("{$this->module}.update");
                     $this->status = StatusCode::HTTP_UNPROCESSABLE_ENTITY;
                 }
             }
@@ -139,7 +139,7 @@ class AbstractCRUDController extends DashboardController implements CRUDControll
             $data = compact('errors', 'input', 'item');
             return $this->renderer->render(
                 $response->withStatus($this->status),
-                "@backend/{$this->module}/edit.html.twig",
+                "@backend/{$this->path}/edit.html.twig",
                 $data
             );
         }
@@ -155,8 +155,8 @@ class AbstractCRUDController extends DashboardController implements CRUDControll
             $id = $request->getAttribute('route')->getArgument('id');
             if ($this->repository->find($id)) {
                 $this->repository->destroy($id);
-                $this->flash->success("{$this->path}.delete");
-                return $this->redirect("admin.{$this->path}");
+                $this->flash->success("{$this->module}.delete");
+                return $this->redirect("admin.{$this->module}");
             }
         }
         return $response->withStatus(StatusCode::HTTP_NOT_FOUND);

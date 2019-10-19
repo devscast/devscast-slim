@@ -8,60 +8,42 @@
 
 namespace Modules\Podcast\Category;
 
-use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
  * Class CategoriesValidator
- *
+ * @package Modules\Podcast\Category
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package App\Modules\Category
  */
-abstract class CategoriesValidator extends AbstractValidator
+abstract class CategoriesValidator
 {
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    private static $validationRules = [];
-
-    /**
-     * Validation rules when there is an update
-     *
-     * @var array
-     */
-    private static $updateValidationRules = [];
 
     /**
      * List of fields that can be stored in the Repository
      *
      * @var array
      */
-    private static $storeAbleFields = [];
+    private static $createFields = ['name', 'slug', 'description'];
 
     /**
      * List of fields that can be updated in the Repository
      *
      * @var array
      */
-    private static $updateAbleFields = ['name', 'slug', 'description'];
+    private static $updateFields = ['name', 'slug', 'description'];
 
     /**
      * Retrieve validation rules
      *
      * @return array
      */
-    public static function getValidationRules(): array
+    public static function getCreateRules(): array
     {
-        if (empty(self::$validationRules)) {
-            self::$validationRules = [
-                'name' => v::notEmpty()->setName('Name'),
-                'slug' => v::optional(v::slug())->setName('Slug'),
-                'description' => v::notEmpty()->notBlank()->setName('Description'),
-            ];
-        }
-        return self::$validationRules;
+        return [
+            'name' => v::notEmpty()->setName('Name'),
+            'slug' => v::optional(v::slug())->setName('Slug'),
+            'description' => v::notEmpty()->notBlank()->setName('Description'),
+        ];
     }
 
     /**
@@ -69,41 +51,12 @@ abstract class CategoriesValidator extends AbstractValidator
      *
      * @return array
      */
-    public static function getUpdateValidationRules(): array
+    public static function getUpdateRules(): array
     {
-        if (empty(self::$updateValidationRules)) {
-            self::$validationRules = [
-                'name' => v::notEmpty()->setName('Name'),
-                'slug' => v::optional(v::slug())->setName('Slug'),
-                'description' => v::notEmpty()->notBlank()->setName('Description'),
-            ];
-        }
-        return self::$updateValidationRules;
-    }
-
-    /**
-     * rRetrieve the list of storeable fields
-     *
-     * @return array
-     */
-    public static function getStoreAbleFields(): array
-    {
-        if (empty(self::$storeAbleFields)) {
-            self::$storeAbleFields = array_keys(self::getValidationRules());
-        }
-        return self::$storeAbleFields;
-    }
-
-    /**
-     * Retrieve the list of updateable fields
-     *
-     * @return array
-     */
-    public static function getUpdateAbleFields(): array
-    {
-        if (empty(self::$updateAbleFields)) {
-            self::$updateAbleFields = array_keys(self::getUpdateValidationRules());
-        }
-        return self::$updateAbleFields;
+        return [
+            'name' => v::optional(v::notEmpty()->setName('Name')),
+            'slug' => v::optional(v::slug())->setName('Slug'),
+            'description' => v::optional(v::notEmpty()->notBlank()->setName('Description')),
+        ];
     }
 }

@@ -8,6 +8,7 @@
 
 namespace API\Resources;
 
+use App\Enumerations\ModulesEnum;
 use Slim\Http\StatusCode;
 use Psr\Container\ContainerInterface;
 use Modules\Podcast\PodcastsRepository;
@@ -15,6 +16,7 @@ use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class PodcastsResource
+ * @todo generate documentation whit swagger
  * @package API\Resources
  * @author bernard-ng <ngandubernard@gmail.com>
  */
@@ -29,7 +31,7 @@ class PodcastsResource extends Resource
     {
         parent::__construct($container);
         $this->repository = $container->get(PodcastsRepository::class);
-        $this->resourceName = "podcasts";
+        $this->resourceName = ModulesEnum::PODCASTS;
     }
 
     /**
@@ -43,12 +45,10 @@ class PodcastsResource extends Resource
             "status" => $this->status,
             "data" => [
                 "podcasts" => $this->repository->all(),
-                "last" => $this->repository->latest(3),
-                "hero" => $this->repository->last(),
                 "quote" => $this->quote
             ],
         ];
-        return $response->withJson($data, $this->status);
+        return $response->withJson($data, $this->status, JSON_UNESCAPED_SLASHES);
     }
 
     /**
@@ -66,12 +66,11 @@ class PodcastsResource extends Resource
                 "status" => $this->status,
                 "data" => [
                     "podcast" => $podcast,
-                    "last" => $this->repository->latest(3),
                     "next" => $this->repository->next($podcast->id),
                     "previous" => $this->repository->previous($podcast->id),
                 ]
             ];
-            return $response->withJson($data, $this->status);
+            return $response->withJson($data, $this->status, JSON_UNESCAPED_SLASHES);
         }
         return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }

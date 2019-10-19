@@ -8,12 +8,14 @@
 
 namespace API\Resources;
 
+use App\Enumerations\ModulesEnum;
 use Psr\Container\ContainerInterface;
 use Modules\Podcast\Category\CategoriesRepository;
 use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class CategoriesResource
+ * @todo generate documentation whit swagger
  * @package API\Resources
  * @author bernard-ng <ngandubernard@gmail.com>
  */
@@ -27,7 +29,7 @@ class CategoriesResource extends Resource
     {
         parent::__construct($container);
         $this->repository = $container->get(CategoriesRepository::class);
-        $this->resourceName = "categories";
+        $this->resourceName = ModulesEnum::CATEGORIES;
     }
 
     /**
@@ -45,6 +47,6 @@ class CategoriesResource extends Resource
                 "quote" => $this->quote,
             ]
         ];
-        return $response->withJson($data, $this->status);
+        return $response->withJson($data, $this->status, JSON_UNESCAPED_SLASHES);
     }
 }

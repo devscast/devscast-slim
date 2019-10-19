@@ -43,7 +43,7 @@ class PodcastsRepository extends AbstractRepository
      * @return Select
      * @throws Exception
      */
-    private function withCategoryaAndUser(): Select
+    private function withCategoryAndUser(): Select
     {
         return $this->makeQuery()
             ->into($this->entity)
@@ -63,7 +63,7 @@ class PodcastsRepository extends AbstractRepository
     public function all()
     {
         try {
-            return $this->withCategoryaAndUser()->all()->get();
+            return $this->withCategoryAndUser()->all()->get();
         } catch (Exception $e) {
             Logger::warning($e->getMessage(), [$e->getTraceAsString()]);
             return null;
@@ -78,7 +78,7 @@ class PodcastsRepository extends AbstractRepository
     public function allOnline()
     {
         try {
-            return $this->withCategoryaAndUser()
+            return $this->withCategoryAndUser()
                 ->where("{$this->table}.online = 1")
                 ->all()
                 ->get();
@@ -96,7 +96,7 @@ class PodcastsRepository extends AbstractRepository
     public function allOffline()
     {
         try {
-            return $this->withCategoryaAndUser()
+            return $this->withCategoryAndUser()
                 ->where("{$this->table}.online = 0")
                 ->all()
                 ->get();
@@ -115,7 +115,7 @@ class PodcastsRepository extends AbstractRepository
     public function latest(int $limit)
     {
         try {
-            return $this->withCategoryaAndUser()
+            return $this->withCategoryAndUser()
                 ->where("{$this->table}.online = 1")
                 ->limit($limit)
                 ->all()
@@ -134,7 +134,7 @@ class PodcastsRepository extends AbstractRepository
     public function last()
     {
         try {
-            return $this->withCategoryaAndUser()
+            return $this->withCategoryAndUser()
                 ->where("{$this->table}.online = 1")
                 ->limit(1)
                 ->all()
@@ -154,7 +154,7 @@ class PodcastsRepository extends AbstractRepository
     public function find(int $id)
     {
         try {
-            return $this->withCategoryaAndUser()
+            return $this->withCategoryAndUser()
                 ->where("{$this->table}.id", compact('id'))
                 ->all()
                 ->get(0);
@@ -174,7 +174,7 @@ class PodcastsRepository extends AbstractRepository
     public function findWith(string $field, $value)
     {
         try {
-            return $this->withCategoryaAndUser()
+            return $this->withCategoryAndUser()
                 ->where("{$this->table}.{$field} = ?", [$field => $value])
                 ->all()
                 ->get();

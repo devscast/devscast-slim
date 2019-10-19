@@ -14,6 +14,7 @@ use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class HomeResource
+ * @todo generate documentation whit swagger
  * @package API\Resources
  * @author bernard-ng <ngandubernard@gmail.com>
  */
@@ -40,11 +41,10 @@ class HomeResource extends Resource
         $data = [
             "status" => $this->status,
             "data" => [
-                "podcasts" => $this->repository->latest(3),
-                "hero" =>  $this->repository->last(),
+                "podcasts" => $this->repository->latest(10),
                 "quote" => $this->quote
             ]
         ];
-        return $response->withJson($data, $this->status);
+        return $response->withJson($data, $this->status, JSON_UNESCAPED_SLASHES);
     }
 }

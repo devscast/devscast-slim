@@ -15,6 +15,7 @@ use Slim\Http\StatusCode;
 
 /**
  * Class Resource
+ * @todo generate documentation whit swagger
  * @package API\Resources
  * @author bernard-ng <ngandubernard@gmail.com>
  */
@@ -73,6 +74,6 @@ class Resource
                 "quote" => $this->quote,
             ]
         ];
-        return $response->withJson($data, $this->status);
+        return $response->withJson($data, $this->status, JSON_UNESCAPED_SLASHES);
     }
 }

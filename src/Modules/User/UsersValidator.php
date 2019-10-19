@@ -8,16 +8,14 @@
 
 namespace Modules\User;
 
-use App\AbstractValidator;
 use Respect\Validation\Validator as v;
 
 /**
  * Class UsersValidator
- *
- * @author bernard-ng, https://bernard-ng.github.io
- * @package App\Repositories\Validators
+ * @package Modules\User
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
-abstract class UsersValidator extends AbstractValidator
+abstract class UsersValidator
 {
 
     /**
