@@ -2,8 +2,7 @@
 
 
 use App\Enumerations\TablesEnum;
-use Phinx\Db\Adapter\MysqlAdapter;
-use Phinx\Migration\AbstractMigration;
+use Phinx\{Db\Adapter\MysqlAdapter, Migration\AbstractMigration};
 
 class CreateCategoriesTable extends AbstractMigration
 {
@@ -36,7 +35,7 @@ class CreateCategoriesTable extends AbstractMigration
     {
         $this->table(TablesEnum::CATEGORIES)
             ->addColumn('name', 'string', ['limit' => 255])
-            ->addColumn('slug', 'string')
+            ->addColumn('slug', 'string', ['limit' => 300])
             ->addColumn('description', 'string', MysqlAdapter::TEXT_LONG)
             ->addTimestamps()
             ->create();

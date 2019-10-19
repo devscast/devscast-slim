@@ -28,14 +28,13 @@ class FillPodcastsTable extends AbstractSeed
             $name = $faker->text(40);
             $table->insert([
                 'name' => $name,
-                'description' => $faker->text(300),
+                'body' => $faker->text(300),
                 'duration' => mt_rand(5, 50),
-                'thumb' => 'https://via.placeholder/200/300',
-                'audio' => 'https://lushitrap.com/assets/artists/bernard-ng/audio/Calm_lushitrapMUSIC.mp3',
+                'thumb_url' => 'https://via.placeholder/200/300',
+                'audio_url' => 'https://lushitrap.com/assets/artists/bernard-ng/audio/Calm_lushitrapMUSIC.mp3',
                 'slug' => $slugify->slugify($name),
                 'users_id' => 1,
                 'categories_id' => $category['id'],
-                'created_at' => date('Y:M:d H:i:s'),
                 'online' => mt_rand(0, 1)
             ]);
         }

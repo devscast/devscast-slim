@@ -2,8 +2,7 @@
 
 
 use App\Enumerations\TablesEnum;
-use Phinx\Db\Adapter\MysqlAdapter;
-use Phinx\Migration\AbstractMigration;
+use Phinx\{Db\Adapter\MysqlAdapter, Migration\AbstractMigration};
 
 class CreatePodcastsTable extends AbstractMigration
 {
@@ -35,13 +34,19 @@ class CreatePodcastsTable extends AbstractMigration
     public function change()
     {
         $this->table(TablesEnum::PODCASTS)
+            // Basic Information
             ->addColumn('name', 'string', ['limit' => 255])
             ->addColumn('slug', 'string', ['limit' => 300])
-            ->addColumn('description', 'string', ['limit' => MysqlAdapter::TEXT_LONG])
-            ->addColumn('duration', 'string', ['limit' => 20])
-            ->addColumn('thumb', 'string', ['limit' => 300, "null" => true])
-            ->addColumn('audio', 'string', ['limit' => 350, "null" => true])
+            ->addColumn('body', 'string', ['limit' => MysqlAdapter::TEXT_LONG])
+
+            // Audio or Video Podcast
+            ->addColumn('duration', 'string', ['limit' => 20, 'null' => true])
+            ->addColumn('thumb_url', 'string', ['limit' => 300, "null" => true])
+            ->addColumn('audio_url', 'string', ['limit' => 350, "null" => true])
+            ->addColumn('video_url', 'string', ['limit' => MysqlAdapter::TEXT_REGULAR, 'null' => true])
             ->addColumn('online', 'boolean', ['default' => 0])
+
+            // ForeignKey and Timestamps (updated_at & created_at)
             ->addColumn('categories_id', 'integer')
             ->addColumn('users_id', 'integer')
             ->addForeignKey('categories_id', 'categories')

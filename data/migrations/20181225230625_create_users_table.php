@@ -1,10 +1,8 @@
 <?php
 
 
-use App\Enumerations\RolesEnum;
-use App\Enumerations\TablesEnum;
-use Phinx\Db\Adapter\MysqlAdapter;
-use Phinx\Migration\AbstractMigration;
+use App\Enumerations\{RolesEnum, TablesEnum};
+use Phinx\{Db\Adapter\MysqlAdapter, Migration\AbstractMigration};
 
 class CreateUsersTable extends AbstractMigration
 {
@@ -36,6 +34,8 @@ class CreateUsersTable extends AbstractMigration
     public function change()
     {
         $this->table(TablesEnum::USERS)
+
+            // Basic information
             ->addColumn('name', 'string', ['limit' => 60])
             ->addColumn('email', 'string', ['limit' => 60])
             ->addColumn('password', 'string', ['limit' => 255])
@@ -43,6 +43,18 @@ class CreateUsersTable extends AbstractMigration
                 'limit' => MysqlAdapter::INT_TINY,
                 'default' => RolesEnum::USERS
             ])
+
+            // Social Media Links
+            ->addColumn('github_url', 'string', ['null' => true])
+            ->addColumn('twitter_url', 'string', ['null' => true])
+            ->addColumn('website_url', 'string', ['null' => true])
+
+            // Account Confirmation and Reset password
+            ->addColumn('account_confirmed_at', 'datetime', ['null' => true])
+            ->addColumn('account_confirmation_token', 'string', ['null' => true, 'limit' => 100])
+            ->addColumn('password_reset_at', 'datetime', ['null' => true])
+            ->addColumn('password_reset_token', 'string', ['null' => true, 'limit' => 100])
+            ->addTimestamps()
             ->create();
     }
 }
