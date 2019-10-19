@@ -17,7 +17,7 @@ abstract class PathsEnum
 {
     public const USERS = "users";
     public const PODCASTS = "podcasts";
-    public const NEWSLETTER = "newsletter";
-    public const CATEGORIES = "categories";
+    public const NEWSLETTER = "podcasts/newsletter";
+    public const CATEGORIES = "podcasts/category";
     public const FILES = "files";
 }

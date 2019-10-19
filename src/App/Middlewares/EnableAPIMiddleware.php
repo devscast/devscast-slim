@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-namespace API\Middlewares;
+namespace App\Middlewares;
 
 use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 use Slim\Http\StatusCode;
@@ -28,7 +28,7 @@ class EnableAPIMiddleware
      * EnableAPIMiddleware constructor.
      * @param bool $enabled
      */
-    public function __construct(bool $enabled)
+    public function __construct(bool $enabled = true)
     {
         $this->enabled = $enabled;
     }
