@@ -6,14 +6,13 @@
  * file that was distributed with the source code.
  */
 
-use App\Modules;
 use App\Application;
+use App\Enumerations\ModulesEnum;
 use Modules\Backend\DashboardController;
 use Framework\Middleware\LoggedInMiddleware;
 use Modules\Backend\Podcast\{PodcastsController,
     CategoriesController,
-    NewsletterController,
-    PodcastLinksController};
+    NewsletterController};
 use Modules\Backend\Controllers\FileBrowserController;
 use Modules\Backend\User\{AuthController, UsersController};
 
@@ -57,7 +56,6 @@ return function (Application $app) {
     // groups all routes by modules using the same url schema
     $crud($app, ModulesEnum::PODCASTS, PodcastsController::class, $adminMiddlewares);
     $crud($app, ModulesEnum::CATEGORIES, CategoriesController::class, $adminMiddlewares);
-    $crud($app, ModulesEnum::PODCASTLINKS, PodcastLinksController::class, $adminMiddlewares);
     $crud($app, ModulesEnum::USERS, UsersController::class, $adminMiddlewares);
 
 

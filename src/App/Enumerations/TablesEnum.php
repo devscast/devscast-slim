@@ -6,7 +6,7 @@
  * file that was distributed with the source code.
  */
 
-namespace App;
+namespace App\Enumerations;
 
 /**
  * Class TablesEnum

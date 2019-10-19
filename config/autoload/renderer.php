@@ -7,6 +7,7 @@
  */
 
 
+use App\Renderer\Twig\Extensions\QuoteTwigExtension;
 use Framework\Renderer\{Twig\Extensions\AssetsTwigExtension,
     Twig\Extensions\AuthTwigExtension,
     Twig\Extensions\FlashTwigExtension,

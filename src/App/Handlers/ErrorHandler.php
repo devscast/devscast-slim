@@ -89,7 +89,7 @@ class ErrorHandler extends AbstractError
      */
     protected function renderHtmlErrorMessage(Throwable $exception)
     {
-        $title = 'STEM ERROR';
+        $title = APP_NAME;
         if ($this->displayErrorDetails) {
             $html = '<p>The application could not run because of the following error:</p>';
             $html .= '<h2>Details</h2>';

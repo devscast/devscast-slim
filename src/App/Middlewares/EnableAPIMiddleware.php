@@ -8,15 +8,13 @@
 
 namespace API\Middlewares;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Response;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 use Slim\Http\StatusCode;
 
 /**
- * Class DefaultMiddleware
+ * Class EnableAPIMiddleware
  * @package API\Middlewares
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class EnableAPIMiddleware
 {
@@ -37,9 +35,10 @@ class EnableAPIMiddleware
 
     /**
      * @param ServerRequestInterface $request
-     * @param ResponseInterface|Response $response
+     * @param ResponseInterface $response
      * @param $next
      * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next): ResponseInterface
     {

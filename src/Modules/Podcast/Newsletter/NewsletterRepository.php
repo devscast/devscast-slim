@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast\Newsletter;
 
-use App\TablesEnum;
+use App\Enumerations\TablesEnum;
 use Framework\Database\AbstractRepository;
 
 /**

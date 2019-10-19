@@ -8,21 +8,22 @@
 
 namespace API\Resources;
 
-use App\Repositories\PodcastsRepository;
+use Modules\Podcast\PodcastsRepository;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class HomeResource
  * @package API\Resources
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class HomeResource extends Resource
 {
 
+    /**
+     * HomeResource constructor.
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
@@ -30,9 +31,9 @@ class HomeResource extends Resource
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {

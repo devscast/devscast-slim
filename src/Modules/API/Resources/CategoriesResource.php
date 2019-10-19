@@ -8,13 +8,14 @@
 
 namespace API\Resources;
 
-use App\Repositories\CategoriesRepository;
 use Psr\Container\ContainerInterface;
+use Modules\Podcast\Category\CategoriesRepository;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class CategoriesResource
  * @package API\Resources
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class CategoriesResource extends Resource
 {
@@ -30,9 +31,10 @@ class CategoriesResource extends Resource
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {

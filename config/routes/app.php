@@ -22,7 +22,7 @@ return function (Application $app): void {
 
     // route in frontend, this one is grouped to make it easy to add a global middleware
     $app->group('', function () {
-        $this->get('', [HomeController::class, 'index'])->setName('home');
+        $this->get('/', [HomeController::class, 'index'])->setName('home');
         $this->post('/newsletter', [NewsletterController::class, 'store'])->setName('newsletter.store');
         $this->get('/about', [PagesController::class, 'about'])->setName('about');
         $this->map(['GET', 'POST'], '/contact', [PagesController::class, 'contact'])->setName('contact');

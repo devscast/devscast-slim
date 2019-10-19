@@ -20,5 +20,7 @@ try {
     }
 } catch (Throwable | Exception $e) {
     Logger::error($e->getMessage(), [$e->getTraceAsString()]);
-    exit("App Error #01");
+    echo "<pre>";
+    var_dump($e->getMessage());
+    echo $e->getTraceAsString();
 }

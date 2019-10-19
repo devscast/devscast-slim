@@ -13,9 +13,8 @@ use Modules\Page\QuotesRepository;
 
 /**
  * Class QuoteTwigExtension
- *
+ * @package App\Renderer\Twig\Extensions
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package Modules\Page
  */
 class QuoteTwigExtension extends AbstractExtension implements GlobalsInterface
 {

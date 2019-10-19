@@ -8,20 +8,17 @@
 
 namespace API\Resources;
 
-use App\Repositories\QuotesRepository;
+use Modules\Page\QuotesRepository;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 use Slim\Http\StatusCode;
 
 /**
  * Class Resource
  * @package API\Resources
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
-class Resource extends \App\Resources\Resource
+class Resource
 {
 
     /**
@@ -52,22 +49,20 @@ class Resource extends \App\Resources\Resource
      */
     protected $quote;
 
-
     /**
      * Resource constructor.
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
-        parent::__construct($container);
         $this->container = $container;
         $this->quote = $container->get(QuotesRepository::class)->random();
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {

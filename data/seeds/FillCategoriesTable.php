@@ -1,7 +1,7 @@
 <?php
 
 
-use App\TablesEnum;
+use App\Enumerations\TablesEnum;
 use Phinx\Seed\AbstractSeed;
 
 class FillCategoriesTable extends AbstractSeed

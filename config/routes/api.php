@@ -11,16 +11,31 @@ use API\Resources\CategoriesResource;
 use API\Resources\HomeResource;
 use API\Resources\PodcastsResource;
 use App\Application;
-use App\Middlewares\JsonRequestMiddleware;
 
 /**
  * the routes of the API application
  * @param Application $app
- * @todo add API routes once available, grouped by resource type
+ * @todo Secure this API
  * @author bernard-ng <ngandubernard@gmail.com>
  */
 return function (Application $app) {
     $app->group("/api/v1/", function () {
-        // TODO : add API routes once available, grouped by resource type
-    })->add(EnableAPIMiddleware::class)->add(JsonRequestMiddleware::class);
+
+        $this->get('/home', [HomeResource::class, 'index'])->setName('api.v1.home');
+
+        // Podcasts Resource
+        $this->get('/podcasts', [PodcastsResource::class, 'index'])->setName('api.v1.podcasts');
+        $this->get(
+            '/podcasts/{slug:[a-z0-9-]+}-{id:[0-9]+}',
+            [PodcastsResource::class, 'index']
+        )->setName('api.v1.podcasts.show');
+
+        // Categories Resource
+        $this->get('/categories', [CategoriesResource::class, 'index'])->setName('api.v1.categories');
+        $this->get(
+            '/categories/{slug:[a-z0-9-]+}-{id:[0-9]+}',
+            [CategoriesResource::class, 'index']
+        )->setName('api.v1.categories.show');
+
+    })->add(EnableAPIMiddleware::class);
 };

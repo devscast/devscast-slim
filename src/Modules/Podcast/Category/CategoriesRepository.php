@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast\Category;
 
-use App\TablesEnum;
+use App\Enumerations\TablesEnum;
 use Framework\Database\AbstractRepository;
 
 /**

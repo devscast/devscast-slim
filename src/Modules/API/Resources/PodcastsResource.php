@@ -8,19 +8,15 @@
 
 namespace API\Resources;
 
-use App\Repositories\PodcastLinksRepository;
-use App\Repositories\PodcastsRepository;
-use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
 use Slim\Http\StatusCode;
+use Psr\Container\ContainerInterface;
+use Modules\Podcast\PodcastsRepository;
+use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 
 /**
  * Class PodcastsResource
  * @package API\Resources
- * @author bernard-ng, https://bernard-ng.github.io
+ * @author bernard-ng <ngandubernard@gmail.com>
  */
 class PodcastsResource extends Resource
 {
@@ -37,9 +33,9 @@ class PodcastsResource extends Resource
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -56,9 +52,9 @@ class PodcastsResource extends Resource
     }
 
     /**
-     * @param ServerRequestInterface|Request $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return ResponseInterface
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
@@ -73,7 +69,6 @@ class PodcastsResource extends Resource
                     "last" => $this->repository->latest(3),
                     "next" => $this->repository->next($podcast->id),
                     "previous" => $this->repository->previous($podcast->id),
-                    "links" => $this->container->get(PodcastLinksRepository::class)->get($id)
                 ]
             ];
             return $response->withJson($data, $this->status);

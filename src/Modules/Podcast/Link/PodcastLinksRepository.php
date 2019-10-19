@@ -8,7 +8,7 @@
 
 namespace Modules\Podcast\Link;
 
-use App\TablesEnum;
+use App\Enumerations\TablesEnum;
 use Exception;
 use Framework\Database\AbstractRepository;
 use Framework\Logger;
