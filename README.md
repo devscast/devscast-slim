@@ -58,6 +58,7 @@ make sure you have provided default IDs for the default administrator
 
 ```bash
 $ ./vendor/bin/phinx migrate
+$ ./vendor/bin/phinx seed:run -s FillUsersTable
 $ ./vendor/bin/phinx seed:run
 ```
 

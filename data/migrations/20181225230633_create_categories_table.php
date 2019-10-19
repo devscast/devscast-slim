@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Enumerations\TablesEnum;
 use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 
@@ -33,7 +34,7 @@ class CreateCategoriesTable extends AbstractMigration
      */
     public function change()
     {
-        $this->table('categories')
+        $this->table(TablesEnum::CATEGORIES)
             ->addColumn('name', 'string', ['limit' => 255])
             ->addColumn('slug', 'string')
             ->addColumn('description', 'string', MysqlAdapter::TEXT_LONG)

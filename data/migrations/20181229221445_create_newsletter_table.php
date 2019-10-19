@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Enumerations\TablesEnum;
 use Phinx\Migration\AbstractMigration;
 
 class CreateNewsletterTable extends AbstractMigration
@@ -32,7 +33,7 @@ class CreateNewsletterTable extends AbstractMigration
      */
     public function change()
     {
-        $this->table('newsletter')
+        $this->table(TablesEnum::NEWSLETTER)
             ->addColumn('email', 'string', ['limit' => 60])
             ->addTimestamps()
             ->create();

@@ -2,6 +2,7 @@
 
 
 use App\Enumerations\RolesEnum;
+use App\Enumerations\TablesEnum;
 use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 
@@ -34,13 +35,13 @@ class CreateUsersTable extends AbstractMigration
      */
     public function change()
     {
-        $this->table('users')
+        $this->table(TablesEnum::USERS)
             ->addColumn('name', 'string', ['limit' => 60])
             ->addColumn('email', 'string', ['limit' => 60])
             ->addColumn('password', 'string', ['limit' => 255])
             ->addColumn('role', 'integer', [
                 'limit' => MysqlAdapter::INT_TINY,
-                'default' => ROLES::USERS
+                'default' => RolesEnum::USERS
             ])
             ->create();
     }

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Enumerations\TablesEnum;
 use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 
@@ -33,7 +34,7 @@ class CreatePodcastsTable extends AbstractMigration
      */
     public function change()
     {
-        $this->table('podcasts')
+        $this->table(TablesEnum::PODCASTS)
             ->addColumn('name', 'string', ['limit' => 255])
             ->addColumn('slug', 'string', ['limit' => 300])
             ->addColumn('description', 'string', ['limit' => MysqlAdapter::TEXT_LONG])
