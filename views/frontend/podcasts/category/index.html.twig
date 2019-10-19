@@ -1,17 +1,9 @@
 {% extends '@layouts/main.html.twig' %}
 
 {% block content %}
-    <header class="page-header" style="background-image: url('{{ base_url() }}/assets/background.jpg')">
+    <header class="page-header" style="background-image: url('{{ images('console.jpg') }}')">
         <div class="page-header-inner">
             <div class="container">
-
-                {# ===== BREADCRUMB ===== #}
-                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
-                    <li itemprop="itemListElement"><a href="{{ path_for('categories.index') }}">Categories</a></li>
-                </ol>
-
-                {# ===== PAGE HEADER CONTENT ===== #}
                 <div class="page-header-content text-center">
                     <h2>Categories</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -29,7 +21,7 @@
                             <div class="podcast-card boxed">
                                 <figure class="podcast-image categories">
                                     <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
-                                        <img src="https://via.placeholder.com" alt="{{ c.name }}" title="{{ c.name }}" />
+                                        <img src="https://via.placeholder.com" alt="{{ c.name }}" title="{{ c.name }}"/>
                                     </a>
                                 </figure>
                                 <div class="podcast-content">
@@ -49,8 +41,6 @@
                         </div>
                     {% endfor %}
 
-
-                    {# ===== PAGINATION ===== #}
                     <div class="col-sm-12 text-center mb-50">
                         <ol class="pagination">
                             <li><a href="#">1</a></li>

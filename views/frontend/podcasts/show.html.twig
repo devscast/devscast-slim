@@ -12,31 +12,36 @@
         </div>
     </header>
 
-    <div class="podcast-player" style="margin: 50px 0;">
-        <div class="podcast-player-inner">
-            <div class="container">
-                <audio src="{{ podcast.audioUrl }}"></audio>
+    {% if podcast.audioUrl %}
+        <div class="podcast-player mt-50 mb-50">
+            <div class="podcast-player-inner">
+                <div class="container">
+                    <audio src="{{ podcast.audioUrl }}"></audio>
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 
-    {# ===== PODCAST META ===== #}
     <div class="podcast-meta-element">
         <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.createdAt | date('M d, Y') }}</span>
-        <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
-        <a class="podcast-meta-item" href="{{ path_for('categories.show',{id: podcast.categoriesId, slug: podcast.categorySlug}) }}"><i class="fa fa-tag"></i> {{ podcast.categoryName }}</a>
-        <a class="podcast-meta-item" href="{{ podcast.audio }}"><i class="fa fa-download"></i> Download (MP3)</a>
+        {% if podcast.duration %}
+            <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
+        {% endif %}
+        {% if podcast.audioUrl %}
+            <a class="podcast-meta-item" href="{{ podcast.audioUrl }}"><i class="fa fa-download"></i> Download (audio)</a>
+        {% endif %}
+        <a class="podcast-meta-item" href="{{ path_for('categories.show',{id: podcast.categoriesId, slug: podcast.categorySlug}) }}">
+            <i class="fa fa-tag"></i> {{ podcast.categoryName }}
+        </a>
     </div>
 
-    <div class="section-negative">
+    <section class="section-negative">
         <div class="container">
             <div class="row mt-70 mb-50">
-                <div class="col-md-8 mb-50">
-                    <div class="page-content">
+                <div class="col-md-10 mb-50">
+                    <main class="page-content">
                         {{ podcast.body }}
-                    </div>
-
-                    {# ===== PREV AND NEXT ===== #}
+                    </main>
                     <div class="page-pagination">
                         {% if previous %}
                             <a href="{{ path_for('podcasts.show', {id: previous.id, slug: previous.slug}) }}"
@@ -56,10 +61,7 @@
                         {% endif %}
                     </div>
                 </div>
-
-
-                {# ===== SIDEBAR ===== #}
-                <div class="col-md-4">
+                <aside class="col-md-2">
                     <div class="page-sidebar">
                         <div class="sidebar-widget">
                             <h2 class="title-separator">Share this podcast</h2>
@@ -82,28 +84,11 @@
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </li>
-                                <li class="social-item email">
-                                    <a href="mailto:?&subject={{ constant('APP_NAME') }}" target="_blank">
-                                        <i class="fa fa-envelope"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {# ===== TAGS ===== #}
-                        <div class="sidebar-widget">
-                            <h2 class="title-separator">Tags</h2>
-                            <ul class="tag-list">
-                                <li class="tag-item"><a href="#" rel="tag">Podcast</a></li>
-                                <li class="tag-item"><a href="#" rel="tag">Vacation</a></li>
-                                <li class="tag-item"><a href="#" rel="tag">Photography</a></li>
-                                <li class="tag-item"><a href="#" rel="tag">Gallery</a></li>
-                                <li class="tag-item"><a href="#" rel="tag">Lifestyle</a></li>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

@@ -11,36 +11,29 @@ namespace Modules\Podcast\Category;
 
 use App\AbstractController;
 use App\Enumerations\ModulesEnum;
+use App\Enumerations\PathsEnum;
 use Psr\Container\ContainerInterface;
 use Modules\Podcast\PodcastsRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Class CategoriesController
- *
+ * @property mixed|CategoriesRepository categoriesRepository
+ * @property mixed|PodcastsRepository podcastsRepository
+ * @package Modules\Podcast\Category
  * @author bernard-ng <ngandubernard@gmail.com>
- * @package Modules\Category
  */
 class CategoriesController extends AbstractController
 {
 
-    /**
-     * @var CategoriesRepository|mixed
-     */
-    private $categories;
-
-    /**
-     * @var PodcastsRepository|mixed
-     */
-    private $podcasts;
-
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $module = ModulesEnum::CATEGORIES;
+
+    /** @var string  */
+    private $path = PathsEnum::CATEGORIES;
 
     /**
      * CategoriesController constructor.
@@ -50,54 +43,53 @@ class CategoriesController extends AbstractController
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
-        $this->categories = $container->get(CategoriesRepository::class);
-        $this->podcasts = $container->get(PodcastsRepository::class);
+        $this->categoriesRepository = $container->get(CategoriesRepository::class);
+        $this->podcastsRepository = $container->get(PodcastsRepository::class);
     }
 
     /**
      * listing all categories
-     *
+     * @todo paginate Query
      * @param ServerRequestInterface $request
-     * @param ResponseInterface|Response $response
-     * @return ResponseInterface|Response
+     * @param ResponseInterface $response
+     * @return ResponseInterface
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $categories = $this->categories->all();
+        $categories = $this->categoriesRepository->all();
         return $this->renderer->render(
             $response,
-            "@frontend/{$this->module}/index.html.twig",
+            "@frontend/{$this->path}/index.html.twig",
             compact('categories')
         );
     }
 
-
     /**
      * Show a particular categories, thanks to an id
-     *
+     * @todo paginate Query
      * @param ServerRequestInterface $request
      * @param ResponseInterface|Response $response
      * @return ResponseInterface|Response
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $id = $request->getAttribute('route')->getArgument('id');
-        $slug = $request->getAttribute('route')->getArgument('slug');
-        $category = $this->categories->find($id);
+        $id = intval($request->getAttribute('route')->getArgument('id'));
+        $slug = strval($request->getAttribute('route')->getArgument('slug'));
+        $category = $this->categoriesRepository->find($id);
 
         if ($category) {
-            $podcasts = $this->podcasts->findWith('categories_id', $id);
+            $podcasts = $this->podcastsRepository->findWith('categories_id', $id);
             $data = compact('category', 'podcasts');
 
             if ($category->slug == $slug) {
                 return $this->renderer->render(
                     $response,
-                    "@frontend/{$this->module}/show.html.twig",
+                    "@frontend/{$this->path}/show.html.twig",
                     $data
                 );
             }
             return $this->redirect('categories.show', ['id' => $category->id, 'slug' => $category->slug]);
         }
-        return $response->withStatus(404);
+        return $response->withStatus(StatusCode::HTTP_NOT_FOUND);
     }
 }
