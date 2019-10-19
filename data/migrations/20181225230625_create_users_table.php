@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Roles;
+use App\Enumerations\RolesEnum;
 use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 

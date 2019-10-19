@@ -8,8 +8,8 @@
 
 namespace Modules\Backend\User;
 
-use App\Modules;
-use App\Paths;
+use App\Enumerations\ModulesEnum;
+use App\Enumerations\PathsEnum;
 use Modules\User\UsersValidator;
 use Modules\User\UsersRepository;
 use Psr\Container\ContainerInterface;

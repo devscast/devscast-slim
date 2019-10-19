@@ -8,8 +8,8 @@
 
 namespace Modules\Backend\Podcast;
 
-use App\Modules;
-use App\Paths;
+use App\Enumerations\ModulesEnum;
+use App\Enumerations\PathsEnum;
 use Slim\Http\StatusCode;
 use Awurth\SlimValidation\Validator;
 use Framework\Uploader\AudioUploader;

@@ -8,14 +8,13 @@
 
 namespace Modules\Podcast;
 
-use App\Modules;
+use App\Enumerations\ModulesEnum;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
 use App\AbstractController;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Modules\Podcast\Link\PodcastLinksRepository;
 
 /**
  * Class PodcastsController
@@ -81,8 +80,7 @@ class PodcastsController extends AbstractController
                 $last = $this->podcasts->latest(3);
                 $next = $this->podcasts->next($podcast->id);
                 $previous = $this->podcasts->previous($podcast->id);
-                $links = $this->container->get(PodcastLinksRepository::class)->get($id);
-                $data = compact('podcast', 'links', 'last', 'next', 'previous');
+                $data = compact('podcast', 'last', 'next', 'previous');
                 return $this->renderer->render($response, "@frontend/{$this->module}/show.html.twig", $data);
             }
             return $this->redirect('podcasts.show', ['slug' => $podcast->slug, 'id' => $podcast->id]);

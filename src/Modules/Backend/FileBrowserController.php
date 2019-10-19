@@ -9,7 +9,7 @@
 
 namespace Modules\Backend\Controllers;
 
-use App\Modules;
+use App\Enumerations\ModulesEnum;
 use Framework\Logger;
 use Slim\Http\Request;
 use Slim\Http\StatusCode;

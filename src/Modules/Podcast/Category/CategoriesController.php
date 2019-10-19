@@ -9,7 +9,7 @@
 namespace Modules\Podcast\Category;
 
 use App\AbstractController;
-use App\Modules;
+use App\Enumerations\ModulesEnum;
 use Psr\Container\ContainerInterface;
 use Modules\Podcast\PodcastsRepository;
 use Psr\Http\Message\ResponseInterface;

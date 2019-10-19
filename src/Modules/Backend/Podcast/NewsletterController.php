@@ -8,8 +8,8 @@
 
 namespace Modules\Backend\Podcast;
 
-use App\Modules;
-use App\Paths;
+use App\Enumerations\ModulesEnum;
+use App\Enumerations\PathsEnum;
 use Modules\Backend\AbstractCRUDController;
 use Modules\Podcast\Newsletter\NewsletterRepository;
 use Modules\Podcast\Newsletter\NewsletterValidator;
