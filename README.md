@@ -1,81 +1,85 @@
 # devs-cast.com
-
-the goal of the project is to create a new way to learn and stay informed about the evolution of technology ...
-and this thanks to the audio support, which starts to take the air because listen is less work than read then devscast will be an application or in other words an online radio where will speak only development and technology
-
-the challenge we have is to give this radio intelligence to a website
+devs-cast.com, the idea behind it is to have a platform of podcasts in web devs 
+and articles on web devs (javascript) and algorithm in general, 
+the platform also provides quotes in the fields of software programming and algorithm challenge to improve your own level in programming
 
 ## Get Started
-devscast is opensource and is programmed in PHP 
-we decided to implement the PSR-7 (https://www.php-fig.org/psr/psr-7) 
-based on the mini-framework Slim (http: //www.slimframework.com/)
+devscast is open source under a license that prevents commercial use of the source code, 
+the application is made with PHP based on the mini-framework slim in its version 3 
 
-## 1 installation
-#### 1.1 fork or clone the project
+* Slim (http: //www.slimframework.com/)
+* PSR-7 (https://www.php-fig.org/psr/psr-7) 
+
+#### requirements
+* PHP >= 7.2 (composer >= 1.8)
+* nodejs >= 12.0
+* npm >= 6.11 or yarn >= 1.19
+* mysql or mariaDB
+
+#### Installation
 ```bash
 $ git clone https://github.com/itotafrica/devscast-backend devscast
-```
-
-#### 1.2 install dependencies
-```bash
 $ cd devscast
 $ composer install
 ```
 
-#### 1.3 Create a database configuration and run migrations and seeding
-create your own database configuration by creating a ``settings.local.php`` in the ``config/``
-your configuration should match the ``settings.local.php.exemple`` then run migrations and seeding
+#### App and Database configuration
+create an empty database then configure the connection to it in the ```.env``` file (do not version it) that you create based on the ```.env.example```
+
+it is also important to define the IDs of a default administrator who will be created when seeding the database
+
+```dotenv
+DEFAULT_ADMIN_NAME='admin'
+DEFAULT_ADMIN_EMAIL='admin@example.org'
+DEFAULT_ADMIN_PASS='123456'
+
+DATABASE_NAME = 'devcast'
+DATABASE_HOST = 'localhost'
+DATABASE_USERNAME = 'root'
+DATABASE_PASSWORD = 'root'
+DATABASE_PORT = '3306'
+DATABASE_CHARSET = 'utf8'
+DATABASE_ADAPTER = 'mysql'
+DATABASE_MIGRATION_TABLE = 'phinxlog'
+```
+after configuring the database, make sure that the application is in development mode, 
+this will allow you to see and understand potential launch errors
+```dotenv
+APP_ENV = 'dev'
+APP_DEBUG = 'true'
+```
+**App Error #01**, when you have this error when starting the application your first reflex would be to look at the log file
+corresponding to the current date.
+```/data/log/[current_date].log```
+
+#### Database Migration and Seeding
+after configuring the application and database, you can run migrations and seedings, 
+make sure you have provided default IDs for the default administrator
+
 ```bash
-$ ./vendor/bin/phinx migrate -e development
-$ ./vendor/bin/phinx seed:run -e development
+$ ./vendor/bin/phinx migrate
+$ ./vendor/bin/phinx seed:run
 ```
 
-#### 1.4 Assets compilation
-you can use the webpack devserver to compile assets resources or directly use the sass compliator
+for more information on the migration process here is a link to the phinx documentation :
+[phinx docs](http://docs.phinx.org/en/latest/commands.html)
+
+#### Running the application
+you can use an apache or nginx server, the production application (devs-cast.com) uses apache as server, you can also use the internal PHP server
+
 ```bash
-$ yarn install
-$ yarn dev
+$ php -S localhost:8080 -t public router.php
 ```
-or
-```bash
-$ sass resources/sass/style.scss:public/assets/app.css --watch --style=compressed
-```
+open your browser and access to http://localhost:8080
 
-#### 1.5 Run the project
-you can use the php internal server or an ``apache`` server. the devs-cast.com host is an apache server
-```bash
-$ php -S localhost:8080 -t public
-```
+you should see a very ugly page because we haven't compiled the assets yet for that, make sure you have installed the **nodejs**
 
-## 2 Contributing
-
-fork the project and send us pull requests, or request to join the devscast internal team to : coderngandu@gmail.com
-
-#### 2.1 contributing process
-actually you don't write **unit tests**, 
-* you should test your code manually before pulling a request
-* you should lint your code with ``$ ./vendor/bin/phpcs`` and fix error before a commit
-* you should generate a docs for all change you've done in a separate commit
-
-#### 2.2 development tools
-lint your code and fix errors the linter configuration is ``phpcs.xml``
-```bash
-$ ./vendor/bin/phpcs -s
-$ ./vendor/bin/phpcbf
+to compile the assets:
+```dotenv
+$ npm install
+$ npx gulp  # or node gulpfile.js
 ```
 
-generate API documentation with sami (https://github.com/FriendsOfPHP/Sami)
-```bash
-$ php sami.phar update docs.config.php
-```
+**And here we go...**
 
-generate API (OpenApi specification) with swagger (https://github.com/zircote/swagger-php)
-```bash
-$ composer swagger
-```
-
-## 3 Requirements
-* PHP >= 7.2.*
-* Nodejs >= 8.*
-* Webpack >= 4.*
-* sass 1.14.3 (dart2js 2.0.0)
+**from here you have enough information to figure out how to get around on your own.**
