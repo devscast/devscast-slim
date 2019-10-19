@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -7,9 +8,10 @@
  */
 
 use App\Application;
-use Framework\Middleware\{EnableCORSMiddleware, HttpMethodMiddleware};
-use Psr\Http\Message\{RequestInterface, ResponseInterface};
-
+use Framework\Middleware\EnableCORSMiddleware;
+use Framework\Middleware\HttpMethodMiddleware;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * registration of global middlewares

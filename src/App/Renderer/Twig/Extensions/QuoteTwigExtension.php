@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -8,7 +9,8 @@
 
 namespace App\Renderer\Twig\Extensions;
 
-use Twig\Extension\{AbstractExtension, GlobalsInterface};
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 use Modules\Page\QuotesRepository;
 
 /**

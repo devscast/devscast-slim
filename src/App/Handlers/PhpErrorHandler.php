@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -43,7 +44,13 @@ class PhpErrorHandler extends AbstractError
         $this->renderer = $container->get(RendererInterface::class);
     }
 
-
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param $exception
+     * @return ResponseInterface
+     * @author bernard-ng <ngandubernard@gmail.com>
+     */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $exception)
     {
         $contentType = $this->determineContentType($request);

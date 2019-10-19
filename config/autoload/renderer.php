@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -6,15 +7,15 @@
  * file that was distributed with the source code.
  */
 
-
 use App\Renderer\Twig\Extensions\QuoteTwigExtension;
-use Framework\Renderer\{Twig\Extensions\AssetsTwigExtension,
-    Twig\Extensions\AuthTwigExtension,
-    Twig\Extensions\FlashTwigExtension,
-    Twig\Extensions\FormTwigExtension,
-    Twig\Extensions\MetaTwigExtension};
+use Framework\Renderer\Twig\Extensions\AssetsTwigExtension;
+use Framework\Renderer\Twig\Extensions\AuthTwigExtension;
+use Framework\Renderer\Twig\Extensions\FlashTwigExtension;
+use Framework\Renderer\Twig\Extensions\FormTwigExtension;
+use Framework\Renderer\Twig\Extensions\MetaTwigExtension;
 use nochso\HtmlCompressTwig\Extension;
 use Twig\Extensions\TextExtension;
+
 use function DI\get;
 
 return [

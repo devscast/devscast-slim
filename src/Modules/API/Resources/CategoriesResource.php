@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -11,7 +12,8 @@ namespace API\Resources;
 use App\Enumerations\ModulesEnum;
 use Psr\Container\ContainerInterface;
 use Modules\Podcast\Category\CategoriesRepository;
-use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class CategoriesResource

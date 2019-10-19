@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -36,7 +37,10 @@ return function (Application $app): void {
         // resource routes, listing and display Categories
         $this->group('/categories', function () {
             $this->get('', [CategoriesController::class, 'index'])->setName('categories.index');
-            $this->get('/{slug:[a-z0-9-]+}-{id:[0-9]+}', [CategoriesController::class, 'show'])->setName('categories.show');
+            $this->get(
+                '/{slug:[a-z0-9-]+}-{id:[0-9]+}',
+                [CategoriesController::class, 'show']
+            )->setName('categories.show');
         });
     });
 };

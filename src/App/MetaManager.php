@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -77,14 +78,14 @@ class MetaManager implements ArrayAccess
      */
     public function __construct()
     {
-        $this->meta = (new class () extends JsonReader
-        {
+        $this->meta = new class () extends JsonReader {
             public function __construct(string $file = ROOT . "/data/meta.json")
             {
                 parent::__construct($file);
                 $this->file = $file;
             }
-        })->getData();
+        };
+        $this->meta = $this->meta->getData();
     }
 
     /**

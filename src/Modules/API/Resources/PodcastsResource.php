@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -12,7 +13,8 @@ use App\Enumerations\ModulesEnum;
 use Slim\Http\StatusCode;
 use Psr\Container\ContainerInterface;
 use Modules\Podcast\PodcastsRepository;
-use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class PodcastsResource

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -8,7 +9,8 @@
 
 namespace App;
 
-use Framework\{Renderer\RendererInterface, Session\FlashMessage};
+use Framework\Renderer\RendererInterface;
+use Framework\Session\FlashMessage;
 use Slim\Router;
 use Psr\Container\ContainerInterface;
 
@@ -19,6 +21,8 @@ use Psr\Container\ContainerInterface;
  */
 class AbstractController
 {
+    use RouterAwareHelper;
+
     /**
      * @var ContainerInterface
      */
@@ -43,8 +47,6 @@ class AbstractController
      * @var FlashMessage
      */
     protected $flash;
-
-    use RouterAwareHelper;
 
     /**
      * Controller constructor.

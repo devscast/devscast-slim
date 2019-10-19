@@ -1,8 +1,8 @@
 <?php
 
-
 use App\Enumerations\TablesEnum;
-use Phinx\{Db\Adapter\MysqlAdapter, Migration\AbstractMigration};
+use Phinx\Db\Adapter\MysqlAdapter;
+use Phinx\Migration\AbstractMigration;
 
 class CreatePodcastsTable extends AbstractMigration
 {

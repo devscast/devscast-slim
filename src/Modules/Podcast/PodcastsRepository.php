@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -11,7 +12,8 @@ namespace Modules\Podcast;
 use App\Enumerations\TablesEnum;
 use Exception;
 use Framework\Logger;
-use Framework\Database\{AbstractRepository, Mysql\Builder\Queries\Select};
+use Framework\Database\AbstractRepository;
+use Framework\Database\Mysql\Builder\Queries\Select;
 
 /**
  * Class PodcastsRepository

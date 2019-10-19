@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -9,8 +10,10 @@
 namespace Framework\Renderer\Twig\Extensions;
 
 use Framework\Logger;
-use Twig\{Extension\AbstractExtension, TwigFunction};
-use Slim\{Http\Uri, Http\Environment};
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+use Slim\Http\Uri;
+use Slim\Http\Environment;
 use InvalidArgumentException;
 
 /**

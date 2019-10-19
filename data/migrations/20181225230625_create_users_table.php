@@ -1,8 +1,9 @@
 <?php
 
-
-use App\Enumerations\{RolesEnum, TablesEnum};
-use Phinx\{Db\Adapter\MysqlAdapter, Migration\AbstractMigration};
+use App\Enumerations\RolesEnum;
+use App\Enumerations\TablesEnum;
+use Phinx\Db\Adapter\MysqlAdapter;
+use Phinx\Migration\AbstractMigration;
 
 class CreateUsersTable extends AbstractMigration
 {

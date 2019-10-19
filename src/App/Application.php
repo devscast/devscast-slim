@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  *
@@ -11,9 +12,12 @@
 namespace App;
 
 use App\Handlers\NotFoundHandler;
-use DI\{Bridge\Slim\App, ContainerBuilder};
+use DI\Bridge\Slim\App;
+use DI\ContainerBuilder;
 use Dotenv\Dotenv;
-use Zend\ConfigAggregator\{ArrayProvider, ConfigAggregator, PhpFileProvider};
+use Zend\ConfigAggregator\ArrayProvider;
+use Zend\ConfigAggregator\ConfigAggregator;
+use Zend\ConfigAggregator\PhpFileProvider;
 
 /**
  * Class Application

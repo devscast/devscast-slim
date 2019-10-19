@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -11,8 +12,10 @@ namespace Framework\Middleware;
 use Slim\Router;
 use App\RouterAwareHelper;
 use Slim\Interfaces\RouterInterface;
-use Framework\{Logger, Auth\AuthInterface};
-use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
+use Framework\Logger;
+use Framework\Auth\AuthInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Class LoggedInMiddleware
@@ -22,7 +25,6 @@ use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
  */
 class LoggedInMiddleware
 {
-
     use RouterAwareHelper;
 
     /** @var AuthInterface */

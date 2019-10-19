@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -42,6 +43,6 @@ class NotImplementedHandler
     {
         $refererHeader = $request->getHeader('HTTP_REFERER');
         $referer = ($refererHeader) ? array_shift($refererHeader) : "/";
-        return $this->renderer->render($response,"@errors/501.html.twig", compact('referer'));
+        return $this->renderer->render($response, "@errors/501.html.twig", compact('referer'));
     }
 }

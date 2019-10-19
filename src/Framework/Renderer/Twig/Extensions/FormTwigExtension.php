@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -9,7 +10,8 @@
 namespace Framework\Renderer\Twig\Extensions;
 
 use Slim\Csrf\Guard;
-use Twig\Extension\{AbstractExtension, GlobalsInterface};
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 use Twig\TwigFunction;
 
 /**

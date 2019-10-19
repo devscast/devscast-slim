@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -10,11 +11,12 @@ use App\Application;
 use App\Enumerations\ModulesEnum;
 use Modules\Backend\DashboardController;
 use Framework\Middleware\LoggedInMiddleware;
-use Modules\Backend\Podcast\{PodcastsController,
-    CategoriesController,
-    NewsletterController};
+use Modules\Backend\Podcast\PodcastsController;
+use Modules\Backend\Podcast\CategoriesController;
+use Modules\Backend\Podcast\NewsletterController;
 use Modules\Backend\Controllers\FileBrowserController;
-use Modules\Backend\User\{AuthController, UsersController};
+use Modules\Backend\User\AuthController;
+use Modules\Backend\User\UsersController;
 
 /**
  * the routes of the backend application
@@ -40,7 +42,9 @@ return function (Application $app) {
             $this->delete('/{id:[0-9]+}', [$controller, 'delete'])->setName("admin.{$module}.delete");
         });
 
-        foreach ($middleware as $m) $group->add($m);
+        foreach ($middleware as $m) {
+            $group->add($m);
+        }
         return $app;
     };
 
@@ -73,8 +77,17 @@ return function (Application $app) {
 
         // file system, display and manual deletion
         $this->group('/files', function () {
-            $this->map(['GET', 'DELETE'], '/audio', [FileBrowserController::class, 'audio'])->setName('admin.files.audio');
-            $this->map(['GET', 'DELETE'], '/images', [FileBrowserController::class, 'images'])->setName('admin.files.images');
+            $this->map(
+                ['GET', 'DELETE'],
+                '/audio',
+                [FileBrowserController::class, 'audio']
+            )->setName('admin.files.audio');
+
+            $this->map(
+                ['GET', 'DELETE'],
+                '/images',
+                [FileBrowserController::class, 'images']
+            )->setName('admin.files.images');
         });
     })->add(LoggedInMiddleware::class);
 };

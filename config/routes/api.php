@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -6,9 +7,11 @@
  * file that was distributed with the source code.
  */
 
-
-use App\{Middlewares\EnableAPIMiddleware, Application};
-use API\Resources\{CategoriesResource, HomeResource, PodcastsResource};
+use App\Middlewares\EnableAPIMiddleware;
+use App\Application;
+use API\Resources\CategoriesResource;
+use API\Resources\HomeResource;
+use API\Resources\PodcastsResource;
 
 /**
  * the routes of the API application
@@ -34,6 +37,5 @@ return function (Application $app) {
             'categories/{slug:[a-z0-9-]+}-{id:[0-9]+}',
             [CategoriesResource::class, 'index']
         )->setName('api.v1.categories.show');
-
     })->add(EnableAPIMiddleware::class);
 };

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -8,7 +9,8 @@
 
 namespace Framework;
 
-use Monolog\{Handler\StreamHandler, Processor\UidProcessor};
+use Monolog\Handler\StreamHandler;
+use Monolog\Processor\UidProcessor;
 
 /**
  * Class Logger
@@ -29,19 +31,19 @@ abstract class Logger
     /**
      * Detailed debug information
      */
-    const DEBUG = 100;
+    public const DEBUG = 100;
 
     /**
      * Interesting events
      *
      * Examples: User logs in, SQL logs.
      */
-    const INFO = 200;
+    public const INFO = 200;
 
     /**
      * Uncommon events
      */
-    const NOTICE = 250;
+    public const NOTICE = 250;
 
     /**
      * Exceptional occurrences that are not errors
@@ -49,19 +51,19 @@ abstract class Logger
      * Examples: Use of deprecated APIs, poor use of an API,
      * undesirable things that are not necessarily wrong.
      */
-    const WARNING = 300;
+    public const WARNING = 300;
 
     /**
      * Runtime errors
      */
-    const ERROR = 400;
+    public const ERROR = 400;
 
     /**
      * Critical conditions
      *
      * Example: Application component unavailable, unexpected exception.
      */
-    const CRITICAL = 500;
+    public const CRITICAL = 500;
 
     /**
      * Action must be taken immediately
@@ -69,12 +71,12 @@ abstract class Logger
      * Example: Entire website down, database unavailable, etc.
      * This should trigger the SMS alerts and wake you up.
      */
-    const ALERT = 550;
+    public const ALERT = 550;
 
     /**
      * Urgent alert.
      */
-    const EMERGENCY = 600;
+    public const EMERGENCY = 600;
 
 
     /**
@@ -105,8 +107,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function debug($message, array $context = [])
@@ -119,8 +121,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function info($message, array $context = [])
@@ -133,8 +135,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function notice($message, array $context = [])
@@ -147,8 +149,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function warn($message, array $context = [])
@@ -161,8 +163,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function warning($message, array $context = [])
@@ -175,8 +177,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function err($message, array $context = [])
@@ -189,8 +191,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function error($message, array $context = [])
@@ -203,8 +205,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function crit($message, array $context = [])
@@ -217,8 +219,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function critical($message, array $context = [])
@@ -231,8 +233,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function alert($message, array $context = [])
@@ -245,8 +247,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function emerg($message, array $context = [])
@@ -259,8 +261,8 @@ abstract class Logger
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param  string $message The log message
-     * @param  array  $context The log context
+     * @param string $message The log message
+     * @param array $context The log context
      * @return bool   Whether the record has been processed
      */
     public static function emergency($message, array $context = [])

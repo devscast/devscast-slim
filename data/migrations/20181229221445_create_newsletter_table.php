@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Enumerations\TablesEnum;
 use Phinx\Migration\AbstractMigration;
 

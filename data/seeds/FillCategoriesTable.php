@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Enumerations\TablesEnum;
 use Phinx\Seed\AbstractSeed;
 
@@ -20,7 +19,7 @@ class FillCategoriesTable extends AbstractSeed
         $table = $this->table(TablesEnum::CATEGORIES);
         $slugify = new Cocur\Slugify\Slugify();
 
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $name = $faker->name;
             $table->insert([
                'name' => $name,

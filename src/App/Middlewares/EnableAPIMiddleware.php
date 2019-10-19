@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -8,7 +9,8 @@
 
 namespace App\Middlewares;
 
-use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\StatusCode;
 
 /**
@@ -47,7 +49,7 @@ class EnableAPIMiddleware
         }
 
         return $response->withJson([
-            "message" => "Devscast API is unavailable for the moment",
+            "message" => sprintf("%s API is unavailable for the moment", APP_NAME),
             "status" => StatusCode::HTTP_SERVICE_UNAVAILABLE
         ], StatusCode::HTTP_SERVICE_UNAVAILABLE);
     }

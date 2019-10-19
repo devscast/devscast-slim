@@ -1,7 +1,7 @@
 <?php
 
-
-use App\Enumerations\{RolesEnum, TablesEnum};
+use App\Enumerations\RolesEnum;
+use App\Enumerations\TablesEnum;
 use Phinx\Seed\AbstractSeed;
 
 class CreateDefaultAdmin extends AbstractSeed

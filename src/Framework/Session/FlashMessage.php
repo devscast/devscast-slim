@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -60,7 +61,7 @@ class FlashMessage
      */
     public function success(string $message): void
     {
-       $this->addMessage('success', $message);
+        $this->addMessage('success', $message);
     }
 
     /**

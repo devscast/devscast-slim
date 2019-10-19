@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of DevsCast.
  * (c) Bernard Ng <ngandubernard@gmail.com>
@@ -7,17 +8,27 @@
  */
 
 use App\Authenticators\DatabaseAuthenticator;
-use App\Handlers\{ErrorHandler, NotAllowedHandler, NotFoundHandler, PhpErrorHandler};
+use App\Handlers\ErrorHandler;
+use App\Handlers\NotAllowedHandler;
+use App\Handlers\NotFoundHandler;
+use App\Handlers\PhpErrorHandler;
+use App\Middlewares\EnableAPIMiddleware;
 use Awurth\SlimValidation\Validator;
 use Framework\Auth\AuthInterface;
-use Framework\Database\{DatabaseInterface, Mysql\MysqlDatabase, Mysql\MysqlPDOFactory};
+use Framework\Database\DatabaseInterface;
+use Framework\Database\Mysql\MysqlDatabase;
+use Framework\Database\Mysql\MysqlPDOFactory;
 use Framework\Middleware\EnableCORSMiddleware;
-use Framework\Renderer\{RendererInterface,
-    Twig\Extensions\AssetsTwigExtension,
-    Twig\TwigRenderer,
-    Twig\TwigRendererFactory};
-use Framework\Session\{FlashMessage, FlashMessageFactory, PHPSession, SessionInterface};
-use function DI\{get, create, factory};
+use Framework\Renderer\RendererInterface;
+use Framework\Renderer\Twig\Extensions\AssetsTwigExtension;
+use Framework\Renderer\Twig\TwigRenderer;
+use Framework\Renderer\Twig\TwigRendererFactory;
+use Framework\Session\PHPSession;
+use Framework\Session\SessionInterface;
+
+use function DI\get;
+use function DI\create;
+use function DI\factory;
 
 return [
 
@@ -49,4 +60,7 @@ return [
     // Middlewares
     EnableCORSMiddleware::class => create(EnableCORSMiddleware::class)
         ->constructor(get('cors.trustedOrigins')),
+
+    EnableAPIMiddleware::class => create(EnableAPIMiddleware::class)
+        ->constructor(evalBool(getenv('API_ENABLE')))
 ];
