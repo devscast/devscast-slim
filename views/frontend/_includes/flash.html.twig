@@ -1,8 +1,5 @@
-{% if flash.getAll() %}
-    {% for type, message in flash %}
-        <div class="alert alert-{{ type }}">
-            {{ message }}
-        </div>
-    {% endfor %}
-    {{ flash.reset() }}
-{% endif %}
+{% for type, message in flash %}
+    <div class="alert alert-{{ type }}">
+        {{ message }}
+    </div>
+{% endfor %}

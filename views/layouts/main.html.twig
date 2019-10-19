@@ -1,7 +1,6 @@
 {% htmlcompress %}
     <!DOCTYPE html>
     <html lang="{{ meta.lang ?: 'en' }}">
-
     <head>
         {% include '@frontend/_includes/meta.html.twig' %}
         <title>{{ meta.title ?: "devscast | devs-cast.com" }}</title>
@@ -10,26 +9,15 @@
         <link rel="icon" href="{{ images('logo.ico') }}"/>
         <link rel="shortcut icon" href="{{ images('logo.ico') }}"/>
 
-        <link href="/manifest.json" rel="manifest">
+        <link href="{{ base_url() }}/manifest.json" rel="manifest">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-              rel="stylesheet"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
         {% block stylesheet %}{% endblock %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/3.3.1/modernizr.min.js"></script>
     </head>
 
     <body itemscope itemtype="http://schema.org/WebSite">
-    <noscript>
-        <div class="text-center mt-100">
-            <h2 style="color: orangered;">JavaScript is disabled</h2>
-            <p class="mb-40">
-                We're sorry but devcast doesn't work properly without JavaScript enabled.
-                <br>
-                Please enable it to continue.
-            </p>
-        </div>
-    </noscript>
+    {% include "@frontend/_includes/noscript.html.twig" %}
     {% include '@frontend/_includes/flash.html.twig' %}
     {% include '@frontend/_includes/header.html.twig' %}
     {% block content %}{% endblock %}
@@ -38,6 +26,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
     {% block js %}{% endblock %}
     </body>
-
     </html>
 {% endhtmlcompress %}

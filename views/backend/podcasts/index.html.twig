@@ -46,7 +46,7 @@
                                         <th>{{ i.id }}</th>
                                         <th><a href="{{ path_for('podcasts.show', {slug: i.slug, id: i.id}) }}">{{ i.name | truncate(30) }}</a></th>
                                         <th>{{ i.duration }} mins</th>
-                                        <th>{{ i.category }}</th>
+                                        <th>{{ i.categoryName }}</th>
                                         <th style="color: {{ i.online ? 'black' : 'red' }}">{{ i.online ? 'Yes' : 'No' }}</th>
                                         <th>
                                             <div class="btn-group-justified">
@@ -80,7 +80,7 @@
     </section>
 {% endblock %}
 
-{% block javascripPlugins %}
+{% block javascriptPlugins %}
     <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/jquery.dataTables.js' }}"></script>
     <script src="{{ base_url() ~ '/assets/admin/plugins/datatables/dataTables.bootstrap4.js' }}"></script>
     <script src="{{ base_url() ~ '/assets/admin/dist/js/main.js' }}"></script>
@@ -95,7 +95,7 @@
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "autoWidth": true
             });

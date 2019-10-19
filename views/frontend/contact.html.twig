@@ -1,16 +1,8 @@
 {% extends '@layouts/main.html.twig' %}
 {% block content %}
-    <header class="page-header" style="background-image: url({{ base_url() ~ '/images/podcast.jpg' }})">
+    <header class="page-header" style="background-image: url({{ images('team.jpg') }})">
         <div class="page-header-inner">
             <div class="container">
-                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement">
-                        <a href="{{ path_for('home') }}">Home</a>
-                    </li>
-                    <li itemprop="itemListElement">
-                        <a href="{{ path_for('contact') }}">Contact us</a>
-                    </li>
-                </ol>
                 <div class="page-header-content text-center">
                     <h2>Contact Us</h2>
                 </div>

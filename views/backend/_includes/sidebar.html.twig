@@ -50,29 +50,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ is_current_path('admin.podcastLinks') or is_current_path('admin.podcastLinks.create') ? 'menu-open' : '' }}">
-                    <a class="nav-link " href="#">
-                        <i class="nav-icon fa fa-table"></i>
-                        <p>
-                            Podcast Links
-                            <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ path_for('admin.podcastLinks') }}" class="nav-link {{ is_current_path('admin.podcastLinks') ? 'active' : '' }}">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path_for('admin.podcastLinks.create') }}" class="nav-link {{ is_current_path('admin.podcastLinks.create') ? 'active' : '' }}">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item has-treeview {{ is_current_path('admin.categories') or is_current_path('admin.categories.create') ? 'menu-open' : '' }}">
                     <a class="nav-link" href="#">
                         <i class="nav-icon fa fa-tags"></i>

@@ -1,39 +1,16 @@
 {% extends 'layouts/main.html.twig' %}
 
 {% block content %}
-    <section class="podcast-hero" style="background-image: url({{ hero.thumb }})">
-        <div class="podcast-hero-inner">
+    <header class="page-header" style="background-image: url('{{ images('console.jpg') }}')">
+        <div class="page-header-inner">
             <div class="container">
-                <div class="podcast-hero-content">
-                    <span class="podcast-hero-date">{{ hero.createdAt | date('M d, Y') }}</span>
-                    <h2 class="podcast-hero-title">
-                        <a href="{{ path_for('podcasts.show', {id: hero.id, slug: hero.slug}) }}">
-                            {{ hero.name | truncate(50) }}
-                        </a>
-                    </h2>
-                    <ul class="podcast-hero-meta">
-                        <li class="item">
-                            <a href="{{ path_for('categories.show', {id: hero.categoriesId, slug: hero.categorySlug}) }}"
-                               class="podcast-hero-tag" rel="tag">
-                                {{ hero.categoryName }}
-                            </a>
-                        </li>
-                        <li class="item"><i class="fa fa-clock-o"></i> {{ hero.durantion }} mins.</li>
-                        <li class="item">
-                            <a href="{{ hero.audio }}" class="podcast-hero-download">
-                                <i class="fa fa-download"></i> Download
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="podcast-hero-player-content">
-                <div class="container">
-                    <audio src="{{ hero.audio }}"></audio>
+                <div class="page-header-content text-center">
+                    <h2>Podcasts</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <main class="main" id="main">
         <section id="#episodes" class="section-positive">

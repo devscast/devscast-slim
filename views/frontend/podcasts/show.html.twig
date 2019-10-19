@@ -25,7 +25,6 @@
         </div>
     </div>
 
-
     {# ===== PODCAST META ===== #}
     <div class="podcast-meta-element">
         <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.createdAt | date('M d, Y') }}</span>
@@ -34,48 +33,13 @@
         <a class="podcast-meta-item" href="{{ podcast.audio }}"><i class="fa fa-download"></i> Download (MP3)</a>
     </div>
 
-
-    {% if links is defined %}
-        <div class="podcast-links">
-            <div class="container">
-                <ul class="podcast-links-list">
-                    {% for l in links %}
-                        <li>
-                            <a href="#{{ l.reference }}" class="btn btn-success btn-sm">{{ l.reference }}</a>
-                            <span class="podcast-link-cite">{{ l.description }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    {% endif %}
-
     <div class="section-negative">
         <div class="container">
             <div class="row mt-70 mb-50">
                 <div class="col-md-8 mb-50">
                     <div class="page-content">
-                        <p>
-                            {{ podcast.description }}
-                        </p>
-
-                        <hr/>
-                        {% if gallery is defined %}
-                            <div class="page-gallery">
-                                {% for g in gallery %}
-                                    <div class="col-md-4 col-xs-6 nopadding">
-                                        <figure class="gallery-item">
-                                            <a href="{{ g.url }}" class="gallery-zoom">
-                                                <img src="{{ g.url }}" alt="{{ g.name }}" title="{{ g.name }}"/>
-                                            </a>
-                                        </figure>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        <hr/>
+                        {{ podcast.description }}
                     </div>
-
 
                     {# ===== PREV AND NEXT ===== #}
                     <div class="page-pagination">
@@ -96,52 +60,6 @@
                             </a>
                         {% endif %}
                     </div>
-                    <hr/>
-
-                    {# ===== COMMENTS ===== #}
-                    {% if comments is defined %}
-                        <div class="page-comments">
-                            {% for c in comments %}
-                                <div class="comment-item">
-                                    <div class="comment-content">
-                                        <cite class="comment-author">{{ c.author }}</cite>
-                                        <small>says:</small>
-                                        <span class="comment-date">{{ c.createdAt | date('M d, Y') }}</span>
-                                        <div class="comment-body">
-                                            <p>{{ c.content }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                    <hr/>
-
-                    {# ===== FORM COMMENTS ===== #}
-                    <form action="#" class="form-comment form-validate">
-                        <fieldset class="row">
-                            <legend class="col-md-12">Leave a comment</legend>
-                            <div class="col-md-8 mb-20">
-                                <label for="name" class="label-control">Name*:</label>
-                                <input type="text" id="name" name="name" class="form-control" required/>
-                            </div>
-                            <div class="col-md-8 mb-20">
-                                <label for="email" class="label-control">Email*:</label>
-                                <input type="email" id="email" name="email" class="form-control" required/>
-                            </div>
-                            <div class="col-md-8 mb-20">
-                                <label for="website" class="label-control">Website:</label>
-                                <input type="text" id="website" name="website" class="form-control"/>
-                            </div>
-                            <div class="col-md-12 mb-20">
-                                <label for="comment" class="label-control">Comment*:</label>
-                                <textarea name="comment" id="comment" rows="8" class="form-control" required></textarea>
-                            </div>
-                            <div class="col-md-5">
-                                <input type="submit" class="btn btn-lg btn-block btn-success" value="Send comment"/>
-                            </div>
-                        </fieldset>
-                    </form>
                 </div>
 
 
@@ -152,22 +70,25 @@
                             <h2 class="title-separator">Share this podcast</h2>
                             <ul class="social-list colored">
                                 <li class="social-item facebook">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_url() ~ current_path() }}" target="_blank">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_url() ~ current_path() }}"
+                                       target="_blank">
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
                                 <li class="social-item twitter">
-                                    <a href="https://twitter.com/home?status={{ base_url() ~ current_path() }}" target="_blank">
+                                    <a href="https://twitter.com/home?status={{ base_url() ~ current_path() }}"
+                                       target="_blank">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                 </li>
                                 <li class="social-item google">
-                                    <a href="https://plus.google.com/share?url={{ base_url() ~ current_path() }}" target="_blank">
+                                    <a href="https://plus.google.com/share?url={{ base_url() ~ current_path() }}"
+                                       target="_blank">
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </li>
                                 <li class="social-item email">
-                                    <a href="mailto:?&subject=devcast" target="_blank">
+                                    <a href="mailto:?&subject={{ constant('APP_NAME') }}" target="_blank">
                                         <i class="fa fa-envelope"></i>
                                     </a>
                                 </li>
