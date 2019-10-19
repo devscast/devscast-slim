@@ -1,17 +1,12 @@
 {% extends '@layouts/main.html.twig' %}
 
 {% block content %}
-    <header class="page-header-podcast" style="background-image: url({{ podcast.thumb }})">
+    <header class="page-header-podcast" style="background-image: url({{ podcast.thumbUrl }})">
         <div class="page-header-inner">
             <div class="container">
-                <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement"><a href="{{ path_for('home') }}">Home</a></li>
-                    <li itemprop="itemListElement"><a href="{{ path_for('podcasts.index') }}">Podcast</a></li>
-                </ol>
-
                 <div class="page-header-content text-center">
                     <h2>{{ podcast.name }}</h2>
-                    <p>{{ podcast.description | truncate(100) }}</p>
+                    <p>{{ podcast.body | truncate(100) }}</p>
                 </div>
             </div>
         </div>
@@ -20,7 +15,7 @@
     <div class="podcast-player" style="margin: 50px 0;">
         <div class="podcast-player-inner">
             <div class="container">
-                <audio src="{{ podcast.audio }}"></audio>
+                <audio src="{{ podcast.audioUrl }}"></audio>
             </div>
         </div>
     </div>
@@ -29,7 +24,7 @@
     <div class="podcast-meta-element">
         <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.createdAt | date('M d, Y') }}</span>
         <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
-        <a class="podcast-meta-item" href="#"><i class="fa fa-tag"></i> {{ podcast.category }}</a>
+        <a class="podcast-meta-item" href="{{ path_for('categories.show',{id: podcast.categoriesId, slug: podcast.categorySlug}) }}"><i class="fa fa-tag"></i> {{ podcast.categoryName }}</a>
         <a class="podcast-meta-item" href="{{ podcast.audio }}"><i class="fa fa-download"></i> Download (MP3)</a>
     </div>
 
@@ -38,7 +33,7 @@
             <div class="row mt-70 mb-50">
                 <div class="col-md-8 mb-50">
                     <div class="page-content">
-                        {{ podcast.description }}
+                        {{ podcast.body }}
                     </div>
 
                     {# ===== PREV AND NEXT ===== #}

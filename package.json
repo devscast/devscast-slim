@@ -3,15 +3,13 @@
     "version": "1.1.0-beta.3",
     "description": "podcasts for web developers",
     "main": "index.js",
-    "repository": "https://github.com/itotafrica/devcast-api",
+    "repository": "https://github.com/itotafrica/devcast-backend",
     "author": "bernard-ng <ngandubernard@gmail.com>",
-    "license": "APACHE 2.0",
+    "license": "CC-BY-NC-SA-4.0",
     "private": false,
     "dependencies": {
         "bootstrap": "3.3.6",
-        "jquery": "1.11.1",
-        "magnific-popup": "^1.1.0",
-        "owl.carousel2": "^2.2.1"
+        "jquery": "1.11.1"
     },
     "devDependencies": {
         "del": "^5.0.0",
