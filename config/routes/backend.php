@@ -61,7 +61,7 @@ return function (Application $app) {
 
     // groups together the administration modules that do not have CRUD functionality
     $app->group('/admin', function () {
-        $this->get('/admin', [DashboardController::class, 'index'])->setName('admin.index');
+        $this->get('', [DashboardController::class, 'index'])->setName('admin.index');
 
         // newsletter management, "delete" deletes a newsletter subscriber
         $this->group('/newsletter', function () {
