@@ -13,6 +13,7 @@ use App\AbstractController;
 use Modules\Podcast\Category\CategoriesRepository;
 use Modules\Podcast\Newsletter\NewsletterRepository;
 use Modules\Podcast\PodcastsRepository;
+use Modules\User\UsersRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
@@ -45,11 +46,12 @@ class DashboardController extends AbstractController
         $podcasts = $this->container->get(PodcastsRepository::class)->count();
         $categories = $this->container->get(CategoriesRepository::class)->count();
         $newsletter = $this->container->get(NewsletterRepository::class)->count();
+        $users = $this->container->get(UsersRepository::class)->count();
 
         return $this->renderer->render(
             $response,
             '@backend/index.html.twig',
-            compact('podcasts', 'categories', 'newsletter')
+            compact('podcasts', 'categories', 'newsletter', 'users')
         );
     }
 
