@@ -6,26 +6,25 @@
             <div class="container">
                 <div class="page-header-content text-center">
                     <h2>Categories</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        A ab accusantium animi architecto aspernatur consectetur dolor dolores dolorum fugit illum,
+                        ipsam labore molestiae officia optio possimus provident quaerat sequi tenetur.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
                 </div>
             </div>
         </div>
     </header>
-
     <main class="main" id="main">
-        <section id="#episodes" class="section-positive">
+        <section class="section-positive">
             <div class="container">
                 <div class="row">
+                    {# TODO : redesign categories card and its HTML structure :) #}
                     {% for c in categories %}
-                        <div class="col-sm-6 mb-40">
-                            <div class="podcast-card boxed">
-                                <figure class="podcast-image categories">
-                                    <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
-                                        <img src="https://via.placeholder.com" alt="{{ c.name }}" title="{{ c.name }}"/>
-                                    </a>
-                                </figure>
+                        <div class="col-sm-6 mb-40 boxed">
+                            <div class="podcast-card text-center boxed">
                                 <div class="podcast-content">
-                                    <span class="podcast-date">{{ c.createdAt | date('M d, Y') }}</span>
                                     <h2 class="podcast-title">
                                         <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
                                             {{ c.name | truncate(30) }}
@@ -33,26 +32,17 @@
                                     </h2>
                                     <p class="podcast-excerpt">
                                         <a href="{{ path_for('categories.show', {id: c.id, slug: c.slug}) }}">
-                                            {{ c.description | truncate(200) }}
+                                            {{ c.description | truncate(100) }}
                                         </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
-
-                    <div class="col-sm-12 text-center mb-50">
-                        <ol class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ol>
-                    </div>
+                    {% include "@frontend/_components/pagination.html.twig" %}
                 </div>
             </div>
         </section>
     </main>
-
     {% include '@frontend/_includes/quote.html.twig' %}
 {% endblock %}

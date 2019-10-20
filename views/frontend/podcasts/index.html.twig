@@ -6,71 +6,27 @@
             <div class="container">
                 <div class="page-header-content text-center">
                     <h2>Podcasts</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        A ab accusantium animi architecto aspernatur consectetur dolor dolores dolorum fugit illum,
+                        ipsam labore molestiae officia optio possimus provident quaerat sequi tenetur.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
                 </div>
             </div>
         </div>
     </header>
-
     <main class="main" id="main">
-        <section id="#episodes" class="section-positive">
+        <section class="section-positive">
             <div class="container">
-                <h2 class="title-default">Episodes</h2>
                 <div class="row">
                     {% for index, p in podcasts %}
-                        <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
-                            <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
-                                <figure class="podcast-image">
-                                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                        <img src="{{ p.thumbUrl }}" alt="{{ p.name }}" title="{{ p.name }}"/>
-                                    </a>
-                                </figure>
-                                <div class="podcast-content">
-                                    <span class="podcast-date">{{ p.createdAt | date('M d, Y') }}</span>
-                                    <h2 class="podcast-title">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.name | truncate(30) }}
-                                        </a>
-                                    </h2>
-                                    <p class="podcast-excerpt">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.body | truncate(100) }}
-                                        </a>
-                                    </p>
-                                    <ul class="podcast-meta">
-                                        <li class="item">
-                                            <a href="{{ path_for('categories.show', {id: p.categoriesId, slug: p.categorySlug}) }}"
-                                               class="podcast-tag" rel="tag">
-                                                {{ p.categoryName }}
-                                            </a>
-                                        </li>
-                                        <li class="item"><i class="fa fa-clock-o"></i> {{ p.duration }} mins.</li>
-                                        <li class="item">
-                                            <a href="{{ path_for('podcasts.index', {id: p.id, slug: p.slug}) }}"
-                                               class="podcast-play">
-                                                <i class="fa fa-play"></i> Play Episode
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% include "@frontend/_components/podcast.html.twig" %}
                     {% endfor %}
-
-
-                    {# ===== PAGINATION ===== #}
-                    <div class="col-sm-12 text-center mb-50">
-                        <ol class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ol>
-                    </div>
+                    {% include "@frontend/_components/pagination.html.twig" %}
                 </div>
             </div>
         </section>
-
         {% include '@frontend/_includes/quote.html.twig' %}
     </main>
 {% endblock %}

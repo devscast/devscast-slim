@@ -1,33 +1,32 @@
 <header class="header scrolling sticky" itemscope itemtype="http://schema.org/Organization">
     <div class="container">
-        <h1 class="logo">
+        {# TODO :  replace the text-logo by a image-logo #}
+        <h3 class="logo">
             <a href="{{ path_for('home') }}">
-                <span itemprop="logo"><strong>devs</strong>cast</span>
+                <strong itemprop="logo" class="text-uppercase">Devscast</strong>
             </a>
-        </h1>
+        </h3>
 
         <nav class="navigation">
             <ul class="menu">
-                {% if currentUser and currentUser.role == 'admin' %}
+                {% if currentUser and currentUser.role == '1' %}
                     <li class="menuitem">
-                        <a href="{{ path_for('admin.index') }}" >Admin</a>
+                        <a href="{{ path_for('admin.index') }}">Admin</a>
                     </li>
                 {% endif %}
 
-                <li class="menuitem {{ is_current_path('podcasts.index') ? 'active' : '' }}">
-                    <a href="{{ path_for('podcasts.index') }}">Podcasts &nbsp;<span><i class="fa fa-microphone"></i></span></a>
+                {# TODO : Set up a strategy to make links active, cleanly!! :) #}
+                <li class="menuitem {{ is_current_path('podcasts.index') or is_current_path('podcasts.show', {id: podcast.id, slug: podcast.slug}) ? 'active' : '' }}">
+                    <a href="{{ path_for('podcasts.index') }}">Podcasts</a>
                 </li>
-
-                <li class="menuitem {{ is_current_path('categories.index')? 'active' : '' }}">
-                    <a href="{{ path_for('categories.index') }}">Categories &nbsp;<span><i class="fa fa-tags"></i></span></a>
+                <li class="menuitem {{ is_current_path('categories.index') or is_current_path('categories.show', {id: category.id, slug: category.slug})? 'active' : '' }}">
+                    <a href="{{ path_for('categories.index') }}">Categories</a>
                 </li>
-
                 <li class="menuitem {{ is_current_path('about')? 'active' : '' }}">
-                    <a href="{{ path_for('about') }}">About &nbsp;<span><i class="fa fa-question-circle"></i></span></a>
+                    <a href="{{ path_for('about') }}">About</a>
                 </li>
-
                 <li class="menuitem {{ is_current_path('contact')? 'active' : '' }}">
-                    <a href="{{ path_for('contact') }}">Contact &nbsp;<span><i class="fa fa-envelope"></i></span></a>
+                    <a href="{{ path_for('contact') }}">Contact</a>
                 </li>
             </ul>
 

@@ -1,0 +1,37 @@
+<article class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
+    <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
+        <figure class="podcast-image">
+            <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                <img src="{{ p.thumbUrl }}" alt="{{ p.name }}" title="{{ p.name }}"/>
+            </a>
+        </figure>
+        <div class="podcast-content">
+            <header>
+                <time class="podcast-date">{{ p.createdAt | date('M d, Y') }}</time>
+                <h2 class="podcast-title">
+                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                        {{ p.name | truncate(30) }}
+                    </a>
+                </h2>
+            </header>
+            <main class="podcast-excerpt">
+                <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
+                    {{ p.body | truncate(100) }}
+                </a>
+            </main>
+            <footer>
+                <ul class="podcast-meta">
+                    <li class="item">
+                        <a href="{{ path_for('categories.show', {id: p.categoriesId, slug: p.categorySlug}) }}"
+                           class="podcast-tag" rel="tag">
+                            {{ p.categoryName }}
+                        </a>
+                    </li>
+                    {% if p.duration %}
+                        <li class="item"><i class="fa fa-clock-o"></i> {{ p.duration }} mins.</li>
+                    {% endif %}
+                </ul>
+            </footer>
+        </div>
+    </div>
+</article>

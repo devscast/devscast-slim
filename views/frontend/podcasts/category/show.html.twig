@@ -1,6 +1,7 @@
 {% extends '@layouts/main.html.twig' %}
 
 {% block content %}
+    {# TODO : background image must be dynamic #}
     <header class="page-header" style="background-image: url('{{ images('console.jpg') }}')">
         <div class="page-header-inner">
             <div class="container">
@@ -11,54 +12,17 @@
             </div>
         </div>
     </header>
-
     <main class="main" id="main">
-        <section id="#episodes" class="section-positive">
+        <section class="section-positive">
             <div class="container">
                 <div class="row">
                     {% for index, p in podcasts %}
-                        <div class="col-sm-{{ (index == 0)? '12' : '6' }} mb-40">
-                            <div class="podcast-card {{ (index == 0)? 'full' : 'boxed' }}">
-                                <figure class="podcast-image">
-                                    <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                        <img src="{{ p.thumbUrl }}" alt="{{ p.name }}" title="{{ p.name }}" />
-                                    </a>
-                                </figure>
-                                <div class="podcast-content">
-                                    <span class="podcast-date">{{ p.createdAt | date('M d, Y') }}</span>
-                                    <h2 class="podcast-title">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.name | truncate(30) }}
-                                        </a>
-                                    </h2>
-                                    <p class="podcast-excerpt">
-                                        <a href="{{ path_for('podcasts.show', {id: p.id, slug: p.slug}) }}">
-                                            {{ p.body | truncate(100) }}
-                                        </a>
-                                    </p>
-                                    <ul class="podcast-meta">
-                                        <li class="item"><a href="#" class="podcast-tag" rel="tag">{{ p.categoryName }}</a></li>
-                                        {% if p.duration %}
-                                            <li class="item"><i class="fa fa-clock-o"></i>{{ p.duration }} mins.</li>
-                                        {% endif %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% include "@frontend/_components/podcast.html.twig" %}
                     {% endfor %}
-
-                    <div class="col-sm-12 text-center mb-50">
-                        <ol class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ol>
-                    </div>
+                    {% include "@frontend/_components/pagination.html.twig" %}
                 </div>
             </div>
         </section>
-
         {% include '@frontend/_includes/quote.html.twig' %}
     </main>
 {% endblock %}

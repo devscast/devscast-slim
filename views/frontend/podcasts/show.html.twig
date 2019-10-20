@@ -11,7 +11,6 @@
             </div>
         </div>
     </header>
-
     {% if podcast.audioUrl %}
         <div class="podcast-player mt-50 mb-50">
             <div class="podcast-player-inner">
@@ -21,74 +20,56 @@
             </div>
         </div>
     {% endif %}
-
     <div class="podcast-meta-element">
-        <span class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.createdAt | date('M d, Y') }}</span>
+        <time class="podcast-meta-item"><i class="fa fa-calendar"></i> {{ podcast.createdAt | date('M d, Y') }}</time>
         {% if podcast.duration %}
             <span class="podcast-meta-item"><i class="fa fa-clock-o"></i> {{ podcast.duration }} minutes</span>
         {% endif %}
         {% if podcast.audioUrl %}
-            <a class="podcast-meta-item" href="{{ podcast.audioUrl }}"><i class="fa fa-download"></i> Download (audio)</a>
+            <a class="podcast-meta-item" href="{{ podcast.audioUrl }}">
+                <i class="fa fa-download"></i> Download (audio)
+            </a>
         {% endif %}
-        <a class="podcast-meta-item" href="{{ path_for('categories.show',{id: podcast.categoriesId, slug: podcast.categorySlug}) }}">
+        <a
+            class="podcast-meta-item"
+            href="{{ path_for('categories.show',{id: podcast.categoriesId, slug: podcast.categorySlug}) }}">
             <i class="fa fa-tag"></i> {{ podcast.categoryName }}
         </a>
     </div>
-
-    <section class="section-negative">
-        <div class="container">
-            <div class="row mt-70 mb-50">
-                <div class="col-md-10 mb-50">
-                    <main class="page-content">
-                        {{ podcast.body }}
-                    </main>
-                    <div class="page-pagination">
-                        {% if previous %}
-                            <a href="{{ path_for('podcasts.show', {id: previous.id, slug: previous.slug}) }}"
-                               class="page-pagination-prev">
-                                <i class="fa fa-long-arrow-left"></i>
-                                <span>{{ previous.createdAt | date('M d, Y') }}</span>
-                                <p>{{ previous.name | truncate(40) }}</p>
-                            </a>
-                        {% endif %}
-                        {% if next %}
-                            <a href="{{ path_for('podcasts.show', {id: next.id, slug: next.slug}) }}"
-                               class="page-pagination-next">
-                                <i class="fa fa-long-arrow-right"></i>
-                                <span>{{ next.createdAt | date('M d, Y') }}</span>
-                                <p>{{ next.name | truncate(40) }}</p>
-                            </a>
-                        {% endif %}
-                    </div>
-                </div>
-                <aside class="col-md-2">
-                    <div class="page-sidebar">
-                        <div class="sidebar-widget">
-                            <h2 class="title-separator">Share this podcast</h2>
-                            <ul class="social-list colored">
-                                <li class="social-item facebook">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_url() ~ current_path() }}"
-                                       target="_blank">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="social-item twitter">
-                                    <a href="https://twitter.com/home?status={{ base_url() ~ current_path() }}"
-                                       target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="social-item google">
-                                    <a href="https://plus.google.com/share?url={{ base_url() ~ current_path() }}"
-                                       target="_blank">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                            </ul>
+    <main class="main" id="main">
+        <section class="section-negative">
+            <div class="container">
+                <article class="row mt-70 mb-50">
+                    <div class="col-md-10 mb-50">
+                        <main class="page-content">
+                            {{ podcast.body }}
+                        </main>
+                        <div class="page-pagination">
+                            {% if previous %}
+                                <a href="{{ path_for('podcasts.show', {id: previous.id, slug: previous.slug}) }}"
+                                   class="page-pagination-prev">
+                                    <i class="fa fa-long-arrow-left"></i>
+                                    <time>{{ previous.createdAt | date('M d, Y') }}</time>
+                                    <p>{{ previous.name | truncate(40) }}</p>
+                                </a>
+                            {% endif %}
+                            {% if next %}
+                                <a href="{{ path_for('podcasts.show', {id: next.id, slug: next.slug}) }}"
+                                   class="page-pagination-next">
+                                    <i class="fa fa-long-arrow-right"></i>
+                                    <time>{{ next.createdAt | date('M d, Y') }}</time>
+                                    <p>{{ next.name | truncate(40) }}</p>
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
-                </aside>
+                    <aside class="col-md-2">
+                        <div class="page-sidebar">
+                            {% include "@frontend/_includes/share.html.twig" %}
+                        </div>
+                    </aside>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 {% endblock %}
