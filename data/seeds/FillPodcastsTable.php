@@ -29,7 +29,7 @@ class FillPodcastsTable extends AbstractSeed
                 'name' => $name,
                 'body' => $faker->text(300),
                 'duration' => mt_rand(5, 50),
-                'thumb_url' => 'https://via.placeholder/200/300',
+                'thumb_url' => 'https://via.placeholder.com/300/300',
                 'audio_url' => 'https://lushitrap.com/assets/artists/bernard-ng/audio/Calm_lushitrapMUSIC.mp3',
                 'slug' => $slugify->slugify($name),
                 'users_id' => 1,
