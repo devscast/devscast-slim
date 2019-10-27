@@ -13,3 +13,7 @@ public/error_log
 /docs/
 /data/apikeys.json
 .env
+push.sh
+prod.sh
+data/cache/
+public/uploads/
