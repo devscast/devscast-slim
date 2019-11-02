@@ -1,0 +1,154 @@
+// Should be the 3rd importation
+@import "../base/variables";
+
+.social-list {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  & .social-item {
+    float: left;
+    width: 25%;
+    height: 50px;
+    list-style: none;
+    border: 1px solid #110f16;
+    background: #18151f;
+  }
+
+  &.colored .facebook {
+    border: #3b5998;
+    background: #3b5998;
+
+    &:hover a, &:focus a {
+      border: #30487b;
+      background: #30487b;
+    }
+  }
+
+  &.colored .instagram {
+    border: #125688;
+    background: #125688;
+
+    &:hover a, &:focus a {
+      border: #0d3f64;
+      background: #0d3f64;
+    }
+  }
+
+  &.colored .twitter {
+    border: #55acee;
+    background: #55acee;
+
+    &:hover a, &:focus a {
+      border: #309aea;
+      background: #309aea;
+    }
+  }
+
+  &.colored .google {
+    border: #dd4b39;
+    background: #dd4b39;
+
+    &:hover a, &:focus a {
+      border: #ca3523;
+      background: #ca3523;
+    }
+  }
+
+  &.colored .youtube {
+    border: #dd4b39;
+    background: #dd4b39;
+
+    &:hover a, &:focus a {
+      border: #ca3523;
+      background: #ca3523;
+    }
+  }
+
+  &.colored .whatsapp {
+    border: #4dc247;
+    background: #4dc247;
+
+    &:hover a, &:focus a {
+      border: #3da838;
+      background: #3da838;
+    }
+  }
+
+  &.colored .soundcloud {
+    border: #ff6600;
+    background: #ff6600;
+
+    &:hover a, &:focus a {
+      border: #d65600;
+      background: #d65600;
+    }
+  }
+
+  &.colored .linkedin {
+    border: #007bb5;
+    background: #007bb5;
+
+    &:hover a, &:focus a {
+      border: #005f8c;
+      background: #005f8c;
+    }
+  }
+
+  &.colored .pinterest {
+    border: #cb2027;
+    background: #cb2027;
+
+    &:hover a, &:focus a {
+      border: #a81a20;
+      background: #a81a20;
+    }
+  }
+
+  &.colored .spotfy {
+    border: #00e461;
+    background: #00e461;
+
+    &:hover a, &:focus a {
+      border: #00bb50;
+      background: #00bb50;
+    }
+  }
+
+  &.colored .email {
+    border: #4dc247;
+    background: #4dc247;
+
+    &:hover a, &:focus a {
+      border: #3da838;
+      background: #3da838;
+    }
+  }
+
+  & a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-size: 2rem;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+    &:hover, &:focus {
+      background: #2ecc71;
+    }
+  }
+}

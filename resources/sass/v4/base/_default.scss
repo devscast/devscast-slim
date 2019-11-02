@@ -1,0 +1,143 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+
+body {
+  padding: 0;
+  margin: 0;
+  font: {
+    family: $font-family;
+    size: $font-size;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.d-table {
+  width: 100%;
+  height: 100%;
+
+  &-cell {
+    vertical-align: middle;
+  }
+}
+
+a {
+  text-decoration: none;
+  outline: 0 !important;
+  transition: $transition;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button {
+  outline: 0 !important;
+}
+
+input {
+  outline: 0 !important;
+}
+
+p {
+  line-height: 1.8;
+  font-size: $font-size;
+  color: $paragraph-color;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+blockquote, .blockquote {
+  overflow: hidden;
+  background-color: #111111;
+  padding: 50px !important;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  margin: {
+    bottom: 20px;
+    top: 20px;
+  }
+  p {
+    color: $white-color !important;
+    line-height: 1.6;
+    margin-bottom: 0 !important;
+    font: {
+      style: italic;
+      weight: 600;
+      size: 18px !important;
+    }
+  }
+  cite {
+    display: none;
+  }
+  &::before {
+    color: $black-color;
+    content: "\f10d";
+    position: absolute;
+    left: 50px;
+    top: -60px;
+    z-index: -1;
+    font: {
+      family: "Font Awesome 5 Free";
+      size: 140px;
+      weight: 900;
+    }
+  }
+}
+
+.ptb-80 {
+  padding: {
+    top: 80px;
+    bottom: 80px;
+  }
+}
+
+.br-line {
+  position: relative;
+  overflow: hidden;
+  height: 60px;
+  width: 3px;
+  background: $white-color;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  z-index: 1;
+
+  &::after, &::before {
+    content: "";
+    position: absolute;
+    background: $black-color;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    z-index: -1;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-name: MOVE-BG;
+  }
+
+  &::before {
+    top: 10px;
+  }
+
+  &::after {
+    top: 0;
+  }
+}
+
+.separate.bg-light {
+  .br-line {
+    background: $main-color;
+
+    &::before, &::after {
+      background-color: $white-color;
+    }
+  }
+}

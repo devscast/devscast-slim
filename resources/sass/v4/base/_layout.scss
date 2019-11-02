@@ -1,0 +1,83 @@
+@import "variables";
+
+.bg-light {
+  background-color: $white-color !important;
+}
+
+.bg-black {
+  background-color: $black-color !important;
+}
+
+.section-title {
+  position: relative;
+  text-align: center;
+  max-width: 600px;
+  padding-bottom: 30px;
+  margin: {
+    left: auto;
+    right: auto;
+    bottom: 55px;
+  }
+
+  span {
+    text-transform: uppercase;
+    color: $main-color;
+    margin-bottom: 2px;
+    display: block;
+    font: {
+      size: 13px;
+      weight: 700;
+    }
+  }
+
+  h2 {
+    color: $white-color;
+    margin-bottom: 0;
+    line-height: 1.5;
+    font: {
+      size: 34px;
+      weight: 700;
+    }
+  }
+
+  .bar {
+    width: 60px;
+    height: 3px;
+    background-color: $main-color;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 3px;
+      background-color: $black-color;
+      left: 10px;
+      top: 0;
+      animation-duration: 3s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-name: MOVE-BG-2;
+    }
+
+    &::after {
+      left: 0;
+    }
+  }
+}
+
+.section-title.light {
+  h2 {
+    color: $black-color-two;
+  }
+
+  .bar {
+    &::before, &::after {
+      background-color: $white-color;
+    }
+  }
+}

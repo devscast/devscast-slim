@@ -1,0 +1,57 @@
+@import "../base/variables";
+
+.form-control {
+  height: 52px;
+  background-color: #212121;
+  border-radius: 0;
+  transition: $transition;
+  color: $white-color;
+  font-size: 13.5px;
+  line-height: 52px;
+  box-shadow: unset !important;
+  border: none;
+  padding: {
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+  }
+
+  &::placeholder {
+    color: #dddddd;
+  }
+
+  &:focus {
+    background-color: #212121;
+    color: $white-color;
+  }
+}
+
+.default-btn {
+  display: inline-block;
+  background-color: $main-color;
+  color: $white-color;
+  border: none;
+  padding: 11px 30px;
+  outline: 0;
+  transition: $transition;
+  font: {
+    weight: 500;
+    size: 15px;
+  }
+
+  &:hover {
+    color: $black-color;
+    background-color: $white-color
+  }
+
+  &.white-color-btn {
+    background-color: $white-color;
+    color: $black-color;
+
+    &:hover {
+      color: $white-color;
+      background-color: $main-color;
+    }
+  }
+}

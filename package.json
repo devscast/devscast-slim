@@ -1,22 +1,25 @@
 {
-    "name": "devcast-backend",
-    "version": "1.1.0-beta.3",
-    "description": "podcasts for web developers",
-    "main": "index.js",
-    "repository": "https://github.com/itotafrica/devcast-backend",
-    "author": "bernard-ng <ngandubernard@gmail.com>",
-    "license": "CC-BY-NC-SA-4.0",
-    "private": false,
-    "dependencies": {
-        "bootstrap": "3.3.6",
-        "jquery": "1.11.1"
-    },
-    "devDependencies": {
-        "del": "^5.0.0",
-        "gulp": "^4.0.2",
-        "gulp-concat": "^2.6.1",
-        "gulp-csso": "^3.0.1",
-        "gulp-sass": "^4.0.2",
-        "gulp-scss": "^1.4.0"
-    }
+  "name": "devcast-backend",
+  "version": "1.1.0-beta.3",
+  "description": "podcasts for web developers",
+  "main": "index.js",
+  "repository": "https://github.com/bernard-ng/devcast-backend",
+  "author": "bernard-ng <ngandubernard@gmail.com>",
+  "license": "CC-BY-NC-SA-4.0",
+  "private": false,
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "animate.css": "^3.7.2",
+    "owl.carousel": "^2.3.4"
+  },
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-scss": "^1.4.0",
+    "gulp-jsmin": "^0.1.5"
+  }
 }

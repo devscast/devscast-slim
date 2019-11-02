@@ -1,0 +1,32 @@
+// Should be the 2nd importation
+@import "../base/variables";
+
+.section {
+  &-positive {
+    position: relative;
+    background: #110f16;
+    color: #f1f1f1;
+  }
+
+  &-negative {
+    position: relative;
+    background: #f1f1f1;
+    color: #110f16;
+  }
+
+  &-highlight {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8) url('/images/code.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    color: #fff;
+  }
+
+  &-description {
+    position: relative;
+    margin-bottom: 50px;
+  }
+}
